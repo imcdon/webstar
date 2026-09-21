@@ -11,7 +11,6 @@ $jsonLd = json_encode([
     '@type' => 'ProfessionalService',
     'name' => $config['business_name'],
     'url' => webstar_absolute_url('index.php'),
-    'telephone' => '+1-' . $config['phone_tel'],
     'email' => $config['email'],
     'areaServed' => $config['service_area'],
 ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
@@ -23,7 +22,7 @@ include __DIR__ . '/library/layout-start.php';
     <p class="hero__lead">Ditch high-cost, subscription based, theme-based websites and marketing packages. Own your domain, your hosting, and get custom products without the custom cost.</p>
     <div class="hero__actions">
         <a class="home-section__btn home-section__btn--primary" href="packages.php">View packages</a>
-        <a class="home-section__btn home-section__btn--secondary" href="tel:<?php echo webstar_h($config['phone_tel']); ?>">Call now</a>
+        <a class="home-section__btn home-section__btn--secondary" href="contact.php">Contact</a>
     </div>
 </section>
 
@@ -78,7 +77,7 @@ include __DIR__ . '/library/layout-start.php';
     <p>Ready to start? Talk to Ian or submit an intake form.</p>
     <div class="hero__actions">
         <a class="home-section__btn home-section__btn--primary" href="contact.php">Contact</a>
-        <a class="home-section__btn home-section__btn--secondary" href="tel:<?php echo webstar_h($config['phone_tel']); ?>">Call</a>
+        <a class="home-section__btn home-section__btn--secondary" href="packages.php">View packages</a>
     </div>
 </div>
 <?php include __DIR__ . '/library/layout-end.php'; ?>

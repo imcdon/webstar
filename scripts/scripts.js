@@ -97,3 +97,65 @@
 
     render();
 })();
+
+(function () {
+    var buttons = document.querySelectorAll('[data-package-select]');
+    var panel = document.querySelector('[data-package-detail]');
+    if (!buttons.length || !panel) {
+        return;
+    }
+
+    var titleEl = panel.querySelector('[data-detail-title]');
+    var priceEl = panel.querySelector('[data-detail-price]');
+    var turnaroundEl = panel.querySelector('[data-detail-turnaround]');
+    var includesEl = panel.querySelector('[data-detail-includes]');
+    var intakeEl = panel.querySelector('[data-detail-intake]');
+
+    function setSelected(button) {
+        buttons.forEach(function (btn) {
+            var active = btn === button;
+            btn.classList.toggle('is-selected', active);
+            btn.setAttribute('aria-expanded', active ? 'true' : 'false');
+        });
+    }
+
+    function showPackage(button) {
+        var title = button.getAttribute('data-title') || '';
+        var price = button.getAttribute('data-price') || '';
+        var turnaround = button.getAttribute('data-turnaround') || '';
+        var slug = button.getAttribute('data-slug') || '';
+        var includes = [];
+
+        try {
+            includes = JSON.parse(button.getAttribute('data-includes') || '[]');
+        } catch (err) {
+            includes = [];
+        }
+
+        titleEl.textContent = title;
+        priceEl.textContent = price;
+        turnaroundEl.textContent = 'Turnaround: ' + turnaround;
+        includesEl.innerHTML = '';
+        includes.forEach(function (item) {
+            var li = document.createElement('li');
+            li.textContent = item;
+            includesEl.appendChild(li);
+        });
+        intakeEl.setAttribute('href', 'package.php?slug=' + encodeURIComponent(slug));
+
+        panel.hidden = false;
+        setSelected(button);
+        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    buttons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            if (button.classList.contains('is-selected') && !panel.hidden) {
+                panel.hidden = true;
+                setSelected(null);
+                return;
+            }
+            showPackage(button);
+        });
+    });
+})();

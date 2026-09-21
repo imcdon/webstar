@@ -14,7 +14,6 @@ $navItems = [
     ['id' => 'about', 'label' => 'About', 'href' => webstar_url('about.php')],
     ['id' => 'contact', 'label' => 'Contact', 'href' => webstar_url('contact.php')],
     ['id' => 'portal', 'label' => 'Client Portal', 'href' => webstar_url('portal/')],
-    ['id' => 'book', 'label' => 'Call Now', 'href' => 'tel:' . $config['phone_tel']],
 ];
 $headerClass = 'site-header';
 if ($headerVariant === 'landing') {
@@ -27,7 +26,6 @@ if ($headerVariant === 'landing') {
             <img src="<?php echo webstar_h(webstar_url('assets/images/star-icon-teal.png')); ?>" alt="" class="site-header__logo-mark" width="28" height="28">
             <span><?php echo webstar_h($config['business_name']); ?></span>
         </a>
-        <a href="tel:<?php echo webstar_h($config['phone_tel']); ?>" class="site-header__phone"><?php echo webstar_h($config['phone_display']); ?></a>
     </div>
     <button type="button" class="site-header__menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
         <span class="site-header__menu-bar" aria-hidden="true"></span>
@@ -40,9 +38,6 @@ if ($headerVariant === 'landing') {
                 <?php
                 $isActive = $currentPage === $item['id'];
                 $linkClass = 'site-header__nav-link';
-                if ($item['id'] === 'book') {
-                    $linkClass .= ' site-header__nav-link--cta';
-                }
                 if ($isActive) {
                     $linkClass .= ' is-active';
                 }

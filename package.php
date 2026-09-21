@@ -35,9 +35,9 @@ include __DIR__ . '/library/layout-start.php';
         <ul class="package-card__list"><?php foreach ($package['includes'] as $item) : ?><li><?php echo webstar_h($item); ?></li><?php endforeach; ?></ul>
         <div class="hero__actions" style="justify-content:flex-start;margin-top:1rem;">
             <a class="home-section__btn home-section__btn--primary" href="#intake-<?php echo webstar_h($packageSlug); ?>">Start intake form</a>
-            <a class="home-section__btn home-section__btn--secondary" href="tel:<?php echo webstar_h(webstar_config()['phone_tel']); ?>">Call now</a>
+            <a class="home-section__btn home-section__btn--secondary" href="contact.php">Contact</a>
         </div>
-        <p class="package-page__compare"><a href="packages.php#compare">Compare all packages</a></p>
+        <p class="package-page__compare"><a href="packages.php">Back to all packages</a></p>
     </div>
     <?php include __DIR__ . '/library/package-intake-form.php'; ?>
 </section>

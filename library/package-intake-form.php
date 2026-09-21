@@ -31,7 +31,7 @@ $formId = 'intake-' . preg_replace('/[^a-z0-9-]+/i', '-', $packageSlug);
                 <p>Please check the following and try again:</p>
                 <ul class="schedule-message__list"><?php foreach ($validationFields as $label) : ?><li><?php echo webstar_h($label); ?></li><?php endforeach; ?></ul>
             <?php elseif ($reason === 'config') : ?>
-                <p>Form delivery is not configured yet. Please call <a href="tel:<?php echo webstar_h(webstar_config()['phone_tel']); ?>"><?php echo webstar_h(webstar_config()['phone_display']); ?></a> or email <?php echo webstar_h(webstar_config()['email']); ?>.</p>
+                <p>Form delivery is not configured yet. Please email <?php echo webstar_h(webstar_config()['email']); ?>.</p>
             <?php else : ?>
                 <p>We could not send your request. Please try again or call us directly.</p>
             <?php endif; ?>

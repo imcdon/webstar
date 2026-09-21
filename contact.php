@@ -36,15 +36,8 @@ include __DIR__ . '/library/layout-start.php';
 
             <div class="contact-panel__ways">
                 <div class="contact-way">
-                    <h2 class="contact-way__title">Call or text</h2>
-                    <p class="contact-way__text">The fastest way to get ahold of me is by phone.</p>
-                    <p class="contact-way__action">
-                        <a href="tel:<?php echo webstar_h($config['phone_tel']); ?>"><?php echo webstar_h($config['phone_display']); ?></a>
-                    </p>
-                </div>
-                <div class="contact-way">
                     <h2 class="contact-way__title">Email</h2>
-                    <p class="contact-way__text">Prefer email? Send a note anytime and I’ll follow up.</p>
+                    <p class="contact-way__text">The best way to reach me is by email. Send a note anytime and I’ll follow up.</p>
                     <p class="contact-way__action">
                         <a href="mailto:<?php echo webstar_h($config['email']); ?>"><?php echo webstar_h($config['email']); ?></a>
                     </p>
@@ -76,9 +69,9 @@ include __DIR__ . '/library/layout-start.php';
                                 <?php endforeach; ?>
                             </ul>
                         <?php elseif ($reason === 'config') : ?>
-                            <p>Form delivery is not configured yet. Please call <a href="tel:<?php echo webstar_h($config['phone_tel']); ?>"><?php echo webstar_h($config['phone_display']); ?></a> or email <a href="mailto:<?php echo webstar_h($config['email']); ?>"><?php echo webstar_h($config['email']); ?></a>.</p>
+                            <p>Form delivery is not configured yet. Please email <a href="mailto:<?php echo webstar_h($config['email']); ?>"><?php echo webstar_h($config['email']); ?></a>.</p>
                         <?php else : ?>
-                            <p>We could not send your message right now. Please try again or call <a href="tel:<?php echo webstar_h($config['phone_tel']); ?>"><?php echo webstar_h($config['phone_display']); ?></a>.</p>
+                            <p>We could not send your message right now. Please try again or email <a href="mailto:<?php echo webstar_h($config['email']); ?>"><?php echo webstar_h($config['email']); ?></a>.</p>
                         <?php endif; ?>
                     </div>
                 <?php endif; ?>

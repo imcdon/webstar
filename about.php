@@ -28,7 +28,7 @@ include __DIR__ . '/library/layout-start.php';
             </div>
             <div class="hero__actions about-panel__actions">
                 <a class="home-section__btn home-section__btn--primary" href="contact.php">Contact</a>
-                <a class="home-section__btn home-section__btn--secondary" href="tel:<?php echo webstar_h($config['phone_tel']); ?>">Call <?php echo webstar_h($config['phone_display']); ?></a>
+                <a class="home-section__btn home-section__btn--secondary" href="packages.php">View packages</a>
             </div>
         </div>
     </div>

@@ -5,7 +5,6 @@ $config = webstar_config();
     <div class="site-footer__inner">
         <p class="site-footer__brand"><?php echo webstar_h($config['business_name']); ?></p>
         <p class="site-footer__contact">Email: <a href="mailto:<?php echo webstar_h($config['email']); ?>" class="site-footer__link"><?php echo webstar_h($config['email']); ?></a></p>
-        <p class="site-footer__contact">Phone: <a href="tel:<?php echo webstar_h($config['phone_tel']); ?>" class="site-footer__link"><?php echo webstar_h($config['phone_display']); ?></a></p>
         <nav class="site-footer__sitemap" aria-label="Footer sitemap">
             <p class="site-footer__sitemap-title">Sitemap</p>
             <ul class="site-footer__sitemap-list">
