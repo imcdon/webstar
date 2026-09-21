@@ -29,7 +29,7 @@ Superior Ice and other client staging sites use **separate** GitHub repos (see [
 
 Portal users live in committed [`library/portal-clients.php`](library/portal-clients.php) (hashed passwords). Change hashes after go-live if needed.
 
-Superior Ice staging lives in [`clients/superior-ice-adventures/`](clients/superior-ice-adventures/) and deploys with this repo to the staging subdomain (password-gated).
+Superior Ice staging lives in [`clients/superior-ice-adventures/`](clients/superior-ice-adventures/) and deploys with this repo via Path A — see [`clients/PATH-A.md`](clients/PATH-A.md).
 
 
 ---

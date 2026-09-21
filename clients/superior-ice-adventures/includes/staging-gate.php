@@ -33,9 +33,10 @@ function sia_staging_clients(): array
     }
 
     $candidates = [
-        // Webstar root library when nested: …/clients/sia/includes → ../../../library
-        dirname(__DIR__, 3) . '/library/portal-clients.php',
+        // Always present in the staging tree (Path A SIAPATH deploy).
         __DIR__ . '/staging-users.php',
+        // When this folder is still nested under the Webstar site tree.
+        dirname(__DIR__, 3) . '/library/portal-clients.php',
     ];
 
     foreach ($candidates as $path) {
