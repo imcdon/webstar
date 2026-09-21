@@ -27,7 +27,7 @@ On localhost, My Projects “Open preview” uses each project’s `local_path`.
 4. **Portal registry**  
    Ensure `library/portal-clients.php` has the client user and a project row with:
    - `local_path` → `clients/superior-ice-adventures/`
-   - `staging_url` → `https://superior-ice-adventures.webstarbusinessservices.com`
+   - `staging_url` → `https://webstarbusinessservices.com/clients/superior-ice-adventures/`
 
 ## New client project checklist
 

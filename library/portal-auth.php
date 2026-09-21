@@ -157,42 +157,14 @@ function portal_require_login(): void
 
 function portal_project_preview_url(array $project): string
 {
-    // #region agent log
-    $__dbg = static function (string $hypothesisId, string $message, array $data = []): void {
-        $line = json_encode([
-            'sessionId' => 'c3e4be',
-            'runId' => 'pre-fix',
-            'hypothesisId' => $hypothesisId,
-            'location' => 'library/portal-auth.php:portal_project_preview_url',
-            'message' => $message,
-            'data' => $data,
-            'timestamp' => (int) round(microtime(true) * 1000),
-        ], JSON_UNESCAPED_SLASHES);
-        if (is_string($line)) {
-            @file_put_contents(dirname(__DIR__) . '/debug-c3e4be.log', $line . "\n", FILE_APPEND);
-        }
-    };
-    // #endregion
-
     if (webstar_is_local_host()) {
-        $url = webstar_url((string) ($project['local_path'] ?? ''));
-        // #region agent log
-        $__dbg('C', 'preview_url_local', ['host' => (string) ($_SERVER['HTTP_HOST'] ?? ''), 'url' => $url, 'slug' => (string) ($project['slug'] ?? '')]);
-        // #endregion
-        return $url;
+        return webstar_url((string) ($project['local_path'] ?? ''));
     }
 
     $staging = trim((string) ($project['staging_url'] ?? ''));
     if ($staging !== '') {
-        // #region agent log
-        $__dbg('C', 'preview_url_staging', ['host' => (string) ($_SERVER['HTTP_HOST'] ?? ''), 'url' => $staging, 'slug' => (string) ($project['slug'] ?? '')]);
-        // #endregion
         return $staging;
     }
 
-    $url = webstar_url((string) ($project['local_path'] ?? ''));
-    // #region agent log
-    $__dbg('C', 'preview_url_fallback_local_path', ['url' => $url]);
-    // #endregion
-    return $url;
+    return webstar_url((string) ($project['local_path'] ?? ''));
 }
