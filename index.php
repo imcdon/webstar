@@ -4,7 +4,7 @@ require __DIR__ . '/library/helpers.php';
 $config = webstar_config();
 $currentPage = 'home';
 $pageTitle = $config['business_name'] . ' — Web Design & Marketing | Metro Detroit';
-$pageDescription = 'Responsive websites and marketing packages for Metro Detroit small businesses. Clear pricing, fast turnaround, one-time builds.';
+$pageDescription = 'Low-cost, simple services for your business, group, or organization. Own your domain and hosting—custom products without the custom cost.';
 $canonicalPath = 'index.php';
 $jsonLd = json_encode([
     '@context' => 'https://schema.org',
@@ -19,8 +19,8 @@ include __DIR__ . '/library/layout-start.php';
 ?>
 <section class="hero">
     <img class="hero__badge" src="assets/images/star-icon-gold.png" alt="" width="52" height="52">
-    <h1 class="hero__title">Web design &amp; marketing that stays fast and simple</h1>
-    <p class="hero__lead">Webstar Business Services builds responsive websites and marketing materials for <?php echo webstar_h($config['service_area']); ?>. Clean HTML and CSS, clear packages, and turnaround times you can plan around.</p>
+    <h1 class="hero__title">Low-Cost, Simple Services for Your Business, Group, or Organization.</h1>
+    <p class="hero__lead">Ditch high-cost, subscription based, theme-based websites and marketing packages. Own your domain, your hosting, and get custom products without the custom cost.</p>
     <div class="hero__actions">
         <a class="home-section__btn home-section__btn--primary" href="packages.php">View packages</a>
         <a class="home-section__btn home-section__btn--secondary" href="tel:<?php echo webstar_h($config['phone_tel']); ?>">Call now</a>
@@ -30,7 +30,7 @@ include __DIR__ . '/library/layout-start.php';
 <section class="home-section home-section--night" id="packages-preview">
     <div class="home-section__inner">
         <h2 class="home-section__heading">Packages at a glance</h2>
-        <p class="home-section__textbox">Four clear tiers—from a one-day marketing kit to a fully custom growth build. Compare the full feature matrix below.</p>
+        <p class="home-section__textbox">Four clear tiers—from a one-day marketing kit to a fully custom growth build.</p>
         <div class="package-grid">
             <?php foreach (webstar_packages() as $pkg) :
                 $featured = ($pkg['badge'] ?? '') !== '';
@@ -51,21 +51,14 @@ include __DIR__ . '/library/layout-start.php';
     </div>
 </section>
 
-<section class="home-section home-section--deep" id="compare">
-    <div class="home-section__inner">
-        <h2 class="home-section__heading">Compare packages</h2>
-        <p class="home-section__textbox">See what each tier includes side by side—pages, booking, marketing materials, and more.</p>
-        <?php include __DIR__ . '/library/package-comparison.php'; ?>
-    </div>
-</section>
-
 <section class="home-section home-section--panel" id="process">
     <div class="home-section__inner">
         <h2 class="home-section__heading">How it works</h2>
         <ol class="home-section__textbox">
-            <li>Choose a package and submit the intake form (logo, company info, business summary, desired services).</li>
-            <li>We confirm scope, timeline, and any clarifying questions.</li>
-            <li>We deliver designs and your site or marketing files within the listed turnaround time.</li>
+            <li>Choose a package and submit the intake form (logo, company name, company info, business summary, goals, and desired services.)</li>
+            <li>Schedule a call with Ian to confirm a timeline, your desired services, and any questions.</li>
+            <li>Pay the deposit and see your website or deliverables update in real time in the Client Portal.</li>
+            <li>You buy your domain and hosting, pay the remaining balance, then I transfer your site and deliverables to you and deploy your site on your independent hosting.</li>
         </ol>
     </div>
 </section>
