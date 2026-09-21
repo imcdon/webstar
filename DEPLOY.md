@@ -48,19 +48,21 @@ git add composer.lock vendor
 
 ---
 
-## First push to GitHub (done when the repo exists)
+## First push to GitHub
 
-1. Empty GitHub repository (no auto README), e.g. `webstar-business-services`.
-2. From the project root:
-   ```bash
-   git init
-   git add .
-   git status   # confirm mail-config.php, portal-clients.php, clients/superior-ice-adventures/ are NOT listed
-   git commit -m "Initial commit: Webstar Business Services site and portal"
-   git branch -M main
-   git remote add origin git@github.com:YOUR_USER/YOUR_REPO.git
-   git push -u origin main
-   ```
+Canonical repo: **https://github.com/imcdon/webstar** (`main`).
+
+If setting up a fresh clone:
+
+```bash
+git init
+git add .
+git status   # confirm mail-config.php, portal-clients.php, clients/superior-ice-adventures/ are NOT listed
+git commit -m "Initial commit: Webstar Business Services site and portal"
+git branch -M main
+git remote add origin https://github.com/imcdon/webstar.git
+git push -u origin main
+```
 
 ---
 
@@ -84,9 +86,9 @@ At your registrar / Reclaim DNS:
 
 1. cPanel → **Git Version Control** → **Create** / **Clone**.
 2. **Clone URL** (pick one):
-   - **SSH (recommended for private repos):** `git@github.com:YOUR_USER/YOUR_REPO.git`  
+   - **SSH (recommended if the repo is private):** `git@github.com:imcdon/webstar.git`  
      Add a **read-only deploy key** from cPanel (or generate SSH key in cPanel → SSH Access) as a Deploy Key on the GitHub repo (Settings → Deploy keys).
-   - **HTTPS:** `https://github.com/YOUR_USER/YOUR_REPO.git` with a fine-grained personal access token (Contents: read). Rotate the token periodically.
+   - **HTTPS:** `https://github.com/imcdon/webstar.git` (public repo — no token needed for clone; use a fine-grained PAT if you later make it private).
 3. **Repository Path** = the document root from step 2 (e.g. `/home/YOURUSER/webstarbusinessservices.com`).
 4. Branch: **main**.
 5. Clone / create the repository.
