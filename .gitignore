@@ -1,9 +1,6 @@
 # Server-only secrets (never commit)
 library/mail-config.php
 
-# Client staging sites (deploy from their own repos)
-clients/superior-ice-adventures/
-
 # Local / build
 node_modules/
 _raw/

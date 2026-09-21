@@ -7,9 +7,10 @@ Webstar hosts in-progress client sites under `clients/` and links them from the 
 - Portal: `http://localhost/webstar-business-solutions/portal/`
 - **Universal admin:** username `webstar` / password `webstarAdmin2026` (sees all client projects; change after deploy)
 - Demo client: username `superior` / password `preview123` (change after handoff)
-- Superior Ice staging: `http://localhost/webstar-business-solutions/clients/superior-ice-adventures/`
+- Superior Ice staging: `http://localhost/webstar-business-solutions/clients/superior-ice-adventures/`  
+  (browser prompts for the same portal username/password on staging hosts)
 
-On localhost, My Projects “Open preview” uses each project’s `local_path`. On production, it uses `staging_url`.
+On localhost, My Projects “Open preview” uses each project’s `local_path`. On production, it uses `staging_url`. Staging sites require portal credentials (HTTP Basic Auth).
 
 ## Production: Superior Ice subdomain (cPanel / Reclaim)
 

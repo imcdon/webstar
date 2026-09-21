@@ -1,0 +1,18 @@
+# Superior Ice Adventures - URL rewrites + live domain
+RewriteEngine On
+
+# Production only: HTTPS + apex (superioriceadventures.com)
+RewriteCond %{HTTP_HOST} ^(www\.)?superioriceadventures\.com$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://superioriceadventures.com%{REQUEST_URI} [L,R=301]
+
+RewriteCond %{HTTP_HOST} ^www\.superioriceadventures\.com$ [NC]
+RewriteRule ^ https://superioriceadventures.com%{REQUEST_URI} [L,R=301]
+
+# Staging subdomain: prefer HTTPS when available
+RewriteCond %{HTTP_HOST} ^superior-ice-adventures\.webstarbusinessservices\.com$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Clean article URLs: /articles/slug/ -> article.php?slug=slug
+RewriteRule ^articles/([a-z0-9-]+)/?$ articles/article.php?slug=$1 [L,QSA]

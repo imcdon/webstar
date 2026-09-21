@@ -1,0 +1,16 @@
+{
+  "name": "superior-ice-adventures",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "media:images": "node scripts/process-images.mjs",
+    "media": "npm run media:images"
+  },
+  "devDependencies": {
+    "heic-convert": "^2.1.0",
+    "sharp": "^0.33.5"
+  }
+}

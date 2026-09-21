@@ -26,9 +26,10 @@ Superior Ice and other client staging sites use **separate** GitHub repos (see [
 | Path | Notes |
 |------|--------|
 | `library/mail-config.php` | SMTP secrets — create on server from the example |
-| `clients/superior-ice-adventures/` | Deploy from the Superior Ice repo into the staging subdomain |
 
 Portal users live in committed [`library/portal-clients.php`](library/portal-clients.php) (hashed passwords). Change hashes after go-live if needed.
+
+Superior Ice staging lives in [`clients/superior-ice-adventures/`](clients/superior-ice-adventures/) and deploys with this repo to the staging subdomain (password-gated).
 
 
 ---
@@ -140,14 +141,19 @@ On the server (File Manager or SSH), inside the **document root** (`DEPLOYPATH`)
 
 `vendor/` is already in the repo — no `composer install` required on the server for normal deploys.
 
-### 7. Superior Ice staging (separate repo)
+### 7. Superior Ice staging subdomain
 
-1. cPanel → **Subdomains** → `superior-ice-adventures` under `webstarbusinessservices.com`.
-2. Document root → e.g. `/home/YOURUSER/webstarbusinessservices.com/clients/superior-ice-adventures` (create the folder if needed).
-3. **Separate** Git Version Control clone of the Superior Ice Adventures GitHub repo into that document root (or deploy via SFTP from that repo).
-4. SSL for `superior-ice-adventures.webstarbusinessservices.com`.
-5. Ensure production `library/portal-clients.php` has:
-   - `staging_url` → `https://superior-ice-adventures.webstarbusinessservices.com`
+1. cPanel → **Subdomains** → create `superior-ice-adventures` under `webstarbusinessservices.com`.
+2. Document root → `/home/YOURUSER/webstarbusinessservices.com/clients/superior-ice-adventures`  
+   (must match the folder deployed with this repo).
+3. SSL for `superior-ice-adventures.webstarbusinessservices.com`.
+4. Deploy Webstar (`Update from Remote` → `Deploy HEAD Commit`) so `clients/superior-ice-adventures/` exists under the document root.
+5. Visit the subdomain — the browser should **prompt for a username and password**. Use Client Portal credentials:
+   - Admin: `webstar` / `webstarAdmin2026`
+   - Client: `superior` / `preview123`
+6. Confirm `library/portal-clients.php` has `staging_url` → `https://superior-ice-adventures.webstarbusinessservices.com`.
+
+Auth is enforced by `clients/superior-ice-adventures/includes/staging-gate.php` (HTTP Basic) on Webstar/local hosts only — not on `superioriceadventures.com`.
 
 More portal notes: [portal/README.md](portal/README.md).
 
