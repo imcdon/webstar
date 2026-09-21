@@ -1,0 +1,9 @@
+---
+deployment:
+  tasks:
+    # Public site root (domain document root). Change if your cPanel path differs
+    # (e.g. $HOME/public_html/ for the account primary domain).
+    - export DEPLOYPATH=$HOME/webstarbusinessservices.com/
+    # Sync repo → live. No --delete so server-only secrets stay put
+    # (library/mail-config.php, library/portal-clients.php).
+    - /usr/bin/rsync -a --exclude='.git' --exclude='.cpanel.yml' --exclude='library/mail-config.php' --exclude='library/portal-clients.php' ./ $DEPLOYPATH
