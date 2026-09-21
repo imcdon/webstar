@@ -1,11 +1,12 @@
-# Deploy: GitHub → cPanel (Git pull)
+# Deploy: GitHub → cPanel (Git + `.cpanel.yml`)
 
-Production domain: **https://webstarbusinessservices.com**
+Production domain: **https://webstarbusinessservices.com**  
+GitHub: **https://github.com/imcdon/webstar** (`main`)
 
-Workflow: edit locally → `git push` → cPanel **Git Version Control** → **Pull / Update**.
+Workflow: edit locally → `git push` → cPanel **Update from Remote** → **Deploy HEAD Commit** (runs [`.cpanel.yml`](.cpanel.yml)).
 
 ```text
-Local XAMPP  →  GitHub (main)  →  cPanel clone (document root)
+Local XAMPP  →  GitHub (main)  →  cPanel repo clone  →  Deploy (.cpanel.yml)  →  document root
 ```
 
 Superior Ice and other client staging sites use **separate** GitHub repos (see [clients/README.md](clients/README.md) and [portal/README.md](portal/README.md)).
@@ -17,6 +18,7 @@ Superior Ice and other client staging sites use **separate** GitHub repos (see [
 - Main marketing site (PHP)
 - Client portal (`portal/`)
 - `vendor/` (PHPMailer) so production does not need Composer after pull
+- [`.cpanel.yml`](.cpanel.yml) — cPanel deploy tasks (rsync into the public document root)
 - Example configs: `library/mail-config.example.php`, `library/portal-clients.example.php`
 
 ## What is NOT in Git (server-only / separate repos)
@@ -75,12 +77,19 @@ At your registrar / Reclaim DNS:
 - **A** `@` → hosting server IP
 - **www** → same A record or CNAME per host docs
 
-### 2. Domain + document root
+### 2. Two paths (important)
 
-1. cPanel → **Domains** → add **webstarbusinessservices.com** (if not already).
-2. Choose a clone path that will contain **`index.php` at the top level**, for example:
-   - `/home/YOURUSER/webstarbusinessservices.com`
-3. Set the domain **document root** to that same folder (not a parent that would force `/webstar-business-solutions/` in the public URL).
+cPanel Git keeps a **repository clone** separate from the **public document root**. Deploy copies files via `.cpanel.yml`.
+
+| Role | Example path | Notes |
+|------|----------------|-------|
+| Git clone (private) | `$HOME/repositories/webstar` | Where cPanel clones `imcdon/webstar` |
+| Document root (public) | `$HOME/webstarbusinessservices.com` | Must match `DEPLOYPATH` in `.cpanel.yml` |
+
+If this domain is the account’s **primary** site and you use `public_html`, change `DEPLOYPATH` in `.cpanel.yml` to `$HOME/public_html/` and push that change before deploying.
+
+1. Create the public folder if needed (File Manager), e.g. `webstarbusinessservices.com`.
+2. cPanel → **Domains** → set **webstarbusinessservices.com** document root to that folder (not a parent that would force `/webstar-business-solutions/` in the URL).
 
 ### 3. Clone the GitHub repo (Git Version Control)
 
@@ -89,30 +98,47 @@ At your registrar / Reclaim DNS:
    - **SSH (recommended if the repo is private):** `git@github.com:imcdon/webstar.git`  
      Add a **read-only deploy key** from cPanel (or generate SSH key in cPanel → SSH Access) as a Deploy Key on the GitHub repo (Settings → Deploy keys).
    - **HTTPS:** `https://github.com/imcdon/webstar.git` (public repo — no token needed for clone; use a fine-grained PAT if you later make it private).
-3. **Repository Path** = the document root from step 2 (e.g. `/home/YOURUSER/webstarbusinessservices.com`).
+3. **Repository Path** = the **clone** path (e.g. `/home/YOURUSER/repositories/webstar`) — **not** the public document root.
 4. Branch: **main**.
 5. Clone / create the repository.
+6. Confirm [`.cpanel.yml`](.cpanel.yml) is present at the clone root (it ships in this repo).
 
-### 4. SSL
+### 4. First deploy
+
+1. Git Version Control → **Manage** this repo → **Pull or Deploy**.
+2. **Update from Remote** (pull latest `main`).
+3. **Deploy HEAD Commit** — runs the tasks in `.cpanel.yml` (rsync into `DEPLOYPATH`).
+
+Current deploy task (do not use `--delete`; that would risk wiping server-only files):
+
+```yaml
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=$HOME/webstarbusinessservices.com/
+    - /usr/bin/rsync -a --exclude='.git' --exclude='.cpanel.yml' --exclude='library/mail-config.php' --exclude='library/portal-clients.php' ./ $DEPLOYPATH
+```
+
+### 5. SSL
 
 cPanel → **SSL/TLS Status** (or Let’s Encrypt / AutoSSL) → enable for:
 
 - `webstarbusinessservices.com`
 - `www.webstarbusinessservices.com`
 
-### 5. Server-only config files
+### 6. Server-only config files
 
-On the server (File Manager or SSH), inside the clone root:
+On the server (File Manager or SSH), inside the **document root** (`DEPLOYPATH`), not only in the Git clone:
 
 1. Copy `library/mail-config.example.php` → `library/mail-config.php`  
    Fill Reclaim mailbox / SMTP (`smtp_host`, user, password, `mail_from`, `mail_to`, etc.).
 2. Copy `library/portal-clients.example.php` → `library/portal-clients.php`  
    Paste real `password_hash` values for admin (`webstar`) and each client. **Change passwords after go-live.**
-3. Do **not** commit these files. After each Git pull they stay on the server (Git ignores them if you never add them; if a pull ever conflicts, re-create from the examples).
+3. Do **not** commit these files. Deploy rsync excludes them so later deploys do not overwrite them.
 
-`vendor/` is already in the repo — no `composer install` required on the server for normal pulls.
+`vendor/` is already in the repo — no `composer install` required on the server for normal deploys.
 
-### 6. Superior Ice staging (separate repo)
+### 7. Superior Ice staging (separate repo)
 
 1. cPanel → **Subdomains** → `superior-ice-adventures` under `webstarbusinessservices.com`.
 2. Document root → e.g. `/home/YOURUSER/webstarbusinessservices.com/clients/superior-ice-adventures` (create the folder if needed).
@@ -135,11 +161,13 @@ More portal notes: [portal/README.md](portal/README.md).
    git commit -m "Describe the change"
    git push origin main
    ```
-3. cPanel → **Git Version Control** → select this repo → **Update** / **Pull**.
+3. cPanel → **Git Version Control** → **Manage** → **Pull or Deploy**:
+   - **Update from Remote**
+   - **Deploy HEAD Commit**
 4. Smoke-test (below).  
-   Server files `mail-config.php` and `portal-clients.php` are untouched by pull.
+   Server files `mail-config.php` and `portal-clients.php` in the document root are preserved (excluded from rsync).
 
-Optional later: a cPanel cron that runs `git -C /path/to/site pull` — only if you want automatic deploys without a manual gate.
+If you enabled **automatic deployment** for the repo, a push that updates the cPanel clone may run `.cpanel.yml` without the manual Deploy click — still verify after the first auto-deploy.
 
 ---
 
@@ -152,7 +180,7 @@ Optional later: a cPanel cron that runs `git -C /path/to/site pull` — only if 
 | Admin login | All Projects list (after `portal-clients.php` is configured) |
 | Contact / package intake | Email arrives (after `mail-config.php`) |
 | `https://webstarbusinessservices.com/sitemap.php` | Sitemap XML |
-| Push → Pull | A small text change appears on live |
+| Push → Update → Deploy | A small text change appears on live |
 | SIA staging subdomain | Separate repo loads; portal Open preview uses `staging_url` on production |
 
 ---
@@ -160,7 +188,9 @@ Optional later: a cPanel cron that runs `git -C /path/to/site pull` — only if 
 ## Troubleshooting
 
 - **Site only loads under `/webstar-business-solutions/`** — document root is wrong; point the domain at the folder that contains `index.php`.
-- **Contact form “config” error** — missing or placeholder `library/mail-config.php` on the server.
-- **Portal login fails** — missing `library/portal-clients.php` or wrong hashes on the server.
+- **Deploy does nothing / no Deploy button** — `.cpanel.yml` missing from the clone root; pull latest `main`.
+- **Files deploy to the wrong place** — edit `DEPLOYPATH` in `.cpanel.yml` to match your real document root, push, Update, Deploy.
+- **Contact form “config” error** — missing or placeholder `library/mail-config.php` on the **document root**.
+- **Portal login fails** — missing `library/portal-clients.php` or wrong hashes on the document root.
 - **cPanel cannot clone** — deploy key / PAT permissions; confirm branch name is `main`.
-- **Pull overwrote something** — never commit secrets; restore server-only files from examples if needed.
+- **Secrets wiped after deploy** — do not add `--delete` to the rsync line; keep the mail-config / portal-clients excludes.
