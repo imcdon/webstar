@@ -1,0 +1,23 @@
+# Server-only secrets (never commit)
+library/mail-config.php
+library/portal-clients.php
+
+# Client staging sites (deploy from their own repos)
+clients/superior-ice-adventures/
+
+# Local / build
+node_modules/
+_raw/
+.env
+.env.*
+*.local.php
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+.cursor/
+*.swp
+*~
