@@ -1,8 +1,17 @@
 ---
 deployment:
   tasks:
-    # Public site root (domain document root). Change if your cPanel path differs
-    # (e.g. $HOME/public_html/ for the account primary domain).
-    - export DEPLOYPATH=$HOME/webstarbusinessservices.com/
-    # Sync repo → live. No --delete so server-only mail-config.php stays put.
-    - /usr/bin/rsync -a --exclude='.git' --exclude='.cpanel.yml' --exclude='library/mail-config.php' ./ $DEPLOYPATH
+    # Webstar Business Services ONLY — never deploy this repo to $HOME/public_html.
+    # public_html is often the account default and must stay free of this project
+    # (and must not be the document root for superioriceadventures.com).
+    #
+    # Domains → document roots:
+    #   webstarbusinessservices.com
+    #     → $HOME/webstarbusinessservices.com
+    #   superior-ice-adventures.webstarbusinessservices.com
+    #     → $HOME/webstarbusinessservices.com/clients/superior-ice-adventures
+    #   superioriceadventures.com (live client site, separate deploy)
+    #     → $HOME/superioriceadventures.com   (NOT public_html)
+    - export DEPLOYPATH=$HOME/webstarbusinessservices.com
+    - /bin/mkdir -p $DEPLOYPATH/clients/superior-ice-adventures
+    - /usr/bin/rsync -a --exclude='.git' --exclude='.cpanel.yml' --exclude='library/mail-config.php' ./ $DEPLOYPATH/

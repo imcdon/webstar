@@ -25,14 +25,19 @@ Local URLs stay under `/superior-ice-adventures/`. Canonical tags, sitemap, and 
 
 ## Production — superioriceadventures.com
 
+**Do not use the account `public_html` folder** unless that folder is dedicated only to this live site and is not used by Webstar or other domains. Prefer a dedicated document root:
+
+- Recommended: `$HOME/superioriceadventures.com`
+- Staging under Webstar: `$HOME/webstarbusinessservices.com/clients/superior-ice-adventures` (password-gated subdomain)
+
 1. In your registrar / DNS, point the domain at your host:
    - **A record** `@` → hosting server IP
    - **CNAME** `www` → `superioriceadventures.com` (or same A record)
-2. In cPanel → **Domains** / **Addon Domains** / **Subdomains**:
+2. In cPanel → **Domains** / **Addon Domains**:
    - Attach `superioriceadventures.com`
-   - Set the **document root** to this project folder (site root, not a subfolder)
+   - Set the **document root** to `$HOME/superioriceadventures.com` (site root with this project’s `index.php` — **not** `public_html` if that folder holds anything else)
 3. Enable **SSL** (AutoSSL / Let’s Encrypt) for `superioriceadventures.com` and `www`
-4. Upload project files (exclude `includes/db.config.php` from your local machine; also skip `_raw/` and `node_modules/`)
+4. Upload / deploy project files into that document root (exclude `includes/db.config.php` from your local machine; also skip `_raw/` and `node_modules/`)
 5. In cPanel → **MySQL Databases**:
    - Create a database (e.g. `yourprefix_sia`)
    - Create a user and grant **All Privileges**
@@ -42,6 +47,8 @@ Local URLs stay under `/superior-ice-adventures/`. Canonical tags, sitemap, and 
    - Import `database/seed-cpanel.sql`
 7. On the server only, create `includes/db.config.php` from `db.config.example.php` using the **full prefixed** cPanel DB name and user
 8. Confirm `mod_rewrite` is on (usual on cPanel). `.htaccess` forces HTTPS and redirects `www` → apex
+
+If files were already dumped into `public_html` by mistake: create `$HOME/superioriceadventures.com`, move the Superior Ice site files there, point the domain document root at the new folder, and leave `public_html` for other uses (or empty).
 
 After DNS + SSL propagate, the site should load at:
 
