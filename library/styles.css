@@ -566,10 +566,14 @@ main {
     width: 100%;
     margin: 0;
     font: inherit;
+    line-height: inherit;
     text-align: left;
     cursor: pointer;
     appearance: none;
     -webkit-appearance: none;
+    background: var(--panel);
+    color: var(--ink);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .package-card--selectable:focus-visible {

@@ -18,7 +18,7 @@ $canonicalUrl = $canonicalPath !== '' ? webstar_absolute_url($canonicalPath) : w
     <meta property="og:title" content="<?php echo webstar_h($pageTitle); ?>">
     <meta property="og:description" content="<?php echo webstar_h($pageDescription); ?>">
     <meta property="og:type" content="website">
-    <link rel="stylesheet" href="<?php echo webstar_h(webstar_url('library/styles.css')); ?>">
+    <link rel="stylesheet" href="<?php echo webstar_h(webstar_url('library/styles.css')); ?>?v=<?php echo (int) @filemtime(__DIR__ . '/styles.css'); ?>">
     <?php if (!empty($jsonLd)) : ?>
     <script type="application/ld+json"><?php echo $jsonLd; ?></script>
     <?php endif; ?>
