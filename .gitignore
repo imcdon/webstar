@@ -1,6 +1,5 @@
 # Server-only secrets (never commit)
 library/mail-config.php
-library/portal-clients.php
 
 # Client staging sites (deploy from their own repos)
 clients/superior-ice-adventures/

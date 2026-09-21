@@ -26,8 +26,10 @@ Superior Ice and other client staging sites use **separate** GitHub repos (see [
 | Path | Notes |
 |------|--------|
 | `library/mail-config.php` | SMTP secrets — create on server from the example |
-| `library/portal-clients.php` | Portal users + password hashes — create on server from the example |
 | `clients/superior-ice-adventures/` | Deploy from the Superior Ice repo into the staging subdomain |
+
+Portal users live in committed [`library/portal-clients.php`](library/portal-clients.php) (hashed passwords). Change hashes after go-live if needed.
+
 
 ---
 
@@ -128,13 +130,13 @@ cPanel → **SSL/TLS Status** (or Let’s Encrypt / AutoSSL) → enable for:
 
 ### 6. Server-only config files
 
-On the server (File Manager or SSH), inside the **document root** (`DEPLOYPATH`), not only in the Git clone:
+On the server (File Manager or SSH), inside the **document root** (`DEPLOYPATH`):
 
 1. Copy `library/mail-config.example.php` → `library/mail-config.php`  
    Fill Reclaim mailbox / SMTP (`smtp_host`, user, password, `mail_from`, `mail_to`, etc.).
-2. Copy `library/portal-clients.example.php` → `library/portal-clients.php`  
-   Paste real `password_hash` values for admin (`webstar`) and each client. **Change passwords after go-live.**
-3. Do **not** commit these files. Deploy rsync excludes them so later deploys do not overwrite them.
+2. Portal logins are deployed with the site via `library/portal-clients.php`  
+   (admin `webstar` / client `superior` — see [portal/README.md](portal/README.md)). Change hashes after go-live if you want.
+3. Do **not** commit `mail-config.php`. Deploy rsync excludes it so later deploys do not overwrite it.
 
 `vendor/` is already in the repo — no `composer install` required on the server for normal deploys.
 
