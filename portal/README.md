@@ -16,18 +16,18 @@ On localhost, My Projects “Open preview” uses each project’s `local_path`.
 
 1. **Subdomain**  
    cPanel → Subdomains → create `superior-ice-adventures` under `webstarbusinessservices.com`.  
-   Document root: `$HOME/superioriceadventures.webstarbusinessservices.com`
+   Document root: `$HOME/superior-ice-adventures.webstarbusinessservices.com`
 
 2. **SSL**  
-   Enable SSL for `superioriceadventures.webstarbusinessservices.com` (or a wildcard `*.webstarbusinessservices.com` if available).
+   Enable SSL for `superior-ice-adventures.webstarbusinessservices.com` (or a wildcard `*.webstarbusinessservices.com` if available).
 
 3. **Deploy client code**  
-   Prefer deploying the **Superior Ice Adventures** GitHub repo into that document root (cPanel Git Version Control → clone/pull), not long-term full history inside the Webstar repo. Locally, the Webstar repo may hold a copy/symlink for portal preview.
+   Prefer deploying the **Superior Ice Adventures** GitHub repo into that document root (cPanel Git Version Control → clone/pull), not long-term full history inside the Webstar repo. Locally, the Webstar repo may hold a copy/symlink for portal preview. Webstar `.cpanel.yml` also rsyncs `clients/superior-ice-adventures/` into the same path.
 
 4. **Portal registry**  
    Ensure `library/portal-clients.php` has the client user and a project row with:
    - `local_path` → `clients/superior-ice-adventures/`
-   - `staging_url` → `https://superioriceadventures.webstarbusinessservices.com`
+   - `staging_url` → `https://superior-ice-adventures.webstarbusinessservices.com`
 
 ## New client project checklist
 

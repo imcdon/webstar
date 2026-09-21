@@ -55,7 +55,7 @@ function sia_staging_clients(): array
 }
 
 /**
- * @param array<string, mixed> $entry
+ * @param array<string, array<string, mixed>> $entry
  */
 function sia_staging_user_allowed(string $username, array $entry): bool
 {

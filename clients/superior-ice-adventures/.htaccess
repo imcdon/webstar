@@ -13,7 +13,7 @@ RewriteRule ^ https://superioriceadventures.com%{REQUEST_URI} [L,R=301]
 RewriteCond %{HTTP_HOST} ^www\.superioriceadventures\.com$ [NC]
 RewriteRule ^ https://superioriceadventures.com%{REQUEST_URI} [L,R=301]
 
-# Staging hosts: prefer HTTPS when available
+# Staging hosts: prefer HTTPS when available (hyphenated preferred; legacy host kept)
 RewriteCond %{HTTP_HOST} ^(superior-ice-adventures|superioriceadventures)\.webstarbusinessservices\.com$ [NC]
 RewriteCond %{HTTPS} !=on
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

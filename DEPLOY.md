@@ -89,7 +89,7 @@ cPanel Git keeps a **repository clone** separate from the **public document root
 | Domain | Document root (File Manager path) |
 |--------|-----------------------------------|
 | `webstarbusinessservices.com` | `$HOME/webstarbusinessservices.com` |
-| `superioriceadventures.webstarbusinessservices.com` (staging) | `$HOME/superioriceadventures.webstarbusinessservices.com` |
+| `superior-ice-adventures.webstarbusinessservices.com` (staging) | `$HOME/superior-ice-adventures.webstarbusinessservices.com` |
 | `superioriceadventures.com` (live client site) | `$HOME/superioriceadventures.com` — **not** `public_html` |
 
 | Role | Example path |
@@ -126,7 +126,7 @@ Current deploy task (do **not** point `DEPLOYPATH` at `public_html`; do not use 
 deployment:
   tasks:
     - export DEPLOYPATH=$HOME/webstarbusinessservices.com
-    - export SIAPATH=$HOME/superioriceadventures.webstarbusinessservices.com
+    - export SIAPATH=$HOME/superior-ice-adventures.webstarbusinessservices.com
     - /bin/mkdir -p $DEPLOYPATH $SIAPATH
     - /usr/bin/rsync -a --exclude='.git' --exclude='.cpanel.yml' --exclude='library/mail-config.php' ./ $DEPLOYPATH/
     - /usr/bin/rsync -a --exclude='.git' --exclude='node_modules' --exclude='_raw' --exclude='includes/db.config.php' clients/superior-ice-adventures/ $SIAPATH/
@@ -153,16 +153,16 @@ On the server (File Manager or SSH), inside the **document root** (`DEPLOYPATH`)
 
 ### 7. Superior Ice staging subdomain
 
-cPanel document root for this preview is **`$HOME/superioriceadventures.webstarbusinessservices.com`** (not `public_html`, and not a subfolder of the Webstar site).
+cPanel document root for this preview is **`$HOME/superior-ice-adventures.webstarbusinessservices.com`** (not `public_html`, and not a subfolder of the Webstar site).
 
-1. Subdomain hostname: `superioriceadventures.webstarbusinessservices.com`
-2. Document root → `/home/YOURUSER/superioriceadventures.webstarbusinessservices.com`
+1. Subdomain hostname: `superior-ice-adventures.webstarbusinessservices.com`
+2. Document root → `/home/YOURUSER/superior-ice-adventures.webstarbusinessservices.com`
 3. SSL for that hostname.
-4. Deploy Webstar (`Update from Remote` → `Deploy HEAD Commit`). `.cpanel.yml` copies `clients/superior-ice-adventures/` into that folder so `index.php` is at the subdomain root.
+4. Deploy Webstar (`Update from Remote` → `Deploy HEAD Commit`). `.cpanel.yml` copies `clients/superior-ice-adventures/` into that folder so `index.php` is at the subdomain root. Or deploy the standalone Superior Ice GitHub repo into the same folder.
 5. Visit the subdomain — the browser should **prompt for a username and password**. Use Client Portal credentials:
    - Admin: `webstar` / `webstarAdmin2026`
    - Client: `superior` / `preview123`
-6. Portal “Open preview” uses `staging_url` → `https://superioriceadventures.webstarbusinessservices.com`.
+6. Portal “Open preview” uses `staging_url` → `https://superior-ice-adventures.webstarbusinessservices.com`.
 
 Auth is enforced by `includes/staging-gate.php` (HTTP Basic) on Webstar/local hosts only — not on live `superioriceadventures.com`.
 
