@@ -120,6 +120,38 @@ function sia_staging_credentials(): array
 
 function sia_staging_require_auth(): void
 {
+    // #region agent log
+    $__dbg = static function (string $hypothesisId, string $message, array $data = []): void {
+        $candidates = [
+            dirname(__DIR__, 3) . '/debug-c3e4be.log',
+            dirname(__DIR__) . '/debug-c3e4be.log',
+            __DIR__ . '/debug-c3e4be.log',
+        ];
+        $line = json_encode([
+            'sessionId' => 'c3e4be',
+            'runId' => 'pre-fix',
+            'hypothesisId' => $hypothesisId,
+            'location' => 'staging-gate.php:sia_staging_require_auth',
+            'message' => $message,
+            'data' => $data,
+            'timestamp' => (int) round(microtime(true) * 1000),
+        ], JSON_UNESCAPED_SLASHES);
+        if (!is_string($line)) {
+            return;
+        }
+        foreach ($candidates as $path) {
+            if (@file_put_contents($path, $line . "\n", FILE_APPEND) !== false) {
+                break;
+            }
+        }
+    };
+    $__dbg('D', 'gate_entered', [
+        'host' => (string) ($_SERVER['HTTP_HOST'] ?? ''),
+        'uri' => (string) ($_SERVER['REQUEST_URI'] ?? ''),
+        'should_gate' => sia_staging_should_gate(),
+    ]);
+    // #endregion
+
     if (!sia_staging_should_gate()) {
         return;
     }
@@ -136,9 +168,19 @@ function sia_staging_require_auth(): void
             && password_verify($password, $hash)
             && sia_staging_user_allowed($username, $entry)
         ) {
+            // #region agent log
+            $__dbg('D', 'gate_auth_ok', ['user' => $username]);
+            // #endregion
             return;
         }
     }
+
+    // #region agent log
+    $__dbg('A', 'gate_challenge_401', [
+        'has_user' => $username !== '',
+        'client_count' => count($clients),
+    ]);
+    // #endregion
 
     header('WWW-Authenticate: Basic realm="Superior Ice Adventures — Staging (Webstar)", charset="UTF-8"');
     http_response_code(401);

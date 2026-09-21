@@ -5,11 +5,11 @@ deployment:
     #
     # webstarbusinessservices.com
     #   → $HOME/webstarbusinessservices.com
-    # superior-ice-adventures staging (cPanel document root folder)
-    #   → $HOME/superior-ice-adventures.webstarbusinessservices.com
-    # Live superioriceadventures.com is a separate site — do not deploy it here.
+    # Staging preview files:
+    #   → $HOME/webstarbusinessservices.com/clients/superior-ice-adventures/
+    # Optional pretty subdomain should use THAT same folder as document root
+    # (not a separate empty/broken SIAPATH). Portal Open preview uses the
+    # /clients/superior-ice-adventures/ URL until the subdomain is remapped.
     - export DEPLOYPATH=$HOME/webstarbusinessservices.com
-    - export SIAPATH=$HOME/superior-ice-adventures.webstarbusinessservices.com
-    - /bin/mkdir -p $DEPLOYPATH $SIAPATH
+    - /bin/mkdir -p $DEPLOYPATH/clients/superior-ice-adventures
     - /usr/bin/rsync -a --exclude='.git' --exclude='.cpanel.yml' --exclude='library/mail-config.php' ./ $DEPLOYPATH/
-    - /usr/bin/rsync -a --exclude='.git' --exclude='node_modules' --exclude='_raw' --exclude='includes/db.config.php' clients/superior-ice-adventures/ $SIAPATH/

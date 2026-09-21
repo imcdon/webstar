@@ -89,7 +89,7 @@ cPanel Git keeps a **repository clone** separate from the **public document root
 | Domain | Document root (File Manager path) |
 |--------|-----------------------------------|
 | `webstarbusinessservices.com` | `$HOME/webstarbusinessservices.com` |
-| `superior-ice-adventures.webstarbusinessservices.com` (staging) | `$HOME/superior-ice-adventures.webstarbusinessservices.com` |
+| `superior-ice-adventures.webstarbusinessservices.com` (optional) | Same folder as `$HOME/webstarbusinessservices.com/clients/superior-ice-adventures` — do **not** use a separate empty SIAPATH (that causes 403) |
 | `superioriceadventures.com` (live client site) | `$HOME/superioriceadventures.com` — **not** `public_html` |
 
 | Role | Example path |
@@ -162,7 +162,7 @@ cPanel document root for this preview is **`$HOME/superior-ice-adventures.websta
 5. Visit the subdomain — the browser should **prompt for a username and password**. Use Client Portal credentials:
    - Admin: `webstar` / `webstarAdmin2026`
    - Client: `superior` / `preview123`
-6. Portal “Open preview” uses `staging_url` → `https://superior-ice-adventures.webstarbusinessservices.com`.
+6. Portal “Open preview” uses `staging_url` → `https://webstarbusinessservices.com/clients/superior-ice-adventures/` (working path). Remap the subdomain document root to that same folder before switching the URL to the pretty hostname.
 
 Auth is enforced by `includes/staging-gate.php` (HTTP Basic) on Webstar/local hosts only — not on live `superioriceadventures.com`.
 

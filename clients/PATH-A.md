@@ -1,57 +1,42 @@
 # Path A — Deploy Superior Ice via Webstar
 
-Staging URL: **https://superior-ice-adventures.webstarbusinessservices.com**
+**Working preview URL (use this):**  
+https://webstarbusinessservices.com/clients/superior-ice-adventures/
 
-Source of truth: `clients/superior-ice-adventures/` in the **webstar** repo.  
-On Deploy, [`.cpanel.yml`](../.cpanel.yml) rsyncs that folder to:
+Optional pretty hostname (only after cPanel document root is remapped):  
+https://superior-ice-adventures.webstarbusinessservices.com  
+→ document root must be `$HOME/webstarbusinessservices.com/clients/superior-ice-adventures`  
+(not a separate empty folder — that causes Apache **403 Forbidden**)
 
-`$HOME/superior-ice-adventures.webstarbusinessservices.com`
+Source of truth: `clients/superior-ice-adventures/` in the **webstar** repo.
 
 ---
 
 ## One-time cPanel setup
 
-1. **Subdomains** → create `superior-ice-adventures` under `webstarbusinessservices.com`.
-2. **Document root** → `/home/YOURUSER/superior-ice-adventures.webstarbusinessservices.com`  
-   - Not `public_html`  
-   - Not inside `webstarbusinessservices.com/clients/...`
-3. **SSL** for `superior-ice-adventures.webstarbusinessservices.com`.
-4. Confirm the Webstar Git repo is already set up (clone under e.g. `$HOME/repositories/webstar`, deploy to `$HOME/webstarbusinessservices.com`).
+1. Deploy Webstar (below) so `clients/superior-ice-adventures/index.php` exists under the main site.
+2. Confirm this URL prompts for a password (401), not Forbidden (403):  
+   https://webstarbusinessservices.com/clients/superior-ice-adventures/
+3. **Optional subdomain:** Subdomains → `superior-ice-adventures`  
+   Document root → `/home/YOURUSER/webstarbusinessservices.com/clients/superior-ice-adventures`  
+   SSL for the hostname. Then you can switch `staging_url` back to the subdomain.
 
 ---
 
 ## Deploy (each update)
 
-1. Change files under `clients/superior-ice-adventures/` (test on local XAMPP if you want).
-2. From the Webstar project root:
-   ```bash
-   git add clients/superior-ice-adventures
-   git commit -m "Update Superior Ice staging"
-   git push origin main
-   ```
-3. cPanel → **Git Version Control** → **webstar** → **Update from Remote** → **Deploy HEAD Commit**.
-4. Open https://superior-ice-adventures.webstarbusinessservices.com  
-   Browser should ask for credentials:
-   - Admin: `webstar` / `webstarAdmin2026`
-   - Client: `superior` / `preview123`
+1. Edit `clients/superior-ice-adventures/` as needed.
+2. Push to **https://github.com/imcdon/webstar** (`main`).
+3. cPanel → Webstar Git → **Update from Remote** → **Deploy HEAD Commit**.
+4. Portal → **Open preview** (uses the `/clients/...` URL).
 
-Portal → My Projects → **Open preview** uses the same URL.
+Credentials when prompted:
+
+- `webstar` / `webstarAdmin2026`
+- `superior` / `preview123`
 
 ---
 
-## Verify
+## Why you saw Forbidden
 
-| Check | Expect |
-|-------|--------|
-| Subdomain loads | Credential prompt, then SIA home + staging banner |
-| Wrong password | Stays on 401 / prompt |
-| Live `superioriceadventures.com` | Unaffected (separate site; gate off there) |
-| File Manager | `index.php` at the **root** of `superior-ice-adventures.webstarbusinessservices.com` |
-
----
-
-## Do not
-
-- Deploy the standalone Superior Ice GitHub repo into this same folder while using Path A (they will overwrite each other).
-- Point this subdomain at `public_html`.
-- Point `DEPLOYPATH` / `SIAPATH` in `.cpanel.yml` at `public_html`.
+The subdomain pointed at a **different** folder that Apache could not serve (403, no PHP). The copy under the main Webstar site works and returns the login prompt (401).
