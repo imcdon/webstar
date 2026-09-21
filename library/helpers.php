@@ -46,7 +46,9 @@ function webstar_url(string $path = ''): string
         return $base === '' ? '/' : $base . '/';
     }
 
-    return ($base === '' ? '' : $base . '/') . $path;
+    // Always root-relative (leading "/"). Without it, redirects from /portal/
+    // resolve to /portal/portal/... and 404 on production at domain root.
+    return ($base === '' ? '' : $base) . '/' . $path;
 }
 
 function webstar_absolute_url(string $path = ''): string
