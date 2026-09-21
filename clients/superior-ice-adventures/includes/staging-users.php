@@ -27,7 +27,7 @@ return [
                 'title' => 'Superior Ice Adventures website',
                 'status' => 'In progress',
                 'local_path' => 'clients/superior-ice-adventures/',
-                'staging_url' => 'https://superior-ice-adventures.webstarbusinessservices.com',
+                'staging_url' => 'https://superioriceadventures.webstarbusinessservices.com',
             ],
         ],
     ],

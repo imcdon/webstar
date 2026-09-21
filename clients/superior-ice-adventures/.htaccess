@@ -1,6 +1,10 @@
 # Superior Ice Adventures - URL rewrites + live domain
 RewriteEngine On
 
+# cPanel CGI/FastCGI does not fill PHP_AUTH_USER unless Authorization is passed through.
+RewriteCond %{HTTP:Authorization} .
+RewriteRule ^ - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
 # Production only: HTTPS + apex (superioriceadventures.com)
 RewriteCond %{HTTP_HOST} ^(www\.)?superioriceadventures\.com$ [NC]
 RewriteCond %{HTTPS} !=on
@@ -9,8 +13,8 @@ RewriteRule ^ https://superioriceadventures.com%{REQUEST_URI} [L,R=301]
 RewriteCond %{HTTP_HOST} ^www\.superioriceadventures\.com$ [NC]
 RewriteRule ^ https://superioriceadventures.com%{REQUEST_URI} [L,R=301]
 
-# Staging subdomain: prefer HTTPS when available
-RewriteCond %{HTTP_HOST} ^superior-ice-adventures\.webstarbusinessservices\.com$ [NC]
+# Staging hosts: prefer HTTPS when available
+RewriteCond %{HTTP_HOST} ^(superior-ice-adventures|superioriceadventures)\.webstarbusinessservices\.com$ [NC]
 RewriteCond %{HTTPS} !=on
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 

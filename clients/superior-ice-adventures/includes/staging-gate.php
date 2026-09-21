@@ -80,14 +80,51 @@ function sia_staging_user_allowed(string $username, array $entry): bool
     return false;
 }
 
+function sia_staging_credentials(): array
+{
+    $user = (string) ($_SERVER['PHP_AUTH_USER'] ?? '');
+    $pass = (string) ($_SERVER['PHP_AUTH_PW'] ?? '');
+    if ($user !== '') {
+        return [$user, $pass];
+    }
+
+    $header = (string) (
+        $_SERVER['HTTP_AUTHORIZATION']
+        ?? $_SERVER['REDIRECT_HTTP_AUTHORIZATION']
+        ?? ''
+    );
+    if ($header === '' && function_exists('apache_request_headers')) {
+        $headers = apache_request_headers();
+        if (is_array($headers)) {
+            foreach ($headers as $name => $value) {
+                if (strcasecmp((string) $name, 'Authorization') === 0) {
+                    $header = (string) $value;
+                    break;
+                }
+            }
+        }
+    }
+
+    if (preg_match('/^\s*Basic\s+(\S+)/i', $header, $match) === 1) {
+        $decoded = base64_decode($match[1], true);
+        if (is_string($decoded) && str_contains($decoded, ':')) {
+            [$user, $pass] = explode(':', $decoded, 2);
+
+            return [$user, $pass];
+        }
+    }
+
+    return ['', ''];
+}
+
 function sia_staging_require_auth(): void
 {
     if (!sia_staging_should_gate()) {
         return;
     }
 
-    $username = strtolower(trim((string) ($_SERVER['PHP_AUTH_USER'] ?? '')));
-    $password = (string) ($_SERVER['PHP_AUTH_PW'] ?? '');
+    [$rawUser, $password] = sia_staging_credentials();
+    $username = strtolower(trim($rawUser));
     $clients = sia_staging_clients();
 
     if ($username !== '' && isset($clients[$username])) {

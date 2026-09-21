@@ -28,7 +28,7 @@ Local URLs stay under `/superior-ice-adventures/`. Canonical tags, sitemap, and 
 **Do not use the account `public_html` folder** unless that folder is dedicated only to this live site and is not used by Webstar or other domains. Prefer a dedicated document root:
 
 - Recommended: `$HOME/superioriceadventures.com`
-- Staging under Webstar: `$HOME/webstarbusinessservices.com/clients/superior-ice-adventures` (password-gated subdomain)
+- Staging under Webstar: `$HOME/superioriceadventures.webstarbusinessservices.com` (password-gated subdomain)
 
 1. In your registrar / DNS, point the domain at your host:
    - **A record** `@` → hosting server IP
