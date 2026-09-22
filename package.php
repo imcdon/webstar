@@ -19,12 +19,12 @@ $packageSlug = $package['slug'];
 $packageTitle = $package['title'];
 $intakeRedirect = webstar_url('package.php') . '?slug=' . rawurlencode($slug);
 $featured = ($package['badge'] ?? '') !== '';
-$headerClass = 'package-page__header' . ($featured ? ' package-page__header--featured' : '');
+$packageHeaderClass = 'package-page__header' . ($featured ? ' package-page__header--featured' : '');
 include __DIR__ . '/library/layout-start.php';
 ?>
 <section class="package-page home-section home-section--night">
     <div class="home-section__inner">
-        <div class="<?php echo webstar_h($headerClass); ?>">
+        <div class="<?php echo webstar_h($packageHeaderClass); ?>">
             <?php if ($featured) : ?>
                 <span class="package-card__badge"><?php echo webstar_h((string) $package['badge']); ?></span>
             <?php endif; ?>
