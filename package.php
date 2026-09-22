@@ -17,28 +17,36 @@ $intakeReason = isset($_GET['intake_reason']) ? (string) $_GET['intake_reason'] 
 $intakeFields = isset($_GET['intake_fields']) ? (string) $_GET['intake_fields'] : '';
 $packageSlug = $package['slug'];
 $packageTitle = $package['title'];
-$intakeRedirect = 'package.php?slug=' . rawurlencode($slug);
+$intakeRedirect = webstar_url('package.php') . '?slug=' . rawurlencode($slug);
 $featured = ($package['badge'] ?? '') !== '';
 $headerClass = 'package-page__header' . ($featured ? ' package-page__header--featured' : '');
 include __DIR__ . '/library/layout-start.php';
 ?>
-<section class="package-page">
-    <div class="<?php echo webstar_h($headerClass); ?>">
-        <?php if ($featured) : ?>
-            <span class="package-card__badge"><?php echo webstar_h((string) $package['badge']); ?></span>
-        <?php endif; ?>
-        <h1><?php echo webstar_h($package['title']); ?></h1>
-        <p class="package-page__price"><?php echo webstar_h($package['price']); ?></p>
-        <p class="package-card__meta">Turnaround: <?php echo webstar_h($package['turnaround']); ?></p>
-        <p><?php echo webstar_h($package['summary']); ?></p>
-        <p><strong>Ideal for:</strong> <?php echo webstar_h($package['ideal_for']); ?></p>
-        <ul class="package-card__list"><?php foreach ($package['includes'] as $item) : ?><li><?php echo webstar_h($item); ?></li><?php endforeach; ?></ul>
-        <div class="hero__actions" style="justify-content:flex-start;margin-top:1rem;">
-            <a class="home-section__btn home-section__btn--primary" href="#intake-<?php echo webstar_h($packageSlug); ?>">Start intake form</a>
-            <a class="home-section__btn home-section__btn--secondary" href="contact.php">Contact</a>
+<section class="package-page home-section home-section--night">
+    <div class="home-section__inner">
+        <div class="<?php echo webstar_h($headerClass); ?>">
+            <?php if ($featured) : ?>
+                <span class="package-card__badge"><?php echo webstar_h((string) $package['badge']); ?></span>
+            <?php endif; ?>
+            <h1><?php echo webstar_h($package['title']); ?></h1>
+            <p class="package-page__price"><?php echo webstar_h($package['price']); ?></p>
+            <p class="package-card__meta">Turnaround: <?php echo webstar_h($package['turnaround']); ?></p>
+            <p><?php echo webstar_h($package['summary']); ?></p>
+            <p><strong>Ideal for:</strong> <?php echo webstar_h($package['ideal_for']); ?></p>
+            <h2 class="package-page__list-title">Deliverables</h2>
+            <ul class="package-card__list">
+                <?php foreach ($package['includes'] as $item) : ?>
+                    <li><?php echo webstar_h($item); ?></li>
+                <?php endforeach; ?>
+            </ul>
+            <div class="hero__actions package-page__actions">
+                <a class="home-section__btn home-section__btn--primary" href="#intake">Start intake form</a>
+                <a class="home-section__btn home-section__btn--secondary" href="contact.php">Contact</a>
+            </div>
+            <p class="package-page__compare"><a href="packages.php">Back to all packages</a></p>
         </div>
-        <p class="package-page__compare"><a href="packages.php">Back to all packages</a></p>
+
+        <?php include __DIR__ . '/library/package-intake-form.php'; ?>
     </div>
-    <?php include __DIR__ . '/library/package-intake-form.php'; ?>
 </section>
 <?php include __DIR__ . '/library/layout-end.php'; ?>

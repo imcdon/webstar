@@ -6,13 +6,13 @@ use PHPMailer\PHPMailer\PHPMailer;
 require __DIR__ . '/helpers.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: ../packages.php', true, 303);
+    header('Location: ' . webstar_url('packages.php'), true, 303);
     exit;
 }
 
 $redirect = trim((string) ($_POST['redirect'] ?? ''));
 if ($redirect === '' || str_contains($redirect, '://') || str_starts_with($redirect, '//')) {
-    $redirect = '../packages.php';
+    $redirect = webstar_url('packages.php');
 }
 
 function intake_redirect(string $target, string $status, ?string $reason = null, ?string $fields = null, string $packageSlug = ''): void
@@ -21,7 +21,7 @@ function intake_redirect(string $target, string $status, ?string $reason = null,
     if ($reason) { $params['intake_reason'] = $reason; }
     if ($fields) { $params['intake_fields'] = $fields; }
     $sep = str_contains($target, '?') ? '&' : '?';
-    $hash = $packageSlug !== '' ? '#intake-' . rawurlencode($packageSlug) : '#intake';
+    $hash = '#intake';
     header('Location: ' . $target . $sep . http_build_query($params) . $hash, true, 303);
     exit;
 }

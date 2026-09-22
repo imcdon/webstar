@@ -684,6 +684,20 @@ main {
     font-size: 0.95rem;
 }
 
+.package-page__list-title {
+    margin: 1rem 0 0.35rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--teal-800);
+}
+
+.package-page__actions {
+    justify-content: flex-start;
+    margin-top: 1rem;
+}
+
 /* —— Comparison matrix —— */
 .compare {
     margin-top: 0.5rem;
@@ -808,6 +822,33 @@ main {
 }
 
 /* —— Intake forms —— */
+.intake-block {
+    width: min(var(--prose), 100%);
+    margin: 1.5rem auto 0;
+}
+
+.intake-block__inner {
+    padding: 1.5rem clamp(1rem, 3vw, 1.75rem) 1.65rem;
+    background: var(--panel);
+    color: var(--ink);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+}
+
+.intake-block__title {
+    margin: 0 0 0.4rem;
+    font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+    font-weight: 700;
+    color: var(--teal-950);
+}
+
+.intake-block__lead {
+    margin: 0 0 1.15rem;
+    color: var(--ink-muted);
+    font-size: 0.98rem;
+}
+
 .intake-details {
     width: min(var(--prose), calc(100% - 2rem));
     margin: 1.5rem auto 0;
@@ -830,6 +871,27 @@ main {
 .schedule-form {
     display: grid;
     gap: 1rem;
+}
+
+.intake-form__grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+    .intake-form__grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .intake-form__field--full {
+        grid-column: 1 / -1;
+    }
+}
+
+.intake-form__optional {
+    font-weight: 500;
+    color: var(--ink-muted);
 }
 
 .intake-form__field label,
