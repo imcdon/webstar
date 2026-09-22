@@ -5,12 +5,12 @@ $config = webstar_config();
 $currentPage = 'home';
 $pageTitle = 'Affordable Web Design & Marketing | Metro Detroit — ' . $config['business_name'];
 $pageDescription = 'One-time website and marketing packages for Metro Detroit and Michigan small businesses. Own your domain and hosting—clear pricing from $50, fast turnaround, custom HTML/CSS builds.';
-$canonicalPath = 'index.php';
+$canonicalPath = '';
 $jsonLd = json_encode([
     '@context' => 'https://schema.org',
     '@type' => 'ProfessionalService',
     'name' => $config['business_name'],
-    'url' => webstar_absolute_url('index.php'),
+    'url' => webstar_absolute_url(''),
     'email' => $config['email'],
     'image' => webstar_absolute_url('assets/images/star-icon-gold.png'),
     'description' => $pageDescription,
@@ -20,12 +20,12 @@ $jsonLd = json_encode([
 include __DIR__ . '/library/layout-start.php';
 ?>
 <section class="hero">
-    <img class="hero__badge" src="assets/images/star-icon-gold.png" alt="" width="52" height="52">
+    <img class="hero__badge" src="<?php echo webstar_h(webstar_url('assets/images/star-icon-gold.png')); ?>" alt="" width="52" height="52">
     <h1 class="hero__title">Affordable websites and marketing for Metro Detroit businesses</h1>
     <p class="hero__lead">Skip subscription page builders and surprise monthly fees. Webstar delivers one-time, custom websites and marketing packages—you own your domain, hosting, and files.</p>
     <div class="hero__actions">
-        <a class="home-section__btn home-section__btn--primary" href="packages.php">View packages &amp; pricing</a>
-        <a class="home-section__btn home-section__btn--secondary" href="contact.php">Questions? Contact</a>
+        <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('packages.php')); ?>">View packages &amp; pricing</a>
+        <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_url('contact.php')); ?>">Questions? Contact</a>
     </div>
 </section>
 
@@ -46,7 +46,7 @@ include __DIR__ . '/library/layout-start.php';
                     <p class="package-card__price"><?php echo webstar_h($pkg['price']); ?></p>
                     <p class="package-card__meta">Turnaround: <?php echo webstar_h($pkg['turnaround']); ?></p>
                     <p class="package-card__summary"><?php echo webstar_h($pkg['summary']); ?></p>
-                    <a class="home-section__btn home-section__btn--primary" href="package.php?slug=<?php echo webstar_h($pkg['slug']); ?>">View package &amp; intake</a>
+                    <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_package_url((string) $pkg['slug'])); ?>">View package &amp; intake</a>
                 </article>
             <?php endforeach; ?>
         </div>
@@ -62,7 +62,7 @@ include __DIR__ . '/library/layout-start.php';
             <li>Pay the deposit and track progress in the Client Portal as your site or deliverables take shape.</li>
             <li>You buy your domain and hosting, pay the remaining balance, and receive your files deployed on your independent hosting.</li>
         </ol>
-        <p class="home-section__textbox"><a href="packages.php">Compare all packages</a> or <a href="examples.php">see client examples</a>.</p>
+        <p class="home-section__textbox"><a href="<?php echo webstar_h(webstar_url('packages.php')); ?>">Compare all packages</a> or <a href="<?php echo webstar_h(webstar_url('examples.php')); ?>">see client examples</a>.</p>
     </div>
 </section>
 
@@ -81,8 +81,8 @@ include __DIR__ . '/library/layout-start.php';
 <div class="cta-band">
     <p>Ready to start? Pick a package and submit the intake form—we’ll follow up to confirm scope and timeline.</p>
     <div class="hero__actions">
-        <a class="home-section__btn home-section__btn--primary" href="packages.php">View packages</a>
-        <a class="home-section__btn home-section__btn--secondary" href="contact.php">General questions</a>
+        <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('packages.php')); ?>">View packages</a>
+        <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_url('contact.php')); ?>">General questions</a>
     </div>
 </div>
 <?php include __DIR__ . '/library/layout-end.php'; ?>

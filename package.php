@@ -11,13 +11,13 @@ if ($package === null) {
 $currentPage = 'packages';
 $pageTitle = $package['title'] . ' — Webstar Business Services';
 $pageDescription = (string) $package['meta_description'];
-$canonicalPath = 'package.php?slug=' . rawurlencode($slug);
+$canonicalPath = 'packages/' . rawurlencode($slug) . '/';
 $intakeStatus = isset($_GET['intake_status']) ? (string) $_GET['intake_status'] : '';
 $intakeReason = isset($_GET['intake_reason']) ? (string) $_GET['intake_reason'] : '';
 $intakeFields = isset($_GET['intake_fields']) ? (string) $_GET['intake_fields'] : '';
 $packageSlug = $package['slug'];
 $packageTitle = $package['title'];
-$intakeRedirect = webstar_url('package.php') . '?slug=' . rawurlencode($slug);
+$intakeRedirect = webstar_package_url($slug);
 $featured = ($package['badge'] ?? '') !== '';
 $packageHeaderClass = 'package-page__header' . ($featured ? ' package-page__header--featured' : '');
 include __DIR__ . '/library/layout-start.php';
@@ -50,9 +50,9 @@ include __DIR__ . '/library/layout-start.php';
 
             <div class="package-page__actions">
                 <a class="home-section__btn home-section__btn--primary" href="#intake">Start intake form</a>
-                <a class="home-section__btn home-section__btn--secondary" href="contact.php">Contact</a>
+                <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_url('contact.php')); ?>">Contact</a>
             </div>
-            <p class="package-page__compare"><a href="packages.php">Back to all packages</a></p>
+            <p class="package-page__compare"><a href="<?php echo webstar_h(webstar_url('packages.php')); ?>">Back to all packages</a></p>
         </div>
 
         <?php include __DIR__ . '/library/package-intake-form.php'; ?>

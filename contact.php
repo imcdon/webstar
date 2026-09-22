@@ -5,7 +5,7 @@ $currentPage = 'contact';
 $config = webstar_config();
 $pageTitle = 'Contact Webstar | Metro Detroit Web Design & Marketing';
 $pageDescription = 'Contact Webstar Business Services for questions about websites and marketing in Metro Detroit and Michigan. Ready to start? Use a package page intake form instead.';
-$canonicalPath = 'contact.php';
+$canonicalPath = 'contact/';
 
 $status = isset($_GET['status']) ? (string) $_GET['status'] : '';
 $reason = isset($_GET['reason']) ? (string) $_GET['reason'] : '';
@@ -47,7 +47,7 @@ include __DIR__ . '/library/layout-start.php';
                     <h2 class="contact-way__title">Start a package</h2>
                     <p class="contact-way__text">Pick a package, review deliverables, and submit the project intake form with your logo, company info, and goals.</p>
                     <p class="contact-way__action">
-                        <a class="home-section__btn home-section__btn--primary" href="packages.php">View packages &amp; intake</a>
+                        <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('packages.php')); ?>">View packages &amp; intake</a>
                     </p>
                 </div>
             </div>
@@ -77,7 +77,7 @@ include __DIR__ . '/library/layout-start.php';
                     </div>
                 <?php endif; ?>
 
-                <form class="intake-form contact-form" method="post" action="library/process-contact.php" novalidate>
+                <form class="intake-form contact-form" method="post" action="<?php echo webstar_h(webstar_url('library/process-contact.php')); ?>" novalidate>
                     <div class="schedule-form__honeypot" aria-hidden="true">
                         <label for="contact-website">Website</label>
                         <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off">

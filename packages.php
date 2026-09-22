@@ -5,7 +5,7 @@ $config = webstar_config();
 $currentPage = 'packages';
 $pageTitle = 'Website & Marketing Packages | Metro Detroit — Webstar Business Services';
 $pageDescription = 'Compare Webstar service packages for Metro Detroit and Michigan: marketing from $50, websites from $200, full business builds $500–$1,000+. Clear deliverables and turnaround times.';
-$canonicalPath = 'packages.php';
+$canonicalPath = 'packages/';
 $packages = webstar_packages();
 include __DIR__ . '/library/layout-start.php';
 ?>
@@ -18,7 +18,7 @@ include __DIR__ . '/library/layout-start.php';
             <?php foreach ($packages as $pkg) :
                 $featured = ($pkg['badge'] ?? '') !== '';
                 $cardClass = 'package-card' . ($featured ? ' package-card--featured' : '');
-                $href = 'package.php?slug=' . rawurlencode((string) $pkg['slug']);
+                $href = webstar_package_url((string) $pkg['slug']);
                 ?>
                 <article class="<?php echo webstar_h($cardClass); ?>">
                     <?php if ($featured) : ?>
@@ -36,10 +36,10 @@ include __DIR__ . '/library/layout-start.php';
 </section>
 
 <div class="cta-band">
-    <p>Not sure which tier fits? <a href="contact.php">Send a general question</a> or start with the package closest to your budget—you can clarify scope on the intake form.</p>
+    <p>Not sure which tier fits? <a href="<?php echo webstar_h(webstar_url('contact.php')); ?>">Send a general question</a> or start with the package closest to your budget—you can clarify scope on the intake form.</p>
     <div class="hero__actions">
-        <a class="home-section__btn home-section__btn--primary" href="package.php?slug=simple-website">Most popular: Simple Website</a>
-        <a class="home-section__btn home-section__btn--secondary" href="examples.php">See examples</a>
+        <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_package_url('simple-website')); ?>">Most popular: Simple Website</a>
+        <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_url('examples.php')); ?>">See examples</a>
     </div>
 </div>
 <?php include __DIR__ . '/library/layout-end.php'; ?>

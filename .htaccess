@@ -1,0 +1,42 @@
+# Webstar Business Services — clean URLs
+# Works at domain root (production) and in a subdirectory (local XAMPP).
+
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # --- 301: legacy .php / query URLs → clean paths (use THE_REQUEST for correct base) ---
+
+    # /…/index.php → /…/
+    RewriteCond %{THE_REQUEST} \s/+((?:[^?\s]*?/)?)index\.php[\s?] [NC]
+    RewriteRule ^ /%1 [R=301,L]
+
+    # /…/packages.php → /…/packages/  (and examples, about, contact, privacy, terms)
+    RewriteCond %{THE_REQUEST} \s/+((?:[^?\s]*?/)?)(packages|examples|about|contact|privacy|terms)\.php[\s?] [NC]
+    RewriteRule ^ /%1%2/? [R=301,L]
+
+    # /…/package.php?slug=x → /…/packages/x/
+    RewriteCond %{THE_REQUEST} \s/+((?:[^?\s]*?/)?)package\.php\?[^\s]*slug=([^\s&]+) [NC]
+    RewriteRule ^ /%1packages/%2/? [R=301,L]
+
+    # /…/landing.php?slug=x → /…/x/
+    RewriteCond %{THE_REQUEST} \s/+((?:[^?\s]*?/)?)landing\.php\?[^\s]*slug=([^\s&]+) [NC]
+    RewriteRule ^ /%1%2/? [R=301,L]
+
+    # Serve remaining real files and directories as-is
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # --- Internal rewrites (clean → PHP) ---
+
+    RewriteRule ^packages/([a-z0-9-]+)/?$ package.php?slug=$1 [L,QSA]
+    RewriteRule ^packages/?$ packages.php [L,QSA]
+
+    RewriteRule ^(examples|about|contact|privacy|terms)/?$ $1.php [L,QSA]
+
+    # SEO landings: /{slug}/ → landing.php (skip reserved first segments)
+    RewriteCond %{REQUEST_URI} !/(packages|examples|about|contact|privacy|terms|portal|clients|library|assets|scripts|vendor)(/|$) [NC]
+    RewriteRule ^([a-z0-9-]+)/?$ landing.php?slug=$1 [L,QSA]
+</IfModule>

@@ -8,7 +8,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 require __DIR__ . '/helpers.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: ../contact.php', true, 303);
+    header('Location: ' . webstar_url('contact.php'), true, 303);
     exit;
 }
 
@@ -21,7 +21,7 @@ function contact_redirect(string $status, ?string $reason = null, ?string $field
     if ($fields) {
         $params['fields'] = $fields;
     }
-    header('Location: ../contact.php?' . http_build_query($params) . '#inquiry', true, 303);
+    header('Location: ' . webstar_url('contact.php') . '?' . http_build_query($params) . '#inquiry', true, 303);
     exit;
 }
 

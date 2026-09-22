@@ -80,7 +80,7 @@ $featureLabels = webstar_feature_labels();
                         $colClass = $featured ? 'compare-col--featured' : '';
                         ?>
                         <td class="<?php echo webstar_h($colClass); ?>">
-                            <a class="home-section__btn home-section__btn--primary" href="package.php?slug=<?php echo webstar_h((string) $pkg['slug']); ?>">
+                            <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_package_url((string) $pkg['slug'])); ?>">
                                 Details
                             </a>
                         </td>

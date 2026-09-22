@@ -5,7 +5,7 @@ $config = webstar_config();
 $currentPage = 'examples';
 $pageTitle = 'Website Examples & Client Work — Webstar Business Services';
 $pageDescription = 'See real websites built by Webstar Business Services for guide services and small businesses. Metro Detroit web design with clear packages and intake.';
-$canonicalPath = 'examples.php';
+$canonicalPath = 'examples/';
 include __DIR__ . '/library/layout-start.php';
 ?>
 <section class="home-section home-section--night">
@@ -36,7 +36,7 @@ include __DIR__ . '/library/layout-start.php';
                         <?php endif; ?>
                         <p class="example-panel__desc"><?php echo webstar_h((string) ($example['case_summary'] ?? $example['description'])); ?></p>
                         <div class="example-panel__actions">
-                            <a class="home-section__btn home-section__btn--primary" href="package.php?slug=<?php echo webstar_h($packageSlug); ?>">Start similar project</a>
+                            <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_package_url($packageSlug)); ?>">Start similar project</a>
                             <a class="example-panel__link" href="<?php echo webstar_h((string) $example['url']); ?>" target="_blank" rel="noopener noreferrer">Visit live site</a>
                         </div>
                         <?php if ($package !== null) : ?>
@@ -52,8 +52,8 @@ include __DIR__ . '/library/layout-start.php';
 <div class="cta-band">
     <p>Ready to build? Packages start at $50 for marketing and $200 for a three-page website.</p>
     <div class="hero__actions">
-        <a class="home-section__btn home-section__btn--primary" href="packages.php">View all packages</a>
-        <a class="home-section__btn home-section__btn--secondary" href="contact.php">Ask a question first</a>
+        <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('packages.php')); ?>">View all packages</a>
+        <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_url('contact.php')); ?>">Ask a question first</a>
     </div>
 </div>
 <?php include __DIR__ . '/library/layout-end.php'; ?>

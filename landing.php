@@ -12,7 +12,7 @@ $currentPage = '';
 $headerVariant = 'landing';
 $pageTitle = (string) $page['title'] . ' — Webstar Business Services';
 $pageDescription = (string) $page['meta_description'];
-$canonicalPath = 'landing.php?slug=' . rawurlencode($slug);
+$canonicalPath = rawurlencode($slug) . '/';
 $recommended = webstar_package_by_slug((string) ($page['package_slug'] ?? ''));
 include __DIR__ . '/library/layout-start.php';
 ?>
@@ -35,10 +35,10 @@ include __DIR__ . '/library/layout-start.php';
                 <p class="package-card__price"><?php echo webstar_h($recommended['price']); ?></p>
                 <p class="package-card__meta">Turnaround: <?php echo webstar_h($recommended['turnaround']); ?></p>
                 <p class="package-card__summary"><?php echo webstar_h($recommended['summary']); ?></p>
-                <a class="home-section__btn home-section__btn--primary" href="package.php?slug=<?php echo webstar_h($recommended['slug']); ?>#intake">Start intake form</a>
+                <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_package_url($recommended['slug'], 'intake')); ?>">Start intake form</a>
             </div>
         <?php endif; ?>
-        <p class="landing-content__footer-links"><a href="<?php echo webstar_h(webstar_url('index.php')); ?>">Webstar home</a> · <a href="<?php echo webstar_h(webstar_url('packages.php')); ?>">All packages</a> · <a href="<?php echo webstar_h(webstar_url('contact.php')); ?>">Contact</a></p>
+        <p class="landing-content__footer-links"><a href="<?php echo webstar_h(webstar_url('')); ?>">Webstar home</a> · <a href="<?php echo webstar_h(webstar_url('packages.php')); ?>">All packages</a> · <a href="<?php echo webstar_h(webstar_url('contact.php')); ?>">Contact</a></p>
     </article>
 </div>
 <?php include __DIR__ . '/library/layout-end.php'; ?>

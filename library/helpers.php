@@ -41,14 +41,84 @@ function webstar_base_path(): string
 function webstar_url(string $path = ''): string
 {
     $base = webstar_base_path();
-    $path = ltrim($path, '/');
-    if ($path === '') {
-        return $base === '' ? '/' : $base . '/';
+    $fragment = '';
+    $hashPos = strpos($path, '#');
+    if ($hashPos !== false) {
+        $fragment = substr($path, $hashPos);
+        $path = substr($path, 0, $hashPos);
     }
 
-    // Always root-relative (leading "/"). Without it, redirects from /portal/
-    // resolve to /portal/portal/... and 404 on production at domain root.
-    return ($base === '' ? '' : $base) . '/' . $path;
+    $path = ltrim($path, '/');
+    $path = webstar_clean_path($path);
+
+    if ($path === '') {
+        $url = $base === '' ? '/' : $base . '/';
+    } else {
+        $url = ($base === '' ? '' : $base) . '/' . $path;
+    }
+
+    return $url . $fragment;
+}
+
+/**
+ * Map legacy PHP / query paths to clean public paths.
+ */
+function webstar_clean_path(string $path): string
+{
+    if ($path === '' || $path === 'index.php') {
+        return '';
+    }
+
+    $query = '';
+    $qPos = strpos($path, '?');
+    if ($qPos !== false) {
+        $query = substr($path, $qPos + 1);
+        $path = substr($path, 0, $qPos);
+    }
+
+    $static = [
+        'packages.php' => 'packages/',
+        'examples.php' => 'examples/',
+        'about.php' => 'about/',
+        'contact.php' => 'contact/',
+        'privacy.php' => 'privacy/',
+        'terms.php' => 'terms/',
+    ];
+    if (isset($static[$path])) {
+        return $static[$path];
+    }
+
+    if ($path === 'package.php') {
+        parse_str($query, $params);
+        $slug = trim((string) ($params['slug'] ?? ''));
+        if ($slug !== '') {
+            return 'packages/' . rawurlencode($slug) . '/';
+        }
+
+        return 'packages/';
+    }
+
+    if ($path === 'landing.php') {
+        parse_str($query, $params);
+        $slug = trim((string) ($params['slug'] ?? ''));
+        if ($slug !== '') {
+            return rawurlencode($slug) . '/';
+        }
+
+        return '';
+    }
+
+    return $path . ($query !== '' ? '?' . $query : '');
+}
+
+function webstar_package_url(string $slug, string $fragment = ''): string
+{
+    $url = webstar_url('packages/' . rawurlencode($slug) . '/');
+    if ($fragment !== '') {
+        $url .= '#' . ltrim($fragment, '#');
+    }
+
+    return $url;
 }
 
 function webstar_absolute_url(string $path = ''): string
@@ -131,7 +201,7 @@ function webstar_seo_by_slug(string $slug): ?array
 
 function webstar_seo_landing_url(string $slug): string
 {
-    return webstar_url('landing.php') . '?slug=' . rawurlencode($slug);
+    return webstar_url(rawurlencode($slug) . '/');
 }
 
 /**

@@ -5,7 +5,7 @@ $currentPage = 'about';
 $config = webstar_config();
 $pageTitle = 'About Ian McDonnell & Webstar | Metro Detroit Web Design';
 $pageDescription = 'Meet Ian McDonnell, founder of Webstar Business Services. Affordable web design and marketing for Metro Detroit and Michigan small businesses.';
-$canonicalPath = 'about.php';
+$canonicalPath = 'about/';
 include __DIR__ . '/library/layout-start.php';
 ?>
 <section class="home-section home-section--night">
@@ -28,8 +28,8 @@ include __DIR__ . '/library/layout-start.php';
                 <p>The goal of Webstar Business Services LLC is to provide simple solutions to growing businesses for low cost. Whether it’s just a marketing package or a broad website with dozens of pages and third party integrations, I pride myself on being the most affordable, the most efficient, and the least headache.</p>
             </div>
             <div class="about-panel__actions package-page__actions">
-                <a class="home-section__btn home-section__btn--primary" href="packages.php">View packages</a>
-                <a class="home-section__btn home-section__btn--secondary" href="contact.php">Contact</a>
+                <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('packages.php')); ?>">View packages</a>
+                <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_url('contact.php')); ?>">Contact</a>
             </div>
         </div>
     </div>
@@ -40,8 +40,8 @@ include __DIR__ . '/library/layout-start.php';
         <h2 class="home-section__heading">Client work</h2>
         <p class="home-section__textbox">See live sites and the types of projects Webstar delivers on the Examples page. When you’re ready, pick a package and submit the intake form to start.</p>
         <div class="package-page__actions">
-            <a class="home-section__btn home-section__btn--primary" href="examples.php">See examples</a>
-            <a class="home-section__btn home-section__btn--secondary" href="package.php?slug=simple-website">Start with Simple Website</a>
+            <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('examples.php')); ?>">See examples</a>
+            <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_package_url('simple-website')); ?>">Start with Simple Website</a>
         </div>
     </div>
 </section>

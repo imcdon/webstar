@@ -42,7 +42,7 @@ Superior Ice staging lives in [`clients/superior-ice-adventures/`](clients/super
    ```bash
    php -r "echo password_hash('your-password', PASSWORD_DEFAULT), PHP_EOL;"
    ```
-4. Open `http://localhost/webstar-business-solutions/` (adjust folder name if different).
+4. Open `http://localhost/webstar-business-solutions/` (adjust folder name if different). Clean URLs require Apache `mod_rewrite` (enabled in XAMPP by default). Examples: `/packages/`, `/packages/simple-website/`, `/web-design-services-metro-detroit/`. Legacy `*.php` and `?slug=` URLs 301 to the clean paths.
 
 `vendor/` is committed. If you change Composer dependencies locally:
 
