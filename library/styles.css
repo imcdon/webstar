@@ -660,25 +660,48 @@ main {
     position: static;
     max-width: var(--prose);
     margin: 0 auto 1.5rem;
-    padding: 1.5rem clamp(1rem, 3vw, 1.75rem);
-    background: var(--panel);
-    color: var(--ink);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-soft);
+    padding: 0.25rem 0 1.5rem;
+    background: transparent;
+    color: var(--ink-on-dark);
+    border-radius: 0;
+    box-shadow: none;
 }
 
 .package-page__header--featured {
-    box-shadow: var(--shadow-glow);
+    box-shadow: none;
+}
+
+.package-page__header h1 {
+    margin: 0.65rem 0 0.35rem;
+    font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink-on-dark);
 }
 
 .package-page__header a:not(.home-section__btn) {
-    color: var(--teal-800);
+    color: var(--gold-300);
+}
+
+.package-page__header a:not(.home-section__btn):hover,
+.package-page__header a:not(.home-section__btn):focus-visible {
+    color: var(--gold-400);
+}
+
+.package-page__header .package-card__meta,
+.package-page__header .package-card__list,
+.package-page__header p {
+    color: var(--ink-on-dark-muted);
+}
+
+.package-page__header strong {
+    color: var(--ink-on-dark);
 }
 
 .package-page__price {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--teal-800);
+    color: var(--gold-300);
 }
 
 .package-page__compare {
@@ -692,7 +715,7 @@ main {
     font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--teal-800);
+    color: var(--gold-400);
 }
 
 .package-page__actions {
@@ -700,7 +723,7 @@ main {
     flex-wrap: wrap;
     gap: 0.75rem;
     justify-content: flex-start;
-    margin-top: 1rem;
+    margin-top: 1.15rem;
     text-align: left;
 }
 
