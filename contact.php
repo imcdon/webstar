@@ -3,8 +3,8 @@ declare(strict_types=1);
 require __DIR__ . '/library/helpers.php';
 $currentPage = 'contact';
 $config = webstar_config();
-$pageTitle = 'Contact — Webstar Business Services';
-$pageDescription = 'Contact Webstar Business Services for general inquiries, booking, or project questions.';
+$pageTitle = 'Contact Webstar | Metro Detroit Web Design & Marketing';
+$pageDescription = 'Contact Webstar Business Services for questions about websites and marketing in Metro Detroit and Michigan. Ready to start? Use a package page intake form instead.';
 $canonicalPath = 'contact.php';
 
 $status = isset($_GET['status']) ? (string) $_GET['status'] : '';
@@ -32,7 +32,8 @@ include __DIR__ . '/library/layout-start.php';
     <div class="home-section__inner">
         <div class="landing-content contact-panel">
             <h1 class="home-section__heading">Contact</h1>
-            <p class="contact-panel__intro">Have a question, want to talk through a project, or ready to book? Reach out directly or send a general inquiry below.</p>
+            <p class="contact-panel__intro">Questions about scope, timing, or whether Webstar is a fit? Reach out here. Serving <?php echo webstar_h($config['service_area']); ?>.</p>
+            <p class="contact-panel__intro"><strong>Ready to start a project?</strong> That happens on a package page—choose a tier, then submit the intake form at the bottom (not this general inquiry form).</p>
 
             <div class="contact-panel__ways">
                 <div class="contact-way">
@@ -43,15 +44,15 @@ include __DIR__ . '/library/layout-start.php';
                     </p>
                 </div>
                 <div class="contact-way">
-                    <h2 class="contact-way__title">Book a package</h2>
-                    <p class="contact-way__text">Ready to start a project? Choose a package and submit the intake form with your logo, company info, and goals.</p>
+                    <h2 class="contact-way__title">Start a package</h2>
+                    <p class="contact-way__text">Pick a package, review deliverables, and submit the project intake form with your logo, company info, and goals.</p>
                     <p class="contact-way__action">
-                        <a class="home-section__btn home-section__btn--primary" href="packages.php">View packages</a>
+                        <a class="home-section__btn home-section__btn--primary" href="packages.php">View packages &amp; intake</a>
                     </p>
                 </div>
             </div>
 
-            <div class="contact-form-block" id="intake">
+            <div class="contact-form-block" id="inquiry">
                 <h2 class="contact-form-block__title">General inquiry</h2>
                 <p class="contact-form-block__lead">Use this form for questions, quotes, or anything that isn’t a full package intake yet.</p>
 

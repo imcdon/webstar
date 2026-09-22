@@ -3,7 +3,7 @@ declare(strict_types=1);
 require __DIR__ . '/library/helpers.php';
 header('Content-Type: application/xml; charset=UTF-8');
 $urls = [
-    'index.php', 'packages.php', 'examples.php', 'about.php', 'contact.php', 'portal/', 'privacy.php', 'terms.php',
+    'index.php', 'packages.php', 'examples.php', 'about.php', 'contact.php', 'privacy.php', 'terms.php',
 ];
 foreach (webstar_packages() as $pkg) {
     $urls[] = 'package.php?slug=' . rawurlencode($pkg['slug']);

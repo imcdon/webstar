@@ -3,15 +3,16 @@ declare(strict_types=1);
 require __DIR__ . '/library/helpers.php';
 $currentPage = 'about';
 $config = webstar_config();
-$pageTitle = 'About — Webstar Business Services';
-$pageDescription = 'About Webstar Business Services and owner Ian McDonnell. Web design and marketing for Metro Detroit small businesses.';
+$pageTitle = 'About Ian McDonnell & Webstar | Metro Detroit Web Design';
+$pageDescription = 'Meet Ian McDonnell, founder of Webstar Business Services. Affordable web design and marketing for Metro Detroit and Michigan small businesses.';
 $canonicalPath = 'about.php';
 include __DIR__ . '/library/layout-start.php';
 ?>
 <section class="home-section home-section--night">
     <div class="home-section__inner">
         <div class="landing-content about-panel">
-            <h1 class="home-section__heading">About</h1>
+            <h1 class="home-section__heading">About Webstar</h1>
+            <p class="contact-panel__intro">Webstar Business Services helps small businesses in <?php echo webstar_h($config['service_area']); ?> launch affordable websites and marketing with clear, one-time package pricing.</p>
             <div class="about-panel__bio">
                 <img
                     class="about-panel__photo"
@@ -26,33 +27,21 @@ include __DIR__ . '/library/layout-start.php';
                 <p>To date and after I started Earth Odyssey I’ve been privileged to lead and help in several new businesses in the fishing guide industry, several that have grown to be established in the industry. Chrome City Guide Service LLC, a Salmon and Steelhead fishing guide service out of Longview, Washington, Soldotna Fishing Guides – Kenai River LLC out of Soldotna, Alaska, and Superior Ice Adventures LLC out of Marquette, Michigan.</p>
                 <p>The goal of Webstar Business Services LLC is to provide simple solutions to growing businesses for low cost. Whether it’s just a marketing package or a broad website with dozens of pages and third party integrations, I pride myself on being the most affordable, the most efficient, and the least headache.</p>
             </div>
-            <div class="hero__actions about-panel__actions">
-                <a class="home-section__btn home-section__btn--primary" href="contact.php">Contact</a>
-                <a class="home-section__btn home-section__btn--secondary" href="packages.php">View packages</a>
+            <div class="about-panel__actions package-page__actions">
+                <a class="home-section__btn home-section__btn--primary" href="packages.php">View packages</a>
+                <a class="home-section__btn home-section__btn--secondary" href="contact.php">Contact</a>
             </div>
         </div>
     </div>
 </section>
 
-<section class="home-section home-section--deep" id="reviews">
+<section class="home-section home-section--deep" id="client-work">
     <div class="home-section__inner">
-        <h2 class="home-section__heading">Reviews</h2>
-        <div class="reviews-list">
-            <article class="review-bubble">
-                <p class="review-bubble__stars" aria-label="5 out of 5 stars">★★★★★</p>
-                <h3 class="review-bubble__name">Alex Rivera</h3>
-                <p class="review-bubble__text">Placeholder review text. Replace this with a real client quote about working with Webstar Business Services.</p>
-            </article>
-            <article class="review-bubble">
-                <p class="review-bubble__stars" aria-label="5 out of 5 stars">★★★★★</p>
-                <h3 class="review-bubble__name">Jordan Lee</h3>
-                <p class="review-bubble__text">Placeholder review text. Replace this with a real client quote about turnaround time, design quality, or communication.</p>
-            </article>
-            <article class="review-bubble">
-                <p class="review-bubble__stars" aria-label="5 out of 5 stars">★★★★★</p>
-                <h3 class="review-bubble__name">Sam Patel</h3>
-                <p class="review-bubble__text">Placeholder review text. Replace this with a real client quote about the finished website or marketing package.</p>
-            </article>
+        <h2 class="home-section__heading">Client work</h2>
+        <p class="home-section__textbox">See live sites and the types of projects Webstar delivers on the Examples page. When you’re ready, pick a package and submit the intake form to start.</p>
+        <div class="package-page__actions">
+            <a class="home-section__btn home-section__btn--primary" href="examples.php">See examples</a>
+            <a class="home-section__btn home-section__btn--secondary" href="package.php?slug=simple-website">Start with Simple Website</a>
         </div>
     </div>
 </section>

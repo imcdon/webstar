@@ -35,7 +35,7 @@ include __DIR__ . '/library/layout-start.php';
                 <p class="package-card__price"><?php echo webstar_h($recommended['price']); ?></p>
                 <p class="package-card__meta">Turnaround: <?php echo webstar_h($recommended['turnaround']); ?></p>
                 <p class="package-card__summary"><?php echo webstar_h($recommended['summary']); ?></p>
-                <a class="home-section__btn home-section__btn--primary" href="package.php?slug=<?php echo webstar_h($recommended['slug']); ?>">View package &amp; submit intake</a>
+                <a class="home-section__btn home-section__btn--primary" href="package.php?slug=<?php echo webstar_h($recommended['slug']); ?>#intake">Start intake form</a>
             </div>
         <?php endif; ?>
         <p style="margin-top:2rem;"><a href="index.php">Webstar Business Services home</a> · <a href="packages.php">All packages</a></p>

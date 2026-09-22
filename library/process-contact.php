@@ -21,7 +21,7 @@ function contact_redirect(string $status, ?string $reason = null, ?string $field
     if ($fields) {
         $params['fields'] = $fields;
     }
-    header('Location: ../contact.php?' . http_build_query($params) . '#intake', true, 303);
+    header('Location: ../contact.php?' . http_build_query($params) . '#inquiry', true, 303);
     exit;
 }
 

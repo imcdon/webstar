@@ -6,6 +6,8 @@ $pageTitle = $pageTitle ?? $config['business_name'];
 $pageDescription = $pageDescription ?? 'Web design and marketing packages for Metro Detroit small businesses.';
 $canonicalPath = $canonicalPath ?? '';
 $canonicalUrl = $canonicalPath !== '' ? webstar_absolute_url($canonicalPath) : webstar_absolute_url('');
+$ogImagePath = $ogImagePath ?? 'assets/images/IMG_4687.JPG';
+$ogImageUrl = webstar_absolute_url($ogImagePath);
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +20,12 @@ $canonicalUrl = $canonicalPath !== '' ? webstar_absolute_url($canonicalPath) : w
     <meta property="og:title" content="<?php echo webstar_h($pageTitle); ?>">
     <meta property="og:description" content="<?php echo webstar_h($pageDescription); ?>">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="<?php echo webstar_h($canonicalUrl); ?>">
+    <meta property="og:image" content="<?php echo webstar_h($ogImageUrl); ?>">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?php echo webstar_h($pageTitle); ?>">
+    <meta name="twitter:description" content="<?php echo webstar_h($pageDescription); ?>">
+    <meta name="twitter:image" content="<?php echo webstar_h($ogImageUrl); ?>">
     <link rel="stylesheet" href="<?php echo webstar_h(webstar_url('library/styles.css')); ?>?v=<?php echo (int) @filemtime(__DIR__ . '/styles.css'); ?>">
     <?php if (!empty($jsonLd)) : ?>
     <script type="application/ld+json"><?php echo $jsonLd; ?></script>
