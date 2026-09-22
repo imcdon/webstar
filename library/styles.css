@@ -1178,6 +1178,11 @@ main {
     color: var(--gold-300);
 }
 
+.landing-content__footer-links {
+    margin-top: 2rem;
+    font-size: 0.95rem;
+}
+
 /* —— Footer —— */
 .site-footer {
     padding: 2rem clamp(1rem, 3vw, 1.75rem);
@@ -1212,8 +1217,32 @@ main {
     color: var(--gold-400);
 }
 
-.site-footer__sitemap {
+.site-footer__grid {
+    display: grid;
+    gap: 1.25rem 2rem;
     margin-top: 1.25rem;
+}
+
+@media (min-width: 640px) {
+    .site-footer__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 960px) {
+    .site-footer__grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.site-footer__sitemap {
+    margin-top: 0;
+}
+
+.site-footer__sitemap-list--stack {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
 }
 
 .site-footer__sitemap-title {

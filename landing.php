@@ -38,7 +38,7 @@ include __DIR__ . '/library/layout-start.php';
                 <a class="home-section__btn home-section__btn--primary" href="package.php?slug=<?php echo webstar_h($recommended['slug']); ?>#intake">Start intake form</a>
             </div>
         <?php endif; ?>
-        <p style="margin-top:2rem;"><a href="index.php">Webstar Business Services home</a> · <a href="packages.php">All packages</a></p>
+        <p class="landing-content__footer-links"><a href="<?php echo webstar_h(webstar_url('index.php')); ?>">Webstar home</a> · <a href="<?php echo webstar_h(webstar_url('packages.php')); ?>">All packages</a> · <a href="<?php echo webstar_h(webstar_url('contact.php')); ?>">Contact</a></p>
     </article>
 </div>
 <?php include __DIR__ . '/library/layout-end.php'; ?>

@@ -129,6 +129,45 @@ function webstar_seo_by_slug(string $slug): ?array
     return null;
 }
 
+function webstar_seo_landing_url(string $slug): string
+{
+    return webstar_url('landing.php') . '?slug=' . rawurlencode($slug);
+}
+
+/**
+ * SEO landing links for footer (service areas vs industries).
+ *
+ * @return array{areas: list<array{label: string, href: string}>, industries: list<array{label: string, href: string}>}
+ */
+function webstar_seo_footer_links(): array
+{
+    $areas = [];
+    $industries = [];
+
+    foreach (webstar_seo_pages() as $page) {
+        $slug = (string) ($page['slug'] ?? '');
+        if ($slug === '') {
+            continue;
+        }
+
+        $label = (string) ($page['footer_label'] ?? $page['h1'] ?? $page['title'] ?? $slug);
+        $label = preg_replace('/^Web Design Services for /', '', $label) ?? $label;
+
+        $item = [
+            'label' => $label,
+            'href' => webstar_seo_landing_url($slug),
+        ];
+
+        if (preg_match('#(?:nail-salons|hair-salons|contractors|landscaping)$#', $slug) === 1) {
+            $industries[] = $item;
+        } else {
+            $areas[] = $item;
+        }
+    }
+
+    return ['areas' => $areas, 'industries' => $industries];
+}
+
 /**
  * @return list<array{title:string,url:string,type:string,thumbnail:string,description:string}>
  */
