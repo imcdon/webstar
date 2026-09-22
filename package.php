@@ -39,7 +39,7 @@ include __DIR__ . '/library/layout-start.php';
                     <li><?php echo webstar_h($item); ?></li>
                 <?php endforeach; ?>
             </ul>
-            <div class="hero__actions package-page__actions">
+            <div class="package-page__actions">
                 <a class="home-section__btn home-section__btn--primary" href="#intake">Start intake form</a>
                 <a class="home-section__btn home-section__btn--secondary" href="contact.php">Contact</a>
             </div>

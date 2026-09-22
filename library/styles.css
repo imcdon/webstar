@@ -653,9 +653,11 @@ main {
 
 .package-page {
     padding: clamp(2rem, 4vw, 3rem) 0;
+    overflow: visible;
 }
 
 .package-page__header {
+    position: static;
     max-width: var(--prose);
     margin: 0 auto 1.5rem;
     padding: 1.5rem clamp(1rem, 3vw, 1.75rem);
@@ -694,8 +696,12 @@ main {
 }
 
 .package-page__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
     justify-content: flex-start;
     margin-top: 1rem;
+    text-align: left;
 }
 
 /* —— Comparison matrix —— */
@@ -823,8 +829,10 @@ main {
 
 /* —— Intake forms —— */
 .intake-block {
+    position: static;
     width: min(var(--prose), 100%);
     margin: 1.5rem auto 0;
+    scroll-margin-top: 5.5rem;
 }
 
 .intake-block__inner {
