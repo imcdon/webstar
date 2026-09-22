@@ -1183,6 +1183,41 @@ main {
     font-size: 0.95rem;
 }
 
+.landing-breadcrumbs {
+    margin: 0 0 1.25rem;
+    font-size: 0.9rem;
+}
+
+.landing-breadcrumbs__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: var(--ink-muted);
+}
+
+.landing-breadcrumbs__list li:not(:last-child)::after {
+    content: "/";
+    margin-left: 0.5rem;
+    color: var(--ink-muted);
+}
+
+.landing-faq {
+    margin-top: 0.75rem;
+}
+
+.landing-related {
+    margin: 0.5rem 0 0;
+    padding-left: 1.2rem;
+    color: var(--ink-muted);
+}
+
+.landing-related a {
+    color: var(--teal-800);
+}
+
 /* —— Footer —— */
 .site-footer {
     padding: 2rem clamp(1rem, 3vw, 1.75rem);
@@ -1331,6 +1366,21 @@ main {
     border-color: var(--teal-700);
     background: var(--teal-50);
     color: var(--teal-950);
+}
+
+.about-proof-list {
+    margin: 0.75rem 0 1.25rem;
+    padding-left: 1.2rem;
+    color: var(--ink-muted);
+    line-height: 1.55;
+}
+
+.about-proof-list li + li {
+    margin-top: 0.55rem;
+}
+
+.about-proof-list a {
+    color: var(--teal-300);
 }
 
 .reviews-list {
@@ -1514,6 +1564,17 @@ main {
     overflow: hidden;
     background: var(--night-800);
     text-decoration: none;
+}
+
+.example-panel__media--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 700;
+    text-align: center;
+    background: linear-gradient(145deg, var(--night-800), var(--teal-950));
 }
 
 .example-panel__media:hover img,

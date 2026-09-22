@@ -16,7 +16,7 @@ include __DIR__ . '/library/layout-start.php';
             <div class="about-panel__bio">
                 <img
                     class="about-panel__photo"
-                    src="assets/images/ian-pic.jpg"
+                    src="<?php echo webstar_h(webstar_url('assets/images/ian-pic.JPG')); ?>"
                     alt="Ian McDonnell, founder of Webstar Business Services"
                     width="400"
                     height="533"
@@ -35,7 +35,25 @@ include __DIR__ . '/library/layout-start.php';
     </div>
 </section>
 
-<section class="home-section home-section--deep" id="client-work">
+<section class="home-section home-section--deep" id="proof">
+    <div class="home-section__inner">
+        <h2 class="home-section__heading">Proof</h2>
+        <p class="home-section__textbox">Real projects and places—not fabricated reviews. Webstar’s work spans outdoor and guide businesses plus Michigan-rooted products.</p>
+        <ul class="about-proof-list">
+            <li><strong>Cities &amp; regions:</strong> Metro Detroit and Michigan; client work also in Longview, WA and Soldotna, AK.</li>
+            <li><strong>Industries:</strong> Fishing guide services, outdoor media, and small-business web &amp; marketing packages.</li>
+            <li><strong>Named projects:</strong>
+                <a href="https://www.chromecityguideservicellc.com" target="_blank" rel="noopener noreferrer">Chrome City Guide Service</a>,
+                <a href="https://soldotnafishingguides.com/" target="_blank" rel="noopener noreferrer">Soldotna Fishing Guides</a>,
+                Superior Ice Adventures (Marquette, MI),
+                and <a href="https://earth-odyssey.com" target="_blank" rel="noopener noreferrer">Earth Odyssey</a>.
+            </li>
+        </ul>
+        <p class="home-section__textbox">See live sites on the Examples page. When you have a quote you want published, we can add it here—until then we stick to verifiable work.</p>
+    </div>
+</section>
+
+<section class="home-section home-section--night" id="client-work">
     <div class="home-section__inner">
         <h2 class="home-section__heading">Client work</h2>
         <p class="home-section__textbox">See live sites and the types of projects Webstar delivers on the Examples page. When you’re ready, pick a package and submit the intake form to start.</p>

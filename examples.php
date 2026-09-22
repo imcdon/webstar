@@ -19,15 +19,24 @@ include __DIR__ . '/library/layout-start.php';
                 $packageLabel = $package !== null ? (string) $package['title'] : 'View packages';
                 ?>
                 <article class="example-panel">
-                    <a class="example-panel__media" href="<?php echo webstar_h((string) $example['url']); ?>" target="_blank" rel="noopener noreferrer">
-                        <img
-                            src="<?php echo webstar_h((string) $example['thumbnail']); ?>"
-                            alt="<?php echo webstar_h((string) $example['title']); ?> website screenshot"
-                            width="640"
-                            height="400"
-                            loading="lazy"
-                        >
-                    </a>
+                    <?php
+                    $thumb = trim((string) ($example['thumbnail'] ?? ''));
+                    if ($thumb !== '') :
+                        ?>
+                        <a class="example-panel__media" href="<?php echo webstar_h((string) $example['url']); ?>" target="_blank" rel="noopener noreferrer">
+                            <img
+                                src="<?php echo webstar_h(webstar_url($thumb)); ?>"
+                                alt="<?php echo webstar_h((string) $example['title']); ?> website screenshot"
+                                width="640"
+                                height="400"
+                                loading="lazy"
+                            >
+                        </a>
+                    <?php else : ?>
+                        <a class="example-panel__media example-panel__media--placeholder" href="<?php echo webstar_h((string) $example['url']); ?>" target="_blank" rel="noopener noreferrer">
+                            <span><?php echo webstar_h((string) $example['title']); ?></span>
+                        </a>
+                    <?php endif; ?>
                     <div class="example-panel__body">
                         <p class="example-panel__type"><?php echo webstar_h((string) $example['type']); ?> · <?php echo webstar_h((string) ($example['industry'] ?? '')); ?></p>
                         <h2 class="example-panel__title"><?php echo webstar_h((string) $example['title']); ?></h2>

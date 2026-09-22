@@ -3,10 +3,30 @@ declare(strict_types=1);
 require __DIR__ . '/library/helpers.php';
 $config = webstar_config();
 $currentPage = 'home';
-$pageTitle = 'Affordable Web Design & Marketing | Metro Detroit — ' . $config['business_name'];
-$pageDescription = 'One-time website and marketing packages for Metro Detroit and Michigan small businesses. Own your domain and hosting—clear pricing from $50, fast turnaround, custom HTML/CSS builds.';
+$pageTitle = 'Web Design & Marketing for Metro Detroit — ' . $config['business_name'];
+$pageDescription = 'Custom websites and marketing packages for Metro Detroit small businesses. One-time project pricing, you own your domain and hosting—clear deliverables and fast turnaround.';
 $canonicalPath = '';
-$jsonLd = json_encode([
+
+$homeFaqs = [
+    [
+        'q' => 'Do I own my website?',
+        'a' => 'Yes. You own your hosting and domain accounts. We deliver a site built with standard HTML/CSS (and PHP where needed for forms).',
+    ],
+    [
+        'q' => 'Are there monthly fees to Webstar?',
+        'a' => 'Packages are priced as projects. Hosting and third-party tools bill separately through those providers unless you arrange ongoing support.',
+    ],
+    [
+        'q' => 'What affects the $500–$1,000 business package price?',
+        'a' => 'Page count, booking integration complexity, content volume, and marketing collateral scope determine where your project falls in that range.',
+    ],
+    [
+        'q' => 'How do I start a project?',
+        'a' => 'Open the package that fits your needs, scroll to the intake form, and submit your business details. That starts the official project queue—not the general contact form.',
+    ],
+];
+
+$businessLd = [
     '@context' => 'https://schema.org',
     '@type' => 'ProfessionalService',
     'name' => $config['business_name'],
@@ -16,12 +36,33 @@ $jsonLd = json_encode([
     'description' => $pageDescription,
     'areaServed' => $config['service_area'],
     'priceRange' => '$50–$1000+',
-], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+];
+$sameAs = array_values(array_filter(array_map('strval', $config['sameAs'] ?? [])));
+if ($sameAs !== []) {
+    $businessLd['sameAs'] = $sameAs;
+}
+
+$faqLd = [
+    '@context' => 'https://schema.org',
+    '@type' => 'FAQPage',
+    'mainEntity' => array_map(static function (array $item): array {
+        return [
+            '@type' => 'Question',
+            'name' => $item['q'],
+            'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => $item['a'],
+            ],
+        ];
+    }, $homeFaqs),
+];
+
+$jsonLd = json_encode([$businessLd, $faqLd], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 include __DIR__ . '/library/layout-start.php';
 ?>
 <section class="hero">
     <img class="hero__badge" src="<?php echo webstar_h(webstar_url('assets/images/star-icon-gold.png')); ?>" alt="" width="52" height="52">
-    <h1 class="hero__title">Affordable websites and marketing for Metro Detroit businesses</h1>
+    <h1 class="hero__title">Websites and marketing for Metro Detroit businesses</h1>
     <p class="hero__lead">Skip subscription page builders and surprise monthly fees. Webstar delivers one-time, custom websites and marketing packages—you own your domain, hosting, and files.</p>
     <div class="hero__actions">
         <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('packages.php')); ?>">View packages &amp; pricing</a>
@@ -70,10 +111,12 @@ include __DIR__ . '/library/layout-start.php';
     <div class="home-section__inner">
         <h2 class="home-section__heading">FAQ</h2>
         <div class="faq-list">
-            <details><summary>Do I own my website?</summary><p>Yes. You own your hosting and domain accounts. We deliver a site built with standard HTML/CSS (and PHP where needed for forms).</p></details>
-            <details><summary>Are there monthly fees to Webstar?</summary><p>Packages are priced as projects. Hosting and third-party tools bill separately through those providers unless you arrange ongoing support.</p></details>
-            <details><summary>What affects the $500–$1,000 business package price?</summary><p>Page count, booking integration complexity, content volume, and marketing collateral scope determine where your project falls in that range.</p></details>
-            <details><summary>How do I start a project?</summary><p>Open the package that fits your needs, scroll to the intake form, and submit your business details. That starts the official project queue—not the general contact form.</p></details>
+            <?php foreach ($homeFaqs as $faq) : ?>
+                <details>
+                    <summary><?php echo webstar_h($faq['q']); ?></summary>
+                    <p><?php echo webstar_h($faq['a']); ?></p>
+                </details>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>

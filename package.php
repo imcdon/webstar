@@ -20,6 +20,34 @@ $packageTitle = $package['title'];
 $intakeRedirect = webstar_package_url($slug);
 $featured = ($package['badge'] ?? '') !== '';
 $packageHeaderClass = 'package-page__header' . ($featured ? ' package-page__header--featured' : '');
+
+$packageUrl = webstar_absolute_url($canonicalPath);
+$offer = [
+    '@type' => 'Offer',
+    'url' => $packageUrl,
+    'priceCurrency' => 'USD',
+    'availability' => 'https://schema.org/InStock',
+    'description' => (string) $package['price'],
+];
+if (preg_match('/^\$(\d+(?:,\d{3})*(?:\.\d+)?)$/', trim((string) $package['price']), $m) === 1) {
+    $offer['price'] = str_replace(',', '', $m[1]);
+}
+
+$jsonLd = json_encode([
+    '@context' => 'https://schema.org',
+    '@type' => 'Service',
+    'name' => (string) $package['title'],
+    'description' => (string) $package['meta_description'],
+    'provider' => [
+        '@type' => 'ProfessionalService',
+        'name' => webstar_config()['business_name'],
+        'url' => webstar_absolute_url(''),
+    ],
+    'areaServed' => webstar_config()['service_area'],
+    'url' => $packageUrl,
+    'offers' => $offer,
+], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+
 include __DIR__ . '/library/layout-start.php';
 ?>
 <section class="package-page home-section home-section--night">

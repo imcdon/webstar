@@ -10,4 +10,6 @@ return [
     'locality' => 'Metro Detroit',
     'region' => 'MI',
     'country' => 'US',
+    // Public profile URLs for schema sameAs (LinkedIn, Facebook, GBP, etc.)
+    'sameAs' => [],
 ];

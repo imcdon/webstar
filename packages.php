@@ -7,6 +7,23 @@ $pageTitle = 'Website & Marketing Packages | Metro Detroit — Webstar Business 
 $pageDescription = 'Compare Webstar service packages for Metro Detroit and Michigan: marketing from $50, websites from $200, full business builds $500–$1,000+. Clear deliverables and turnaround times.';
 $canonicalPath = 'packages/';
 $packages = webstar_packages();
+$listItems = [];
+$position = 1;
+foreach ($packages as $pkg) {
+    $listItems[] = [
+        '@type' => 'ListItem',
+        'position' => $position,
+        'name' => (string) $pkg['title'],
+        'url' => webstar_absolute_url('packages/' . rawurlencode((string) $pkg['slug']) . '/'),
+    ];
+    $position++;
+}
+$jsonLd = json_encode([
+    '@context' => 'https://schema.org',
+    '@type' => 'ItemList',
+    'name' => 'Webstar service packages',
+    'itemListElement' => $listItems,
+], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 include __DIR__ . '/library/layout-start.php';
 ?>
 <section class="home-section home-section--night" id="packages">

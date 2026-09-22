@@ -23,6 +23,7 @@ $currentPage = 'portal';
 $pageTitle = 'Client Portal Login — Webstar Business Services';
 $pageDescription = 'Log in to the Webstar client portal to view your projects in progress.';
 $canonicalPath = 'portal/login.php';
+$robotsMeta = 'noindex, nofollow';
 include dirname(__DIR__) . '/library/layout-start.php';
 ?>
 <section class="home-section home-section--night">
