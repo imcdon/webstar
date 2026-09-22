@@ -40,13 +40,11 @@ include __DIR__ . '/library/layout-start.php';
         <h2 class="home-section__heading">Proof</h2>
         <p class="home-section__textbox">Real projects and places—not fabricated reviews. Webstar’s work spans outdoor and guide businesses plus Michigan-rooted products.</p>
         <ul class="about-proof-list">
-            <li><strong>Cities &amp; regions:</strong> Metro Detroit and Michigan; client work also in Longview, WA and Soldotna, AK.</li>
-            <li><strong>Industries:</strong> Fishing guide services, outdoor media, and small-business web &amp; marketing packages.</li>
+            <li><strong>Cities &amp; regions:</strong> Metro Detroit and Michigan; client work also in Longview, WA.</li>
+            <li><strong>Industries:</strong> Fishing guide services and small-business web &amp; marketing packages.</li>
             <li><strong>Named projects:</strong>
-                <a href="https://www.chromecityguideservicellc.com" target="_blank" rel="noopener noreferrer">Chrome City Guide Service</a>,
-                <a href="https://soldotnafishingguides.com/" target="_blank" rel="noopener noreferrer">Soldotna Fishing Guides</a>,
-                Superior Ice Adventures (Marquette, MI),
-                and <a href="https://earth-odyssey.com" target="_blank" rel="noopener noreferrer">Earth Odyssey</a>.
+                <a href="https://www.chromecityguideservicellc.com" target="_blank" rel="noopener noreferrer">Chrome City Guide Service</a>
+                and Superior Ice Adventures (Marquette, MI).
             </li>
         </ul>
         <p class="home-section__textbox">See live sites on the Examples page. When you have a quote you want published, we can add it here—until then we stick to verifiable work.</p>
