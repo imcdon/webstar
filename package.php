@@ -28,17 +28,26 @@ include __DIR__ . '/library/layout-start.php';
             <?php if ($featured) : ?>
                 <span class="package-card__badge"><?php echo webstar_h((string) $package['badge']); ?></span>
             <?php endif; ?>
-            <h1><?php echo webstar_h($package['title']); ?></h1>
-            <p class="package-page__price"><?php echo webstar_h($package['price']); ?></p>
-            <p class="package-card__meta">Turnaround: <?php echo webstar_h($package['turnaround']); ?></p>
-            <p><?php echo webstar_h($package['summary']); ?></p>
-            <p><strong>Ideal for:</strong> <?php echo webstar_h($package['ideal_for']); ?></p>
+
+            <div class="package-page__top">
+                <div class="package-page__intro">
+                    <h1 class="home-section__heading"><?php echo webstar_h($package['title']); ?></h1>
+                    <p class="package-page__summary"><?php echo webstar_h($package['summary']); ?></p>
+                    <p class="package-page__ideal"><strong>Ideal for:</strong> <?php echo webstar_h($package['ideal_for']); ?></p>
+                </div>
+                <div class="package-page__facts">
+                    <p class="package-page__price"><?php echo webstar_h($package['price']); ?></p>
+                    <p class="package-card__meta">Turnaround: <?php echo webstar_h($package['turnaround']); ?></p>
+                </div>
+            </div>
+
             <h2 class="package-page__list-title">Deliverables</h2>
-            <ul class="package-card__list">
+            <ul class="package-page__deliverables">
                 <?php foreach ($package['includes'] as $item) : ?>
                     <li><?php echo webstar_h($item); ?></li>
                 <?php endforeach; ?>
             </ul>
+
             <div class="package-page__actions">
                 <a class="home-section__btn home-section__btn--primary" href="#intake">Start intake form</a>
                 <a class="home-section__btn home-section__btn--secondary" href="contact.php">Contact</a>
