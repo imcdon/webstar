@@ -26,17 +26,27 @@ One winning URL per head term. Do not retarget losers to compete for the same pr
 - **Affordable Michigan** primary: statewide one-time / affordable website design.
 - Do not restore Home title/H1 to lead with “Affordable Website Design Michigan.”
 
+## Locked NAP (use identically everywhere)
+
+```text
+Webstar Business Services · Metro Detroit & surrounding Michigan communities · 248-564-3663 · https://www.webstarbusinessservices.com · info@webstarbusinessservices.com
+```
+
+- **Never** list a personal cell on public listings.
+- GBP Maps: https://maps.app.goo.gl/ZUKh1nB9Q5wcub5F6
+- Match this name, phone, website, and email on Bing, Apple, Facebook, LinkedIn, Yelp, and the site footer/contact.
+
 ## Ops checklist
 
-1. **Google Search Console** — Verify `webstarbusinessservices.com`. Submit `https://webstarbusinessservices.com/sitemap.php`.
-2. **Google Business Profile** — Create/claim as a **service-area** business (Metro Detroit / Michigan). Add website and primary category when ready.
+1. **Google Search Console** — www property verified; indexing requested for priority URLs. Sitemap submit still retrying (“couldn’t fetch”).
+2. **Google Business Profile** — service-area listing created; phone + website set. Confirm photos; add Workspace email when ready.
 3. **After each deploy** — Spot-check clean URLs (`/packages/`, one SEO landing, one package detail) and that footer SEO links resolve.
-4. **Optional** — In GSC, request indexing for home and `/packages/` after a meaningful deploy.
+4. **Optional** — Retry sitemap submit; Domain property when DNS is available at the registrar.
 
 ### Crawl notes
 
 - `404` and portal pages use `noindex` (portal also `nofollow`). Keep them out of the sitemap.
 - `robots.txt` disallows `/clients/` (staging) and `/portal/`.
 - Default social/OG image is `assets/images/og-default.jpg` (1200×630).
-- Fill `sameAs` in `library/site-config.php` when public LinkedIn / Facebook / GBP URLs exist.
+- `sameAs` includes GBP; add LinkedIn / Facebook when those pages exist.
 - Business phone lives in `library/site-config.php` (`phone_display` / `phone_tel`) and surfaces in header, footer, contact, home schema, and Weddings.

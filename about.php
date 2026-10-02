@@ -4,7 +4,7 @@ require __DIR__ . '/library/helpers.php';
 $currentPage = 'about';
 $config = webstar_config();
 $pageTitle = 'About Ian McDonnell & Webstar | Metro Detroit Web Design';
-$pageDescription = 'Meet Ian McDonnell, founder of Webstar Business Services. Affordable web design and marketing for Metro Detroit and Michigan small businesses.';
+$pageDescription = 'Meet Ian McDonnell, founder of Webstar Business Services. Custom websites and marketing packages for Metro Detroit and Michigan small businesses.';
 $canonicalPath = 'about/';
 include __DIR__ . '/library/layout-start.php';
 ?>
@@ -12,7 +12,7 @@ include __DIR__ . '/library/layout-start.php';
     <div class="home-section__inner">
         <div class="landing-content about-panel">
             <h1 class="home-section__heading">About Webstar</h1>
-            <p class="contact-panel__intro">Webstar Business Services helps small businesses in <?php echo webstar_h($config['service_area']); ?> launch affordable websites and marketing with clear, one-time package pricing.</p>
+            <p class="contact-panel__intro">Webstar Business Services helps small businesses in <?php echo webstar_h($config['service_area']); ?> launch clear, one-time website and marketing packages—you own your domain, hosting, and files.</p>
             <div class="about-panel__bio">
                 <img
                     class="about-panel__photo"
