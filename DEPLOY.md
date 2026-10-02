@@ -80,11 +80,9 @@ At your registrar / Reclaim DNS:
 - **A** `@` → hosting server IP
 - **www** → same A record or CNAME per host docs
 
-### 2. Domain → folder map (do not use shared `public_html`)
+### 2. Domain → folder map
 
-cPanel Git keeps a **repository clone** separate from the **public document root**. Deploy copies files via `.cpanel.yml`.
-
-**Never deploy this Webstar repo into `$HOME/public_html`.** That folder is the account default and is easy to mix with other domains (this is how Superior Ice files can wrongly end up in `public_html`).
+The live Webstar site currently uses **`$HOME/public_html`** as document root. Keep the **Git clone** outside that folder.
 
 | Domain | Document root (File Manager path) |
 |--------|-----------------------------------|
