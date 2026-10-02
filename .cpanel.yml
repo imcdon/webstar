@@ -1,15 +1,8 @@
 ---
 deployment:
   tasks:
-    # Never deploy this repo to $HOME/public_html.
-    #
-    # webstarbusinessservices.com
-    #   → $HOME/webstarbusinessservices.com
-    # Staging preview files:
-    #   → $HOME/webstarbusinessservices.com/clients/superior-ice-adventures/
-    # Optional pretty subdomain should use THAT same folder as document root
-    # (not a separate empty/broken SIAPATH). Portal Open preview uses the
-    # /clients/superior-ice-adventures/ URL until the subdomain is remapped.
-    - export DEPLOYPATH=$HOME/webstarbusinessservices.com
+    # Live site document root is public_html (confirmed Oct 2026).
+    # Git clone stays separate (e.g. $HOME/repositories/webstar).
+    - export DEPLOYPATH=$HOME/public_html
     - /bin/mkdir -p $DEPLOYPATH/clients/superior-ice-adventures
     - /usr/bin/rsync -a --exclude='.git' --exclude='.cpanel.yml' --exclude='library/mail-config.php' ./ $DEPLOYPATH/

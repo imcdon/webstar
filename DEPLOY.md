@@ -88,18 +88,18 @@ cPanel Git keeps a **repository clone** separate from the **public document root
 
 | Domain | Document root (File Manager path) |
 |--------|-----------------------------------|
-| `webstarbusinessservices.com` | `$HOME/webstarbusinessservices.com` |
-| `superior-ice-adventures.webstarbusinessservices.com` (optional) | Same folder as `$HOME/webstarbusinessservices.com/clients/superior-ice-adventures` — do **not** use a separate empty SIAPATH (that causes 403) |
-| `superioriceadventures.com` (live client site) | `$HOME/superioriceadventures.com` — **not** `public_html` |
+| `webstarbusinessservices.com` | `$HOME/public_html` (current live root) |
+| `superior-ice-adventures.webstarbusinessservices.com` (optional) | Prefer a dedicated folder; if using Path A under the main site, `$HOME/public_html/clients/superior-ice-adventures` |
+| `superioriceadventures.com` (live client site) | `$HOME/superioriceadventures.com` — **not** the Webstar `public_html` |
 
 | Role | Example path |
 |------|----------------|
 | Git clone (private) | `$HOME/repositories/webstar` |
-| Webstar deploy target (`DEPLOYPATH`) | `$HOME/webstarbusinessservices.com` |
+| Webstar deploy target (`DEPLOYPATH`) | `$HOME/public_html` |
 
-1. Create `$HOME/webstarbusinessservices.com` in File Manager if it does not exist.
-2. cPanel → **Domains** → set **webstarbusinessservices.com** document root to that folder (folder that contains Webstar `index.php` after deploy).
-3. If Superior Ice files were uploaded into `public_html` by mistake: move or delete them from `public_html`, point `superioriceadventures.com` at `$HOME/superioriceadventures.com` (live) or use the staging path above for the Webstar subdomain — then redeploy Webstar.
+1. Confirm **Domains** → `webstarbusinessservices.com` → Document Root is `public_html`.
+2. cPanel → **Git Version Control** clone path = `/home/YOURUSER/repositories/webstar` (not `public_html`).
+3. If Superior Ice live files were mixed into Webstar `public_html` by mistake, move the client site to its own document root (`$HOME/superioriceadventures.com`).
 
 ### 3. Clone the GitHub repo (Git Version Control)
 
@@ -119,17 +119,15 @@ cPanel Git keeps a **repository clone** separate from the **public document root
 2. **Update from Remote** (pull latest `main`).
 3. **Deploy HEAD Commit** — runs the tasks in `.cpanel.yml` (rsync into `DEPLOYPATH`).
 
-Current deploy task (do **not** point `DEPLOYPATH` at `public_html`; do not use `--delete`):
+Current deploy task (do **not** put the Git clone inside `public_html`; do not use `--delete`):
 
 ```yaml
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=$HOME/webstarbusinessservices.com
-    - export SIAPATH=$HOME/superior-ice-adventures.webstarbusinessservices.com
-    - /bin/mkdir -p $DEPLOYPATH $SIAPATH
+    - export DEPLOYPATH=$HOME/public_html
+    - /bin/mkdir -p $DEPLOYPATH/clients/superior-ice-adventures
     - /usr/bin/rsync -a --exclude='.git' --exclude='.cpanel.yml' --exclude='library/mail-config.php' ./ $DEPLOYPATH/
-    - /usr/bin/rsync -a --exclude='.git' --exclude='node_modules' --exclude='_raw' --exclude='includes/db.config.php' clients/superior-ice-adventures/ $SIAPATH/
 ```
 
 ### 5. SSL
@@ -206,10 +204,9 @@ If you enabled **automatic deployment** for the repo, a push that updates the cP
 
 ## Troubleshooting
 
-- **Files landed in `public_html`** — wrong document root or old deploy target. This repo must deploy only to `$HOME/webstarbusinessservices.com`. Fix domain document roots (table above), clean `public_html`, Update + Deploy again.
+- **Files landed in the wrong folder** — `DEPLOYPATH` in `.cpanel.yml` must match **Domains → document root** (currently `$HOME/public_html`). Update from Remote + Deploy after changing it.
 - **Site only loads under `/webstar-business-solutions/`** — document root is wrong; point the domain at the folder that contains `index.php`.
-- **Deploy does nothing / no Deploy button** — `.cpanel.yml` missing from the clone root; pull latest `main`.
-- **Files deploy to the wrong place** — edit `DEPLOYPATH` in `.cpanel.yml` only if your host path differs; never set it to a shared `public_html` used by another site.
+- **Deploy does nothing / no Deploy button** — `.cpanel.yml` missing from the clone root; pull latest `main`. Clean the clone working tree (`git status` must be clean).
 - **Contact form “config” error** — missing or placeholder `library/mail-config.php` on the **document root**.
 - **Portal login fails** — missing `library/portal-clients.php` or wrong hashes on the document root.
 - **cPanel cannot clone** — deploy key / PAT permissions; confirm branch name is `main`.
