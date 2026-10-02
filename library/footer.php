@@ -5,7 +5,13 @@ $seoFooter = webstar_seo_footer_links();
 <footer class="site-footer">
     <div class="site-footer__inner">
         <p class="site-footer__brand"><?php echo webstar_h($config['business_name']); ?></p>
-        <p class="site-footer__contact">Email: <a href="mailto:<?php echo webstar_h($config['email']); ?>" class="site-footer__link"><?php echo webstar_h($config['email']); ?></a></p>
+        <p class="site-footer__contact">
+            <?php if (webstar_phone_display() !== '') : ?>
+                Phone: <a href="<?php echo webstar_h(webstar_phone_href()); ?>" class="site-footer__link"><?php echo webstar_h(webstar_phone_display()); ?></a>
+                <span class="site-footer__contact-sep" aria-hidden="true"> · </span>
+            <?php endif; ?>
+            Email: <a href="mailto:<?php echo webstar_h($config['email']); ?>" class="site-footer__link"><?php echo webstar_h($config['email']); ?></a>
+        </p>
         <p class="site-footer__area">Service area: <?php echo webstar_h($config['service_area']); ?></p>
 
         <div class="site-footer__grid">
@@ -14,6 +20,7 @@ $seoFooter = webstar_seo_footer_links();
                 <ul class="site-footer__sitemap-list">
                     <li><a href="<?php echo webstar_h(webstar_url('index.php')); ?>" class="site-footer__link">Home</a></li>
                     <li><a href="<?php echo webstar_h(webstar_url('packages.php')); ?>" class="site-footer__link">Packages</a></li>
+                    <li><a href="<?php echo webstar_h(webstar_url('weddings/')); ?>" class="site-footer__link">Weddings</a></li>
                     <li><a href="<?php echo webstar_h(webstar_url('examples.php')); ?>" class="site-footer__link">Examples</a></li>
                     <li><a href="<?php echo webstar_h(webstar_url('about.php')); ?>" class="site-footer__link">About</a></li>
                     <li><a href="<?php echo webstar_h(webstar_url('contact.php')); ?>" class="site-footer__link">Contact</a></li>

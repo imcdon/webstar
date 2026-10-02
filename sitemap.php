@@ -10,6 +10,9 @@ $urls = [
     webstar_absolute_url('contact.php'),
     webstar_absolute_url('privacy.php'),
     webstar_absolute_url('terms.php'),
+    webstar_absolute_url('weddings/'),
+    webstar_absolute_url('weddings/services/'),
+    webstar_absolute_url('weddings/examples/'),
 ];
 foreach (webstar_packages() as $pkg) {
     $urls[] = webstar_absolute_url('packages/' . rawurlencode((string) $pkg['slug']) . '/');

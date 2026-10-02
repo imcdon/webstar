@@ -15,6 +15,7 @@ $ogImageUrl = webstar_absolute_url($ogImagePath);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="HFGBTaMM5j9LrSA3VpHdyX-6mFDYKF40Zx3Iy4VMFcw">
     <title><?php echo webstar_h($pageTitle); ?></title>
     <meta name="description" content="<?php echo webstar_h($pageDescription); ?>">
     <?php if ($robotsMeta !== '') : ?>

@@ -10,6 +10,7 @@ $config = webstar_config();
 $navItems = [
     ['id' => 'home', 'label' => 'Home', 'href' => webstar_url('index.php')],
     ['id' => 'packages', 'label' => 'Packages', 'href' => webstar_url('packages.php')],
+    ['id' => 'weddings', 'label' => 'Weddings', 'href' => webstar_url('weddings/')],
     ['id' => 'examples', 'label' => 'Examples', 'href' => webstar_url('examples.php')],
     ['id' => 'about', 'label' => 'About', 'href' => webstar_url('about.php')],
     ['id' => 'contact', 'label' => 'Contact', 'href' => webstar_url('contact.php')],
@@ -26,6 +27,9 @@ if ($headerVariant === 'landing') {
             <img src="<?php echo webstar_h(webstar_url('assets/images/star-icon-teal.png')); ?>" alt="" class="site-header__logo-mark" width="28" height="28">
             <span><?php echo webstar_h($config['business_name']); ?></span>
         </a>
+        <?php if (webstar_phone_display() !== '') : ?>
+            <a class="site-header__phone" href="<?php echo webstar_h(webstar_phone_href()); ?>"><?php echo webstar_h(webstar_phone_display()); ?></a>
+        <?php endif; ?>
     </div>
     <button type="button" class="site-header__menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
         <span class="site-header__menu-bar" aria-hidden="true"></span>

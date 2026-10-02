@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+// Top-level function declarations are registered when the file is included even after
+// an early return — wrap so a double require cannot fatally redeclare.
+if (!function_exists('webstar_config')) {
+
 function webstar_config(): array
 {
     static $config = null;
@@ -17,6 +21,35 @@ function webstar_h(string $value): string
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 }
 
+function webstar_phone_display(): string
+{
+    return trim((string) (webstar_config()['phone_display'] ?? ''));
+}
+
+/** E.164 telephone for schema.org (e.g. +12485643663). */
+function webstar_phone_e164(): string
+{
+    $digits = preg_replace('/\D+/', '', (string) (webstar_config()['phone_tel'] ?? '')) ?? '';
+    if ($digits === '') {
+        $digits = preg_replace('/\D+/', '', webstar_phone_display()) ?? '';
+    }
+    if ($digits === '') {
+        return '';
+    }
+    if (strlen($digits) === 10) {
+        $digits = '1' . $digits;
+    }
+
+    return '+' . $digits;
+}
+
+function webstar_phone_href(): string
+{
+    $e164 = webstar_phone_e164();
+
+    return $e164 !== '' ? 'tel:' . $e164 : '';
+}
+
 /**
  * Site root URL path (strips /portal or /library when the current script lives there).
  */
@@ -28,9 +61,16 @@ function webstar_base_path(): string
         return '';
     }
     $dir = rtrim($dir, '/');
-    if (preg_match('#/(portal|library)$#', $dir)) {
+    if (preg_match('#/(portal|library|weddings)$#', $dir)) {
         $dir = dirname($dir);
         if ($dir === '/' || $dir === '\\' || $dir === '.') {
+            return '';
+        }
+    }
+    // Nested under /weddings/... (e.g. demos)
+    if (preg_match('#/weddings(/|$)#', $dir)) {
+        $dir = preg_replace('#/weddings(/.*)?$#', '', $dir) ?? '';
+        if ($dir === '/' || $dir === '\\' || $dir === '.' || $dir === '') {
             return '';
         }
     }
@@ -205,6 +245,28 @@ function webstar_seo_landing_url(string $slug): string
 }
 
 /**
+ * Clean public URL under the Weddings microsite.
+ */
+function webstar_weddings_url(string $path = ''): string
+{
+    $path = trim($path, '/');
+    if ($path === '' || $path === 'index.php') {
+        return webstar_url('weddings/');
+    }
+    if ($path === 'services.php' || $path === 'services') {
+        return webstar_url('weddings/services/');
+    }
+    if ($path === 'examples.php' || $path === 'examples') {
+        return webstar_url('weddings/examples/');
+    }
+    if (str_starts_with($path, 'demos/')) {
+        return webstar_url('weddings/' . $path . (str_ends_with($path, '/') ? '' : '/'));
+    }
+
+    return webstar_url('weddings/' . $path);
+}
+
+/**
  * SEO landing links for footer (service areas vs industries).
  *
  * @return array{areas: list<array{label: string, href: string}>, industries: list<array{label: string, href: string}>}
@@ -250,3 +312,5 @@ function webstar_examples(): array
 
     return $examples;
 }
+
+} // end if (!function_exists('webstar_config'))

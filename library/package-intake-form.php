@@ -45,9 +45,9 @@ $config = webstar_config();
                         <?php endforeach; ?>
                     </ul>
                 <?php elseif ($reason === 'config') : ?>
-                    <p>Form delivery is not configured yet. Please email <a href="mailto:<?php echo webstar_h($config['email']); ?>"><?php echo webstar_h($config['email']); ?></a>.</p>
+                    <p>Form delivery is not configured yet. Please call <a href="<?php echo webstar_h(webstar_phone_href()); ?>"><?php echo webstar_h(webstar_phone_display()); ?></a> or email <a href="mailto:<?php echo webstar_h($config['email']); ?>"><?php echo webstar_h($config['email']); ?></a>.</p>
                 <?php else : ?>
-                    <p>We could not send your request. Please try again or email <a href="mailto:<?php echo webstar_h($config['email']); ?>"><?php echo webstar_h($config['email']); ?></a>.</p>
+                    <p>We could not send your request. Please try again, call <a href="<?php echo webstar_h(webstar_phone_href()); ?>"><?php echo webstar_h(webstar_phone_display()); ?></a>, or email <a href="mailto:<?php echo webstar_h($config['email']); ?>"><?php echo webstar_h($config['email']); ?></a>.</p>
                 <?php endif; ?>
             </div>
         <?php endif; ?>

@@ -24,6 +24,10 @@ DirectoryIndex index.php
     RewriteCond %{THE_REQUEST} \s/+((?:[^?\s]*?/)?)landing\.php\?[^\s]*slug=([^\s&]+) [NC]
     RewriteRule ^ /%1%2/? [R=301,L]
 
+    # Weddings clean paths (before directory pass-through)
+    RewriteRule ^weddings/services/?$ weddings/services.php [L,QSA]
+    RewriteRule ^weddings/examples/?$ weddings/examples.php [L,QSA]
+
     # Serve remaining real files and directories as-is
     RewriteCond %{REQUEST_FILENAME} -f [OR]
     RewriteCond %{REQUEST_FILENAME} -d
@@ -37,6 +41,6 @@ DirectoryIndex index.php
     RewriteRule ^(examples|about|contact|privacy|terms)/?$ $1.php [L,QSA]
 
     # SEO landings: /{slug}/ → landing.php (skip reserved first segments)
-    RewriteCond %{REQUEST_URI} !/(packages|examples|about|contact|privacy|terms|portal|clients|library|assets|scripts|vendor)(/|$) [NC]
+    RewriteCond %{REQUEST_URI} !/(packages|examples|about|contact|privacy|terms|portal|clients|library|assets|scripts|vendor|weddings)(/|$) [NC]
     RewriteRule ^([a-z0-9-]+)/?$ landing.php?slug=$1 [L,QSA]
 </IfModule>

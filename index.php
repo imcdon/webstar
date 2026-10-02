@@ -37,6 +37,10 @@ $businessLd = [
     'areaServed' => $config['service_area'],
     'priceRange' => '$50–$1000+',
 ];
+$phoneE164 = webstar_phone_e164();
+if ($phoneE164 !== '') {
+    $businessLd['telephone'] = $phoneE164;
+}
 $sameAs = array_values(array_filter(array_map('strval', $config['sameAs'] ?? [])));
 if ($sameAs !== []) {
     $businessLd['sameAs'] = $sameAs;
