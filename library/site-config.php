@@ -13,5 +13,7 @@ return [
     'region' => 'MI',
     'country' => 'US',
     // Public profile URLs for schema sameAs (LinkedIn, Facebook, GBP, etc.)
-    'sameAs' => [],
+    'sameAs' => [
+        'https://maps.app.goo.gl/ZUKh1nB9Q5wcub5F6',
+    ],
 ];
