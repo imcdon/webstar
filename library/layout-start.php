@@ -8,7 +8,7 @@ $canonicalPath = $canonicalPath ?? '';
 $skipCanonical = !empty($skipCanonical);
 $robotsMeta = $robotsMeta ?? '';
 $canonicalUrl = $canonicalPath !== '' ? webstar_absolute_url($canonicalPath) : webstar_absolute_url('');
-$ogImagePath = $ogImagePath ?? 'assets/images/IMG_4687.JPG';
+$ogImagePath = $ogImagePath ?? 'assets/images/og-default.jpg';
 $ogImageUrl = webstar_absolute_url($ogImagePath);
 ?><!DOCTYPE html>
 <html lang="en">

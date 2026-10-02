@@ -36,5 +36,7 @@ One winning URL per head term. Do not retarget losers to compete for the same pr
 ### Crawl notes
 
 - `404` and portal pages use `noindex` (portal also `nofollow`). Keep them out of the sitemap.
+- `robots.txt` disallows `/clients/` (staging) and `/portal/`.
+- Default social/OG image is `assets/images/og-default.jpg` (1200×630).
 - Fill `sameAs` in `library/site-config.php` when public LinkedIn / Facebook / GBP URLs exist.
 - Business phone lives in `library/site-config.php` (`phone_display` / `phone_tel`) and surfaces in header, footer, contact, home schema, and Weddings.

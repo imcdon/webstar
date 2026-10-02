@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /clients/
+Disallow: /portal/
 
-Sitemap: https://webstarbusinessservices.com/sitemap.php
+Sitemap: https://www.webstarbusinessservices.com/sitemap.php
