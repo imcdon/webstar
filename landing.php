@@ -16,34 +16,64 @@ $canonicalPath = rawurlencode($slug) . '/';
 $recommended = webstar_package_by_slug((string) ($page['package_slug'] ?? ''));
 $landingUrl = webstar_absolute_url($canonicalPath);
 $h1 = (string) $page['h1'];
-
-$jsonLd = json_encode([
-    '@context' => 'https://schema.org',
-    '@type' => 'BreadcrumbList',
-    'itemListElement' => [
-        [
-            '@type' => 'ListItem',
-            'position' => 1,
-            'name' => 'Home',
-            'item' => webstar_absolute_url(''),
-        ],
-        [
-            '@type' => 'ListItem',
-            'position' => 2,
-            'name' => 'Packages',
-            'item' => webstar_absolute_url('packages/'),
-        ],
-        [
-            '@type' => 'ListItem',
-            'position' => 3,
-            'name' => $h1,
-            'item' => $landingUrl,
-        ],
-    ],
-], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-
 $faqs = is_array($page['faq'] ?? null) ? $page['faq'] : [];
 $relatedSlugs = is_array($page['related_slugs'] ?? null) ? $page['related_slugs'] : [];
+
+$ldGraphs = [
+    [
+        '@context' => 'https://schema.org',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => [
+            [
+                '@type' => 'ListItem',
+                'position' => 1,
+                'name' => 'Home',
+                'item' => webstar_absolute_url(''),
+            ],
+            [
+                '@type' => 'ListItem',
+                'position' => 2,
+                'name' => 'Packages',
+                'item' => webstar_absolute_url('packages/'),
+            ],
+            [
+                '@type' => 'ListItem',
+                'position' => 3,
+                'name' => $h1,
+                'item' => $landingUrl,
+            ],
+        ],
+    ],
+];
+
+$faqEntities = [];
+foreach ($faqs as $faq) {
+    $q = trim((string) ($faq['q'] ?? ''));
+    $a = trim((string) ($faq['a'] ?? ''));
+    if ($q === '' || $a === '') {
+        continue;
+    }
+    $faqEntities[] = [
+        '@type' => 'Question',
+        'name' => $q,
+        'acceptedAnswer' => [
+            '@type' => 'Answer',
+            'text' => $a,
+        ],
+    ];
+}
+if ($faqEntities !== []) {
+    $ldGraphs[] = [
+        '@context' => 'https://schema.org',
+        '@type' => 'FAQPage',
+        'mainEntity' => $faqEntities,
+    ];
+}
+
+$jsonLd = json_encode(
+    count($ldGraphs) === 1 ? $ldGraphs[0] : $ldGraphs,
+    JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
+);
 
 include __DIR__ . '/library/layout-start.php';
 ?>

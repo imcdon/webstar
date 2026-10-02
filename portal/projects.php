@@ -15,6 +15,7 @@ $pageDescription = $isAdmin
     ? 'All Webstar client staging projects.'
     : 'Your Webstar projects in progress.';
 $canonicalPath = 'portal/projects.php';
+$skipCanonical = true;
 $robotsMeta = 'noindex, nofollow';
 include dirname(__DIR__) . '/library/layout-start.php';
 ?>

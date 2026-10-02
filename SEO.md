@@ -50,3 +50,4 @@ Webstar Business Services · Metro Detroit & surrounding Michigan communities ·
 - Default social/OG image is `assets/images/og-default.jpg` (1200×630).
 - `sameAs` includes GBP; add LinkedIn / Facebook when those pages exist.
 - Business phone lives in `library/site-config.php` (`phone_display` / `phone_tel`) and surfaces in header, footer, contact, home schema, and Weddings.
+- SEO landings emit FAQPage JSON-LD when FAQ data exists; portal pages skip canonical while remaining noindex.
