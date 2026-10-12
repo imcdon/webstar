@@ -1,10 +1,29 @@
 # Image sources
 
-Hero uses a CSS river/tributary atmosphere gradient until client photos are supplied.
+## Hero
 
-Attempted pulls (login-walled / not usable without client supply):
+| Use | File |
+|-----|------|
+| Home hero | `King-Salmon-Hero-Image.jpg` |
 
-- Instagram: https://www.instagram.com/jaretttt/
-- Facebook: https://www.facebook.com/jarett.carlson/
+## Species cards (client-supplied)
 
-Prefer Jarett-supplied fishing photos (GUIDE trip shots, fish in hand, trib water). Do not hotlink CDN URLs. Do not reuse Gold Coast Fishing Co assets.
+| Card | File |
+|------|------|
+| King Salmon | `Jarett-Calson-King-Salmon.jpg` |
+| Steelhead | `Jarett-Carlson-Steelhead.jpg` |
+| Trout | `Jarett-Carlson-Brown-Trout.jpg` |
+
+Location cards still use CSS atmosphere gradients until location photos are supplied.
+
+Guide portrait: `Jarett-Carlson-Portrait.jpg`
+
+## Client photos
+
+- `Client-Photo-001.jpg`
+- `Client-Photo-002.jpg`
+- `Client-Photo-003.jpg`
+- `Client-Photo-Split-004.jpg`
+- `Client-Photo-Split-005.jpg`
+
+Do not hotlink CDN URLs. Do not reuse Gold Coast Fishing Co assets.
