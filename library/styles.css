@@ -1836,7 +1836,7 @@ main {
 .portal-project-card__title {
     margin: 0;
     font-size: 1.2rem;
-    color: var(--ink);
+    color: #ffffff;
 }
 
 .portal-project-card__meta {
