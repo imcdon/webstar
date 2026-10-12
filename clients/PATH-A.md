@@ -30,10 +30,7 @@ Source of truth: `clients/superior-ice-adventures/` in the **webstar** repo.
 3. cPanel → Webstar Git → **Update from Remote** → **Deploy HEAD Commit**.
 4. Portal → **Open preview** (uses the `/clients/...` URL).
 
-Credentials when prompted:
-
-- `webstar` / `webstarAdmin2026`
-- `superior` / `preview123`
+Credentials when prompted: use **Client Portal** usernames (hashes live in `library/portal-clients.php` / staging fallback). Do **not** commit plaintext passwords—store them in a password manager. See [SECURITY-CHECKLIST.md](SECURITY-CHECKLIST.md).
 
 ---
 

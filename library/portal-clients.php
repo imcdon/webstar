@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 /**
  * Client Portal registry.
- *
- * Universal admin: username "webstar" / password "webstarAdmin2026" (change after deploy).
- * Demo client: username "superior" / password "preview123" (change after handoff).
+ * Users are identified by username keys; store only password_hash values here.
+ * Keep plaintext passwords out of git (password manager). See clients/SECURITY-CHECKLIST.md.
  *
  * @return array<string, array{
  *   display_name: string,

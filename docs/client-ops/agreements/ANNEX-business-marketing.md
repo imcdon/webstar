@@ -1,0 +1,31 @@
+# Package Annex — Business Website and Marketing Package
+
+Attach to [SERVICE-AGREEMENT-MASTER.md](SERVICE-AGREEMENT-MASTER.md).  
+Internal WBS: [WBS-business-website-marketing.md](../wbs/WBS-business-website-marketing.md) (ops only).
+
+| Field | Value |
+|-------|--------|
+| `{PACKAGE_NAME}` | Business Website and Marketing Package |
+| Typical `{PRICE}` | $500–$1,000 (state exact `{PRICE}` after scope call) |
+| Typical payment | 50% deposit; balance before launch |
+| Turnaround | About **1 week** after complete intake, deposit, and locked scope |
+
+## Deliverables
+
+- Fully functional responsive website (**5–10 pages**)  
+- Contact form; call and book-now style buttons  
+- Calendar view, booking flow, or **one** third-party booking integration as scoped in writing  
+- Custom design and content structure  
+- Marketing bundle: **2 flyers**, business card, letterhead, email signature  
+
+Exact page list and booking tool (e.g. Calendly, Square) must be written into `{PROJECT_SUMMARY}` or a short addendum email before production.
+
+## Not included (unless written change order)
+
+- Unlimited pages or unlimited third-party integrations  
+- Custom application development beyond the agreed booking path  
+- Ongoing monthly marketing retainers  
+
+## Project summary example
+
+`{PROJECT_SUMMARY}`: Build a 5–10 page responsive site with contact/booking path and matching marketing collateral for `{CLIENT_LEGAL_NAME}` at agreed price `{PRICE}`.

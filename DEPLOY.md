@@ -155,9 +155,9 @@ cPanel document root for this preview is **`$HOME/superior-ice-adventures.websta
 2. Document root → `/home/YOURUSER/superior-ice-adventures.webstarbusinessservices.com`
 3. SSL for that hostname.
 4. Deploy Webstar (`Update from Remote` → `Deploy HEAD Commit`). `.cpanel.yml` copies `clients/superior-ice-adventures/` into that folder so `index.php` is at the subdomain root. Or deploy the standalone Superior Ice GitHub repo into the same folder.
-5. Visit the subdomain — the browser should **prompt for a username and password**. Use Client Portal credentials:
-   - Admin: `webstar` / `webstarAdmin2026`
-   - Client: `superior` / `preview123`
+5. Visit the subdomain — the browser should **prompt for a username and password**. Use Client Portal credentials from your password manager (do not commit plaintext passwords; see [clients/SECURITY-CHECKLIST.md](clients/SECURITY-CHECKLIST.md)).
+   - Admin portal user: `webstar`
+   - Client portal user: `superior`
 6. Portal “Open preview” uses `staging_url` → `https://webstarbusinessservices.com/clients/superior-ice-adventures/` (working path). Remap the subdomain document root to that same folder before switching the URL to the pretty hostname.
 
 Auth is enforced by `includes/staging-gate.php` (HTTP Basic) on Webstar/local hosts only — not on live `superioriceadventures.com`.

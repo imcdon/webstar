@@ -83,6 +83,52 @@ include __DIR__ . '/library/layout-start.php';
             <p class="package-page__compare"><a href="<?php echo webstar_h(webstar_url('packages.php')); ?>">Back to all packages</a></p>
         </div>
 
+        <?php if (!empty($package['process']) && is_array($package['process'])) :
+            $process = $package['process'];
+            $processTitle = (string) ($process['title'] ?? 'How we work');
+            $processIntro = (string) ($process['intro'] ?? '');
+            $phases = $process['phases'] ?? [];
+            ?>
+            <section class="package-process" aria-labelledby="package-process-title">
+                <h2 class="package-process__title" id="package-process-title"><?php echo webstar_h($processTitle); ?></h2>
+                <?php if ($processIntro !== '') : ?>
+                    <p class="package-process__intro"><?php echo webstar_h($processIntro); ?></p>
+                <?php endif; ?>
+                <?php if (is_array($phases) && $phases !== []) : ?>
+                    <ol class="package-process__phases">
+                        <?php foreach ($phases as $index => $phase) :
+                            if (!is_array($phase)) {
+                                continue;
+                            }
+                            $phaseName = (string) ($phase['name'] ?? '');
+                            $phaseSummary = (string) ($phase['summary'] ?? '');
+                            $phaseSteps = $phase['steps'] ?? [];
+                            if ($phaseName === '') {
+                                continue;
+                            }
+                            ?>
+                            <li class="package-process__phase">
+                                <p class="package-process__index" aria-hidden="true"><?php echo webstar_h(str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT)); ?></p>
+                                <div class="package-process__body">
+                                    <h3 class="package-process__name"><?php echo webstar_h($phaseName); ?></h3>
+                                    <?php if ($phaseSummary !== '') : ?>
+                                        <p class="package-process__summary"><?php echo webstar_h($phaseSummary); ?></p>
+                                    <?php endif; ?>
+                                    <?php if (is_array($phaseSteps) && $phaseSteps !== []) : ?>
+                                        <ul class="package-process__steps">
+                                            <?php foreach ($phaseSteps as $step) : ?>
+                                                <li><?php echo webstar_h((string) $step); ?></li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    <?php endif; ?>
+                                </div>
+                            </li>
+                        <?php endforeach; ?>
+                    </ol>
+                <?php endif; ?>
+            </section>
+        <?php endif; ?>
+
         <?php include __DIR__ . '/library/package-intake-form.php'; ?>
     </div>
 </section>

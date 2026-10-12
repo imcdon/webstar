@@ -213,6 +213,8 @@ function webstar_feature_labels(): array
         'business_card' => 'Business card',
         'letterhead' => 'Custom letterhead',
         'email_signature' => 'Email signature',
+        'google_business_profile' => 'Google Business Profile setup',
+        'google_analytics' => 'Google Analytics setup & monitoring start',
         'custom_functionality' => 'Custom functionality',
         'third_party_integrations' => 'Third-party integrations',
     ];

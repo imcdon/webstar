@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Webstar Business Card</title>
+  <style>
+    @page {
+      size: letter;
+      margin: 0.5in;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #0a2f2c;
+      background: #e8eeed;
+    }
+    .sheet {
+      max-width: 8.5in;
+      margin: 0 auto;
+      padding: 0.5in;
+    }
+    .hint {
+      margin: 0 0 1rem;
+      font-size: 12px;
+      color: #4b5c58;
+      max-width: 36rem;
+    }
+    .hint strong { color: #0a2f2c; }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35in;
+    }
+    .card {
+      width: 3.5in;
+      height: 2in;
+      position: relative;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(4, 25, 26, 0.12);
+    }
+    .card--front {
+      background: linear-gradient(145deg, #ffffff 0%, #f2f8f7 55%, #eaf4f2 100%);
+      border: 1px solid #d5e3e0;
+      padding: 0.18in 0.2in;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card--back {
+      background: #04191a;
+      color: #e8f4f1;
+      padding: 0.2in;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .brand img {
+      width: 28px;
+      height: 28px;
+      display: block;
+    }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      min-width: 0;
+    }
+    .brand-name {
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      line-height: 1.15;
+      color: #0a2f2c;
+    }
+    .brand-tag {
+      font-size: 7.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #115e59;
+    }
+    .person {
+      margin-top: 0.08in;
+    }
+    .person-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0a2f2c;
+      line-height: 1.2;
+    }
+    .person-role {
+      font-size: 9px;
+      color: #115e59;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+    .contact {
+      border-top: 1.5px solid #c9a227;
+      padding-top: 0.08in;
+      font-size: 8.5px;
+      line-height: 1.45;
+      color: #4b5c58;
+    }
+    .contact a {
+      color: #115e59;
+      text-decoration: none;
+    }
+    .contact .line {
+      display: block;
+    }
+    .back-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .back-top img {
+      width: 26px;
+      height: 26px;
+      display: block;
+    }
+    .back-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #e8cc6a;
+      letter-spacing: 0.02em;
+    }
+    .back-list {
+      margin: 0.12in 0 0;
+      padding: 0;
+      list-style: none;
+      font-size: 9px;
+      line-height: 1.55;
+      color: rgba(232, 244, 241, 0.88);
+    }
+    .back-list li::before {
+      content: "";
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      margin-right: 7px;
+      border-radius: 50%;
+      background: #c9a227;
+      vertical-align: middle;
+    }
+    .back-footer {
+      border-top: 1px solid rgba(201, 162, 39, 0.55);
+      padding-top: 0.08in;
+      font-size: 7.5px;
+      line-height: 1.4;
+      color: rgba(232, 244, 241, 0.7);
+    }
+    .back-footer strong {
+      color: #e8cc6a;
+      font-weight: 600;
+    }
+    @media print {
+      html, body { background: #fff; }
+      .sheet { padding: 0; }
+      .hint { display: none; }
+      .card { box-shadow: none; break-inside: avoid; }
+      .card--front { border: 0.5pt solid #cfdad7; }
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <p class="hint">
+      <strong>Webstar business card</strong> — US standard <strong>3.5&nbsp;×&nbsp;2&nbsp;in</strong>.
+      Front + back preview. In Chrome: Print → Save as PDF → paper Letter, margins Default or None, background graphics On.
+      Trim to card size at the printer (or export each face separately).
+    </p>
+
+    <div class="cards">
+      <article class="card card--front" aria-label="Business card front">
+        <div>
+          <div class="brand">
+            <img src="../../../assets/images/star-icon-gold.png" alt="">
+            <div class="brand-text">
+              <span class="brand-name">Webstar Business Services</span>
+              <span class="brand-tag">Websites &amp; marketing</span>
+            </div>
+          </div>
+          <div class="person">
+            <div class="person-name">Ian McDonnell</div>
+            <div class="person-role">Owner</div>
+          </div>
+        </div>
+        <div class="contact">
+          <span class="line">248-564-3663</span>
+          <span class="line"><a href="mailto:info@webstarbusinessservices.com">info@webstarbusinessservices.com</a></span>
+          <span class="line"><a href="https://www.webstarbusinessservices.com">webstarbusinessservices.com</a></span>
+        </div>
+      </article>
+
+      <article class="card card--back" aria-label="Business card back">
+        <div>
+          <div class="back-top">
+            <img src="../../../assets/images/star-icon-gold.png" alt="">
+            <span class="back-title">What we deliver</span>
+          </div>
+          <ul class="back-list">
+            <li>Websites &amp; marketing packages</li>
+            <li>Google Business Profile &amp; Analytics</li>
+            <li>Metro Detroit &amp; Michigan</li>
+          </ul>
+        </div>
+        <div class="back-footer">
+          <strong>Webstar Business Services LLC</strong><br>
+          248-564-3663 · info@webstarbusinessservices.com
+        </div>
+      </article>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Webstar Letterhead</title>
+  <style>
+    @page {
+      size: letter;
+      margin: 0;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 8.5in;
+      height: 11in;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #0a2f2c;
+      background: #fff;
+    }
+    .page {
+      position: relative;
+      width: 8.5in;
+      height: 11in;
+      padding: 0.65in 0.75in 0.85in;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #c9a227;
+    }
+    .header img {
+      width: 42px;
+      height: 42px;
+      display: block;
+    }
+    .header-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .header-text .name {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: #0a2f2c;
+    }
+    .header-text .tag {
+      font-size: 11px;
+      color: #115e59;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .body {
+      min-height: 8.2in;
+      padding-top: 0.35in;
+      font-size: 11pt;
+      line-height: 1.5;
+      color: #0a2f2c;
+    }
+    .body .placeholder {
+      color: #9aa8a5;
+      font-style: italic;
+      font-size: 10pt;
+    }
+    .footer {
+      position: absolute;
+      left: 0.75in;
+      right: 0.75in;
+      bottom: 0.45in;
+      padding-top: 10px;
+      border-top: 1px solid #c9a227;
+      font-size: 9px;
+      line-height: 1.4;
+      color: #4b5c58;
+      text-align: center;
+    }
+    .footer strong {
+      color: #0a2f2c;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <img src="../../../assets/images/star-icon-gold.png" alt="">
+      <div class="header-text">
+        <span class="name">Webstar Business Services</span>
+        <span class="tag">Websites &amp; marketing - Metro Detroit</span>
+      </div>
+    </header>
+    <main class="body">
+      <p class="placeholder">Agreement or correspondence body starts here. Keep top and bottom margins clear of client content.</p>
+    </main>
+    <footer class="footer">
+      <strong>Webstar Business Services LLC</strong><br>
+      Metro Detroit &amp; surrounding Michigan communities - 248-564-3663 - info@webstarbusinessservices.com<br>
+      https://www.webstarbusinessservices.com
+    </footer>
+  </div>
+</body>
+</html>

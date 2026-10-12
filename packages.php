@@ -4,7 +4,7 @@ require __DIR__ . '/library/helpers.php';
 $config = webstar_config();
 $currentPage = 'packages';
 $pageTitle = 'Website & Marketing Packages | Metro Detroit — Webstar Business Services';
-$pageDescription = 'Compare Webstar service packages for Metro Detroit and Michigan: marketing from $50, websites from $200, full business builds $500–$1,000+. Clear deliverables and turnaround times.';
+$pageDescription = 'Compare Webstar service packages for Metro Detroit and Michigan: marketing from $50, Get Me On Google $200, websites from $200, full business builds $500–$1,000+. Clear deliverables and turnaround times.';
 $canonicalPath = 'packages/';
 $packages = webstar_packages();
 $listItems = [];

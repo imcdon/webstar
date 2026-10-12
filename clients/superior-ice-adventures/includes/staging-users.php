@@ -6,9 +6,7 @@ declare(strict_types=1);
  * Fallback staging users when portal-clients.php is not reachable
  * (e.g. this folder deployed alone). Keep hashes in sync with
  * library/portal-clients.php on the Webstar site.
- *
- * webstar / webstarAdmin2026
- * superior / preview123
+ * Do not document plaintext passwords here — see clients/SECURITY-CHECKLIST.md.
  */
 return [
     'webstar' => [

@@ -799,6 +799,119 @@ main {
     text-align: left;
 }
 
+/* —— How we work (package process) —— */
+.package-process {
+    margin: 2rem 0 0;
+    padding: 1.75rem 1.25rem;
+    border-radius: var(--radius);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.22);
+}
+
+.package-process__title {
+    margin: 0 0 0.5rem;
+    font-size: clamp(1.35rem, 3vw, 1.7rem);
+    font-weight: 700;
+    color: var(--ink-on-dark);
+}
+
+.package-process__intro {
+    margin: 0 0 1.35rem;
+    max-width: 40rem;
+    color: var(--ink-on-dark-muted);
+    line-height: 1.55;
+}
+
+.package-process__phases {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.85rem;
+}
+
+.package-process__phase {
+    display: grid;
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+    gap: 0.75rem 1rem;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.package-process__phase:first-child {
+    border-top: 0;
+    padding-top: 0;
+}
+
+.package-process__index {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--gold-400);
+    padding-top: 0.15rem;
+}
+
+.package-process__name {
+    margin: 0 0 0.4rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--ink-on-dark);
+}
+
+.package-process__summary {
+    margin: 0 0 0.65rem;
+    color: var(--ink-on-dark-muted);
+    line-height: 1.55;
+    font-size: 0.95rem;
+}
+
+.package-process__steps {
+    margin: 0;
+    padding: 0 0 0 1.1rem;
+    color: var(--ink-on-dark-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.package-process__steps li + li {
+    margin-top: 0.25rem;
+}
+
+@media (min-width: 768px) {
+    .package-process {
+        padding: 2rem 1.75rem;
+    }
+
+    .package-process__phases {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 960px) {
+    .package-process__phases {
+        grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+        gap: 1rem;
+    }
+
+    .package-process__phase {
+        grid-template-columns: 1fr;
+        border-top: 0;
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 0 0 0 1.15rem;
+        margin: 0;
+    }
+
+    .package-process__phase:first-child {
+        border-left: 0;
+        padding-left: 0;
+    }
+
+    .package-process__index {
+        margin-bottom: 0.35rem;
+    }
+}
+
 /* —— Comparison matrix —— */
 .compare {
     margin-top: 0.5rem;

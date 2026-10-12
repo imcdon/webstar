@@ -30,8 +30,120 @@ return [
             'business_card' => true,
             'letterhead' => true,
             'email_signature' => true,
+            'google_business_profile' => false,
+            'google_analytics' => false,
             'custom_functionality' => false,
             'third_party_integrations' => '0',
+        ],
+        'process' => [
+            'title' => 'How we work',
+            'intro' => 'Here’s what happens after you send the intake form — from kickoff to your finished files.',
+            'phases' => [
+                [
+                    'name' => 'Planning',
+                    'summary' => 'We gather your logo, contact details, and what you want each piece to say. You approve the agreement and pay in full to start.',
+                    'steps' => [
+                        'Share logo and company details',
+                        'Confirm flyer messages and offers',
+                        'Agreement and payment to begin',
+                    ],
+                ],
+                [
+                    'name' => 'Building',
+                    'summary' => 'We design your two flyers, business card, letterhead, and email signature to match your brand, then send drafts for your review.',
+                    'steps' => [
+                        'Custom designs for each deliverable',
+                        'Drafts for your feedback',
+                        'Revisions per the agreement',
+                    ],
+                ],
+                [
+                    'name' => 'Launch',
+                    'summary' => 'You receive print-ready files and a ready-to-paste email signature, plus short notes on how to use them.',
+                    'steps' => [
+                        'Final print-ready files',
+                        'Email signature ready to install',
+                        'Simple usage notes',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    'get-me-on-google' => [
+        'slug' => 'get-me-on-google',
+        'nav_label' => 'Get Me On Google',
+        'title' => 'Get Me On Google',
+        'price' => '$200',
+        'turnaround' => '3–5 days',
+        'meta_description' => 'Get Me On Google: Google Business Profile setup plus Google Analytics setup and monitoring start for $200.',
+        'summary' => 'Show up where local customers search — a complete Google Business Profile plus Analytics so you can see what is working.',
+        'includes' => [
+            'Google Business Profile create or claim',
+            'Categories, hours, services, photos, and NAP setup',
+            'Verification guidance through Google’s process',
+            'Google Analytics (GA4) property setup',
+            'Basic site tracking when you have a website',
+            'Access handoff and first monitoring check-in',
+        ],
+        'ideal_for' => 'Local businesses that need Maps and Search visibility, with clear traffic insights.',
+        'badge' => '',
+        'tier' => 2,
+        'features' => [
+            'pages' => '—',
+            'contact_form' => false,
+            'call_book_buttons' => false,
+            'booking_integration' => false,
+            'custom_design' => false,
+            'flyers' => '0',
+            'business_card' => false,
+            'letterhead' => false,
+            'email_signature' => false,
+            'google_business_profile' => true,
+            'google_analytics' => true,
+            'custom_functionality' => false,
+            'third_party_integrations' => '2',
+        ],
+        'process' => [
+            'title' => 'How we work',
+            'intro' => 'From your business details to a live Google profile and Analytics you can actually use.',
+            'phases' => [
+                [
+                    'name' => 'Planning',
+                    'summary' => 'We collect your business name, address, phone, hours, categories, photos, and website URL. You approve the agreement and pay in full to start.',
+                    'steps' => [
+                        'Business details and service area',
+                        'Photos, hours, and categories',
+                        'Agreement and payment to begin',
+                    ],
+                ],
+                [
+                    'name' => 'Building',
+                    'summary' => 'We create or claim your Google Business Profile, fill it out completely, and set up Google Analytics (GA4) with basic tracking when you have a site.',
+                    'steps' => [
+                        'Create or claim your Google Business Profile',
+                        'Complete profile details and media',
+                        'Set up Analytics and connect your site if you have one',
+                    ],
+                ],
+                [
+                    'name' => 'Launch',
+                    'summary' => 'We walk you through Google’s verification steps, confirm the profile is ready, and make sure you have owner access to both Google tools.',
+                    'steps' => [
+                        'Verification guidance',
+                        'You own the Google accounts',
+                        'Confirm profile and Analytics access',
+                    ],
+                ],
+                [
+                    'name' => 'Growth',
+                    'summary' => 'We begin monitoring Analytics with a short first check-in so you know what to watch — views, clicks, and early traffic patterns.',
+                    'steps' => [
+                        'First monitoring check-in',
+                        'What the numbers mean in plain English',
+                        'Simple next-step recommendations',
+                    ],
+                ],
+            ],
         ],
     ],
     'simple-website' => [
@@ -50,7 +162,7 @@ return [
         ],
         'ideal_for' => 'Solo operators and small teams ready to go live quickly.',
         'badge' => 'Most popular',
-        'tier' => 2,
+        'tier' => 3,
         'features' => [
             'pages' => '3',
             'contact_form' => true,
@@ -61,8 +173,43 @@ return [
             'business_card' => false,
             'letterhead' => false,
             'email_signature' => false,
+            'google_business_profile' => false,
+            'google_analytics' => false,
             'custom_functionality' => false,
             'third_party_integrations' => '0',
+        ],
+        'process' => [
+            'title' => 'How we work',
+            'intro' => 'A clear path from your ideas to a live three-page website.',
+            'phases' => [
+                [
+                    'name' => 'Planning',
+                    'summary' => 'We confirm your three pages, collect logo and photos, and set up the agreement and deposit.',
+                    'steps' => [
+                        'Lock your three-page sitemap',
+                        'Collect logo, photos, and copy notes',
+                        'Agreement and deposit to start',
+                    ],
+                ],
+                [
+                    'name' => 'Building',
+                    'summary' => 'We design and build your site (including contact form and call/book buttons), then share a preview for feedback.',
+                    'steps' => [
+                        'Custom design for your brand',
+                        'Contact form and call/book buttons',
+                        'Preview and your feedback',
+                    ],
+                ],
+                [
+                    'name' => 'Launch',
+                    'summary' => 'We put the site live on your hosting (or as agreed), test everything, and hand off so you own your domain and hosting.',
+                    'steps' => [
+                        'Go live on agreed hosting',
+                        'Test pages, form, and buttons',
+                        'You keep domain and hosting accounts',
+                    ],
+                ],
+            ],
         ],
     ],
     'business-website-marketing' => [
@@ -82,7 +229,7 @@ return [
         ],
         'ideal_for' => 'Businesses that need a stronger web presence and coordinated brand materials.',
         'badge' => 'Most value',
-        'tier' => 3,
+        'tier' => 4,
         'features' => [
             'pages' => '5–10',
             'contact_form' => true,
@@ -93,8 +240,52 @@ return [
             'business_card' => true,
             'letterhead' => true,
             'email_signature' => true,
+            'google_business_profile' => false,
+            'google_analytics' => false,
             'custom_functionality' => false,
             'third_party_integrations' => '1+',
+        ],
+        'process' => [
+            'title' => 'How we work',
+            'intro' => 'Website and brand materials move together — then we help you get found after launch.',
+            'phases' => [
+                [
+                    'name' => 'Planning',
+                    'summary' => 'We lock your page list, booking tool, and marketing pieces (flyers, card, letterhead, signature). Agreement and deposit start the work.',
+                    'steps' => [
+                        'Confirm pages and booking tool',
+                        'Brief for print and email materials',
+                        'Agreement and deposit',
+                    ],
+                ],
+                [
+                    'name' => 'Building',
+                    'summary' => 'We build your 5–10 page site and matching print/email materials in parallel, with previews for your approval.',
+                    'steps' => [
+                        'Website pages, form, and booking path',
+                        'Flyers, card, letterhead, signature',
+                        'Previews for your approval',
+                    ],
+                ],
+                [
+                    'name' => 'Launch',
+                    'summary' => 'Your website goes live with booking and contact working; you receive final marketing files.',
+                    'steps' => [
+                        'Site live with booking and contact',
+                        'Final marketing file handoff',
+                        'Launch checklist complete',
+                    ],
+                ],
+                [
+                    'name' => 'Growth',
+                    'summary' => 'We help with basics like Google Business Profile and analytics setup, a launch announcement pack, and a short check-in after you’re live.',
+                    'steps' => [
+                        'Google Business Profile guidance',
+                        'Analytics setup help',
+                        'Short post-launch check-in',
+                    ],
+                ],
+            ],
         ],
     ],
     'custom-growth' => [
@@ -113,7 +304,7 @@ return [
         ],
         'ideal_for' => 'Established businesses with unique workflows or multi-location needs.',
         'badge' => '',
-        'tier' => 4,
+        'tier' => 5,
         'features' => [
             'pages' => 'Unlimited',
             'contact_form' => true,
@@ -124,8 +315,52 @@ return [
             'business_card' => true,
             'letterhead' => true,
             'email_signature' => true,
+            'google_business_profile' => false,
+            'google_analytics' => false,
             'custom_functionality' => true,
             'third_party_integrations' => 'Unlimited',
+        ],
+        'process' => [
+            'title' => 'How we work',
+            'intro' => 'Built around a written plan for your business — nothing cookie-cutter.',
+            'phases' => [
+                [
+                    'name' => 'Planning',
+                    'summary' => 'We map your goals, pages, and tools in a written estimate and milestone schedule before build starts.',
+                    'steps' => [
+                        'Discovery and requirements',
+                        'Written estimate and milestones',
+                        'Clear ownership of each step',
+                    ],
+                ],
+                [
+                    'name' => 'Building',
+                    'summary' => 'We build to that estimate (site features, integrations, and marketing as listed), with milestone reviews along the way.',
+                    'steps' => [
+                        'Build to the approved estimate',
+                        'Integrations as listed',
+                        'Milestone reviews and updates',
+                    ],
+                ],
+                [
+                    'name' => 'Launch',
+                    'summary' => 'We go live with a clear checklist, training notes, and final handoff.',
+                    'steps' => [
+                        'Go-live checklist',
+                        'Training and handoff notes',
+                        'Final milestone complete',
+                    ],
+                ],
+                [
+                    'name' => 'Growth',
+                    'summary' => 'We set up measurement and follow the growth items in your estimate (content, SEO, campaigns, or reviews) — extras need a simple change order.',
+                    'steps' => [
+                        'Measurement baseline',
+                        'Growth items from your estimate',
+                        'Change orders for anything new',
+                    ],
+                ],
+            ],
         ],
     ],
 ];

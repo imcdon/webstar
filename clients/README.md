@@ -1,6 +1,8 @@
 # Client staging sites
 
-Staging previews live under `clients/{slug}/` and are deployed with the Webstar site.
+**Before every GitHub push:** run [SECURITY-CHECKLIST.md](SECURITY-CHECKLIST.md). Security is the priority.
+
+Staging previews live under `clients/{slug}/` and are deployed with the Webstar site. New clients: copy [`.gitignore.template`](.gitignore.template) to `clients/{slug}/.gitignore`.
 
 ## Superior Ice Adventures — Path A
 
@@ -8,10 +10,7 @@ Staging previews live under `clients/{slug}/` and are deployed with the Webstar 
 
 - **Local:** `http://localhost/webstar-business-solutions/clients/superior-ice-adventures/`
 - **Staging:** `https://superior-ice-adventures.webstarbusinessservices.com`
-- **Auth:** Browser username/password prompt (HTTP Basic). Same credentials as the Client Portal:
-  - Admin: `webstar` / `webstarAdmin2026`
-  - Client: `superior` / `preview123`
-- Gate is **off** on the future live domain `superioriceadventures.com`.
+- **Auth:** Browser username/password prompt (HTTP Basic). Use **Client Portal** credentials (server-only / password manager)—do **not** commit live passwords to the repo. Gate is **off** on the future live domain `superioriceadventures.com`.
 
 cPanel (summary):
 
