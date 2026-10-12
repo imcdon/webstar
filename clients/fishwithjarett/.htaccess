@@ -1,0 +1,14 @@
+# Fish with Jarett - URL helpers + auth header passthrough
+RewriteEngine On
+
+# cPanel CGI/FastCGI does not fill PHP_AUTH_USER unless Authorization is passed through.
+RewriteCond %{HTTP:Authorization} .
+RewriteRule ^ - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+# Production only: HTTPS + apex
+RewriteCond %{HTTP_HOST} ^(www\.)?fishwithjarett\.com$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://fishwithjarett.com%{REQUEST_URI} [L,R=301]
+
+RewriteCond %{HTTP_HOST} ^www\.fishwithjarett\.com$ [NC]
+RewriteRule ^ https://fishwithjarett.com%{REQUEST_URI} [L,R=301]

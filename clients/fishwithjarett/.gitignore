@@ -1,0 +1,21 @@
+# Database / app secrets (never commit)
+includes/db.config.php
+**/mail-config.php
+.env
+.env.*
+*.local.php
+
+# Local / debug
+node_modules/
+_raw/
+debug-*.log
+*.log
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*~

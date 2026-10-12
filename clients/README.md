@@ -4,6 +4,12 @@
 
 Staging previews live under `clients/{slug}/` and are deployed with the Webstar site. New clients: copy [`.gitignore.template`](.gitignore.template) to `clients/{slug}/.gitignore`.
 
+## Fish with Jarett — Path A
+
+- **Local:** `http://localhost/webstar-business-solutions/clients/fishwithjarett/`
+- **Staging:** `https://webstarbusinessservices.com/clients/fishwithjarett/`
+- **Auth:** Client Portal credentials (HTTP Basic). See [SECURITY-CHECKLIST.md](SECURITY-CHECKLIST.md).
+
 ## Superior Ice Adventures — Path A
 
 **Follow [PATH-A.md](PATH-A.md)** for the full checklist.

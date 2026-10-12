@@ -41,4 +41,18 @@ return [
             ],
         ],
     ],
+    '123' => [
+        'display_name' => 'Fish with Jarett',
+        'role' => 'client',
+        'password_hash' => '$2y$10$7UdOawJV4tMogfeq.yHZNOu6oqWzklwo/hX2WM3DmVLgkZkfdE.pK',
+        'projects' => [
+            [
+                'slug' => 'fishwithjarett',
+                'title' => 'Fish with Jarett website',
+                'status' => 'In progress',
+                'local_path' => 'clients/fishwithjarett/',
+                'staging_url' => 'https://webstarbusinessservices.com/clients/fishwithjarett/',
+            ],
+        ],
+    ],
 ];

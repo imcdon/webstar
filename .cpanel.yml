@@ -5,6 +5,7 @@ deployment:
     # Git clone stays separate (e.g. $HOME/repositories/webstar).
     - export DEPLOYPATH=$HOME/public_html
     - /bin/mkdir -p $DEPLOYPATH/clients/superior-ice-adventures
+    - /bin/mkdir -p $DEPLOYPATH/clients/fishwithjarett
     - /usr/bin/rsync -a --exclude='.git' --exclude='.cpanel.yml' --exclude='library/mail-config.php' ./ $DEPLOYPATH/
     # Apache must be able to read .htaccess and traverse directories (avoids 403).
     - /bin/chmod 755 $DEPLOYPATH
