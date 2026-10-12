@@ -5,6 +5,7 @@
 | Use | File |
 |-----|------|
 | Home hero | `King-Salmon-Hero-Image.jpg` |
+| Business card background | `King-Salmon-Business-Card.jpg` |
 
 ## Species cards (client-supplied)
 
