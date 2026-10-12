@@ -11,13 +11,13 @@ declare(strict_types=1);
  * @return array<string, array<string, mixed>>
  */
 return [
-    'webstar' => [
+    'admin' => [
         'display_name' => 'Webstar Admin',
         'role' => 'admin',
         'password_hash' => '$2y$10$replaceWithRealHash...................................',
         'projects' => [],
     ],
-    'superior' => [
+    '1234' => [
         'display_name' => 'Superior Ice Adventures',
         'role' => 'client',
         'password_hash' => '$2y$10$replaceWithRealHash...................................',

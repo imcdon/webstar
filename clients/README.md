@@ -4,6 +4,8 @@
 
 Staging previews live under `clients/{slug}/` and are deployed with the Webstar site. New clients: copy [`.gitignore.template`](.gitignore.template) to `clients/{slug}/.gitignore`.
 
+**Preview header:** all Path A sites use the shared bar in [`shared/webstar-staging-banner.php`](shared/webstar-staging-banner.php) (Notes dropdown). Each client’s `includes/partials/webstar-staging-banner.php` sets `$webstar_staging_notes` then requires that shared file.
+
 ## Fish with Jarett — Path A
 
 - **Local:** `http://localhost/webstar-business-solutions/clients/fishwithjarett/`

@@ -5,7 +5,7 @@ Webstar hosts in-progress client sites under `clients/` and links them from the 
 ## Local preview
 
 - Portal: `http://localhost/webstar-business-solutions/portal/`
-- **Universal admin** and demo client users: see `library/portal-clients.php` (password **hashes** only). Store plaintext passwords outside git (password manager). Change defaults after deploy/handoff.
+- **Admin** (`role: admin`) sees every client project on My Projects → All Projects. Client users see only their assigned projects. Credentials: `library/portal-clients.php` (password **hashes** only). Store plaintext outside git (password manager). Change defaults after deploy/handoff.
 - Superior Ice staging: `http://localhost/webstar-business-solutions/clients/superior-ice-adventures/`  
   (browser prompts for the same portal username/password on staging hosts)
 

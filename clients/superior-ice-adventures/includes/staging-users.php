@@ -9,16 +9,16 @@ declare(strict_types=1);
  * Do not document plaintext passwords here — see clients/SECURITY-CHECKLIST.md.
  */
 return [
-    'webstar' => [
+    'admin' => [
         'display_name' => 'Webstar Admin',
         'role' => 'admin',
-        'password_hash' => '$2y$10$lfqZAJiiaVRuJjHYOG..wOkAS.hyNSdc1OYmVT2uX8iHj0xhpzUMG',
+        'password_hash' => '$2y$10$29Unokw6wL0urucGTzO68uwVjRv4b/QEz1dw3f0V8RCjreHIcXehO',
         'projects' => [],
     ],
-    'superior' => [
+    '1234' => [
         'display_name' => 'Superior Ice Adventures',
         'role' => 'client',
-        'password_hash' => '$2y$10$X4fwtQr2e7rfJgSqDUFo5eCrCXAXcSf5E3ZGFx7yvjDcYlwQkdaSi',
+        'password_hash' => '$2y$10$amcsbH14b21g4bbBTAB.peRt6YQNP3Ft2o15gWKiq8SftVy077Zte',
         'projects' => [
             [
                 'slug' => 'superior-ice-adventures',

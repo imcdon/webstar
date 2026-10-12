@@ -6,7 +6,13 @@
 if (!function_exists('sia_staging_should_gate') || !sia_staging_should_gate()) {
     return;
 }
-?>
-<div class="webstar-staging-banner" role="status">
-    Preview — hosted by Webstar Business Services
-</div>
+
+$webstar_staging_notes = 'More pictures is better, more content the better.';
+
+$shared = dirname(__DIR__, 3) . '/shared/webstar-staging-banner.php';
+if (is_file($shared)) {
+    require $shared;
+    return;
+}
+
+require __DIR__ . '/webstar-staging-banner-fallback.php';

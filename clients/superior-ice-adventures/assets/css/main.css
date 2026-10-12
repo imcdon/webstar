@@ -44,20 +44,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-.webstar-staging-banner {
-  position: sticky;
-  top: 0;
-  z-index: 10000;
-  padding: 0.45rem 1rem;
-  text-align: center;
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: #0b1a2e;
-  background: #c9a227;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-}
+/* Staging banner styles live in clients/shared/webstar-staging-banner.php */
 
 img {
   max-width: 100%;

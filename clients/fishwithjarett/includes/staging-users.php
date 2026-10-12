@@ -8,10 +8,10 @@ declare(strict_types=1);
  * Do not document plaintext passwords here — see clients/SECURITY-CHECKLIST.md.
  */
 return [
-    'webstar' => [
+    'admin' => [
         'display_name' => 'Webstar Admin',
         'role' => 'admin',
-        'password_hash' => '$2y$10$lfqZAJiiaVRuJjHYOG..wOkAS.hyNSdc1OYmVT2uX8iHj0xhpzUMG',
+        'password_hash' => '$2y$10$29Unokw6wL0urucGTzO68uwVjRv4b/QEz1dw3f0V8RCjreHIcXehO',
         'projects' => [],
     ],
     '123' => [
