@@ -33,7 +33,7 @@ Thanks for choosing Webstar Business Services. Here’s a quick summary of what 
 2. Pay the Stripe invoice for `{DEPOSIT}`.  
 3. I’ll start production and keep you updated on drafts.
 
-Questions? Call or text **248-564-3663** or email **info@webstarbusinessservices.com**.
+Questions? Call or text **248-564-3663** or email **ian@webstarbusinessservices.com**.
 
 — Ian McDonnell  
 Webstar Business Services  

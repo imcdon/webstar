@@ -9,7 +9,7 @@ Brand reference: [BRAND.md](BRAND.md).
 
 ## Gmail / Google Workspace
 
-1. Open [Gmail](https://mail.google.com) signed in as your Webstar address (e.g. `info@webstarbusinessservices.com`).  
+1. Open [Gmail](https://mail.google.com) signed in as `ian@webstarbusinessservices.com`.  
 2. Settings (gear) → **See all settings** → **General** → **Signature**.  
 3. Create signature name: `Webstar`.  
 4. Open `email-signature.html` in a browser → Select all → Copy.  

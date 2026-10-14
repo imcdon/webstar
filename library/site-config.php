@@ -7,7 +7,7 @@ return [
     'domain' => 'webstarbusinessservices.com',
     'phone_display' => '248-564-3663',
     'phone_tel' => '2485643663',
-    'email' => 'info@webstarbusinessservices.com',
+    'email' => 'ian@webstarbusinessservices.com',
     'service_area' => 'Metro Detroit and surrounding Michigan communities',
     'locality' => 'Metro Detroit',
     'region' => 'MI',

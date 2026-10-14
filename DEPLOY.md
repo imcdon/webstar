@@ -80,6 +80,8 @@ At your registrar / Reclaim DNS:
 - **A** `@` → hosting server IP
 - **www** → same A record or CNAME per host docs
 
+**Google Workspace mail (MX / SPF / DKIM / DMARC):** follow [docs/client-ops/GOOGLE-WORKSPACE-DNS.md](docs/client-ops/GOOGLE-WORKSPACE-DNS.md). Primary mailbox: `ian@webstarbusinessservices.com`.
+
 ### 2. Domain → folder map
 
 The live Webstar site currently uses **`$HOME/public_html`** as document root. Keep the **Git clone** outside that folder.

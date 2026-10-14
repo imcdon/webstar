@@ -36,7 +36,7 @@ include __DIR__ . '/includes/layout-start.php';
     <div class="ww-page__cta">
         <div class="ww-home__actions" style="justify-content:flex-start;">
             <a class="ww-btn ww-btn--gold" href="<?php echo webstar_h(webstar_phone_href()); ?>">Call <?php echo webstar_h(webstar_phone_display()); ?></a>
-            <a class="ww-btn ww-btn--ghost" href="mailto:weddings@webstarbusinessservices.com">Email weddings@</a>
+            <a class="ww-btn ww-btn--ghost" href="mailto:<?php echo webstar_h($config['email']); ?>">Email <?php echo webstar_h($config['email']); ?></a>
             <a class="ww-btn ww-btn--ghost" href="<?php echo webstar_h(webstar_weddings_url('examples')); ?>">View examples</a>
         </div>
     </div>

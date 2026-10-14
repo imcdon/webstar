@@ -15,14 +15,14 @@ Confirm LLC name on every signed contract matches your Michigan filing.
 ## Locked NAP
 
 ```text
-Webstar Business Services · Metro Detroit & surrounding Michigan communities · 248-564-3663 · https://www.webstarbusinessservices.com · info@webstarbusinessservices.com
+Webstar Business Services · Metro Detroit & surrounding Michigan communities · 248-564-3663 · https://www.webstarbusinessservices.com · ian@webstarbusinessservices.com
 ```
 
 | Field | Value |
 |-------|--------|
 | Phone (display) | 248-564-3663 |
 | Phone (tel) | +1-248-564-3663 |
-| Email | info@webstarbusinessservices.com |
+| Email | ian@webstarbusinessservices.com |
 | Website | https://www.webstarbusinessservices.com |
 | Service area | Metro Detroit and surrounding Michigan communities |
 | GBP / Maps | https://maps.app.goo.gl/ZUKh1nB9Q5wcub5F6 |
@@ -63,7 +63,7 @@ Copy stars into Drive when building Docs templates. Do not stretch; keep square 
 
 Suggested closing line on every agreement PDF/Doc:
 
-> Webstar Business Services LLC · Metro Detroit & surrounding Michigan communities · 248-564-3663 · info@webstarbusinessservices.com · https://www.webstarbusinessservices.com
+> Webstar Business Services LLC · Metro Detroit & surrounding Michigan communities · 248-564-3663 · ian@webstarbusinessservices.com · https://www.webstarbusinessservices.com
 
 Jurisdiction note for MASTER template: Michigan. Have an attorney review LLC-specific clauses once before heavy use.
 

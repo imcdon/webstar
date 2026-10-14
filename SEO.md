@@ -29,7 +29,7 @@ One winning URL per head term. Do not retarget losers to compete for the same pr
 ## Locked NAP (use identically everywhere)
 
 ```text
-Webstar Business Services · Metro Detroit & surrounding Michigan communities · 248-564-3663 · https://www.webstarbusinessservices.com · info@webstarbusinessservices.com
+Webstar Business Services · Metro Detroit & surrounding Michigan communities · 248-564-3663 · https://www.webstarbusinessservices.com · ian@webstarbusinessservices.com
 ```
 
 - **Never** list a personal cell on public listings.

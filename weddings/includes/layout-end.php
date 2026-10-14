@@ -7,7 +7,7 @@
             <a href="<?php echo webstar_h(webstar_weddings_url('services')); ?>">Services</a>
             <a href="<?php echo webstar_h(webstar_weddings_url('examples')); ?>">Examples</a>
             <a href="<?php echo webstar_h(webstar_phone_href()); ?>"><?php echo webstar_h(webstar_phone_display()); ?></a>
-            <a href="mailto:weddings@webstarbusinessservices.com">weddings@webstarbusinessservices.com</a>
+            <a href="mailto:<?php echo webstar_h($config['email']); ?>"><?php echo webstar_h($config['email']); ?></a>
         </nav>
         <p class="ww-footer__keywords">Wedding website design · Digital wedding invitations · RSVP-ready couple sites · Metro Detroit &amp; beyond</p>
         <a class="ww-footer__back" href="<?php echo webstar_h(webstar_url('')); ?>">Back to Webstar Business Services</a>
