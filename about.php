@@ -42,10 +42,8 @@ include __DIR__ . '/library/layout-start.php';
         <ul class="about-proof-list">
             <li><strong>Cities &amp; regions:</strong> Metro Detroit and Michigan; client work also in Longview, WA.</li>
             <li><strong>Industries:</strong> Fishing and ice-fishing guide services, outdoor outfitters, and local service businesses.</li>
-            <li><strong>Named projects:</strong>
-                <a href="https://www.chromecityguideservicellc.com" target="_blank" rel="noopener noreferrer">Chrome City Guide Service</a> (Longview, WA),
-                <a href="https://superioriceadventures.com" target="_blank" rel="noopener noreferrer">Superior Ice Adventures</a> (Marquette, MI), and
-                <a href="https://fishwithjarett.com" target="_blank" rel="noopener noreferrer">Fish with Jarett</a> (Lake Michigan tributaries).
+            <li><strong>Named live site:</strong>
+                <a href="https://www.chromecityguideservicellc.com" target="_blank" rel="noopener noreferrer">Chrome City Guide Service</a> (Longview, WA). Additional client sites are listed on <a href="<?php echo webstar_h(webstar_url('examples.php')); ?>">Examples</a> when they launch.
             </li>
             <li><strong>Business:</strong> Michigan LLC · written agreements on every project · Stripe invoicing · <a href="<?php echo webstar_h(webstar_url('process.php')); ?>">published process</a> · <a href="<?php echo webstar_h(webstar_url('accessibility.php')); ?>">accessibility statement</a>.</li>
         </ul>
