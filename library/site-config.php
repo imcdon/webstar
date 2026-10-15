@@ -22,4 +22,5 @@ return [
     // Optional direct "write a review" link (https://g.page/r/.../review). Falls back to google_maps_url.
     'google_review_url' => '',
     'gtm_container_id' => 'GTM-MS49HQKZ',
+    'ga4_measurement_id' => 'G-05F8R3SKQ8',
 ];

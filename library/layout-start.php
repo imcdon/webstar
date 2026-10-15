@@ -21,6 +21,20 @@ $ogImageUrl = webstar_absolute_url($ogImagePath);
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','<?php echo webstar_h($config['gtm_container_id'] ?? ''); ?>');</script>
     <!-- End Google Tag Manager -->
+    <?php
+    $ga4Id = trim((string) ($config['ga4_measurement_id'] ?? ''));
+    if ($ga4Id !== '') :
+        $ga4JsUrl = 'https://www.googletagmanager.com/gtag/js?id=' . rawurlencode($ga4Id);
+        ?>
+    <!-- Google tag (gtag.js) -->
+    <script async src="<?php echo webstar_h($ga4JsUrl); ?>"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '<?php echo webstar_h($ga4Id); ?>');
+    </script>
+    <?php endif; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="HFGBTaMM5j9LrSA3VpHdyX-6mFDYKF40Zx3Iy4VMFcw">
     <title><?php echo webstar_h($pageTitle); ?></title>
