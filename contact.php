@@ -17,6 +17,14 @@ $fieldLabels = [
     'message' => 'Message',
 ];
 $validationFields = [];
+$planSlug = isset($_GET['plan']) ? (string) $_GET['plan'] : '';
+$planPrefill = '';
+if ($planSlug !== '') {
+    $plan = webstar_care_plans()[$planSlug] ?? null;
+    if ($plan !== null) {
+        $planPrefill = 'I’m interested in the ' . (string) $plan['title'] . ' plan (' . (string) $plan['price'] . ' ' . (string) $plan['period'] . '). My website is: ';
+    }
+}
 if ($reason === 'validation' && $fieldsParam !== '') {
     foreach (explode(',', $fieldsParam) as $field) {
         $field = trim($field);
@@ -33,7 +41,7 @@ include __DIR__ . '/library/layout-start.php';
         <div class="landing-content contact-panel">
             <h1 class="home-section__heading">Contact</h1>
             <p class="contact-panel__intro">Questions about scope, timing, or whether Webstar is a fit? Reach out here. Serving <?php echo webstar_h($config['service_area']); ?>.</p>
-            <p class="contact-panel__intro"><strong>Ready to start a project?</strong> That happens on a package page—choose a tier, then submit the intake form at the bottom (not this general inquiry form).</p>
+            <p class="contact-panel__intro"><strong>Ready to start a project?</strong> That happens on a package page—choose a tier, then submit the intake form at the bottom (not this general inquiry form). Prefer monthly? See <a href="<?php echo webstar_h(webstar_url('plans.php')); ?>">Website as a Service and Care Plans</a>.</p>
 
             <div class="contact-panel__ways">
                 <div class="contact-way">
@@ -103,7 +111,7 @@ include __DIR__ . '/library/layout-start.php';
                     </div>
                     <div class="intake-form__field">
                         <label for="contact-message">Message <span class="schedule-form__required">*</span></label>
-                        <textarea class="schedule-form__input" id="contact-message" name="message" required maxlength="4000" rows="6"></textarea>
+                        <textarea class="schedule-form__input" id="contact-message" name="message" required maxlength="4000" rows="6"><?php echo webstar_h($planPrefill); ?></textarea>
                     </div>
                     <div class="intake-form__actions">
                         <button type="submit" class="home-section__btn home-section__btn--primary">Send message</button>

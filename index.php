@@ -4,21 +4,25 @@ require __DIR__ . '/library/helpers.php';
 $config = webstar_config();
 $currentPage = 'home';
 $pageTitle = 'Web Design & Marketing for Metro Detroit — ' . $config['business_name'];
-$pageDescription = 'Custom websites and marketing packages for Metro Detroit small businesses. One-time project pricing, you own your domain and hosting—clear deliverables and fast turnaround.';
+$pageDescription = 'Custom websites for Metro Detroit small businesses with Google Business Profile and Analytics included. Pay once and own it, or $150/month Website as a Service. Clear deliverables, fast turnaround.';
 $canonicalPath = '';
 
 $homeFaqs = [
     [
         'q' => 'Do I own my website?',
-        'a' => 'Yes. You own your hosting and domain accounts. We deliver a site built with standard HTML/CSS (and PHP where needed for forms).',
+        'a' => 'Yes. Your domain is registered in your name and you own the site files on full payment (or after month 6 on Website as a Service). We build with standard HTML/CSS and PHP, so any host can run it.',
     ],
     [
         'q' => 'Are there monthly fees to Webstar?',
-        'a' => 'Packages are priced as projects. Hosting and third-party tools bill separately through those providers unless you arrange ongoing support.',
+        'a' => 'Only if you choose them. Website packages are one-time fees and we hand off to hosting you own. Optional Care Plans ($49–$179/mo) cover hosting, backups, updates, and reporting, and Website as a Service bundles everything for $150/mo with a 6-month minimum.',
     ],
     [
-        'q' => 'What affects the $500–$1,000 business package price?',
-        'a' => 'Page count, booking integration complexity, content volume, and marketing collateral scope determine where your project falls in that range.',
+        'q' => 'Why are prices shown as ranges?',
+        'a' => 'Page count, booking or integration complexity, content volume, and brand-kit scope determine where your project falls. We confirm the exact fee in writing before any work starts.',
+    ],
+    [
+        'q' => 'What Google services are included?',
+        'a' => 'Every website tier includes Google Business Profile setup or claim, Google Analytics 4 with call and form click tracking, and Search Console — with you as the owner of each account.',
     ],
     [
         'q' => 'How do I start a project?',
@@ -35,7 +39,7 @@ $businessLd = [
     'image' => webstar_absolute_url('assets/images/star-icon-gold.png'),
     'description' => $pageDescription,
     'areaServed' => $config['service_area'],
-    'priceRange' => '$50–$1000+',
+    'priceRange' => '$350–$2500+',
 ];
 $phoneE164 = webstar_phone_e164();
 if ($phoneE164 !== '') {
@@ -66,18 +70,18 @@ include __DIR__ . '/library/layout-start.php';
 ?>
 <section class="hero">
     <img class="hero__badge" src="<?php echo webstar_h(webstar_url('assets/images/star-icon-gold.png')); ?>" alt="" width="52" height="52">
-    <h1 class="hero__title">Websites and marketing for Metro Detroit businesses</h1>
-    <p class="hero__lead">Skip subscription page builders and surprise monthly fees. Webstar delivers one-time, custom websites and marketing packages—you own your domain, hosting, and files.</p>
+    <h1 class="hero__title">Websites that get Metro Detroit businesses found on Google</h1>
+    <p class="hero__lead">Custom-built sites with Google Business Profile, Analytics, and Search Console included in every tier. Pay once and own it outright, or go month-to-month with Website as a Service for $150/mo. Either way, your domain and files are yours.</p>
     <div class="hero__actions">
         <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('packages.php')); ?>">View packages &amp; pricing</a>
-        <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_url('contact.php')); ?>">Questions? Contact</a>
+        <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_url('plans.php')); ?>">$150/mo Website as a Service</a>
     </div>
 </section>
 
 <section class="home-section home-section--night" id="packages-preview">
     <div class="home-section__inner">
-        <h2 class="home-section__heading">Packages at a glance</h2>
-        <p class="home-section__textbox">Four clear tiers—from a $50 marketing kit to a fully custom growth build. Serving <?php echo webstar_h($config['service_area']); ?>.</p>
+        <h2 class="home-section__heading">Three website packages</h2>
+        <p class="home-section__textbox">Every tier includes Google Business Profile, Analytics 4, and Search Console setup, a 30-day post-launch fix window, and full ownership. Serving <?php echo webstar_h($config['service_area']); ?>.</p>
         <div class="package-grid">
             <?php foreach (webstar_packages() as $pkg) :
                 $featured = ($pkg['badge'] ?? '') !== '';
@@ -89,6 +93,7 @@ include __DIR__ . '/library/layout-start.php';
                     <?php endif; ?>
                     <h3 class="package-card__title"><?php echo webstar_h($pkg['title']); ?></h3>
                     <p class="package-card__price"><?php echo webstar_h($pkg['price']); ?></p>
+                    <p class="package-card__price-note"><?php echo webstar_h((string) ($pkg['price_note'] ?? 'One-time project fee')); ?></p>
                     <p class="package-card__meta">Turnaround: <?php echo webstar_h($pkg['turnaround']); ?></p>
                     <p class="package-card__summary"><?php echo webstar_h($pkg['summary']); ?></p>
                     <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_package_url((string) $pkg['slug'])); ?>">View package &amp; intake</a>
@@ -98,18 +103,23 @@ include __DIR__ . '/library/layout-start.php';
     </div>
 </section>
 
-<section class="home-section home-section--panel" id="process">
+<?php include __DIR__ . '/library/plans-band.php'; ?>
+
+<section class="home-section home-section--night" id="process">
     <div class="home-section__inner">
         <h2 class="home-section__heading">How it works</h2>
         <ol class="home-section__textbox">
-            <li>Choose a package and submit the intake form (logo, company name, business summary, goals, and desired services).</li>
-            <li>Schedule a call with Ian to confirm timeline, scope, and any questions.</li>
-            <li>Pay the deposit and track progress in the Client Portal as your site or deliverables take shape.</li>
-            <li>You buy your domain and hosting, pay the remaining balance, and receive your files deployed on your independent hosting.</li>
+            <li>Choose a package (or Website as a Service) and submit the intake form with your logo, company name, business summary, and goals.</li>
+            <li>Schedule a call with Ian to confirm scope, timeline, and the exact fee in writing.</li>
+            <li>Sign the agreement, pay the deposit (or first monthly payment), and track progress in the Client Portal.</li>
+            <li>Review the build on a private staging link. We launch after your approval and the balance clears.</li>
+            <li>We set up Google Business Profile, Analytics, and Search Console in your name, then hand off to hosting you own — or keep it maintained under a Care Plan.</li>
         </ol>
-        <p class="home-section__textbox"><a href="<?php echo webstar_h(webstar_url('packages.php')); ?>">Compare all packages</a> or <a href="<?php echo webstar_h(webstar_url('examples.php')); ?>">see client examples</a>.</p>
+        <p class="home-section__textbox"><a href="<?php echo webstar_h(webstar_url('process.php')); ?>">See the full process</a>, <a href="<?php echo webstar_h(webstar_url('packages.php')); ?>">compare all packages</a>, or <a href="<?php echo webstar_h(webstar_url('examples.php')); ?>">see client examples</a>.</p>
     </div>
 </section>
+
+<?php include __DIR__ . '/library/testimonials-block.php'; ?>
 
 <section class="home-section home-section--night" id="faq">
     <div class="home-section__inner">

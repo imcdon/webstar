@@ -75,10 +75,12 @@ git push -u origin main
 
 ### 1. DNS
 
-At your registrar / Reclaim DNS:
+Standard: DNS on **Cloudflare** (free plan), domain registered in the business's name — see [docs/client-ops/HOSTING-STANDARD.md](docs/client-ops/HOSTING-STANDARD.md) for the client-site version of this (reseller cPanel accounts, migration runbook, handoff checklist).
 
-- **A** `@` → hosting server IP
-- **www** → same A record or CNAME per host docs
+At Cloudflare (or registrar / Reclaim DNS until moved):
+
+- **A** `@` → hosting server IP (Cloudflare proxy on; SSL mode Full (strict) after AutoSSL issues)
+- **www** → CNAME `@` (or same A record per host docs)
 
 **Google Workspace mail (MX / SPF / DKIM / DMARC):** follow [docs/client-ops/GOOGLE-WORKSPACE-DNS.md](docs/client-ops/GOOGLE-WORKSPACE-DNS.md). Primary mailbox: `ian@webstarbusinessservices.com`.
 

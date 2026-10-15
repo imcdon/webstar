@@ -14,7 +14,7 @@ Brand tokens: [BRAND.md](BRAND.md).
 ## Design
 
 - **Front:** full-bleed photo background (or dark placeholder), larger gold star + company name, bottom band with Ian McDonnell / Owner / phone. Light text on dark. No gold divider; no email/domain on front.
-- **Back:** night teal panel; QR to homepage on the left; service bullets on the right (packages, GBP & Analytics, SEO and GEO, Ongoing Support, Metro Detroit and Nationwide); phone · email · domain along the bottom.
+- **Back:** night teal panel; QR to homepage on the left; service bullets on the right (Websites from $350, Google Business Profile & Analytics, SEO and GEO, Care Plans & Website as a Service, Metro Detroit and Nationwide); phone · email · domain along the bottom.
 
 ## Swapping assets
 

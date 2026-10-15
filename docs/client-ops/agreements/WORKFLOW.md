@@ -7,10 +7,13 @@ Source templates live in this repo. Day-to-day editing and signing happen in **G
 Do **not** start build work until:
 
 1. Agreement accepted (eSignature **or** clear written “I agree” email with PDF attached), and  
-2. **First payment** received (50% deposit) **or** paid in full (Stripe), and  
-3. Enough intake assets to begin (logo + basics).
+2. **First payment** received — 50% deposit, pay-in-full, first milestone (Growth), or the **first $150 subscription payment** (Website as a Service) — via Stripe, and  
+3. Enough intake assets to begin (logo + basics), and  
+4. Exact `{PRICE}` written in the agreement (published prices are ranges).
 
-**Before deploy / final handoff:** second payment (remaining 50%) must clear, unless the client paid in full at signing. Keep card on file until the full invoice amount is paid (see Master §5).
+**Before launch / final handoff:** second payment (remaining 50%) or final milestone must clear, unless the client paid in full at signing. Website as a Service launches on approval with the subscription running. Keep card on file until the full invoice amount is paid (see Master §5).
+
+**After launch:** 30-day warranty clock starts (Master §8). Complete Google services (GBP, GA4, GSC) under the client’s Google account and send the first check-in.
 
 ---
 
@@ -37,6 +40,7 @@ Copy from repo:
 | Repo path | Drive destination |
 |-----------|-------------------|
 | `docs/client-ops/agreements/CONTRACT-*.md` | Paste into Google Docs under `Templates/Agreements/` (preferred) |
+| `docs/client-ops/agreements/WEBSITE-AS-A-SERVICE-AGREEMENT.md`, `CARE-PLAN-AGREEMENT.md` | Monthly plan agreements → `Templates/Agreements/` |
 | `docs/client-ops/agreements/SERVICE-AGREEMENT-MASTER.md` + `ANNEX-*.md` | Optional if using Master + Annex instead of standalone CONTRACT |
 | `docs/client-ops/assets/letterhead-webstar.pdf` | `Templates/Letterhead/` |
 | `docs/client-ops/email-signature.html` | Keep local + paste into Gmail; optional copy in `Templates/Email signature/` |
@@ -46,17 +50,20 @@ Copy from repo:
 
 ## Per-client checklist
 
-1. **Intake received** (package form or email) — note `{INTAKE_DATE}`.  
-2. **Pick contract** matching package (see map below). Prefer standalone `CONTRACT-*.md`.  
-3. **Duplicate** Google Doc from that template.  
-4. **Replace all placeholders** and fill project blanks (`{CLIENT_LEGAL_NAME}`, `{PRICE}`, payment plan checkbox, etc.).  
-5. **Optional:** Apply letterhead header/footer per [LETTERHEAD.md](../LETTERHEAD.md).  
-6. **Send for signature** (see below).  
-7. **Send Stripe invoice** for `{DEPOSIT}` (or full amount). Confirm **card on file** until paid in full.  
-8. **File** signed PDF + payment confirmation under `Clients/{ClientName}/`.  
-9. **Send** [SCOPE-SUMMARY](../SCOPE-SUMMARY.md) email confirming next steps.  
-10. **Start** production / portal project.  
-11. At **build complete**, invoice `{BALANCE}` (if 50/50), then **deploy / handoff** after it clears.
+1. **Intake received** (package form, `/plans/` form, or email) — note `{INTAKE_DATE}`.  
+2. **Scope call** (20–30 min): confirm tier or Website as a Service, pages, booking tool, hosting path (client cPanel vs Webstar managed), client Google account. Set exact `{PRICE}`.  
+3. **Pick contract** (see map below). Prefer standalone `CONTRACT-*.md`; monthly plans use their own agreement.  
+4. **Duplicate** Google Doc from that template.  
+5. **Replace all placeholders** and fill project blanks (`{CLIENT_LEGAL_NAME}`, `{PRICE}`, payment plan and hosting checkboxes, page list, etc.).  
+6. **Optional:** Apply letterhead header/footer per [LETTERHEAD.md](../LETTERHEAD.md).  
+7. **Send for signature** (see below).  
+8. **Stripe:** invoice `{DEPOSIT}` (or full amount), or start the **subscription** (WaaS $150/mo · Care Plan tier). Confirm **card on file** until paid in full.  
+9. **File** signed PDF + payment confirmation under `Clients/{ClientName}/`.  
+10. **Send** [SCOPE-SUMMARY](../SCOPE-SUMMARY.md) email confirming next steps; issue portal login.  
+11. **Start** production per the package WBS; weekly status update while active.  
+12. At **build complete**, invoice `{BALANCE}` (if 50/50) or final milestone, then **launch / handoff** after it clears. WaaS: launch on approval.  
+13. **Post-launch:** Google services completed under client account; 30-day warranty; first check-in at 7–14 days; mention Care Plans once; request a Google review.  
+14. **Handoff:** credentials via password manager share; final backup archived to client Drive folder; Webstar access removed or downgraded to manager per [HOSTING-STANDARD.md](../HOSTING-STANDARD.md).
 
 ---
 
@@ -89,28 +96,31 @@ Help: [Send signature requests with eSignature](https://support.google.com/docs/
 3. Ask client to reply: **“I agree to the Service Agreement dated {EFFECTIVE_DATE}.”**  
 4. Save the email PDF/print and the agreement PDF in the client folder.
 
-Use Option B for tiny jobs if eSignature is unavailable; prefer Option A for $200+ website work.
+Prefer Option A (eSignature) for all website and subscription work; Option B is the fallback.
 
 ---
 
 ## Stripe (payment)
 
 - Brand Stripe with logo/colors separately (Dashboard branding).  
-- Invoice language should match `{PRICE}` / `{DEPOSIT}` / `{BALANCE}` and the chosen payment plan.  
-- Keep payment method on file until the project is paid in full.  
-- Payouts → business checking (not personal).
+- **One-time packages:** invoices matching `{PRICE}` / `{DEPOSIT}` / `{BALANCE}` and the chosen payment plan.  
+- **Subscriptions:** Products → "Website as a Service" ($150/mo) and "Care Plan — Essential / Standard / Premium" ($49 / $99 / $179). Start the subscription on the signing day; enable Smart Retries and failed-payment emails; note the 6th-payment date for WaaS ownership transfer.  
+- Keep payment method on file until the project is paid in full (subscriptions keep it by default).  
+- Payouts → business checking in the LLC’s name (not personal).
 
 ---
 
-## Package → contract map
+## Offer → agreement map
 
-| Site package | Standalone contract (preferred) | Annex (optional) |
-|--------------|----------------------------------|------------------|
-| Marketing ($50) | `CONTRACT-marketing.md` | `ANNEX-marketing.md` |
-| Simple Website ($200) | `CONTRACT-simple-website.md` | `ANNEX-simple-website.md` |
-| Business Website + Marketing ($500–$1,000) | `CONTRACT-business-website-marketing.md` | `ANNEX-business-marketing.md` |
-| Custom Growth ($1,000+) | `CONTRACT-custom-growth.md` | `ANNEX-custom-growth.md` |
-| Get Me On Google ($200) | *(no CONTRACT yet)* | `ANNEX-get-me-on-google.md` + Master |
+| Offer | Agreement (preferred) | Annex (optional) | WBS |
+|-------|-----------------------|------------------|-----|
+| Simple Website ($350–$500) | `CONTRACT-simple-website.md` | `ANNEX-simple-website.md` | `wbs/WBS-simple-website.md` |
+| Business Website ($900–$1,800) | `CONTRACT-business-website.md` | `ANNEX-business-website.md` | `wbs/WBS-business-website.md` |
+| Business Growth Website ($2,500+) | `CONTRACT-business-growth-website.md` | `ANNEX-business-growth-website.md` | `wbs/WBS-business-growth-website.md` |
+| Website as a Service ($150/mo, 6-mo min) | `WEBSITE-AS-A-SERVICE-AGREEMENT.md` | — | `wbs/WBS-website-as-a-service.md` + tier WBS |
+| Care Plan ($49 / $99 / $179 per mo) | `CARE-PLAN-AGREEMENT.md` | — | `wbs/WBS-care-plan.md` |
+
+Every website tier includes Google services (GBP, GA4, Search Console). Retired offers (Marketing Package, Get Me On Google) are archived under `agreements/archive/` and `wbs/archive/` for reference only.
 
 ---
 

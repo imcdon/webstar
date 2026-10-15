@@ -10,6 +10,7 @@ $config = webstar_config();
 $navItems = [
     ['id' => 'home', 'label' => 'Home', 'href' => webstar_url('index.php')],
     ['id' => 'packages', 'label' => 'Packages', 'href' => webstar_url('packages.php')],
+    ['id' => 'plans', 'label' => 'Monthly Plans', 'href' => webstar_url('plans.php')],
     ['id' => 'weddings', 'label' => 'Weddings', 'href' => webstar_url('weddings/')],
     ['id' => 'examples', 'label' => 'Examples', 'href' => webstar_url('examples.php')],
     ['id' => 'about', 'label' => 'About', 'href' => webstar_url('about.php')],

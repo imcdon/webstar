@@ -20,6 +20,8 @@ $seoFooter = webstar_seo_footer_links();
                 <ul class="site-footer__sitemap-list">
                     <li><a href="<?php echo webstar_h(webstar_url('index.php')); ?>" class="site-footer__link">Home</a></li>
                     <li><a href="<?php echo webstar_h(webstar_url('packages.php')); ?>" class="site-footer__link">Packages</a></li>
+                    <li><a href="<?php echo webstar_h(webstar_url('plans.php')); ?>" class="site-footer__link">Monthly Plans</a></li>
+                    <li><a href="<?php echo webstar_h(webstar_url('process.php')); ?>" class="site-footer__link">Process</a></li>
                     <li><a href="<?php echo webstar_h(webstar_url('weddings/')); ?>" class="site-footer__link">Weddings</a></li>
                     <li><a href="<?php echo webstar_h(webstar_url('examples.php')); ?>" class="site-footer__link">Examples</a></li>
                     <li><a href="<?php echo webstar_h(webstar_url('about.php')); ?>" class="site-footer__link">About</a></li>
@@ -27,6 +29,7 @@ $seoFooter = webstar_seo_footer_links();
                     <li><a href="<?php echo webstar_h(webstar_url('portal/')); ?>" class="site-footer__link">Client Portal</a></li>
                     <li><a href="<?php echo webstar_h(webstar_url('privacy.php')); ?>" class="site-footer__link">Privacy</a></li>
                     <li><a href="<?php echo webstar_h(webstar_url('terms.php')); ?>" class="site-footer__link">Terms</a></li>
+                    <li><a href="<?php echo webstar_h(webstar_url('accessibility.php')); ?>" class="site-footer__link">Accessibility</a></li>
                 </ul>
             </nav>
 
@@ -53,6 +56,6 @@ $seoFooter = webstar_seo_footer_links();
             <?php endif; ?>
         </div>
 
-        <p class="site-footer__meta">&copy; <?php echo date('Y'); ?> <?php echo webstar_h($config['business_name']); ?>. All rights reserved.</p>
+        <p class="site-footer__meta">&copy; <?php echo date('Y'); ?> <?php echo webstar_h($config['legal_name'] ?? $config['business_name']); ?> · <?php echo webstar_h($config['locality'] ?? 'Metro Detroit'); ?>, <?php echo webstar_h($config['region'] ?? 'MI'); ?>. All rights reserved.</p>
     </div>
 </footer>

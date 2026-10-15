@@ -44,9 +44,12 @@ include __DIR__ . '/library/layout-start.php';
                             <p class="example-panel__meta"><?php echo webstar_h((string) $example['location']); ?></p>
                         <?php endif; ?>
                         <p class="example-panel__desc"><?php echo webstar_h((string) ($example['case_summary'] ?? $example['description'])); ?></p>
+                        <?php if (($example['outcome'] ?? '') !== '') : ?>
+                            <p class="example-panel__meta"><strong>Result:</strong> <?php echo webstar_h((string) $example['outcome']); ?></p>
+                        <?php endif; ?>
                         <div class="example-panel__actions">
                             <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_package_url($packageSlug)); ?>">Start similar project</a>
-                            <a class="example-panel__link" href="<?php echo webstar_h((string) $example['url']); ?>" target="_blank" rel="noopener noreferrer">Visit live site</a>
+                            <a class="example-panel__link" href="<?php echo webstar_h((string) $example['url']); ?>" target="_blank" rel="noopener noreferrer"><?php echo ($example['status'] ?? 'live') === 'live' ? 'Visit live site' : 'Visit site (launching)'; ?></a>
                         </div>
                         <?php if ($package !== null) : ?>
                             <p class="example-panel__package-hint">Typical fit: <?php echo webstar_h($packageLabel); ?></p>
@@ -59,7 +62,7 @@ include __DIR__ . '/library/layout-start.php';
 </section>
 
 <div class="cta-band">
-    <p>Ready to build? Packages start at $50 for marketing and $200 for a three-page website.</p>
+    <p>Ready to build? Websites start at $350 one-time with Google Business Profile included, or $150/mo with Website as a Service.</p>
     <div class="hero__actions">
         <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('packages.php')); ?>">View all packages</a>
         <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_url('contact.php')); ?>">Ask a question first</a>

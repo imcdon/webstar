@@ -27,7 +27,7 @@ function intake_redirect(string $target, string $status, ?string $reason = null,
 }
 
 $packageSlug = trim((string) ($_POST['package_slug'] ?? ''));
-$package = webstar_package_by_slug($packageSlug);
+$package = webstar_offer_by_slug($packageSlug);
 if ($package === null) {
     intake_redirect($redirect, 'error', 'generic', null, $packageSlug);
 }

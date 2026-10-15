@@ -12,13 +12,25 @@ DirectoryIndex index.php
     RewriteCond %{THE_REQUEST} \s/+((?:[^?\s]*?/)?)index\.php[\s?] [NC]
     RewriteRule ^ /%1 [R=301,L]
 
-    # /…/packages.php → /…/packages/  (and examples, about, contact, privacy, terms)
-    RewriteCond %{THE_REQUEST} \s/+((?:[^?\s]*?/)?)(packages|examples|about|contact|privacy|terms)\.php[\s?] [NC]
+    # /…/packages.php → /…/packages/  (and examples, about, contact, privacy, terms, plans, process, accessibility)
+    RewriteCond %{THE_REQUEST} \s/+((?:[^?\s]*?/)?)(packages|examples|about|contact|privacy|terms|plans|process|accessibility)\.php[\s?] [NC]
     RewriteRule ^ /%1%2/? [R=301,L]
 
     # /…/package.php?slug=x → /…/packages/x/
     RewriteCond %{THE_REQUEST} \s/+((?:[^?\s]*?/)?)package\.php\?[^\s]*slug=([^\s&]+) [NC]
     RewriteRule ^ /%1packages/%2/? [R=301,L]
+
+    # Retired / renamed package slugs (service restructure) — keep %1 prefix so this works in a subdirectory too
+    RewriteCond %{THE_REQUEST} \s/+((?:[^?\s]*?/)?)packages/marketing/?[\s?] [NC]
+    RewriteRule ^ /%1packages/ [R=301,L]
+    RewriteCond %{THE_REQUEST} \s/+((?:[^?\s]*?/)?)packages/get-me-on-google/?[\s?] [NC]
+    RewriteRule ^ /%1packages/simple-website/ [R=301,L]
+    RewriteCond %{THE_REQUEST} \s/+((?:[^?\s]*?/)?)packages/business-website-marketing/?[\s?] [NC]
+    RewriteRule ^ /%1packages/business-website/ [R=301,L]
+    RewriteCond %{THE_REQUEST} \s/+((?:[^?\s]*?/)?)packages/custom-growth/?[\s?] [NC]
+    RewriteRule ^ /%1packages/business-growth-website/ [R=301,L]
+    RewriteCond %{THE_REQUEST} \s/+((?:[^?\s]*?/)?)small-business-marketing-package-michigan/?[\s?] [NC]
+    RewriteRule ^ /%1packages/business-website/ [R=301,L]
 
     # /…/landing.php?slug=x → /…/x/
     RewriteCond %{THE_REQUEST} \s/+((?:[^?\s]*?/)?)landing\.php\?[^\s]*slug=([^\s&]+) [NC]
@@ -38,9 +50,9 @@ DirectoryIndex index.php
     RewriteRule ^packages/([a-z0-9-]+)/?$ package.php?slug=$1 [L,QSA]
     RewriteRule ^packages/?$ packages.php [L,QSA]
 
-    RewriteRule ^(examples|about|contact|privacy|terms)/?$ $1.php [L,QSA]
+    RewriteRule ^(examples|about|contact|privacy|terms|plans|process|accessibility)/?$ $1.php [L,QSA]
 
     # SEO landings: /{slug}/ → landing.php (skip reserved first segments)
-    RewriteCond %{REQUEST_URI} !/(packages|examples|about|contact|privacy|terms|portal|clients|library|assets|scripts|vendor|weddings)(/|$) [NC]
+    RewriteCond %{REQUEST_URI} !/(packages|examples|about|contact|privacy|terms|plans|process|accessibility|portal|clients|library|assets|scripts|vendor|weddings)(/|$) [NC]
     RewriteRule ^([a-z0-9-]+)/?$ landing.php?slug=$1 [L,QSA]
 </IfModule>

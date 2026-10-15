@@ -16,9 +16,23 @@ One winning URL per head term. Do not retarget losers to compete for the same pr
 | Hair salons | `/web-design-services-hair-salons/` | Industry niche. |
 | Contractors | `/web-design-services-contractors/` | Industry niche. |
 | Landscaping | `/web-design-services-landscaping/` | Industry niche. |
-| Marketing package Michigan | `/small-business-marketing-package-michigan/` | Unchanged. |
-| Package pricing hub | `/packages/` | Compare tiers; no city keyword fight. |
-| Per-package detail | `/packages/{slug}/` | e.g. `/packages/simple-website/` |
+| Package pricing hub | `/packages/` | Compare the three website tiers; no city keyword fight. |
+| Per-package detail | `/packages/{slug}/` | `simple-website`, `business-website`, `business-growth-website` |
+| Monthly website / care plans | `/plans/` | Website as a Service ($150/mo) + Care Plans. Owns "monthly website plan" / "website maintenance plan Michigan" intent. |
+| How we work | `/process/` | HowTo schema; supports trust, not a keyword target. |
+| Legal / trust | `/privacy/`, `/terms/`, `/accessibility/` | Indexable, low priority in sitemap. |
+
+### Retired URLs (301 in `.htaccess`)
+
+| Old | New |
+|-----|-----|
+| `/packages/marketing/` | `/packages/` |
+| `/packages/get-me-on-google/` | `/packages/simple-website/` |
+| `/packages/business-website-marketing/` | `/packages/business-website/` |
+| `/packages/custom-growth/` | `/packages/business-growth-website/` |
+| `/small-business-marketing-package-michigan/` | `/packages/business-website/` |
+
+After deploy, request indexing for the three new package URLs and `/plans/`; let the old URLs drop out via the redirects. Do not recreate a standalone marketing-package landing — Google services are inside every tier now.
 
 ### Home vs Michigan affordable (locked)
 
@@ -49,5 +63,6 @@ Webstar Business Services · Metro Detroit & surrounding Michigan communities ·
 - `robots.txt` disallows `/clients/` (staging) and `/portal/`.
 - Default social/OG image is `assets/images/og-default.jpg` (1200×630).
 - `sameAs` includes GBP; add LinkedIn / Facebook when those pages exist.
+- Home `priceRange` is `$350–$2500+`; package pages emit `Offer` with `PriceSpecification` min/max from the range string in `packages-data.php`. Keep prices in one place.
 - Business phone lives in `library/site-config.php` (`phone_display` / `phone_tel`) and surfaces in header, footer, contact, home schema, and Weddings.
 - SEO landings emit FAQPage JSON-LD when FAQ data exists; portal pages skip canonical while remaining noindex.

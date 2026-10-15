@@ -29,8 +29,22 @@ $offer = [
     'availability' => 'https://schema.org/InStock',
     'description' => (string) $package['price'],
 ];
-if (preg_match('/^\$(\d+(?:,\d{3})*(?:\.\d+)?)$/', trim((string) $package['price']), $m) === 1) {
+$priceText = trim((string) $package['price']);
+if (preg_match('/^\$(\d+(?:,\d{3})*(?:\.\d+)?)$/', $priceText, $m) === 1) {
     $offer['price'] = str_replace(',', '', $m[1]);
+} elseif (preg_match('/^\$(\d+(?:,\d{3})*)\s*[–-]\s*\$(\d+(?:,\d{3})*)$/u', $priceText, $m) === 1) {
+    $offer['priceSpecification'] = [
+        '@type' => 'PriceSpecification',
+        'minPrice' => str_replace(',', '', $m[1]),
+        'maxPrice' => str_replace(',', '', $m[2]),
+        'priceCurrency' => 'USD',
+    ];
+} elseif (preg_match('/^\$(\d+(?:,\d{3})*)\+$/', $priceText, $m) === 1) {
+    $offer['priceSpecification'] = [
+        '@type' => 'PriceSpecification',
+        'minPrice' => str_replace(',', '', $m[1]),
+        'priceCurrency' => 'USD',
+    ];
 }
 
 $jsonLd = json_encode([
@@ -65,7 +79,9 @@ include __DIR__ . '/library/layout-start.php';
                 </div>
                 <div class="package-page__facts">
                     <p class="package-page__price"><?php echo webstar_h($package['price']); ?></p>
+                    <p class="package-card__meta"><?php echo webstar_h((string) ($package['price_note'] ?? 'One-time project fee')); ?></p>
                     <p class="package-card__meta">Turnaround: <?php echo webstar_h($package['turnaround']); ?></p>
+                    <p class="package-card__meta">Or <a href="<?php echo webstar_h(webstar_url('plans.php')); ?>">$150/mo Website as a Service</a></p>
                 </div>
             </div>
 

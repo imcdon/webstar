@@ -123,6 +123,9 @@ function webstar_clean_path(string $path): string
         'contact.php' => 'contact/',
         'privacy.php' => 'privacy/',
         'terms.php' => 'terms/',
+        'plans.php' => 'plans/',
+        'process.php' => 'process/',
+        'accessibility.php' => 'accessibility/',
     ];
     if (isset($static[$path])) {
         return $static[$path];
@@ -209,15 +212,58 @@ function webstar_feature_labels(): array
         'call_book_buttons' => 'Call / book now buttons',
         'booking_integration' => 'Calendar / booking integration',
         'custom_design' => 'Custom design & content',
+        'google_business_profile' => 'Google Business Profile setup',
+        'google_analytics' => 'Google Analytics 4 & call/form tracking',
+        'google_search_console' => 'Google Search Console',
         'flyers' => 'Custom flyers',
         'business_card' => 'Business card',
         'letterhead' => 'Custom letterhead',
         'email_signature' => 'Email signature',
-        'google_business_profile' => 'Google Business Profile setup',
-        'google_analytics' => 'Google Analytics setup & monitoring start',
         'custom_functionality' => 'Custom functionality',
         'third_party_integrations' => 'Third-party integrations',
     ];
+}
+
+/**
+ * Monthly options: Care Plans and Website as a Service.
+ *
+ * @return array{care_plans: array<string, array>, waas: array}
+ */
+function webstar_plans(): array
+{
+    static $plans = null;
+    if ($plans === null) {
+        $plans = require __DIR__ . '/plans-data.php';
+    }
+
+    return $plans;
+}
+
+function webstar_care_plans(): array
+{
+    return webstar_plans()['care_plans'] ?? [];
+}
+
+function webstar_waas(): array
+{
+    return webstar_plans()['waas'] ?? [];
+}
+
+/**
+ * Resolve an intake slug to a package, a care plan, or the WaaS offer.
+ */
+function webstar_offer_by_slug(string $slug): ?array
+{
+    $package = webstar_package_by_slug($slug);
+    if ($package !== null) {
+        return $package;
+    }
+    $plans = webstar_plans();
+    if (($plans['waas']['slug'] ?? '') === $slug) {
+        return $plans['waas'];
+    }
+
+    return $plans['care_plans'][$slug] ?? null;
 }
 
 function webstar_seo_pages(): array
