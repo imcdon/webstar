@@ -23,13 +23,12 @@ include __DIR__ . '/library/layout-start.php';
                     if ($thumb !== '') :
                         ?>
                         <a class="example-panel__media" href="<?php echo webstar_h($siteUrl); ?>" target="_blank" rel="noopener noreferrer">
-                            <img
-                                src="<?php echo webstar_h(webstar_url($thumb)); ?>"
-                                alt="<?php echo webstar_h($title); ?> website screenshot"
-                                width="640"
-                                height="400"
-                                loading="lazy"
-                            >
+                            <?php echo webstar_picture($thumb, [
+                                'alt' => $title . ' website screenshot',
+                                'width' => 640,
+                                'height' => 400,
+                                'loading' => 'lazy',
+                            ]); ?>
                         </a>
                     <?php else : ?>
                         <a class="example-panel__media example-panel__media--placeholder" href="<?php echo webstar_h($siteUrl); ?>" target="_blank" rel="noopener noreferrer">

@@ -14,13 +14,13 @@ include __DIR__ . '/library/layout-start.php';
             <h1 class="home-section__heading">About Webstar</h1>
             <p class="contact-panel__intro">Webstar Business Services LLC helps small businesses in <?php echo webstar_h($config['service_area']); ?> launch custom websites that show up on Google — paid once and owned outright, or month-to-month with Website as a Service. Either way, your domain and files are yours.</p>
             <div class="about-panel__bio">
-                <img
-                    class="about-panel__photo"
-                    src="<?php echo webstar_h(webstar_url('assets/images/ian-pic.JPG')); ?>"
-                    alt="Ian McDonnell, founder of Webstar Business Services"
-                    width="400"
-                    height="533"
-                >
+                <?php echo webstar_picture('assets/images/ian-pic.JPG', [
+                    'alt' => 'Ian McDonnell, founder of Webstar Business Services',
+                    'class' => 'about-panel__photo',
+                    'width' => 400,
+                    'height' => 533,
+                    'loading' => 'lazy',
+                ]); ?>
                 <p>Hi, my name is Ian McDonnell and I’m the owner of Webstar Business Services LLC. Webstar is the result of 4 years of small business development and website making in the fishing industry across different niches like retail/ecommerce, blogging, and travel/tourism.</p>
                 <p>This first started with North Star Outfitters LLC, an ecommerce website that specialized in clearance and liquidation fishing gear bought from wholesalers and consignment from brick and mortar stores. The business generated more than $15,000 in its first year of operation. This business wasn’t without its problems; over time growing commission fees, growing advertising fees, and growing shipping costs drove profits down. It was time for a pivot.</p>
                 <p>After North Star Outfitters, while working in another industry, I made Earth Odyssey LLC. <a href="https://earth-odyssey.com" target="_blank" rel="noopener noreferrer">Earth-odyssey.com</a> is a passion project featuring a blog, a photo gallery, and free tech tools for fishermen and hunters. While it’s still in its early stages and construction, I plan for it to be a long term project and be completely free to the public.</p>

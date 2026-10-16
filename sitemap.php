@@ -1,31 +1,24 @@
 <?php
 declare(strict_types=1);
 require __DIR__ . '/library/helpers.php';
+require __DIR__ . '/library/sitemap-build.php';
+
 header('Content-Type: application/xml; charset=UTF-8');
-$urls = [
-    webstar_absolute_url(''),
-    webstar_absolute_url('packages.php'),
-    webstar_absolute_url('examples.php'),
-    webstar_absolute_url('about.php'),
-    webstar_absolute_url('contact.php'),
-    webstar_absolute_url('plans.php'),
-    webstar_absolute_url('process.php'),
-    webstar_absolute_url('privacy.php'),
-    webstar_absolute_url('terms.php'),
-    webstar_absolute_url('accessibility.php'),
-    webstar_absolute_url('weddings/'),
-    webstar_absolute_url('weddings/services/'),
-    webstar_absolute_url('weddings/examples/'),
-];
-foreach (webstar_packages() as $pkg) {
-    $urls[] = webstar_absolute_url('packages/' . rawurlencode((string) $pkg['slug']) . '/');
-}
-foreach (webstar_seo_pages() as $seo) {
-    $urls[] = webstar_absolute_url(rawurlencode((string) $seo['slug']) . '/');
-}
+
+$entries = webstar_sitemap_entries();
+$seen = [];
 echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
 echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
-foreach (array_unique($urls) as $loc) {
-    echo '  <url><loc>' . webstar_h($loc) . '</loc></url>' . "\n";
+foreach ($entries as $entry) {
+    $loc = (string) $entry['loc'];
+    if (isset($seen[$loc])) {
+        continue;
+    }
+    $seen[$loc] = true;
+    echo '  <url>';
+    echo '<loc>' . webstar_h($loc) . '</loc>';
+    echo '<lastmod>' . webstar_h((string) $entry['lastmod']) . '</lastmod>';
+    echo '<priority>' . webstar_h((string) $entry['priority']) . '</priority>';
+    echo '</url>' . "\n";
 }
 echo '</urlset>';

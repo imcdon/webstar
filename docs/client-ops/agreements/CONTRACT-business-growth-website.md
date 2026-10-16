@@ -17,7 +17,7 @@ Fill every blank / `{PLACEHOLDER}` before sending. Related annex: [ANNEX-busines
 | Intake / estimate date | `{INTAKE_DATE}` _______________ |
 | Estimate / quote ID | _______________ (attach the written estimate) |
 | Total project fee | `{PRICE}` **$________** (**$2,500+**; must match written estimate) |
-| Estimated delivery | `{DELIVERY_DATE}` _______________ |
+| Estimated delivery | `{DELIVERY_DATE}` _______________ (typically **1 week or more**, per written estimate; Google verification may run longer) |
 | Payment plan (check one) | ☐ **50/50** — First `{DEPOSIT}` = **50% of `{PRICE}`**; Balance `{BALANCE}` = **50%** at build complete ☐ **Paid in full** — `{DEPOSIT}` = full `{PRICE}`; `{BALANCE}` = N/A ☐ **Milestones** (schedule below controls) |
 | Milestone schedule (if checked) | 1. ____% on signing · 2. ____% at _______________ · 3. ____% at build complete · 4. ____% at launch |
 | Hosting path (check one) | ☐ **Client hosting** (cPanel or other host in Client’s name) ☐ **Webstar managed hosting** under a separate Care Plan Agreement |

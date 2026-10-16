@@ -145,6 +145,46 @@ include __DIR__ . '/library/layout-start.php';
             </section>
         <?php endif; ?>
 
+        <?php
+        $seoForPackage = [];
+        foreach (webstar_seo_pages() as $seoPage) {
+            if (($seoPage['package_slug'] ?? '') === $slug) {
+                $seoForPackage[] = $seoPage;
+            }
+        }
+        if ($seoForPackage !== []) :
+            $areas = [];
+            $industries = [];
+            foreach ($seoForPackage as $seoPage) {
+                $t = (string) ($seoPage['type'] ?? '');
+                if ($t === 'industry') {
+                    $industries[] = $seoPage;
+                } elseif ($t !== 'intent') {
+                    $areas[] = $seoPage;
+                }
+            }
+            ?>
+            <section class="package-seo-links">
+                <h2 class="home-section__heading">Popular searches for this package</h2>
+                <?php if ($areas !== []) : ?>
+                    <h3 class="package-seo-links__sub">Service areas</h3>
+                    <ul class="landing-related">
+                        <?php foreach (array_slice($areas, 0, 8) as $seoPage) : ?>
+                            <li><a href="<?php echo webstar_h(webstar_seo_landing_url((string) $seoPage['slug'])); ?>"><?php echo webstar_h((string) ($seoPage['h1'] ?? $seoPage['title'])); ?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+                <?php if ($industries !== []) : ?>
+                    <h3 class="package-seo-links__sub">Industries</h3>
+                    <ul class="landing-related">
+                        <?php foreach (array_slice($industries, 0, 8) as $seoPage) : ?>
+                            <li><a href="<?php echo webstar_h(webstar_seo_landing_url((string) $seoPage['slug'])); ?>"><?php echo webstar_h((string) ($seoPage['h1'] ?? $seoPage['title'])); ?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            </section>
+        <?php endif; ?>
+
         <?php include __DIR__ . '/library/package-intake-form.php'; ?>
     </div>
 </section>

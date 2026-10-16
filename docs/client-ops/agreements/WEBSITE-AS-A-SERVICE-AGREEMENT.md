@@ -23,7 +23,7 @@ Fill every blank / `{PLACEHOLDER}` before sending. Master terms: [SERVICE-AGREEM
 | Booking tool / integration (if any) | _______________ |
 | Domain (registered in Client’s name) | _______________ registrar: _______________ |
 | Google account for Business Profile / Analytics | _______________ |
-| Estimated launch | `{LAUNCH_DATE}` _______________ (Simple ≈ 1 week · Business ≈ 2 weeks · Growth per estimate, after complete intake) |
+| Estimated launch | `{LAUNCH_DATE}` _______________ (Simple ≈ 24 hours · Business ≈ 2–4 days · Growth a week or more, after complete intake) |
 
 **Project summary:** `{PROJECT_SUMMARY}`  
 ___________________________________________________________________________  

@@ -8,7 +8,7 @@ Internal WBS: [WBS-business-website.md](../wbs/WBS-business-website.md) (ops onl
 | `{PACKAGE_NAME}` | Business Website |
 | Published range | **$900–$1,800** — set exact `{PRICE}` after the scope call (page count, booking complexity, brand-kit depth) |
 | Typical payment | **50/50** (`{DEPOSIT}` = 50%; `{BALANCE}` = 50% at build complete) **or** paid in full after signing. Card on file until paid in full (Master §5). Launch after balance clears. |
-| Turnaround | About **2 weeks** after complete intake, payment, and locked scope. Google verification may take longer. |
+| Turnaround | About **2–4 days** after complete intake, payment, and locked scope. Google verification may take longer. |
 | Hosting path | ☐ Client cPanel host (handoff) ☐ Webstar managed hosting (separate Care Plan Agreement) |
 
 ## Deliverables

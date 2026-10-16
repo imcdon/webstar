@@ -16,7 +16,7 @@ Fill every blank / `{PLACEHOLDER}` before sending. Related annex: [ANNEX-busines
 | Client contact (name · email · phone) | `{CLIENT_CONTACT}` _______________ |
 | Intake / kickoff date | `{INTAKE_DATE}` _______________ |
 | Total project fee | `{PRICE}` **$________** (published range **$900–$1,800**; lock exact amount) |
-| Estimated delivery | `{DELIVERY_DATE}` _______________ (about **2 weeks** after complete intake, payment, and locked scope; Google verification may run longer) |
+| Estimated delivery | `{DELIVERY_DATE}` _______________ (about **2–4 days** after complete intake, payment, and locked scope; Google verification may run longer) |
 | Payment plan (check one) | ☐ **50/50** — First `{DEPOSIT}` = **50% of `{PRICE}`**; Balance `{BALANCE}` = **50%** at build complete ☐ **Paid in full** — `{DEPOSIT}` = full `{PRICE}`; `{BALANCE}` = N/A |
 | Hosting path (check one) | ☐ **Client hosting** (cPanel host in Client’s name; Webstar deploys and hands off) ☐ **Webstar managed hosting** under a separate Care Plan Agreement |
 | Page count (5–10) | _______________ |

@@ -1,4 +1,4 @@
-# Service Agreement — Simple Website
+﻿# Service Agreement — Simple Website
 
 **Webstar Business Services LLC**  
 Plain-language contract. **Not legal advice.** Have a Michigan attorney review for your LLC before relying on this for large jobs.
@@ -16,7 +16,7 @@ Fill every blank / `{PLACEHOLDER}` before sending. Related annex: [ANNEX-simple-
 | Client contact (name · email · phone) | `{CLIENT_CONTACT}` _______________ |
 | Intake / kickoff date | `{INTAKE_DATE}` _______________ |
 | Total project fee | `{PRICE}` **$________** (published range **$350–$500**; lock exact amount) |
-| Estimated delivery | `{DELIVERY_DATE}` _______________ (about **1 week** after complete intake + first payment / pay-in-full; Google verification may run longer) |
+| Estimated delivery | `{DELIVERY_DATE}` _______________ (about **24 hours** after complete intake + first payment / pay-in-full; Google verification may run longer) |
 | Payment plan (check one) | ☐ **50/50** — First `{DEPOSIT}` = **50% of `{PRICE}`**; Balance `{BALANCE}` = **50%** at build complete ☐ **Paid in full** — `{DEPOSIT}` = full `{PRICE}`; `{BALANCE}` = N/A |
 | Hosting path (check one) | ☐ **Client hosting** (cPanel host in Client’s name; Webstar deploys and hands off) ☐ **Webstar managed hosting** under a separate Care Plan Agreement |
 | Domain registrar / DNS notes | _______________________________________________ |

@@ -6,6 +6,8 @@ declare(strict_types=1);
 // an early return — wrap so a double require cannot fatally redeclare.
 if (!function_exists('webstar_config')) {
 
+require_once __DIR__ . '/seo-global.php';
+
 function webstar_config(): array
 {
     static $config = null;
@@ -126,6 +128,9 @@ function webstar_clean_path(string $path): string
         'plans.php' => 'plans/',
         'process.php' => 'process/',
         'accessibility.php' => 'accessibility/',
+        'service-areas.php' => 'service-areas/',
+        'industries.php' => 'industries/',
+        'resources.php' => 'resources/',
     ];
     if (isset($static[$path])) {
         return $static[$path];
@@ -270,10 +275,28 @@ function webstar_seo_pages(): array
 {
     static $pages = null;
     if ($pages === null) {
-        $pages = require __DIR__ . '/seo-pages-data.php';
+        $pages = array_merge(
+            require __DIR__ . '/seo-pages-data.php',
+            require __DIR__ . '/seo-pages-batch.php'
+        );
     }
 
     return $pages;
+}
+
+/**
+ * @return list<array<string, mixed>>
+ */
+function webstar_seo_by_type(string $type): array
+{
+    $out = [];
+    foreach (webstar_seo_pages() as $page) {
+        if (($page['type'] ?? '') === $type) {
+            $out[] = $page;
+        }
+    }
+
+    return $out;
 }
 
 function webstar_seo_by_slug(string $slug): ?array
@@ -319,7 +342,7 @@ function webstar_weddings_url(string $path = ''): string
  *
  * @return array{areas: list<array{label: string, href: string}>, industries: list<array{label: string, href: string}>}
  */
-function webstar_seo_footer_links(): array
+function webstar_seo_footer_links(int $limitPerGroup = 0): array
 {
     $areas = [];
     $industries = [];
@@ -327,6 +350,10 @@ function webstar_seo_footer_links(): array
     foreach (webstar_seo_pages() as $page) {
         $slug = (string) ($page['slug'] ?? '');
         if ($slug === '') {
+            continue;
+        }
+        $type = (string) ($page['type'] ?? 'region');
+        if ($type === 'intent') {
             continue;
         }
 
@@ -338,14 +365,30 @@ function webstar_seo_footer_links(): array
             'href' => webstar_seo_landing_url($slug),
         ];
 
-        if (preg_match('#(?:nail-salons|hair-salons|contractors|landscaping)$#', $slug) === 1) {
+        if ($type === 'industry') {
             $industries[] = $item;
         } else {
             $areas[] = $item;
         }
     }
 
-    return ['areas' => $areas, 'industries' => $industries];
+    $areasTotal = count($areas);
+    $industriesTotal = count($industries);
+    if ($limitPerGroup > 0) {
+        if ($areasTotal > $limitPerGroup) {
+            $areas = array_slice($areas, 0, $limitPerGroup);
+        }
+        if ($industriesTotal > $limitPerGroup) {
+            $industries = array_slice($industries, 0, $limitPerGroup);
+        }
+    }
+
+    return [
+        'areas' => $areas,
+        'industries' => $industries,
+        'areas_total' => $areasTotal,
+        'industries_total' => $industriesTotal,
+    ];
 }
 
 /**
@@ -359,6 +402,99 @@ function webstar_examples(): array
     }
 
     return $examples;
+}
+
+function webstar_articles(): array
+{
+    static $articles = null;
+    if ($articles === null) {
+        $articles = require __DIR__ . '/articles-data.php';
+    }
+
+    return $articles;
+}
+
+function webstar_article_by_slug(string $slug): ?array
+{
+    foreach (webstar_articles() as $article) {
+        if (($article['slug'] ?? '') === $slug) {
+            return $article;
+        }
+    }
+
+    return null;
+}
+
+function webstar_article_url(string $slug): string
+{
+    return webstar_url('resources/' . rawurlencode($slug) . '/');
+}
+
+/**
+ * Prefer a sibling .webp when it exists on disk (JPEG/PNG stay as fallback).
+ */
+function webstar_webp_sibling(string $path): string
+{
+    $path = ltrim(str_replace('\\', '/', $path), '/');
+    $webp = preg_replace('/\.(jpe?g|png)$/i', '.webp', $path) ?? $path;
+    if ($webp === $path) {
+        return '';
+    }
+    $abs = dirname(__DIR__) . '/' . $webp;
+    return is_readable($abs) ? $webp : '';
+}
+
+/**
+ * Render <picture> with WebP source when available, else a plain <img>.
+ *
+ * @param array{alt?:string,width?:int,height?:int,class?:string,loading?:string} $attrs
+ */
+function webstar_picture(string $src, array $attrs = []): string
+{
+    $alt = (string) ($attrs['alt'] ?? '');
+    $class = (string) ($attrs['class'] ?? '');
+    $loading = (string) ($attrs['loading'] ?? 'lazy');
+    $width = isset($attrs['width']) ? (int) $attrs['width'] : 0;
+    $height = isset($attrs['height']) ? (int) $attrs['height'] : 0;
+    $webp = webstar_webp_sibling($src);
+
+    $imgAttrs = 'src="' . webstar_h(webstar_url($src)) . '" alt="' . webstar_h($alt) . '"';
+    if ($class !== '') {
+        $imgAttrs .= ' class="' . webstar_h($class) . '"';
+    }
+    if ($width > 0) {
+        $imgAttrs .= ' width="' . $width . '"';
+    }
+    if ($height > 0) {
+        $imgAttrs .= ' height="' . $height . '"';
+    }
+    if ($loading !== '') {
+        $imgAttrs .= ' loading="' . webstar_h($loading) . '"';
+    }
+    $imgAttrs .= ' decoding="async"';
+
+    if ($webp === '') {
+        return '<img ' . $imgAttrs . '>';
+    }
+
+    return '<picture>'
+        . '<source srcset="' . webstar_h(webstar_url($webp)) . '" type="image/webp">'
+        . '<img ' . $imgAttrs . '>'
+        . '</picture>';
+}
+
+/**
+ * Hub breadcrumb parent for SEO landing types.
+ *
+ * @return array{label: string, path: string}
+ */
+function webstar_seo_hub_for_type(string $type): array
+{
+    return match ($type) {
+        'industry' => ['label' => 'Industries', 'path' => 'industries/'],
+        'intent' => ['label' => 'Resources', 'path' => 'resources/'],
+        default => ['label' => 'Service areas', 'path' => 'service-areas/'],
+    };
 }
 
 } // end if (!function_exists('webstar_config'))

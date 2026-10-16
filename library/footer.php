@@ -1,6 +1,6 @@
 <?php
 $config = webstar_config();
-$seoFooter = webstar_seo_footer_links();
+$seoFooter = webstar_seo_footer_links(6);
 ?>
 <footer class="site-footer">
     <div class="site-footer__inner">
@@ -22,6 +22,9 @@ $seoFooter = webstar_seo_footer_links();
                     <li><a href="<?php echo webstar_h(webstar_url('packages.php')); ?>" class="site-footer__link">Packages</a></li>
                     <li><a href="<?php echo webstar_h(webstar_url('plans.php')); ?>" class="site-footer__link">Monthly Plans</a></li>
                     <li><a href="<?php echo webstar_h(webstar_url('process.php')); ?>" class="site-footer__link">Process</a></li>
+                    <li><a href="<?php echo webstar_h(webstar_url('resources.php')); ?>" class="site-footer__link">Resources</a></li>
+                    <li><a href="<?php echo webstar_h(webstar_url('service-areas.php')); ?>" class="site-footer__link">Service areas</a></li>
+                    <li><a href="<?php echo webstar_h(webstar_url('industries.php')); ?>" class="site-footer__link">Industries</a></li>
                     <li><a href="<?php echo webstar_h(webstar_url('weddings/')); ?>" class="site-footer__link">Weddings</a></li>
                     <li><a href="<?php echo webstar_h(webstar_url('examples.php')); ?>" class="site-footer__link">Examples</a></li>
                     <li><a href="<?php echo webstar_h(webstar_url('about.php')); ?>" class="site-footer__link">About</a></li>
@@ -40,6 +43,9 @@ $seoFooter = webstar_seo_footer_links();
                         <?php foreach ($seoFooter['areas'] as $link) : ?>
                             <li><a href="<?php echo webstar_h($link['href']); ?>" class="site-footer__link"><?php echo webstar_h($link['label']); ?></a></li>
                         <?php endforeach; ?>
+                        <?php if (($seoFooter['areas_total'] ?? 0) > count($seoFooter['areas'])) : ?>
+                            <li><a href="<?php echo webstar_h(webstar_url('service-areas.php')); ?>" class="site-footer__link">All service areas</a></li>
+                        <?php endif; ?>
                     </ul>
                 </nav>
             <?php endif; ?>
@@ -51,6 +57,9 @@ $seoFooter = webstar_seo_footer_links();
                         <?php foreach ($seoFooter['industries'] as $link) : ?>
                             <li><a href="<?php echo webstar_h($link['href']); ?>" class="site-footer__link"><?php echo webstar_h($link['label']); ?></a></li>
                         <?php endforeach; ?>
+                        <?php if (($seoFooter['industries_total'] ?? 0) > count($seoFooter['industries'])) : ?>
+                            <li><a href="<?php echo webstar_h(webstar_url('industries.php')); ?>" class="site-footer__link">All industries</a></li>
+                        <?php endif; ?>
                     </ul>
                 </nav>
             <?php endif; ?>

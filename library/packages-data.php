@@ -14,8 +14,8 @@ return [
         'title' => 'Simple Website',
         'price' => '$350–$500',
         'price_note' => 'One-time project fee',
-        'turnaround' => '1 week',
-        'meta_description' => 'Simple Website: responsive 3-page small business website with contact form, Google Business Profile, Analytics, and Search Console setup. One-time $350–$500.',
+        'turnaround' => '24 hours',
+        'meta_description' => 'Simple Website: responsive 3-page small business website with contact form, Google Business Profile, Analytics, and Search Console setup. One-time $350–$500. Typical turnaround 24 hours after complete intake.',
         'summary' => 'A fast, responsive three-page site plus the Google setup that gets you found — contact form, call and book buttons, and you own everything.',
         'includes' => [
             'Fully functional responsive website (3 pages)',
@@ -93,8 +93,8 @@ return [
         'title' => 'Business Website',
         'price' => '$900–$1,800',
         'price_note' => 'One-time project fee',
-        'turnaround' => '2 weeks',
-        'meta_description' => '5–10 page responsive business website with booking integration, print and brand kit, Google Business Profile, Analytics, and Search Console. One-time $900–$1,800.',
+        'turnaround' => '2–4 days',
+        'meta_description' => '5–10 page responsive business website with booking integration, print and brand kit, Google Business Profile, Analytics, and Search Console. One-time $900–$1,800. Typical turnaround 2–4 days.',
         'summary' => 'A full business site with booking, matching print and brand materials, and complete Google setup — built for growing local businesses.',
         'includes' => [
             'Fully functional responsive website (5–10 pages)',
@@ -173,8 +173,8 @@ return [
         'title' => 'Business Growth Website',
         'price' => '$2,500+',
         'price_note' => 'Quoted from a written estimate',
-        'turnaround' => 'By scope',
-        'meta_description' => 'Custom business growth website: unlimited pages, integrations, booking flows, marketing materials, and full Google setup. Quoted from $2,500.',
+        'turnaround' => '1 week or more',
+        'meta_description' => 'Custom business growth website: unlimited pages, integrations, booking flows, marketing materials, and full Google setup. Quoted from $2,500. Timeline typically a week or more by scope.',
         'summary' => 'End-to-end web and marketing buildouts shaped around your goals, systems, and growth plans — with Google services built in.',
         'includes' => [
             'Unlimited pages and custom functionality',

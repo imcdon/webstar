@@ -52,14 +52,20 @@ $ogImageUrl = webstar_absolute_url($ogImagePath);
     <?php if (!$skipCanonical) : ?>
     <meta property="og:url" content="<?php echo webstar_h($canonicalUrl); ?>">
     <?php endif; ?>
+    <meta property="og:site_name" content="<?php echo webstar_h($config['business_name']); ?>">
     <meta property="og:image" content="<?php echo webstar_h($ogImageUrl); ?>">
+    <meta name="theme-color" content="#0a2f2c">
+    <link rel="preload" href="<?php echo webstar_h(webstar_url('assets/fonts/galano/GalanoClassicAltRegular.otf')); ?>" as="font" type="font/otf" crossorigin>
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<?php echo webstar_h($pageTitle); ?>">
     <meta name="twitter:description" content="<?php echo webstar_h($pageDescription); ?>">
     <meta name="twitter:image" content="<?php echo webstar_h($ogImageUrl); ?>">
     <link rel="stylesheet" href="<?php echo webstar_h(webstar_url('library/styles.css')); ?>?v=<?php echo (int) @filemtime(__DIR__ . '/styles.css'); ?>">
-    <?php if (!empty($jsonLd)) : ?>
-    <script type="application/ld+json"><?php echo $jsonLd; ?></script>
+    <?php
+    $jsonLdOut = webstar_json_ld_script($jsonLd ?? null);
+    if ($jsonLdOut !== '') :
+        ?>
+    <script type="application/ld+json"><?php echo $jsonLdOut; ?></script>
     <?php endif; ?>
 </head>
 <body>

@@ -97,3 +97,40 @@
 
     render();
 })();
+
+(function () {
+    window.dataLayer = window.dataLayer || [];
+
+    function pushEvent(name, params) {
+        window.dataLayer.push(Object.assign({ event: name }, params || {}));
+        if (typeof window.gtag === 'function') {
+            window.gtag('event', name, params || {});
+        }
+    }
+
+    document.querySelectorAll('a[href^="tel:"]').forEach(function (link) {
+        link.addEventListener('click', function () {
+            pushEvent('phone_click', { link_url: link.getAttribute('href') || '' });
+        });
+    });
+
+    document.querySelectorAll('form').forEach(function (form) {
+        form.addEventListener('submit', function () {
+            var id = form.getAttribute('id') || '';
+            var action = form.getAttribute('action') || '';
+            if (id.indexOf('intake') !== -1 || action.indexOf('process-package-intake') !== -1) {
+                pushEvent('intake_submit', { form_id: id });
+            } else if (action.indexOf('process-contact') !== -1) {
+                pushEvent('contact_submit', { form_id: id });
+            }
+        });
+    });
+
+    document.querySelectorAll('a[href*="intake"], a.home-section__btn--primary').forEach(function (link) {
+        if (link.getAttribute('href') && link.getAttribute('href').indexOf('intake') !== -1) {
+            link.addEventListener('click', function () {
+                pushEvent('intake_cta_click', { link_url: link.href });
+            });
+        }
+    });
+})();

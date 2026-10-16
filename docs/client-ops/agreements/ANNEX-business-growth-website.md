@@ -8,7 +8,7 @@ Internal WBS: [WBS-business-growth-website.md](../wbs/WBS-business-growth-websit
 | `{PACKAGE_NAME}` | Business Growth Website |
 | Published price | **$2,500+** — always set exact `{PRICE}` in a written estimate attached to the agreement |
 | Typical payment | **50/50**, **paid in full**, or **written milestones** (e.g. 40% signing · 30% design approval · 20% build complete · 10% launch). Card on file until paid in full (Master §5). Launch after final amount due clears. |
-| Turnaround | **By scope** — stated in the estimate. Google verification may take longer. |
+| Turnaround | **1 week or more** — stated in the estimate by scope. Google verification may take longer. |
 | Hosting path | ☐ Client host (cPanel or other, in Client’s name) ☐ Webstar managed hosting (separate Care Plan Agreement) |
 
 ## Deliverables (only as listed in the estimate)

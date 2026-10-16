@@ -1,4 +1,4 @@
-# Package Annex — Simple Website
+﻿# Package Annex — Simple Website
 
 Attach to [SERVICE-AGREEMENT-MASTER.md](SERVICE-AGREEMENT-MASTER.md), or use standalone [CONTRACT-simple-website.md](CONTRACT-simple-website.md).  
 Internal WBS: [WBS-simple-website.md](../wbs/WBS-simple-website.md) (ops only).
@@ -8,7 +8,7 @@ Internal WBS: [WBS-simple-website.md](../wbs/WBS-simple-website.md) (ops only).
 | `{PACKAGE_NAME}` | Simple Website |
 | Published range | **$350–$500** — set exact `{PRICE}` after the scope call |
 | Typical payment | **50/50** (`{DEPOSIT}` = 50%; `{BALANCE}` = 50% at build complete) **or** paid in full after signing. Card on file until paid in full (Master §5). Launch after balance clears. |
-| Turnaround | About **1 week** after complete intake and first payment / pay-in-full. Google verification may take longer (outside Webstar control). |
+| Turnaround | About **24 hours** after complete intake and first payment / pay-in-full. Google verification may take longer (outside Webstar control). |
 | Hosting path | ☐ Client cPanel host (handoff) ☐ Webstar managed hosting (separate Care Plan Agreement) |
 
 ## Deliverables
