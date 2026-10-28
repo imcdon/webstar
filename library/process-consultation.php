@@ -27,6 +27,22 @@ function book_redirect(string $status, ?string $reason = null, ?string $fields =
     exit;
 }
 
+// #region agent log
+function book_agent_log(string $hypothesisId, string $message, array $data = []): void
+{
+    $line = json_encode([
+        'sessionId' => 'f32897',
+        'runId' => 'consultation-mail',
+        'hypothesisId' => $hypothesisId,
+        'location' => 'process-consultation.php',
+        'message' => $message,
+        'data' => $data,
+        'timestamp' => (int) round(microtime(true) * 1000),
+    ], JSON_UNESCAPED_SLASHES);
+    @file_put_contents(dirname(__DIR__) . '/debug-f32897.log', $line . "\n", FILE_APPEND);
+}
+// #endregion
+
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
@@ -128,13 +144,57 @@ if (!$created['ok']) {
     book_redirect('error', $created['reason'] === 'config' ? 'config' : 'send');
 }
 
+$mailConfig = webstar_mail_config();
+// #region agent log
+book_agent_log('A', 'post-book mail config', [
+    'mail_config_ok' => $mailConfig !== null,
+    'has_upload' => $hasUpload,
+    'upload_is_file' => $hasUpload && is_array($upload) && is_uploaded_file((string) ($upload['tmp_name'] ?? '')),
+    'upload_error' => $hasUpload ? (int) ($upload['error'] ?? -1) : null,
+    'has_presence' => $presenceUrl !== '',
+    'has_company' => $company !== '',
+    'has_topic' => $topic !== '',
+]);
+// #endregion
+
 $logoMailed = true;
-if ($hasUpload) {
-    $logoMailed = book_email_logo($name, $email, $phone, $company, $topic, $start, $upload);
+$summaryMailed = true;
+if ($mailConfig === null) {
+    $logoMailed = !$hasUpload;
+    $summaryMailed = false;
+} else {
+    $mail = new PHPMailer(true);
+    try {
+        webstar_configure_phpmailer($mail, $mailConfig);
+        $mail->SMTPKeepAlive = true;
+
+        if ($hasUpload) {
+            $logoMailed = book_email_logo($mail, $mailConfig, $name, $email, $phone, $company, $topic, $presenceUrl, $start, $upload);
+        }
+
+        $audit = webstar_presence_audit($presenceUrl);
+        $summaryMailed = book_email_presence_summary($mail, $mailConfig, $name, $email, $start, $audit);
+
+        $mail->smtpClose();
+    } catch (MailerException $e) {
+        // #region agent log
+        book_agent_log('C', 'mailer exception after book', [
+            'error_info' => $mail->ErrorInfo,
+        ]);
+        // #endregion
+        if ($hasUpload) {
+            $logoMailed = false;
+        }
+        $summaryMailed = false;
+    }
 }
 
-$audit = webstar_presence_audit($presenceUrl);
-$summaryMailed = book_email_presence_summary($name, $email, $start, $audit);
+// #region agent log
+book_agent_log('B', 'post-book mail results', [
+    'logo_mailed' => $logoMailed,
+    'summary_mailed' => $summaryMailed,
+]);
+// #endregion
 
 $_SESSION['book_token'] = bin2hex(random_bytes(16));
 
@@ -149,12 +209,28 @@ if (!$logoMailed && !$summaryMailed) {
 book_redirect('success', $successReason);
 
 /**
+ * @param array<string, mixed> $mailConfig
  * @param array<string, mixed> $upload
  */
-function book_email_logo(string $name, string $email, string $phone, string $company, string $topic, DateTimeImmutable $start, array $upload): bool
-{
-    $mailConfig = book_mail_config();
-    if ($mailConfig === null) {
+function book_email_logo(
+    PHPMailer $mail,
+    array $mailConfig,
+    string $name,
+    string $email,
+    string $phone,
+    string $company,
+    string $topic,
+    string $presenceUrl,
+    DateTimeImmutable $start,
+    array $upload
+): bool {
+    $tmp = (string) ($upload['tmp_name'] ?? '');
+    if (!is_uploaded_file($tmp)) {
+        // #region agent log
+        book_agent_log('D', 'logo upload tmp missing after book', [
+            'upload_error' => (int) ($upload['error'] ?? -1),
+        ]);
+        // #endregion
         return false;
     }
 
@@ -166,23 +242,28 @@ function book_email_logo(string $name, string $email, string $phone, string $com
         'Email: ' . $email,
         'Phone: ' . $phone,
         'Company: ' . ($company !== '' ? $company : '(none)'),
+        'Online presence: ' . ($presenceUrl !== '' ? $presenceUrl : '(none)'),
         '',
         'What they want to talk about:',
         $topic !== '' ? $topic : '(none)',
     ]);
 
-    $mail = new PHPMailer(true);
     try {
-        book_configure_mailer($mail, $mailConfig);
+        $mail->clearAllRecipients();
+        $mail->clearAttachments();
+        $mail->clearReplyTos();
         $mail->addAddress((string) $mailConfig['mail_to']);
         $mail->addReplyTo($email, $name);
-        if (is_uploaded_file((string) $upload['tmp_name'])) {
-            $mail->addAttachment((string) $upload['tmp_name'], (string) ($upload['name'] ?? 'logo-upload'));
-        }
+        $mail->addAttachment($tmp, (string) ($upload['name'] ?? 'logo-upload'));
         $mail->Subject = 'Consultation logo — ' . $name;
         $mail->Body = $body;
         $mail->send();
-    } catch (MailerException) {
+    } catch (MailerException $e) {
+        // #region agent log
+        book_agent_log('C', 'logo mail failed', [
+            'error_info' => $mail->ErrorInfo,
+        ]);
+        // #endregion
         return false;
     }
 
@@ -190,15 +271,17 @@ function book_email_logo(string $name, string $email, string $phone, string $com
 }
 
 /**
+ * @param array<string, mixed> $mailConfig
  * @param array{status: string, url: string, title: string, https: bool, finding: string} $audit
  */
-function book_email_presence_summary(string $name, string $email, DateTimeImmutable $start, array $audit): bool
-{
-    $mailConfig = book_mail_config();
-    if ($mailConfig === null) {
-        return false;
-    }
-
+function book_email_presence_summary(
+    PHPMailer $mail,
+    array $mailConfig,
+    string $name,
+    string $email,
+    DateTimeImmutable $start,
+    array $audit
+): bool {
     $when = $start->format('l, M j, Y g:i A T');
     $finding = webstar_presence_finding_text($audit);
     $linkLine = $audit['url'] !== '' ? "Link you sent: {$audit['url']}\n" : '';
@@ -220,75 +303,52 @@ function book_email_presence_summary(string $name, string $email, DateTimeImmuta
         'ian@webstarbusinessservices.com',
     ]);
 
-    $mail = new PHPMailer(true);
     try {
-        book_configure_mailer($mail, $mailConfig);
+        $mail->clearAllRecipients();
+        $mail->clearAttachments();
+        $mail->clearReplyTos();
+        $mail->clearCCs();
         $mail->addAddress($email, $name);
         $mail->addCC((string) $mailConfig['mail_to']);
         $mail->addReplyTo((string) $mailConfig['mail_to'], (string) $mailConfig['mail_from_name']);
         $mail->Subject = 'Your Webstar 1-on-1 — quick look before the call';
         $mail->Body = $body;
         $mail->send();
-    } catch (MailerException) {
+    } catch (MailerException $e) {
+        // #region agent log
+        book_agent_log('C', 'summary mail to guest failed, trying staff copy', [
+            'error_info' => $mail->ErrorInfo,
+        ]);
+        // #endregion
+        try {
+            $staffBody = implode("\n", [
+                'Consultation booked — guest summary email could not be delivered.',
+                '',
+                'Guest: ' . $name . ' <' . $email . '>',
+                'When: ' . $when,
+                '',
+                $body,
+            ]);
+            $mail->clearAllRecipients();
+            $mail->clearAttachments();
+            $mail->clearReplyTos();
+            $mail->clearCCs();
+            $mail->addAddress((string) $mailConfig['mail_to']);
+            $mail->addReplyTo($email, $name);
+            $mail->Subject = 'Consultation summary (guest copy failed) — ' . $name;
+            $mail->Body = $staffBody;
+            $mail->send();
+        } catch (MailerException $e2) {
+            // #region agent log
+            book_agent_log('C', 'summary mail staff fallback failed', [
+                'error_info' => $mail->ErrorInfo,
+            ]);
+            // #endregion
+            return false;
+        }
+
         return false;
     }
 
     return true;
-}
-
-/**
- * @return array<string, mixed>|null
- */
-function book_mail_config(): ?array
-{
-    static $config = false;
-    if ($config !== false) {
-        return $config;
-    }
-
-    $autoload = dirname(__DIR__) . '/vendor/autoload.php';
-    $configPath = __DIR__ . '/mail-config.php';
-    if (!is_file($autoload) || !is_file($configPath)) {
-        $config = null;
-        return null;
-    }
-    require_once $autoload;
-    $loaded = require $configPath;
-    if (!is_array($loaded)) {
-        $config = null;
-        return null;
-    }
-    foreach (['smtp_host', 'smtp_port', 'smtp_secure', 'smtp_user', 'smtp_pass', 'mail_from', 'mail_from_name', 'mail_to'] as $key) {
-        if (!isset($loaded[$key]) || trim((string) $loaded[$key]) === '') {
-            $config = null;
-            return null;
-        }
-    }
-    $config = $loaded;
-
-    return $config;
-}
-
-/**
- * @param array<string, mixed> $config
- */
-function book_configure_mailer(PHPMailer $mail, array $config): void
-{
-    $mail->isSMTP();
-    $mail->Host = (string) $config['smtp_host'];
-    $mail->Port = (int) $config['smtp_port'];
-    $mail->SMTPAuth = true;
-    $mail->Username = (string) $config['smtp_user'];
-    $mail->Password = (string) $config['smtp_pass'];
-    $secure = strtolower((string) $config['smtp_secure']);
-    if ($secure === 'ssl') {
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-    } elseif ($secure === 'tls') {
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    } else {
-        $mail->SMTPSecure = '';
-        $mail->SMTPAutoTLS = false;
-    }
-    $mail->setFrom((string) $config['mail_from'], (string) $config['mail_from_name']);
-    $mail->CharSet = PHPMailer::CHARSET_UTF8;
 }

@@ -506,4 +506,68 @@ function webstar_seo_hub_for_type(string $type): array
     };
 }
 
+/**
+ * SMTP settings for PHPMailer (contact, intake, consultation). Null when missing or placeholder.
+ *
+ * @return array<string, mixed>|null
+ */
+function webstar_mail_config(): ?array
+{
+    static $resolved = false;
+    static $config = null;
+    if ($resolved) {
+        return $config;
+    }
+    $resolved = true;
+
+    $autoload = dirname(__DIR__) . '/vendor/autoload.php';
+    $configPath = __DIR__ . '/mail-config.php';
+    if (!is_file($autoload) || !is_file($configPath)) {
+        return null;
+    }
+    require_once $autoload;
+    $loaded = require $configPath;
+    if (!is_array($loaded)) {
+        return null;
+    }
+    foreach (['smtp_host', 'smtp_port', 'smtp_secure', 'smtp_user', 'smtp_pass', 'mail_from', 'mail_from_name', 'mail_to'] as $key) {
+        if (!isset($loaded[$key]) || trim((string) $loaded[$key]) === '') {
+            return null;
+        }
+    }
+    $placeholders = ['smtp.example.com', 'your-smtp-user@example.com', 'your-app-password', 'your-email@domain.com'];
+    foreach (['smtp_host', 'smtp_user', 'smtp_pass', 'mail_to'] as $key) {
+        if (in_array(trim((string) $loaded[$key]), $placeholders, true)) {
+            return null;
+        }
+    }
+    $config = $loaded;
+
+    return $config;
+}
+
+/**
+ * @param array<string, mixed> $config
+ */
+function webstar_configure_phpmailer(PHPMailer\PHPMailer\PHPMailer $mail, array $config): void
+{
+    $mail->isSMTP();
+    $mail->Host = (string) $config['smtp_host'];
+    $mail->Port = (int) $config['smtp_port'];
+    $mail->SMTPAuth = true;
+    $mail->Username = (string) $config['smtp_user'];
+    $mail->Password = (string) $config['smtp_pass'];
+    $secure = strtolower((string) $config['smtp_secure']);
+    if ($secure === 'ssl') {
+        $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
+    } elseif ($secure === 'tls') {
+        $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
+    } else {
+        $mail->SMTPSecure = '';
+        $mail->SMTPAutoTLS = false;
+    }
+    $mail->setFrom((string) $config['mail_from'], (string) $config['mail_from_name']);
+    $mail->CharSet = PHPMailer\PHPMailer\PHPMailer::CHARSET_UTF8;
+}
+
 } // end if (!function_exists('webstar_config'))

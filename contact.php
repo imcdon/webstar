@@ -111,7 +111,12 @@ include __DIR__ . '/library/layout-start.php';
 
                 <?php if (empty($bookSlots['ok'])) : ?>
                     <div class="schedule-message schedule-message--error" role="status">
-                        <p>Online booking is not available right now. Call <a href="<?php echo webstar_h(webstar_phone_href()); ?>"><?php echo webstar_h(webstar_phone_display()); ?></a> or email <a href="mailto:<?php echo webstar_h($config['email']); ?>"><?php echo webstar_h($config['email']); ?></a> and we’ll find a time.</p>
+                        <p>Online booking is not available right now<?php
+                        $bookFailReason = (string) ($bookSlots['reason'] ?? '');
+                        if ($bookFailReason !== '') {
+                            echo ' (' . webstar_h($bookFailReason) . ')';
+                        }
+                        ?>. Call <a href="<?php echo webstar_h(webstar_phone_href()); ?>"><?php echo webstar_h(webstar_phone_display()); ?></a> or email <a href="mailto:<?php echo webstar_h($config['email']); ?>"><?php echo webstar_h($config['email']); ?></a> and we’ll find a time.</p>
                     </div>
                 <?php else :
                     $bookTimezone = (string) ($bookSlots['timezone'] ?? 'America/Detroit');

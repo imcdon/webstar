@@ -28,4 +28,6 @@ return [
     'weekdays' => [1, 2, 3, 4, 5],
     'day_start' => '09:00',
     'day_end' => '17:00',
+    // Optional: set to run scripts/calendar-booking-health.php?key=YOUR_KEY on the server (no secrets returned).
+    'booking_health_key' => '',
 ];
