@@ -28,6 +28,8 @@ $settings = webstar_calendar_settings();
 $token = webstar_calendar_access_token(true);
 $slots = webstar_calendar_public_slots();
 
+$mailDiag = webstar_mail_config_diagnostics();
+
 $payload = [
     'config_exists' => is_file($configPath),
     'config_readable' => is_readable($configPath),
@@ -39,6 +41,11 @@ $payload = [
     'slots_ok' => !empty($slots['ok']),
     'reason' => $slots['reason'] ?? null,
     'day_count' => count($slots['days'] ?? []),
+    'mail_config_ok' => $mailDiag['ok'],
+    'mail_config_exists' => $mailDiag['config_exists'],
+    'mail_autoload_exists' => $mailDiag['autoload_exists'],
+    'mail_missing_keys' => $mailDiag['missing_keys'],
+    'mail_placeholder_keys' => $mailDiag['placeholder_keys'],
     'php_sapi' => PHP_SAPI,
     'host' => $_SERVER['HTTP_HOST'] ?? 'cli',
 ];

@@ -39,7 +39,7 @@ function book_agent_log(string $hypothesisId, string $message, array $data = [])
         'data' => $data,
         'timestamp' => (int) round(microtime(true) * 1000),
     ], JSON_UNESCAPED_SLASHES);
-    @file_put_contents(dirname(__DIR__) . '/debug-f32897.log', $line . "\n", FILE_APPEND);
+    @file_put_contents(__DIR__ . '/.consultation-mail-debug.log', $line . "\n", FILE_APPEND);
 }
 // #endregion
 
@@ -160,8 +160,11 @@ book_agent_log('A', 'post-book mail config', [
 $logoMailed = true;
 $summaryMailed = true;
 if ($mailConfig === null) {
-    $logoMailed = !$hasUpload;
-    $summaryMailed = false;
+    // #region agent log
+    book_agent_log('A', 'mail config diagnostics', webstar_mail_config_diagnostics());
+    // #endregion
+    $_SESSION['book_token'] = bin2hex(random_bytes(16));
+    book_redirect('success', 'mail_config');
 } else {
     $mail = new PHPMailer(true);
     try {

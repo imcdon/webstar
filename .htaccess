@@ -37,6 +37,8 @@ DirectoryIndex index.php
 
     RewriteRule ^sitemap\.xml$ sitemap.php [L]
 
+    RewriteRule ^debug-.*\.log$ - [F,L]
+
     # --- 301: legacy .php / query URLs → clean paths (use THE_REQUEST for correct base) ---
 
     # /…/index.php → /…/

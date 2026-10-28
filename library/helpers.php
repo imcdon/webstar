@@ -547,6 +547,67 @@ function webstar_mail_config(): ?array
 }
 
 /**
+ * Why SMTP config failed to load (no secrets). For health checks only.
+ *
+ * @return array{ok: bool, autoload_exists: bool, config_exists: bool, config_readable: bool, missing_keys: list<string>, placeholder_keys: list<string>}
+ */
+function webstar_mail_config_diagnostics(): array
+{
+    $autoload = dirname(__DIR__) . '/vendor/autoload.php';
+    $configPath = __DIR__ . '/mail-config.php';
+    $missing = [];
+    $placeholders = [];
+    $required = ['smtp_host', 'smtp_port', 'smtp_secure', 'smtp_user', 'smtp_pass', 'mail_from', 'mail_from_name', 'mail_to'];
+    $placeholderValues = ['smtp.example.com', 'your-smtp-user@example.com', 'your-app-password', 'your-email@domain.com'];
+    $placeholderKeys = ['smtp_host', 'smtp_user', 'smtp_pass', 'mail_to'];
+
+    if (!is_file($configPath) || !is_readable($configPath)) {
+        return [
+            'ok' => false,
+            'autoload_exists' => is_file($autoload),
+            'config_exists' => is_file($configPath),
+            'config_readable' => is_readable($configPath),
+            'missing_keys' => $missing,
+            'placeholder_keys' => $placeholders,
+        ];
+    }
+
+    $loaded = require $configPath;
+    if (!is_array($loaded)) {
+        return [
+            'ok' => false,
+            'autoload_exists' => is_file($autoload),
+            'config_exists' => true,
+            'config_readable' => true,
+            'missing_keys' => ['invalid_config'],
+            'placeholder_keys' => $placeholders,
+        ];
+    }
+
+    foreach ($required as $key) {
+        if (!isset($loaded[$key]) || trim((string) $loaded[$key]) === '') {
+            $missing[] = $key;
+        }
+    }
+    foreach ($placeholderKeys as $key) {
+        if (isset($loaded[$key]) && in_array(trim((string) $loaded[$key]), $placeholderValues, true)) {
+            $placeholders[] = $key;
+        }
+    }
+
+    $ok = is_file($autoload) && $missing === [] && $placeholders === [];
+
+    return [
+        'ok' => $ok,
+        'autoload_exists' => is_file($autoload),
+        'config_exists' => true,
+        'config_readable' => true,
+        'missing_keys' => $missing,
+        'placeholder_keys' => $placeholders,
+    ];
+}
+
+/**
  * @param array<string, mixed> $config
  */
 function webstar_configure_phpmailer(PHPMailer\PHPMailer\PHPMailer $mail, array $config): void

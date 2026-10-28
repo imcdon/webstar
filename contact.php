@@ -88,6 +88,8 @@ include __DIR__ . '/library/layout-start.php';
                             <p>The time is saved, but the short summary email did not send. I’ll still have your booking on the calendar.</p>
                         <?php elseif ($bookReason === 'logo_summary') : ?>
                             <p>The time is saved, but the logo and summary emails did not send. Please email your logo to <a href="mailto:<?php echo webstar_h($config['email']); ?>"><?php echo webstar_h($config['email']); ?></a>.</p>
+                        <?php elseif ($bookReason === 'mail_config') : ?>
+                            <p>You’re booked — your calendar invite should still arrive from Google. We couldn’t send the extra confirmation email from the site; Ian has your details on the calendar.</p>
                         <?php endif; ?>
                     </div>
                 <?php elseif ($bookStatus === 'error') : ?>

@@ -2,6 +2,7 @@
 library/mail-config.php
 library/calendar-config.php
 library/.calendar-access.json
+library/.consultation-mail-debug.log
 
 # Local / build
 node_modules/
