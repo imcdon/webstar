@@ -35,7 +35,7 @@
 <p>Update Facebook, Instagram, and email signature with new URL. Tell staff what form notifications look like so leads are not ignored. Set calendar reminder for 30-day fix window end — report bugs before it closes.</p>
 
 <h2>WaaS vs outright handoff differences</h2>
-<p>WaaS clients stay on managed hosting with Standard Care included during minimum term. Outright buyers get archive zip and credentials document. Both receive Google account checklist showing manager roles.</p>
+<p>WaaS clients stay on managed hosting with care included during the minimum term. Outright buyers get archive zip and credentials document. Both receive Google account checklist showing manager roles.</p>
 
 <h2>When to call for help</h2>
 <p>DNS not propagating after 24 hours, form spam flooding, or redirect loops — email me during the fix window. Launch is not the time to rename the business or swap domains; freeze scope for two weeks so Google stabilizes.</p>
@@ -79,5 +79,5 @@
 <p>Search Console may take days to show impressions after DNS propagates. Avoid renaming URLs in week two unless legally required. If you migrate from a builder, keep old property view in Analytics thirty days to compare traffic sources while the new canonical settles. Map-pack clicks often lag a week behind site go-live — that is normal, not a sign the launch failed.</p>
 <h2>Quick recap for busy owners</h2>
 <p>You do not need a marketing degree to execute this — you need a consistent process tied to jobs you already finish. Block thirty minutes on your calendar after launch week to walk the steps above with whoever answers your phone. Revisit the list each quarter when Michigan seasons change demand, hours, and photo opportunities. If anything here overlaps with paid packages, it is because Webstar builds sites and Google setup together so you are not juggling five vendors with conflicting advice.</p>
-<p>When you are ready for hands-on help, pick the package tier that matches scope — Simple Website at $350–$500 for three pages, Business Website at $900–$1,800 when booking and print matter, growth builds at $2,500+, or Website as a Service at $150 per month — and submit intake. I will confirm timeline, deliverables, and who owns each login before design starts.</p>
+<p>When you are ready for hands-on help, pick the package tier that matches scope — Simple Website at $350–$500 for three pages, Business Website at $900–$1,800 when booking and print matter, growth builds at $2,500+, or Website as a Service at $150 per month — and book a free consultation. I will confirm timeline, deliverables, and who owns each login before design starts.</p>
 <p>Save this checklist in your operations binder next to your insurance renewal — launches go smoother when DNS and forms are not an afterthought the night before your busiest month. If anything in this list feels overwhelming, that is normal; Webstar walks you through the technical steps on every package during the 30-day fix window after go-live.</p>

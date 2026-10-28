@@ -131,6 +131,7 @@ function webstar_clean_path(string $path): string
         'service-areas.php' => 'service-areas/',
         'industries.php' => 'industries/',
         'resources.php' => 'resources/',
+        'reviews.php' => 'reviews/',
     ];
     if (isset($static[$path])) {
         return $static[$path];
@@ -171,6 +172,13 @@ function webstar_package_url(string $slug, string $fragment = ''): string
 
 function webstar_absolute_url(string $path = ''): string
 {
+    // On production, always emit the public www HTTPS canonical — not the
+    // request host/scheme (Caddy/BitNinja proxies can otherwise advertise http
+    // or a non-www host and confuse Search Console URL Inspection).
+    if (!webstar_is_local_host()) {
+        return webstar_production_site_url($path);
+    }
+
     $config = webstar_config();
     $host = (string) ($_SERVER['HTTP_HOST'] ?? $config['domain']);
     $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
@@ -458,7 +466,8 @@ function webstar_picture(string $src, array $attrs = []): string
     $height = isset($attrs['height']) ? (int) $attrs['height'] : 0;
     $webp = webstar_webp_sibling($src);
 
-    $imgAttrs = 'src="' . webstar_h(webstar_url($src)) . '" alt="' . webstar_h($alt) . '"';
+    $imgSrc = $webp !== '' ? $webp : $src;
+    $imgAttrs = 'src="' . webstar_h(webstar_url($imgSrc)) . '" alt="' . webstar_h($alt) . '"';
     if ($class !== '') {
         $imgAttrs .= ' class="' . webstar_h($class) . '"';
     }

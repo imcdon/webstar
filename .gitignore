@@ -1,9 +1,12 @@
 # Server-only secrets (never commit)
 library/mail-config.php
+library/calendar-config.php
+library/.calendar-access.json
 
 # Local / build
 node_modules/
-_raw/
+_raw/*
+!_raw/README.md
 .env
 .env.*
 *.local.php

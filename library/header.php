@@ -12,11 +12,11 @@ $navItems = [
     ['id' => 'packages', 'label' => 'Packages', 'href' => webstar_url('packages.php')],
     ['id' => 'plans', 'label' => 'Monthly Plans', 'href' => webstar_url('plans.php')],
     ['id' => 'resources', 'label' => 'Resources', 'href' => webstar_url('resources.php')],
-    ['id' => 'weddings', 'label' => 'Weddings', 'href' => webstar_url('weddings/')],
     ['id' => 'examples', 'label' => 'Examples', 'href' => webstar_url('examples.php')],
     ['id' => 'about', 'label' => 'About', 'href' => webstar_url('about.php')],
     ['id' => 'contact', 'label' => 'Contact', 'href' => webstar_url('contact.php')],
     ['id' => 'portal', 'label' => 'Client Portal', 'href' => webstar_url('portal/')],
+    ['id' => 'book', 'label' => 'Book a 1-on-1', 'href' => webstar_url('contact.php#book'), 'cta' => true],
 ];
 $headerClass = 'site-header';
 if ($headerVariant === 'landing') {
@@ -46,6 +46,9 @@ if ($headerVariant === 'landing') {
                 $linkClass = 'site-header__nav-link';
                 if ($isActive) {
                     $linkClass .= ' is-active';
+                }
+                if (!empty($item['cta'])) {
+                    $linkClass .= ' site-header__nav-link--cta';
                 }
                 ?>
                 <li class="site-header__nav-item">

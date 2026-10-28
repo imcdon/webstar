@@ -32,7 +32,7 @@
 <p>Custom PHP sites on maintained hosting with Care Plans get backups and updates. Builders handle patches until they do not — and plugin equivalents on Wix still need attention. Either way, someone must watch SSL expiry.</p>
 
 <h2>Make the decision once</h2>
-<p>Compare our Wix/Squarespace alternative landing page packages side by side. If custom wins, submit Simple Website intake. If you stay on a builder, at least connect your domain and fix Google ownership this month — half measures cost calls either way.</p>
+<p>Compare our Wix/Squarespace alternative landing page packages side by side. If custom wins, submit a free consultation. If you stay on a builder, at least connect your domain and fix Google ownership this month — half measures cost calls either way.</p>
 <h2>Template lock-in vs file ownership</h2>
 <p>On Webstar outright packages you receive source you can zip and move. Builders rent you functionality — when you stop paying, the site disappears except what you manually exported. Ownership matters for SBA loans, franchise audits, and peace of mind when a contractor stops answering texts.</p>
 
@@ -67,4 +67,4 @@
 <p>If you already pay for a builder and the site loads fast, you own Analytics, and leads are steady — keep it until something breaks. If renewals climbed, ownership is fuzzy, or mobile performance fails, budget a custom Simple Website and switch during a slow week. The rebuild pays back in trust and speed, not magic rankings overnight.</p>
 <h2>Quick recap for busy owners</h2>
 <p>You do not need a marketing degree to execute this — you need a consistent process tied to jobs you already finish. Block thirty minutes on your calendar after launch week to walk the steps above with whoever answers your phone. Revisit the list each quarter when Michigan seasons change demand, hours, and photo opportunities. If anything here overlaps with paid packages, it is because Webstar builds sites and Google setup together so you are not juggling five vendors with conflicting advice.</p>
-<p>When you are ready for hands-on help, pick the package tier that matches scope — Simple Website at $350–$500 for three pages, Business Website at $900–$1,800 when booking and print matter, growth builds at $2,500+, or Website as a Service at $150 per month — and submit intake. I will confirm timeline, deliverables, and who owns each login before design starts.</p>
+<p>When you are ready for hands-on help, pick the package tier that matches scope — Simple Website at $350–$500 for three pages, Business Website at $900–$1,800 when booking and print matter, growth builds at $2,500+, or Website as a Service at $150 per month — and book a free consultation. I will confirm timeline, deliverables, and who owns each login before design starts.</p>

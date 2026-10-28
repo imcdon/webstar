@@ -4,14 +4,14 @@
 
 <h2>What you get either way</h2>
 <p>Both models include a custom build — not a reused template skin with your logo dropped in — plus Google setup where you keep admin access. Domain stays in your registrar account. Contact forms and click-to-call buttons work on real phones, not just desktop previews. After launch you get a fix window for small bugs, and documentation for where files live.</p>
-<p>WaaS bundles Standard Care during the minimum term: hosting on managed servers, daily backups, uptime monitoring, SSL renewal, sixty minutes of content edits per month, and a monthly Analytics and Search Console summary in plain English. When you buy outright, hosting and care are separate choices — many clients use budget cPanel hosts or add Essential Care at $49 per month later.</p>
+<p>WaaS includes hosting on managed servers, daily backups, uptime monitoring, SSL renewal, sixty minutes of content edits per month, and a monthly Analytics and Search Console summary in plain English. When you buy outright, hosting and care are separate choices — many clients use budget cPanel hosts or add the Care Plan at $50 per month later.</p>
 
 <h2>Ownership timeline: the biggest misunderstanding</h2>
 <p>Buying outright means you own files at handoff — usually within about 24 hours for Simple Website once content is ready. WaaS ownership kicks in after month six, when you receive a full export even if you keep paying $150 for convenience. Before six months, early exit requires settling the remaining minimum payments; that protects the build labor baked into the monthly fee.</p>
 <p>Your domain is never held hostage on either plan. I register or transfer it in your name on day one. Google accounts are created under your Gmail or Workspace login. If we part ways, you still have the domain and Google properties; only hosting and maintenance change.</p>
 
 <h2>Total cost snapshots (use your calculator)</h2>
-<p>Six months of WaaS at $150 equals $900 before you own files — similar to the floor of Business Website, but with hosting and edits included during those months. A $450 Simple Website plus $10–$25 per month hosting might total $750–$900 over two years if you rarely edit. Business Website at $1,400 one-time plus Essential Care at $49 for twelve months lands near $1,988 year one with more pages and booking from the start.</p>
+<p>Six months of WaaS at $150 equals $900 before you own files — similar to the floor of Business Website, but with hosting and edits included during those months. A $450 Simple Website plus $10–$25 per month hosting might total $750–$900 over two years if you rarely edit. Business Website at $1,400 one-time plus the Care Plan at $50 for twelve months lands near $2,000 year one with more pages and booking from the start.</p>
 <p>None of these numbers include ads, photography, or copywriting marathons. They are baseline web infrastructure — the digital front door Michigan customers expect when they compare three plumbers on Google Maps.</p>
 
 <h2>When paying outright makes sense</h2>
@@ -23,11 +23,11 @@
 <p>WaaS also helps owners who know they need Business Website scope but cannot swallow $1,200 upfront. We fix scope in writing at signing — pages, booking, brand kit — then spread delivery across the minimum term while the site is live and improving.</p>
 
 <h2>Care Plans after you buy outright</h2>
-<p>Essential Care at $49 per month covers hosting management, backups, and thirty minutes of edits. Standard at $99 adds Google Business Profile refresh and faster response. Premium at $179 is for teams that change often. WaaS includes Standard during the term; after month six you might drop to Essential if you mostly need hosting peace of mind.</p>
-<p>Skipping care entirely is valid if you have a technical co-owner — just remember SSL expiry and PHP updates are not automatic on every cheap host. Downtime during peak season costs more than $49.</p>
+<p>The Care Plan is $50 per month and covers hosting, daily backups, 120 minutes of edits, Google reporting, a quarterly strategy call, seasonal updates, and phone or text support. WaaS includes hosting and a smaller edit allowance during the term; after month six you can switch to the Care Plan if you want the full support list at $50.</p>
+<p>Skipping care entirely is valid if you have a technical co-owner — just remember SSL expiry and PHP updates are not automatic on every cheap host. Downtime during peak season costs more than $50.</p>
 
 <h2>Upgrade and downgrade paths</h2>
-<p>Starting on WaaS does not trap you on a small site forever. Change orders add pages or integrations with written pricing. After ownership transfer, upgrading hosting or adding Care is a conversation, not a rebuild. Conversely, buying Business Website today does not block WaaS-style support — you can add Standard Care the month after launch.</p>
+<p>Starting on WaaS does not trap you on a small site forever. Change orders add pages or integrations with written pricing. After ownership transfer, upgrading hosting or adding Care is a conversation, not a rebuild. Conversely, buying Business Website today does not block WaaS-style support — you can add the Care Plan the month after launch.</p>
 
 <h2>Risk comparison in plain language</h2>
 <p>Outright purchase risk: you pay before seeing the final pixel-perfect site, which is why Webstar uses staging review before launch. WaaS risk: you commit to six payments; if you dislike the working relationship, you still owe the minimum but you keep the domain and Google accounts you control. Builder platform risk: years of rent, export limitations, and slower mobile performance — the reason many Michigan owners leave Wix after renewal shock.</p>
@@ -40,17 +40,17 @@
 <li>Does booking integration include setup on my calendar account?</li>
 <li>What happens to hosting DNS if I move files?</li>
 </ul>
-<p>I publish answers on package and plan pages so you can compare without a sales call. If your gut says monthly cash flow wins, start on plans and read the WaaS FAQ. If you hate subscriptions on principle, Simple Website intake is the front door.</p>
+<p>I publish answers on package and plan pages so you can compare without a sales call. If your gut says monthly cash flow wins, start on plans and read the WaaS FAQ. If you hate subscriptions on principle, a free consultation is the front door.</p>
 
 <h2>Make the call and move on</h2>
 <p>Indecision also costs leads. Pick the payment shape that lets you launch this quarter, then focus on reviews and service quality — the things that actually move map packs in Oakland County. You can switch support tiers later; you cannot recover months of sending traffic to a Facebook page alone.</p>
 <h2>Michigan seasonal cash flow examples</h2>
 <p>Lawn care and landscaping crews in Oakland County often stack revenue May through October. Paying $150 per month through a slow winter can preserve cash for equipment repairs while still keeping hosting and SSL active. A one-time $450 Simple Website in March before the rush hits works when you already saved last year profit. Neither choice is wrong — match the invoice shape to when your bank account breathes.</p>
-<p>Restaurants along Woodward may prefer WaaS because menus, hours, and patio status change weekly during festival season. Paying outright fits when you have a stable kitchen menu and only update twice a year. Talk through edit volume honestly; that is what pushes people from Essential Care to Standard.</p>
+<p>Restaurants along Woodward may prefer WaaS because menus, hours, and patio status change weekly during festival season. Paying outright fits when you have a stable kitchen menu and only update twice a year. Talk through edit volume honestly; that is what decides whether the Care Plan’s 120 minutes is enough.</p>
 
 <h2>How Stripe billing works on WaaS</h2>
 <p>Autopay runs the same day each month. The first payment kicks off the build schedule; production launch happens after your staging approval, not necessarily after payment one. If card fails, hosting pauses after notice — another reason to keep billing email monitored. Invoices live in your inbox for accountants.</p>
-<p>After month six, continuing at $150 is optional convenience. Downgrading to Essential Care at $49 keeps hosting and backups if you rarely need copy changes. Exporting files to your own VPS is free once minimum term is satisfied.</p>
+<p>After month six, continuing at $150 is optional convenience. Switching to the Care Plan at $50 keeps hosting, backups, and the full edit allowance. Exporting files to your own VPS is free once minimum term is satisfied.</p>
 
 <h2>Combining models over five years</h2>
 <p>Some owners start WaaS, own files at month six, then pay for a Business Website refresh at $900–$1,800 when they add booking — treating the first site as phase one. Others buy Simple outright, run three years, then hire me for a redesign project quoted separately. Continuity beats platform hopping.</p>

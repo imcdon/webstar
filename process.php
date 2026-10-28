@@ -3,15 +3,15 @@ declare(strict_types=1);
 require __DIR__ . '/library/helpers.php';
 $config = webstar_config();
 $currentPage = 'process';
-$pageTitle = 'Our Process — From Intake to Launch | Webstar Business Services';
-$pageDescription = 'How a Webstar website project runs: discovery, design, build, review, launch, Google setup, 30-day fix window, then handoff or a Care Plan. What we need from you at each step.';
+$pageTitle = 'Our Process — From Consultation to Launch | Webstar';
+$pageDescription = 'How a Webstar website project runs: a free consultation, design, build, review, launch, Google setup, 30-day fix window, then handoff or a Care Plan.';
 $canonicalPath = 'process/';
 
 $steps = [
     [
-        'title' => 'Discovery and intake',
-        'when' => 'Day 0–2',
-        'body' => 'You submit the intake form (or Website as a Service request). We schedule a 20–30 minute call to confirm goals, pages, booking needs, and the exact fee in writing.',
+        'title' => 'Free consultation',
+        'when' => 'Day 0',
+        'body' => 'Book a free 1-on-1 consultation. On that 20–30 minute call we confirm goals, pages, booking needs, and the exact fee in writing.',
         'you' => ['Logo files and brand colors', 'Business name, phone, hours, service area', 'Photos and any existing copy', 'Booking or scheduling tool you already use'],
         'we' => ['Written scope and fixed price', 'Agreement for eSignature', 'Stripe invoice for the deposit or first month', 'Client Portal login'],
     ],

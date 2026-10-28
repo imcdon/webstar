@@ -4,7 +4,7 @@ require __DIR__ . '/library/helpers.php';
 require __DIR__ . '/library/article-helpers.php';
 
 $currentPage = 'resources';
-$pageTitle = 'Guides & Resources — Michigan Small Business Websites | Webstar';
+$pageTitle = 'Small Business Website Guides | Webstar';
 $pageDescription = 'Practical guides on website cost, Google Business Profile, launch checklists, and Wix alternatives for Metro Detroit and Michigan small businesses.';
 $canonicalPath = 'resources/';
 

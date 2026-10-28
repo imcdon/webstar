@@ -6,7 +6,7 @@
 |------|---------|
 | [assets/business-card-webstar.html](assets/business-card-webstar.html) | Front + back preview (3.5 × 2 in faces) |
 | [assets/webstar-qr-home.png](assets/webstar-qr-home.png) | QR → `https://www.webstarbusinessservices.com/` |
-| `assets/business-card-front-bg.jpg` | Front photo (optional); dark CSS placeholder until added |
+| Front photo | `assets/images/business-card/fabrizio-the-frog.webp` (source: `_raw/images/business-card/fabrizio-the-frog.jpg`) |
 | Star mark | Repo `assets/images/star-icon-gold.png` |
 
 Brand tokens: [BRAND.md](BRAND.md).
@@ -14,11 +14,11 @@ Brand tokens: [BRAND.md](BRAND.md).
 ## Design
 
 - **Front:** full-bleed photo background (or dark placeholder), larger gold star + company name, bottom band with Ian McDonnell / Owner / phone. Light text on dark. No gold divider; no email/domain on front.
-- **Back:** night teal panel; QR to homepage on the left; service bullets on the right (Websites from $350, Google Business Profile & Analytics, SEO and GEO, Care Plans & Website as a Service, Metro Detroit and Nationwide); phone · email · domain along the bottom.
+- **Back:** night teal panel; QR to homepage on the left; service bullets on the right (free consults, custom websites for any niche, booking and ecommerce, SEO and GEO with Google Analytics, Serving Metro Detroit and Nationwide); phone · email · domain along the bottom.
 
 ## Swapping assets
 
-1. **Front photo:** save as `docs/client-ops/assets/business-card-front-bg.jpg` (cover crop works best at ~3.5×2 aspect). Refresh the HTML preview.
+1. **Front photo:** drop the original in `_raw/images/business-card/`, run `npm run media:images` from the repo root, then point the HTML at the new WebP under `assets/images/business-card/` if the filename changes. Cover crop works best at ~3.5×2 aspect.
 2. **QR:** regenerate `webstar-qr-home.png` only if the homepage URL changes.
 
 ## Print / PDF

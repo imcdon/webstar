@@ -17,6 +17,7 @@ $starUrl = webstar_url('assets/images/star-icon-gold.png');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo webstar_h($pageTitle); ?></title>
     <meta name="description" content="<?php echo webstar_h($pageDescription); ?>">
+    <meta name="robots" content="noindex, nofollow">
     <link rel="canonical" href="<?php echo webstar_h($canonicalUrl); ?>">
     <link rel="icon" href="<?php echo webstar_h(webstar_url('assets/images/favicon.png')); ?>" type="image/png">
     <meta property="og:title" content="<?php echo webstar_h($pageTitle); ?>">

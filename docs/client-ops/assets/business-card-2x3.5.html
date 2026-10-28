@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Webstar Business Card — 2 × 3.5</title>
+  <style>
+    @page {
+      size: 3.611028in 2.111028in;
+      margin: 0;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fff;
+    }
+    .card {
+      width: 3.611028in;
+      height: 2.111028in;
+      position: relative;
+      overflow: hidden;
+      break-after: page;
+    }
+    .card:last-child { break-after: auto; }
+
+    .card--front {
+      color: #f2ebe0;
+      padding: 0.215514in 0.235514in;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: #0a181c;
+      background-image:
+        linear-gradient(
+          90deg,
+          rgba(4, 12, 14, 0.5) 0%,
+          rgba(4, 12, 14, 0.5) 14%,
+          rgba(4, 12, 14, 0) 20%
+        ),
+        linear-gradient(180deg, rgba(8, 18, 22, 0.2) 0%, rgba(8, 18, 22, 0.15) 45%, rgba(8, 18, 22, 0.82) 100%),
+        url("../../../assets/images/business-card/fabrizio-the-frog.webp");
+      background-size: auto, auto, 118%;
+      background-position: center, center, center 5%;
+      background-repeat: no-repeat;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand img {
+      width: 44px;
+      height: 44px;
+      display: block;
+      flex-shrink: 0;
+    }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+    .brand-name {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      line-height: 1.1;
+      color: #f2ebe0;
+    }
+    .brand-tag {
+      font-size: 9.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(242, 235, 224, 0.78);
+    }
+    .front-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75px;
+    }
+    .person-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: #f2ebe0;
+      line-height: 1.2;
+    }
+    .person-role {
+      font-size: 11px;
+      color: rgba(232, 204, 106, 0.95);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+    .front-phone {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: #f2ebe0;
+      text-decoration: none;
+      line-height: 1.2;
+    }
+
+    .card--back {
+      background: #04191a;
+      color: #e8f4f1;
+      padding: 0.195514in 0.215514in 0.175514in;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.08in;
+    }
+    .back-main {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.06in;
+      align-items: start;
+      flex: 1;
+      min-height: 0;
+    }
+    .back-qr {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 0.15in;
+    }
+    .back-qr img {
+      width: 0.7in;
+      height: 0.7in;
+      display: block;
+      background: #fff;
+      padding: 0.03in;
+      border-radius: 0.02in;
+    }
+    .back-list {
+      margin: 0.07in 0 0;
+      padding: 0;
+      list-style: none;
+      font-size: 13.5px;
+      line-height: 1.35;
+      color: rgba(232, 244, 241, 0.92);
+    }
+    .back-list li { margin: 0 0 0.03in; }
+    .back-list li.back-list-wide {
+      font-size: 11.5px;
+      white-space: nowrap;
+    }
+    .back-list li::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+      margin-right: 5px;
+      border-radius: 50%;
+      background: #c9a227;
+      vertical-align: middle;
+    }
+    .back-footer {
+      margin-bottom: 0.04in;
+      font-size: 11.5px;
+      line-height: 1.35;
+      color: rgba(232, 244, 241, 0.88);
+      text-align: center;
+      font-weight: 600;
+    }
+    .back-footer a {
+      color: rgba(232, 244, 241, 0.88);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <article class="card card--front" aria-label="Business card front">
+    <div class="brand">
+      <img src="../../../assets/images/star-icon-gold.png" alt="">
+      <div class="brand-text">
+        <span class="brand-name">Webstar Business Services</span>
+        <span class="brand-tag">Websites &amp; marketing</span>
+      </div>
+    </div>
+    <div class="front-bottom">
+      <div class="person-name">Ian McDonnell</div>
+      <div class="person-role">Owner</div>
+      <a class="front-phone" href="tel:+12485643663">248-564-3663</a>
+    </div>
+  </article>
+
+  <article class="card card--back" aria-label="Business card back">
+    <div class="back-main">
+      <div class="back-qr">
+        <img src="webstar-qr-home.png" width="400" height="400" alt="QR code to webstarbusinessservices.com">
+      </div>
+      <ul class="back-list">
+        <li>Free 1-on-1 Consultations</li>
+        <li>Custom Websites for Any Niche</li>
+        <li>Booking &amp; Ecommerce Integrations</li>
+        <li>SEO &amp; GEO | Google Analytics</li>
+        <li class="back-list-wide">Serving Metro Detroit and Nationwide</li>
+      </ul>
+    </div>
+    <div class="back-footer">
+      <a href="tel:+12485643663">248-564-3663</a>
+      ·
+      <a href="mailto:ian@webstarbusinessservices.com">ian@webstarbusinessservices.com</a>
+      ·
+      <a href="https://www.webstarbusinessservices.com/">webstarbusinessservices.com</a>
+    </div>
+  </article>
+</body>
+</html>

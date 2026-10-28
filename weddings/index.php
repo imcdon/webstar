@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 require_once dirname(__DIR__) . '/library/helpers.php';
-$pageTitle = 'Webstar Weddings — Custom Wedding Websites & Digital Invitations';
+$pageTitle = 'Custom Wedding Websites & Digital Invitations | Webstar';
 $pageDescription = 'Elegant wedding websites and digital invitations for couples. Warm, personal, RSVP-ready sites by Webstar.';
 $canonicalPath = 'weddings/';
 $weddingsPage = 'home';

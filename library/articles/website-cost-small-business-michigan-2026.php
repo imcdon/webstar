@@ -20,7 +20,7 @@
 <p>If you are comparing bids above $2,500, ask each vendor what happens after launch: hosting, edits, and who holds the Analytics account. Webstar hands you keys on every tier. Growth builds often pair with Care Plans if you want monthly edits without hiring a full-time marketer.</p>
 
 <h2>Website as a Service: $150 per month</h2>
-<p>Not everyone wants a four-figure invoice before revenue catches up. Website as a Service spreads the build and ongoing care into $150 per month with a six-month minimum. Standard Care is included: hosting, backups, monitoring, sixty minutes of edits, and a plain-English monthly report. After month six you own the files outright and can stay on the plan, downgrade to Essential Care, or export to your own host.</p>
+<p>Not everyone wants a four-figure invoice before revenue catches up. Website as a Service spreads the build and ongoing care into $150 per month with a six-month minimum. Hosting, backups, monitoring, sixty minutes of edits, and a plain-English monthly report are included. After month six you own the files outright and can stay on the plan, switch to the $50 Care Plan, or export to your own host.</p>
 <p>Total math matters: six months at $150 is $900 — comparable to the lower end of Business Website — but you also get hosting and maintenance during those months. For a new LLC in Livonia or a side business testing demand, that predictability beats putting $1,800 on a card before your first paying customer.</p>
 
 <h2>What is not included (so you are not surprised)</h2>
@@ -39,5 +39,5 @@
 <p>You can upgrade later without throwing away work — we extend the same design system rather than rebooting on a new subdomain. That path is common for contractors who begin with three pages and add a commercial services page after their first big referral partner.</p>
 
 <h2>Next step if you want real numbers for your business</h2>
-<p>Open the package page that matches your tier, read the deliverable list, and submit intake when you are ready. I reply with confirmation of scope, price band, and timeline — still no hourly mystery. If you are comparing Website as a Service vs paying outright, read the companion guide on this resources hub and run the six-month math against your cash flow.</p>
+<p>Open the package page that matches your tier, read the deliverable list, and book a free consultation when you are ready. I reply with confirmation of scope, price band, and timeline — still no hourly mystery. If you are comparing Website as a Service vs paying outright, read the companion guide on this resources hub and run the six-month math against your cash flow.</p>
 <p>Michigan small businesses deserve published pricing. In 2026, showing up on Google with a site you control is table stakes from Detroit to Ann Arbor. Pick the tier that matches today’s scope, not the fantasy site you might need in three years — you can grow into Business Growth when the leads justify it.</p>

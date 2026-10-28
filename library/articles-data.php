@@ -45,13 +45,13 @@ return [
             ],
             [
                 'q' => 'What is included in the $150/month WaaS fee?',
-                'a' => 'Custom build at the tier we agree in writing, hosting, Google Business Profile and Analytics setup, and Standard Care (backups, monitoring, 60 minutes of edits, monthly report).',
+                'a' => 'Custom build at the tier we agree in writing, hosting, Google Business Profile and Analytics setup, plus backups, monitoring, 60 minutes of edits, and a monthly report.',
             ],
         ],
     ],
     [
         'slug' => 'google-business-profile-checklist-metro-detroit',
-        'title' => 'Google Business Profile Checklist for Metro Detroit',
+        'title' => 'Google Business Profile Checklist (Detroit)',
         'meta_description' => 'Step-by-step Google Business Profile checklist for Metro Detroit small businesses — categories, service areas, photos, and how it connects to your Webstar website.',
         'primary_keyword' => 'Google Business Profile checklist Metro Detroit',
         'published' => '2026-03-11',
@@ -83,7 +83,7 @@ return [
     ],
     [
         'slug' => 'wix-squarespace-vs-custom-website',
-        'title' => 'Wix & Squarespace vs a Custom Small Business Website',
+        'title' => 'Wix & Squarespace vs a Custom Website',
         'meta_description' => 'Honest comparison for Michigan owners: DIY builders vs Webstar custom sites ($350–$500 and up). Speed, ownership, Google setup, and when templates are fine.',
         'primary_keyword' => 'Wix Squarespace vs custom website',
         'published' => '2026-03-13',
@@ -100,7 +100,7 @@ return [
     ],
     [
         'slug' => 'website-launch-checklist-domain-hosting',
-        'title' => 'Website Launch Checklist: Domain, Hosting & Go-Live',
+        'title' => 'Website Launch Checklist: Domain & Hosting',
         'meta_description' => 'Domain, DNS, SSL, forms, and Google tools — a launch checklist for Michigan small businesses before and after your Webstar site goes live.',
         'primary_keyword' => 'website launch checklist domain hosting',
         'published' => '2026-03-13',
@@ -111,7 +111,7 @@ return [
     ],
     [
         'slug' => 'first-10-google-reviews-small-business',
-        'title' => 'How to Get Your First 10 Google Reviews (Without Being Pushy)',
+        'title' => 'How to Get Your First 10 Google Reviews',
         'meta_description' => 'Practical ways Michigan small businesses earn their first ten Google reviews — timing, links, staff scripts, and pairing reviews with a credible website.',
         'primary_keyword' => 'first Google reviews small business',
         'published' => '2026-03-14',

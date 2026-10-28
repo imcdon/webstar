@@ -13,10 +13,10 @@ if ($page === null) {
 
 $currentPage = '';
 $headerVariant = 'landing';
-$pageTitle = (string) $page['title'] . ' — Webstar Business Services';
+$pageTitle = (string) $page['title'] . ' | Webstar';
 $pageDescription = (string) $page['meta_description'];
 $canonicalPath = rawurlencode($slug) . '/';
-$ogImagePath = (string) ($page['hero_image'] ?? 'assets/images/og-default.jpg');
+$ogImagePath = (string) ($page['hero_image'] ?? 'assets/images/og-default.webp');
 $recommended = webstar_package_by_slug((string) ($page['package_slug'] ?? ''));
 $landingUrl = webstar_production_site_url($canonicalPath);
 $h1 = (string) $page['h1'];
@@ -61,7 +61,7 @@ include __DIR__ . '/library/layout-start.php';
             <?php endif; ?>
             <div class="landing-hero__actions hero__actions">
                 <?php if ($recommended !== null) : ?>
-                    <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_package_url($recommended['slug'], 'intake')); ?>">Start intake form</a>
+                    <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('contact.php#book')); ?>">Book a 1-on-1</a>
                 <?php endif; ?>
                 <?php if (webstar_phone_display() !== '') : ?>
                     <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_phone_href()); ?>">Call <?php echo webstar_h(webstar_phone_display()); ?></a>
@@ -127,7 +127,7 @@ include __DIR__ . '/library/layout-start.php';
 
         <div class="landing-cta-band">
             <?php if ($recommended !== null) : ?>
-                <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_package_url($recommended['slug'], 'intake')); ?>">Start <?php echo webstar_h($recommended['title']); ?> intake</a>
+                <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('contact.php#book')); ?>">Book a 1-on-1</a>
             <?php endif; ?>
             <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_url('contact.php')); ?>">Ask a question</a>
         </div>

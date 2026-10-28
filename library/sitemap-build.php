@@ -65,9 +65,7 @@ function webstar_sitemap_entries(): array
     $add('privacy/', $mtime($root . '/privacy.php'), '0.3');
     $add('terms/', $mtime($root . '/terms.php'), '0.3');
     $add('accessibility/', $mtime($root . '/accessibility.php'), '0.3');
-    $add('weddings/', $mtime($root . '/weddings/index.php'), '0.5');
-    $add('weddings/services/', $mtime($root . '/weddings/services.php'), '0.45');
-    $add('weddings/examples/', $mtime($root . '/weddings/examples.php'), '0.45');
+    // Weddings microsite is shelved from the public site (kept in repo; not linked or sitemapped).
 
     return $entries;
 }

@@ -21,6 +21,11 @@ return [
     'google_maps_url' => 'https://maps.app.goo.gl/ZUKh1nB9Q5wcub5F6',
     // Optional direct "write a review" link (https://g.page/r/.../review). Falls back to google_maps_url.
     'google_review_url' => '',
+    // Public profile URLs for As Seen On / reviews page (leave empty until the listing exists).
+    'yelp_url' => '',
+    'linkedin_url' => '',
+    'facebook_url' => '',
+    'instagram_url' => '',
     'gtm_container_id' => 'GTM-MS49HQKZ',
     'ga4_measurement_id' => 'G-05F8R3SKQ8',
 ];

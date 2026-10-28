@@ -52,7 +52,7 @@
 <p>Google posts announce sales, closures, and hires — short updates with a photo outperform text alone. Q&amp;A on the profile should be monitored; seed common questions if empty. Turn on messaging only if someone will reply within minutes during business hours; stale chat hurts trust.</p>
 
 <h2>Reporting you should glance at monthly</h2>
-<p>Insights show discovery searches and call clicks. Sudden drops may mean a category change, competitor surge, or website downtime. Pair with Search Console impressions for your brand name. Standard Care on WaaS or Care Plans includes a plain-English summary so you do not live inside dashboards.</p>
+<p>Insights show discovery searches and call clicks. Sudden drops may mean a category change, competitor surge, or website downtime. Pair with Search Console impressions for your brand name. Website as a Service and the Care Plan include a plain-English summary so you do not live inside dashboards.</p>
 
 <h2>When to hire help vs DIY tweaks</h2>
 <p>Owners can update hours and photos themselves after I document steps at launch. Category overhauls, multi-location strategy, or reinstatement after suspension benefit from experienced setup — included on Webstar packages at $350–$500 and above. Do not gamble manager access on a marketing intern’s personal Gmail.</p>
@@ -61,4 +61,4 @@
 <p>If your Simple Website at $350–$500 includes only three pages, ensure the homepage summarizes services Google lists in your profile categories. Mismatch triggers lower conversion even when impressions look fine.</p>
 <h2>Quick recap for busy owners</h2>
 <p>You do not need a marketing degree to execute this — you need a consistent process tied to jobs you already finish. Block thirty minutes on your calendar after launch week to walk the steps above with whoever answers your phone. Revisit the list each quarter when Michigan seasons change demand, hours, and photo opportunities. If anything here overlaps with paid packages, it is because Webstar builds sites and Google setup together so you are not juggling five vendors with conflicting advice.</p>
-<p>When you are ready for hands-on help, pick the package tier that matches scope — Simple Website at $350–$500 for three pages, Business Website at $900–$1,800 when booking and print matter, growth builds at $2,500+, or Website as a Service at $150 per month — and submit intake. I will confirm timeline, deliverables, and who owns each login before design starts.</p>
+<p>When you are ready for hands-on help, pick the package tier that matches scope — Simple Website at $350–$500 for three pages, Business Website at $900–$1,800 when booking and print matter, growth builds at $2,500+, or Website as a Service at $150 per month — and book a free consultation. I will confirm timeline, deliverables, and who owns each login before design starts.</p>

@@ -2,7 +2,7 @@
 declare(strict_types=1);
 require __DIR__ . '/library/helpers.php';
 $config = webstar_config();
-$pageTitle = 'Privacy Policy — Webstar Business Services';
+$pageTitle = 'Privacy Policy | Webstar';
 $pageDescription = 'Privacy policy for Webstar Business Services: what we collect through forms and analytics, how we use it, how long we keep it, and how to contact us about your data.';
 $canonicalPath = 'privacy/';
 include __DIR__ . '/library/layout-start.php';
@@ -18,7 +18,7 @@ include __DIR__ . '/library/layout-start.php';
     <h2>Information we collect</h2>
     <h3>Information you give us</h3>
     <ul>
-        <li><strong>Contact and intake forms:</strong> name, company, email, phone, business summary, desired services, and any logo or file you upload.</li>
+        <li><strong>Consultation booking and contact forms:</strong> name, company, email, phone, the time you book, what you want to talk about, and any logo or file you upload.</li>
         <li><strong>Client Portal:</strong> a username and password we issue to view your project status and staging previews.</li>
         <li><strong>Projects:</strong> business details, content, photos, and account access you share so we can build and launch your site.</li>
     </ul>

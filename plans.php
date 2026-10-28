@@ -5,16 +5,9 @@ $config = webstar_config();
 $currentPage = 'plans';
 $waas = webstar_waas();
 $carePlans = webstar_care_plans();
-$pageTitle = 'Website as a Service & Care Plans | Metro Detroit — Webstar Business Services';
+$pageTitle = 'Website as a Service & Care Plans | Metro Detroit | Webstar';
 $pageDescription = (string) ($waas['meta_description'] ?? 'Website as a Service for $150 per month and optional Care Plans for hosting, backups, updates, and reporting.');
 $canonicalPath = 'plans/';
-
-$intakeStatus = isset($_GET['intake_status']) ? (string) $_GET['intake_status'] : '';
-$intakeReason = isset($_GET['intake_reason']) ? (string) $_GET['intake_reason'] : '';
-$intakeFields = isset($_GET['intake_fields']) ? (string) $_GET['intake_fields'] : '';
-$packageSlug = (string) ($waas['slug'] ?? 'website-as-a-service');
-$packageTitle = (string) ($waas['title'] ?? 'Website as a Service');
-$intakeRedirect = webstar_url('plans.php');
 
 $planFaqs = is_array($waas['faq'] ?? null) ? $waas['faq'] : [];
 $planFaqs[] = [
@@ -86,7 +79,7 @@ include __DIR__ . '/library/layout-start.php';
                     <?php endforeach; ?>
                 </ul>
                 <p class="package-card__meta"><strong>Ideal for:</strong> <?php echo webstar_h((string) $waas['ideal_for']); ?></p>
-                <a class="home-section__btn home-section__btn--primary" href="#intake">Start Website as a Service</a>
+                <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('contact.php')); ?>?plan=<?php echo webstar_h((string) ($waas['slug'] ?? 'website-as-a-service')); ?>#book">Book a 1-on-1</a>
             </article>
             <div class="plan-hero__aside">
                 <h2 class="plan-hero__aside-title">Or own it outright</h2>
@@ -99,8 +92,8 @@ include __DIR__ . '/library/layout-start.php';
 
 <section class="home-section home-section--panel" id="care-plans">
     <div class="home-section__inner">
-        <h2 class="home-section__heading">Care Plans</h2>
-        <p class="home-section__textbox">Optional, month-to-month support after any website launch. Cancel with 30 days’ notice and take a full export with you.</p>
+        <h2 class="home-section__heading">Care Plan</h2>
+        <p class="home-section__textbox">Optional, month-to-month support after any website launch. One plan, $50 per month. Cancel with 30 days’ notice and take a full export with you.</p>
         <div class="package-grid">
             <?php foreach ($carePlans as $plan) :
                 $featured = ($plan['badge'] ?? '') !== '';
@@ -118,7 +111,7 @@ include __DIR__ . '/library/layout-start.php';
                             <li><?php echo webstar_h((string) $item); ?></li>
                         <?php endforeach; ?>
                     </ul>
-                    <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('contact.php')); ?>?plan=<?php echo webstar_h((string) $plan['slug']); ?>#inquiry">Ask about <?php echo webstar_h((string) $plan['title']); ?></a>
+                    <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('contact.php')); ?>?plan=<?php echo webstar_h((string) $plan['slug']); ?>#book">Book a 1-on-1</a>
                 </article>
             <?php endforeach; ?>
         </div>
@@ -140,9 +133,4 @@ include __DIR__ . '/library/layout-start.php';
     </div>
 </section>
 
-<section class="home-section home-section--panel">
-    <div class="home-section__inner">
-        <?php include __DIR__ . '/library/package-intake-form.php'; ?>
-    </div>
-</section>
 <?php include __DIR__ . '/library/layout-end.php'; ?>

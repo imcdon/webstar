@@ -20,10 +20,10 @@ $waasBand = webstar_waas();
                 <h3 class="package-card__title"><?php echo webstar_h((string) $waasBand['title']); ?></h3>
                 <p class="package-card__price"><?php echo webstar_h((string) $waasBand['price']); ?> <span class="plan-price__period"><?php echo webstar_h((string) $waasBand['period']); ?></span></p>
                 <p class="package-card__meta"><?php echo webstar_h((string) $waasBand['minimum_term']); ?> · you own the files after month 6</p>
-                <p class="package-card__summary">Website build, hosting, Google setup, and Standard Care for one flat monthly payment. No large upfront cost.</p>
+                <p class="package-card__summary">Website build, hosting, Google setup, and ongoing care for one flat monthly payment. No large upfront cost.</p>
                 <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('plans.php')); ?>#waas">How Website as a Service works</a>
             </article>
         </div>
-        <p class="home-section__textbox plan-note">After launch, optional <a href="<?php echo webstar_h(webstar_url('plans.php')); ?>#care-plans">Care Plans</a> from $49/mo cover hosting, backups, updates, edits, and monthly Google reports. Every website comes with a 30-day post-launch fix window either way.</p>
+        <p class="home-section__textbox plan-note">After launch, an optional <a href="<?php echo webstar_h(webstar_url('plans.php')); ?>#care-plans">Care Plan</a> at $50/mo covers hosting, backups, updates, edits, Google reporting, and a quarterly strategy call. Every website comes with a 30-day post-launch fix window either way.</p>
     </div>
 </section>

@@ -8,7 +8,7 @@ $canonicalPath = $canonicalPath ?? '';
 $skipCanonical = !empty($skipCanonical);
 $robotsMeta = $robotsMeta ?? '';
 $canonicalUrl = $canonicalPath !== '' ? webstar_absolute_url($canonicalPath) : webstar_absolute_url('');
-$ogImagePath = $ogImagePath ?? 'assets/images/og-default.jpg';
+$ogImagePath = $ogImagePath ?? 'assets/images/og-default.webp';
 $ogImageUrl = webstar_absolute_url($ogImagePath);
 ?><!DOCTYPE html>
 <html lang="en">
@@ -55,6 +55,20 @@ $ogImageUrl = webstar_absolute_url($ogImagePath);
     <meta property="og:site_name" content="<?php echo webstar_h($config['business_name']); ?>">
     <meta property="og:image" content="<?php echo webstar_h($ogImageUrl); ?>">
     <meta name="theme-color" content="#0a2f2c">
+    <?php
+    if (!empty($preloadImages) && is_array($preloadImages)) :
+        foreach ($preloadImages as $preloadImage) :
+            $preloadPath = trim((string) ($preloadImage['path'] ?? ''));
+            if ($preloadPath === '') {
+                continue;
+            }
+            $preloadMedia = trim((string) ($preloadImage['media'] ?? ''));
+            ?>
+    <link rel="preload" as="image" href="<?php echo webstar_h(webstar_url($preloadPath)); ?>"<?php echo $preloadMedia !== '' ? ' media="' . webstar_h($preloadMedia) . '"' : ''; ?> fetchpriority="high">
+            <?php
+        endforeach;
+    endif;
+    ?>
     <link rel="preload" href="<?php echo webstar_h(webstar_url('assets/fonts/galano/GalanoClassicAltRegular.otf')); ?>" as="font" type="font/otf" crossorigin>
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<?php echo webstar_h($pageTitle); ?>">

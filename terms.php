@@ -2,7 +2,7 @@
 declare(strict_types=1);
 require __DIR__ . '/library/helpers.php';
 $config = webstar_config();
-$pageTitle = 'Terms of Service — Webstar Business Services';
+$pageTitle = 'Terms of Service | Webstar';
 $pageDescription = 'Terms of service for Webstar Business Services website packages, Website as a Service, and Care Plans: pricing, payment, ownership, warranty, hosting, and liability.';
 $canonicalPath = 'terms/';
 include __DIR__ . '/library/layout-start.php';

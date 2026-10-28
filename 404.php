@@ -2,7 +2,7 @@
 declare(strict_types=1);
 require __DIR__ . '/library/helpers.php';
 http_response_code(404);
-$pageTitle = 'Page not found — Webstar Business Services';
+$pageTitle = 'Page not found | Webstar';
 $pageDescription = 'The page you requested could not be found.';
 $robotsMeta = 'noindex, follow';
 $skipCanonical = true;

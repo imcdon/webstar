@@ -21,7 +21,7 @@ if (!is_readable($bodyPath)) {
 $currentPage = 'resources';
 $headerVariant = 'landing';
 $title = (string) ($article['title'] ?? $slug);
-$pageTitle = $title . ' — Webstar Business Services';
+$pageTitle = $title . ' | Webstar';
 $pageDescription = (string) ($article['meta_description'] ?? '');
 $canonicalPath = 'resources/' . rawurlencode($slug) . '/';
 $articleUrl = webstar_production_site_url($canonicalPath);
@@ -145,18 +145,8 @@ include __DIR__ . '/library/layout-start.php';
         <?php endif; ?>
 
         <div class="landing-cta-band">
-            <?php if ($recommended !== null) :
-                $offerSlug = (string) ($recommended['slug'] ?? $relatedPackageSlug);
-                $offerTitle = (string) ($recommended['title'] ?? 'package');
-                $href = webstar_package_url($offerSlug, 'intake');
-                if (($recommended['price'] ?? '') !== '' && str_contains($offerSlug, 'care')) {
-                    $href = webstar_url('plans.php');
-                }
-                if ($offerSlug === 'website-as-a-service') {
-                    $href = webstar_url('plans.php#waas');
-                }
-                ?>
-                <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h($href); ?>">View <?php echo webstar_h($offerTitle); ?></a>
+            <?php if ($recommended !== null) : ?>
+                <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('contact.php#book')); ?>">Book a 1-on-1</a>
             <?php endif; ?>
             <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_url('contact.php')); ?>">Ask a question</a>
         </div>

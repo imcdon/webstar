@@ -2,7 +2,7 @@
 declare(strict_types=1);
 require __DIR__ . '/library/helpers.php';
 $currentPage = 'examples';
-$pageTitle = 'Website Examples & Client Work — Webstar Business Services';
+$pageTitle = 'Website Examples & Client Work | Webstar';
 $pageDescription = 'Live websites built by Webstar Business Services. Metro Detroit web design with clear packages and intake.';
 $canonicalPath = 'examples/';
 include __DIR__ . '/library/layout-start.php';
@@ -13,9 +13,11 @@ include __DIR__ . '/library/layout-start.php';
         <p class="home-section__textbox examples-lead">Live client sites you can visit today. More examples are added when projects launch on their own domains.</p>
         <div class="examples-grid">
             <?php foreach (webstar_examples() as $example) :
-                $packageSlug = (string) ($example['package_slug'] ?? 'simple-website');
+                $packageSlug = trim((string) ($example['package_slug'] ?? ''));
                 $title = (string) $example['title'];
                 $siteUrl = (string) $example['url'];
+                $description = trim((string) ($example['description'] ?? ''));
+                $testing = (($example['status'] ?? '') === 'testing');
                 ?>
                 <article class="example-panel">
                     <?php
@@ -36,10 +38,18 @@ include __DIR__ . '/library/layout-start.php';
                         </a>
                     <?php endif; ?>
                     <div class="example-panel__body example-panel__body--compact">
+                        <?php if ($testing) : ?>
+                            <p class="example-panel__type">In testing</p>
+                        <?php endif; ?>
                         <h2 class="example-panel__title"><?php echo webstar_h($title); ?></h2>
+                        <?php if ($description !== '') : ?>
+                            <p class="example-panel__desc"><?php echo webstar_h($description); ?></p>
+                        <?php endif; ?>
                         <div class="example-panel__actions">
                             <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h($siteUrl); ?>" target="_blank" rel="noopener noreferrer">Visit live site</a>
-                            <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_package_url($packageSlug)); ?>">Start similar project</a>
+                            <?php if ($packageSlug !== '') : ?>
+                                <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_package_url($packageSlug)); ?>">Start similar project</a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </article>

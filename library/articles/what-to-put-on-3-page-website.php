@@ -40,7 +40,7 @@
 
 <h2>Launch week habits</h2>
 <p>Test form deliverability — submit yourself from a friend’s phone. Click every button. Update GBP website field. Share the new link on the Facebook page you already have, but make the site the canonical home for hours and services.</p>
-<p>This structure keeps builds inside $350–$500 for most Michigan clients and launches in about 24 hours when assets arrive ready. Submit intake with your three-page outline and we confirm before pixels hit the screen.</p>
+<p>This structure keeps builds inside $350–$500 for most Michigan clients and launches in about 24 hours when assets arrive ready. Book a free consultation with your three-page outline and we confirm before pixels hit the screen.</p>
 <h2>Homepage hero mistakes I see in Michigan</h2>
 <p>Rotating sliders with five stock photos slow phones and say nothing. Single strong photo of your team, boat, salon chair, or completed deck wins. Headlines written for humans beat keyword soup. If you serve multiple counties, say so once clearly — not in a footer-only list invisible to scanners.</p>
 
@@ -72,4 +72,4 @@
 <p>Quarterly photo refresh, hour updates before holidays, and a quick check that form email still delivers — that is ongoing ops. Care Plans cover edits if you prefer not to touch HTML. WaaS at $150 per month bundles those edits during the minimum term.</p>
 <h2>Quick recap for busy owners</h2>
 <p>You do not need a marketing degree to execute this — you need a consistent process tied to jobs you already finish. Block thirty minutes on your calendar after launch week to walk the steps above with whoever answers your phone. Revisit the list each quarter when Michigan seasons change demand, hours, and photo opportunities. If anything here overlaps with paid packages, it is because Webstar builds sites and Google setup together so you are not juggling five vendors with conflicting advice.</p>
-<p>When you are ready for hands-on help, pick the package tier that matches scope — Simple Website at $350–$500 for three pages, Business Website at $900–$1,800 when booking and print matter, growth builds at $2,500+, or Website as a Service at $150 per month — and submit intake. I will confirm timeline, deliverables, and who owns each login before design starts.</p>
+<p>When you are ready for hands-on help, pick the package tier that matches scope — Simple Website at $350–$500 for three pages, Business Website at $900–$1,800 when booking and print matter, growth builds at $2,500+, or Website as a Service at $150 per month — and book a free consultation. I will confirm timeline, deliverables, and who owns each login before design starts.</p>

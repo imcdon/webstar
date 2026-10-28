@@ -2,7 +2,7 @@
 declare(strict_types=1);
 require __DIR__ . '/library/helpers.php';
 $config = webstar_config();
-$pageTitle = 'Accessibility Statement — Webstar Business Services';
+$pageTitle = 'Accessibility Statement | Webstar';
 $pageDescription = 'Webstar Business Services accessibility statement: our WCAG 2.1 AA target for this site and the websites we build, and how to report an accessibility issue.';
 $canonicalPath = 'accessibility/';
 include __DIR__ . '/library/layout-start.php';

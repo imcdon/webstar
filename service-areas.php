@@ -3,7 +3,7 @@ declare(strict_types=1);
 require __DIR__ . '/library/helpers.php';
 
 $currentPage = '';
-$pageTitle = 'Web Design Service Areas — Metro Detroit & Michigan | Webstar';
+$pageTitle = 'Web Design Service Areas in Metro Detroit | Webstar';
 $pageDescription = 'City and regional web design service pages for Metro Detroit and Michigan small businesses. Clear packages, Google setup included.';
 $canonicalPath = 'service-areas/';
 
@@ -34,7 +34,7 @@ include __DIR__ . '/library/layout-start.php';
 <section class="home-section home-section--night">
     <div class="home-section__inner">
         <h1 class="home-section__heading">Service areas</h1>
-        <p class="home-section__textbox">Local landing pages for Metro Detroit cities, counties, and statewide Michigan searches. Each page maps to the same clear website packages—pick yours and submit intake when ready.</p>
+        <p class="home-section__textbox">Local landing pages for Metro Detroit cities, counties, and statewide Michigan searches. Each page maps to the same clear website packages—pick yours and book a free consultation when ready.</p>
         <ul class="seo-hub-grid">
             <?php foreach ($pages as $p) : ?>
                 <li class="seo-hub-card">

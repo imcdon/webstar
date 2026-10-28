@@ -3,7 +3,7 @@ declare(strict_types=1);
 require __DIR__ . '/library/helpers.php';
 $config = webstar_config();
 $currentPage = 'packages';
-$pageTitle = 'Website Packages & Pricing | Metro Detroit — Webstar Business Services';
+$pageTitle = 'Website Packages & Pricing | Metro Detroit | Webstar';
 $pageDescription = 'Compare Webstar website packages for Metro Detroit and Michigan: Simple Website $350–$500, Business Website $900–$1,800, Business Growth from $2,500. Google Business Profile and Analytics included in every tier, or $150/mo Website as a Service.';
 $canonicalPath = 'packages/';
 $packages = webstar_packages();
@@ -29,7 +29,7 @@ include __DIR__ . '/library/layout-start.php';
 <section class="home-section home-section--night" id="packages">
     <div class="home-section__inner">
         <h1 class="home-section__heading">Website packages &amp; pricing</h1>
-        <p class="home-section__textbox">Three one-time packages for small businesses in <?php echo webstar_h($config['service_area']); ?>. Every tier includes Google Business Profile, Analytics 4, and Search Console setup, a 30-day post-launch fix window, and full ownership of your domain and files. Open a package to see deliverables, then submit the intake form on that page to start.</p>
+        <p class="home-section__textbox">Three one-time packages for small businesses in <?php echo webstar_h($config['service_area']); ?>. Every tier includes Google Business Profile, Analytics 4, and Search Console setup, a 30-day post-launch fix window, and full ownership of your domain and files. Open a package to see deliverables, then book a free consultation to talk through scope.</p>
 
         <div class="package-grid">
             <?php foreach ($packages as $pkg) :
@@ -46,7 +46,7 @@ include __DIR__ . '/library/layout-start.php';
                     <p class="package-card__price-note"><?php echo webstar_h((string) ($pkg['price_note'] ?? 'One-time project fee')); ?></p>
                     <p class="package-card__meta">Turnaround: <?php echo webstar_h($pkg['turnaround']); ?></p>
                     <p class="package-card__summary"><?php echo webstar_h($pkg['summary']); ?></p>
-                    <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h($href); ?>">View package &amp; intake</a>
+                    <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h($href); ?>">View package</a>
                 </article>
             <?php endforeach; ?>
         </div>
@@ -87,7 +87,7 @@ include __DIR__ . '/library/layout-start.php';
 </section>
 
 <div class="cta-band">
-    <p>Not sure which tier fits? <a href="<?php echo webstar_h(webstar_url('contact.php')); ?>">Send a general question</a> or start with the package closest to your budget—you can clarify scope on the intake form.</p>
+    <p>Not sure which tier fits? <a href="<?php echo webstar_h(webstar_url('contact.php#book')); ?>">Book a free consultation</a> or start with the package closest to your budget—you can clarify scope on the call.</p>
     <div class="hero__actions">
         <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_package_url('simple-website')); ?>">Most popular: Simple Website</a>
         <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_url('plans.php')); ?>">Monthly: Website as a Service</a>

@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $currentPage = 'portal';
-$pageTitle = 'Client Portal Login — Webstar Business Services';
+$pageTitle = 'Client Portal Login | Webstar';
 $pageDescription = 'Log in to the Webstar client portal to view your projects in progress.';
 $canonicalPath = 'portal/login.php';
 $skipCanonical = true;

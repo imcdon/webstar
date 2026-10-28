@@ -10,7 +10,7 @@ $displayName = (string) ($client['display_name'] ?? 'Client');
 $heading = $isAdmin ? 'All Projects' : 'My Projects';
 
 $currentPage = 'portal';
-$pageTitle = $heading . ' — Webstar Business Services';
+$pageTitle = $heading . ' | Webstar';
 $pageDescription = $isAdmin
     ? 'All Webstar client staging projects.'
     : 'Your Webstar projects in progress.';
