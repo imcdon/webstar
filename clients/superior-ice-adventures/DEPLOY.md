@@ -17,8 +17,8 @@ cPanel-ready PHP site (HTML/CSS/PHP + MySQL). No Node/Composer required at runti
    ```
    C:\xampp\php\php.exe database\setup.php
    ```
-4. Open: `http://localhost/superior-ice-adventures/`  
-   HTTP Basic Auth uses Webstar portal credentials (`webstar` / `superior`).
+4. Open: `http://localhost/superior-ice-adventures/` (or `http://localhost/webstar-business-solutions/clients/superior-ice-adventures/`)  
+   No HTTP Basic Auth on localhost; staging hosts still use Client Portal credentials.
 5. Admin: `http://localhost/superior-ice-adventures/admin/`
    - Username: `admin`
    - Password: `admin123` (change after first login)
@@ -69,6 +69,31 @@ When the live domain is ready:
 - Point DNS A/CNAME + SSL at that folder
 - Staging gate stays off automatically on `superioriceadventures.com`
 - Keep `$site_domain` / `$site_url` / `$mail_from` as `superioriceadventures.com` (already set)
+- Confirm **no** HTTP Basic Auth on the live vhost
+- Change the default admin password on the production DB seed before indexing
+
+### Go-live checklist (SEO + analytics)
+
+1. **DNS + SSL** — apex and `www` resolve; HTTPS works; `.htaccess` apex redirects are active.
+2. **Config polish**
+   - Set `$ga4_measurement_id` in `includes/config.php` (client GA4 property, e.g. `G-XXXXXXXXXX`).
+   - Fill `$social['instagram']` / `$social['facebook']` when the client provides URLs.
+   - Spot-check NAP (phone, email, Marquette service area) matches schema on home/about/contact.
+3. **Indexing readiness**
+   - Live host must **not** send a sitewide `noindex`.
+   - `/admin/` is `Disallow` in `robots.txt` and emits `noindex, nofollow`.
+   - Sitemap: `https://superioriceadventures.com/sitemap.xml` (rewrites to `sitemap.php`).
+4. **Google Search Console**
+   - Add/verify the `superioriceadventures.com` property (Domain or URL-prefix).
+   - Submit sitemap: `https://superioriceadventures.com/sitemap.xml`.
+   - Use URL Inspection on home, one service page, and one article.
+5. **Rich results**
+   - Test home (LocalBusiness), FAQ, and an article URL in Google’s Rich Results Test once the host is public.
+6. **Lighthouse (mobile)**
+   - After a warm cache, aim for Performance ≥ 90 on home + one service + one article.
+   - Confirm LCP uses the hero `<img>` (first slide ~≤200 KB) and fonts load from `/assets/fonts/` (no fonts.googleapis.com).
+7. **Crawl sanity**
+   - Confirm sitemap URLs load 200; `/admin/` is absent from the sitemap; unknown paths hit branded `404.php`.
 
 ## Content
 
@@ -86,11 +111,13 @@ Site URL settings (canonical / live):
 2. Run:
    ```
    npm install
-   npm run media:images
+   npm run media
    ```
-3. Optimized `.webp` files land in `assets/img/...` (max width 2400px, quality 82).
+   (`media` = process raw → WebP, then re-optimize existing WebPs for LCP.)
+3. Optimized `.webp` files land in `assets/img/...` (max width 1600px, quality ~75). Hero LCP slide should stay near or under ~200 KB.
+4. Optional: `npm run media:fonts` to refresh self-hosted Inter/Fraunces under `assets/fonts/`.
 
-Do not upload `_raw/` or `node_modules/` to cPanel — only the processed `assets/img/` WebPs.
+Do not upload `_raw/` or `node_modules/` to cPanel — only the processed `assets/img/` WebPs and `assets/fonts/`.
 
 ## Contact form
 
@@ -105,5 +132,6 @@ Set `$contact_form_to` (and `$email`) in `includes/config.php`. Submissions use 
 
 ## Fonts & colors
 
-- Fonts: Inter + Fraunces (Google Fonts)
+- Fonts: Inter + Fraunces **self-hosted** (`assets/fonts/fonts.css` + woff2)
 - Palette: off-white `#fbf9f5`, flannel red `#710F10`, black `#0a0a0a`
+- Static CSS/JS/images/fonts: long-cache `Cache-Control` / `Expires` via `.htaccess`

@@ -23,6 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $page_title = 'Admin Login | ' . $site_name;
+$meta_robots = 'noindex, nofollow';
+$body_class = 'page-admin';
+
 $body_class = 'page-admin';
 require __DIR__ . '/../includes/header.php';
 ?>

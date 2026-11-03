@@ -69,11 +69,25 @@
     var timer = null;
     var interval = 9000;
 
+    function loadSlideImage(slide) {
+      if (!slide) return;
+      var img = slide.querySelector(".hero-slide-bg[data-src]");
+      if (!img) return;
+      var src = img.getAttribute("data-src");
+      if (!src) return;
+      img.setAttribute("src", src);
+      img.removeAttribute("data-src");
+    }
+
     function goTo(index) {
       if (!slides.length) return;
       slides[current].classList.remove("is-active");
       if (dots[current]) dots[current].classList.remove("is-active");
       current = (index + slides.length) % slides.length;
+      loadSlideImage(slides[current]);
+      // Prefetch the next slide so the fade is ready
+      var nextIdx = (current + 1) % slides.length;
+      loadSlideImage(slides[nextIdx]);
       slides[current].classList.add("is-active");
       if (dots[current]) dots[current].classList.add("is-active");
     }

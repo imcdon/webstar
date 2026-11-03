@@ -28,6 +28,7 @@ $articleCategories = get_categories('article');
 
 $page_title = 'Manage Categories | ' . $site_name;
 $body_class = 'page-admin';
+$meta_robots = 'noindex, nofollow';
 require __DIR__ . '/../includes/header.php';
 ?>
 

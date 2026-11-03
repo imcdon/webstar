@@ -64,6 +64,7 @@ $form = $category ?: [
 
 $page_title = ($id ? 'Edit' : 'New') . ' Category | ' . $site_name;
 $body_class = 'page-admin';
+$meta_robots = 'noindex, nofollow';
 require __DIR__ . '/../includes/header.php';
 ?>
 

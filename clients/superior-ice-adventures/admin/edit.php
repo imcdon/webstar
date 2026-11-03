@@ -8,6 +8,8 @@ require __DIR__ . '/../includes/categories.php';
 require __DIR__ . '/../includes/articles.php';
 
 $user = require_admin();
+$meta_robots = 'noindex, nofollow';
+$body_class = 'page-admin';
 $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 $article = $id ? get_article_by_id($id) : null;
 $error = '';

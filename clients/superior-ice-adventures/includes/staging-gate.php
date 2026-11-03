@@ -4,22 +4,42 @@ declare(strict_types=1);
 
 /**
  * HTTP Basic Auth gate for Webstar staging previews.
- * Active on *.webstarbusinessservices.com and local XAMPP — not on superioriceadventures.com.
+ * Active on *.webstarbusinessservices.com only — not on localhost or superioriceadventures.com.
  */
+
+function sia_staging_is_local_dev_host(string $host): bool
+{
+    if ($host === '') {
+        return false;
+    }
+    if ($host === 'localhost' || str_starts_with($host, 'localhost:')) {
+        return true;
+    }
+    if (str_starts_with($host, '127.0.0.1')) {
+        return true;
+    }
+    if (str_ends_with($host, '.local') || str_contains($host, '.local:')) {
+        return true;
+    }
+
+    return false;
+}
 
 function sia_staging_should_gate(): bool
 {
     $host = strtolower((string) ($_SERVER['HTTP_HOST'] ?? ''));
 
     // Live client domain must stay public.
-    if ($host !== '' && (str_contains($host, 'superioriceadventures.com'))) {
+    if ($host !== '' && str_contains($host, 'superioriceadventures.com')) {
         return false;
     }
 
-    return str_contains($host, 'webstarbusinessservices.com')
-        || str_contains($host, 'localhost')
-        || str_starts_with($host, '127.0.0.1')
-        || str_ends_with($host, '.local');
+    // Local XAMPP: no browser login prompt (CMS /admin still has its own login).
+    if (sia_staging_is_local_dev_host($host)) {
+        return false;
+    }
+
+    return str_contains($host, 'webstarbusinessservices.com');
 }
 
 /**

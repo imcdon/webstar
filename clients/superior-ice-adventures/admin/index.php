@@ -11,6 +11,7 @@ $articles = get_all_articles();
 
 $page_title = 'Admin | ' . $site_name;
 $body_class = 'page-admin';
+$meta_robots = 'noindex, nofollow';
 require __DIR__ . '/../includes/header.php';
 ?>
 

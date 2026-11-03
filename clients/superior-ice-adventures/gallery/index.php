@@ -25,7 +25,14 @@ require __DIR__ . '/../includes/header.php';
                         data-lightbox
                         data-src="<?= htmlspecialchars(url(ltrim($item['src'], '/'))) ?>"
                         data-alt="<?= htmlspecialchars($item['alt']) ?>">
-                    <div class="gallery-item-img" style="background-image: url('<?= htmlspecialchars(url(ltrim($item['src'], '/'))) ?>')"></div>
+                    <div class="gallery-item-img">
+                        <img src="<?= htmlspecialchars(url(ltrim($item['src'], '/'))) ?>"
+                             alt="<?= htmlspecialchars($item['alt']) ?>"
+                             width="800"
+                             height="600"
+                             loading="lazy"
+                             decoding="async">
+                    </div>
                 </button>
             <?php endforeach; ?>
         </div>

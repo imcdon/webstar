@@ -5,6 +5,12 @@
 require __DIR__ . '/../includes/config.php';
 
 $page_title = 'FAQ | ' . $site_name;
+$page_description = $faq_intro ?? ('Frequently asked questions about guided ice fishing and shanty rentals with ' . $site_name . '.');
+$schema_type = 'faq';
+$schema_breadcrumbs = [
+    ['name' => 'Home', 'url' => absolute_url('')],
+    ['name' => 'FAQ', 'url' => absolute_url('faq/')],
+];
 require __DIR__ . '/../includes/header.php';
 ?>
 

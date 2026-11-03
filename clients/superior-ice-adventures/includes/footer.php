@@ -62,6 +62,10 @@
         </div>
         <div class="container-wide footer-bottom">
             <p>&copy; <?= date('Y') ?> <?= htmlspecialchars($company_name) ?>. All rights reserved.</p>
+            <p class="footer-credit">
+                Powered by
+                <a href="https://www.webstarbusinessservices.com/" target="_blank" rel="noopener noreferrer">Webstar Business Services</a>
+            </p>
         </div>
     </footer>
 

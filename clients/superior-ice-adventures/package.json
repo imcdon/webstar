@@ -7,7 +7,9 @@
   },
   "scripts": {
     "media:images": "node scripts/process-images.mjs",
-    "media": "npm run media:images"
+    "media:optimize": "node scripts/optimize-webps.mjs",
+    "media:fonts": "node scripts/download-fonts.mjs",
+    "media": "npm run media:images && npm run media:optimize"
   },
   "devDependencies": {
     "heic-convert": "^2.1.0",

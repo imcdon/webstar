@@ -2,12 +2,30 @@
 /*
  * header.php - Opens the HTML document, head, and site header with navigation.
  */
+require_once __DIR__ . '/schema.php';
+
 $page_title = $page_title ?? $site_name;
 $page_description = $page_description ?? $site_description;
 $body_class = $body_class ?? '';
 $canonical_path = $canonical_path ?? current_path();
 $canonical_url = absolute_url(ltrim($canonical_path === '/' ? '' : $canonical_path, '/'));
 $og_image = $og_image ?? absolute_url('assets/img/hero/inland-splake-fishing.webp');
+$og_type = $og_type ?? 'website';
+$meta_robots = $meta_robots ?? null;
+$preload_image = $preload_image ?? null;
+$schema_type = $schema_type ?? null;
+$schema_service = $schema_service ?? null;
+$schema_article = $schema_article ?? null;
+$schema_breadcrumbs = $schema_breadcrumbs ?? null;
+$article_published_time = $article_published_time ?? null;
+$article_modified_time = $article_modified_time ?? null;
+$ga4_measurement_id = $ga4_measurement_id ?? '';
+
+// Admin / CMS: never index
+$path_now = current_path();
+if ($meta_robots === null && (str_starts_with($path_now, '/admin') || str_contains($path_now, '/admin/'))) {
+    $meta_robots = 'noindex, nofollow';
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,22 +33,63 @@ $og_image = $og_image ?? absolute_url('assets/img/hero/inland-splake-fishing.web
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<?= htmlspecialchars($page_description) ?>">
+    <?php if ($meta_robots): ?>
+        <meta name="robots" content="<?= htmlspecialchars($meta_robots) ?>">
+    <?php endif; ?>
     <title><?= htmlspecialchars($page_title) ?></title>
     <link rel="canonical" href="<?= htmlspecialchars($canonical_url) ?>">
     <meta property="og:site_name" content="<?= htmlspecialchars($site_name) ?>">
     <meta property="og:title" content="<?= htmlspecialchars($page_title) ?>">
     <meta property="og:description" content="<?= htmlspecialchars($page_description) ?>">
     <meta property="og:url" content="<?= htmlspecialchars($canonical_url) ?>">
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="<?= htmlspecialchars($og_type) ?>">
     <meta property="og:image" content="<?= htmlspecialchars($og_image) ?>">
+    <?php if ($og_type === 'article'): ?>
+        <?php if ($article_published_time): ?>
+            <meta property="article:published_time" content="<?= htmlspecialchars($article_published_time) ?>">
+        <?php endif; ?>
+        <?php if ($article_modified_time): ?>
+            <meta property="article:modified_time" content="<?= htmlspecialchars($article_modified_time) ?>">
+        <?php endif; ?>
+    <?php endif; ?>
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="<?= htmlspecialchars(url('assets/img/favicon.png')) ?>" type="image/png" sizes="64x64">
     <link rel="icon" href="<?= htmlspecialchars(url('assets/img/favicon.svg')) ?>" type="image/svg+xml">
     <link rel="apple-touch-icon" href="<?= htmlspecialchars(url('assets/img/apple-touch-icon.png')) ?>">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <?php if ($preload_image): ?>
+        <link rel="preload" as="image" href="<?= htmlspecialchars($preload_image) ?>" fetchpriority="high">
+    <?php endif; ?>
+    <link rel="stylesheet" href="<?= htmlspecialchars(url('assets/fonts/fonts.css')) ?>">
     <link rel="stylesheet" href="<?= htmlspecialchars(url('assets/css/main.css')) ?>">
+    <?php
+    // JSON-LD
+    if ($schema_type === 'home' || $schema_type === 'local') {
+        sia_print_json_ld(sia_schema_local_business());
+    }
+    if ($schema_type === 'service' && is_array($schema_service)) {
+        sia_print_json_ld(sia_schema_local_business());
+        sia_print_json_ld(sia_schema_service($schema_service));
+    }
+    if ($schema_type === 'faq') {
+        global $faq_categories;
+        sia_print_json_ld(sia_schema_faq($faq_categories));
+    }
+    if ($schema_type === 'article' && is_array($schema_article)) {
+        sia_print_json_ld(sia_schema_article($schema_article));
+    }
+    if (is_array($schema_breadcrumbs) && $schema_breadcrumbs) {
+        sia_print_json_ld(sia_schema_breadcrumbs($schema_breadcrumbs));
+    }
+    ?>
+    <?php if ($ga4_measurement_id !== ''): ?>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=<?= htmlspecialchars($ga4_measurement_id) ?>"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '<?= htmlspecialchars($ga4_measurement_id) ?>');
+        </script>
+    <?php endif; ?>
 </head>
 <body<?= $body_class !== '' ? ' class="' . htmlspecialchars($body_class) . '"' : '' ?>>
     <?php require __DIR__ . '/partials/webstar-staging-banner.php'; ?>

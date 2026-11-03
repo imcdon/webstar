@@ -34,9 +34,12 @@ $hours = [
 ];
 
 $social = [
-    'instagram' => '',
-    'facebook'  => '',
+    'instagram' => '', // Client Instagram URL when available
+    'facebook'  => '', // Client Facebook URL when available
 ];
+
+/* Google Analytics 4 — set client measurement ID before go-live (e.g. G-XXXXXXXXXX) */
+$ga4_measurement_id = '';
 
 $nav_services = [
     [

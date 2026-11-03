@@ -13,6 +13,11 @@ try {
 }
 
 $page_title = $site_name . ($site_tagline !== '' ? ' | ' . $site_tagline : '');
+$page_description = $site_description;
+$preload_image = !empty($hero_slides[0]['image'])
+    ? url(ltrim($hero_slides[0]['image'], '/'))
+    : null;
+$schema_type = 'home';
 require __DIR__ . '/includes/header.php';
 
 function sia_icon(string $name): string
@@ -30,28 +35,51 @@ function sia_icon(string $name): string
 <section class="hero-carousel" aria-label="Featured">
     <div class="hero-slides">
         <?php foreach ($hero_slides as $i => $slide): ?>
+            <?php
+            $img_src = url(ltrim($slide['image'], '/'));
+            $img_pos = !empty($slide['image_position']) ? $slide['image_position'] : 'center center';
+            $slide_eyebrow = trim((string) ($slide['eyebrow'] ?? ''));
+            $hero_eyebrow = $slide_eyebrow !== '' ? $slide_eyebrow : $location_eyebrow;
+            $slideHref = $slide['href'] ?? '#services';
+            $slideHrefOut = (str_starts_with($slideHref, '#') || preg_match('#^https?://#i', $slideHref))
+                ? $slideHref
+                : url(ltrim($slideHref, '/'));
+            ?>
             <div class="hero-slide<?= $i === 0 ? ' is-active' : '' ?>" data-index="<?= $i ?>">
-                <div class="hero-slide-bg" style="background-image: url('<?= htmlspecialchars(url(ltrim($slide['image'], '/'))) ?>');<?= !empty($slide['image_position']) ? ' background-position: ' . htmlspecialchars($slide['image_position']) . ';' : '' ?>"></div>
+                <?php if ($i === 0): ?>
+                    <img class="hero-slide-bg"
+                         src="<?= htmlspecialchars($img_src) ?>"
+                         alt=""
+                         width="1600"
+                         height="900"
+                         fetchpriority="high"
+                         decoding="async"
+                         style="object-position: <?= htmlspecialchars($img_pos) ?>">
+                <?php else: ?>
+                    <img class="hero-slide-bg"
+                         src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                         data-src="<?= htmlspecialchars($img_src) ?>"
+                         alt=""
+                         width="1600"
+                         height="900"
+                         loading="lazy"
+                         decoding="async"
+                         style="object-position: <?= htmlspecialchars($img_pos) ?>">
+                <?php endif; ?>
                 <div class="hero-slide-overlay"></div>
                 <div class="hero-slide-content">
-                    <?php
-                    $slide_eyebrow = trim((string) ($slide['eyebrow'] ?? ''));
-                    $hero_eyebrow = $slide_eyebrow !== '' ? $slide_eyebrow : $location_eyebrow;
-                    ?>
                     <?php if ($hero_eyebrow !== ''): ?>
                         <div class="eyebrow"><?= htmlspecialchars($hero_eyebrow) ?></div>
                     <?php endif; ?>
-                    <h1 class="heading-display text-display-xl hero-title"><?= htmlspecialchars($slide['title']) ?></h1>
+                    <?php if ($i === 0): ?>
+                        <h1 class="heading-display text-display-xl hero-title"><?= htmlspecialchars($slide['title']) ?></h1>
+                    <?php else: ?>
+                        <p class="heading-display text-display-xl hero-title" role="presentation"><?= htmlspecialchars($slide['title']) ?></p>
+                    <?php endif; ?>
                     <p class="hero-caption"><?= htmlspecialchars($slide['caption']) ?></p>
                     <div class="hero-actions">
                         <a class="btn-primary btn-call-plain" href="<?= htmlspecialchars($phone_href) ?>">Call Now</a>
                         <a class="btn-outline-light" href="<?= htmlspecialchars(url('contact/')) ?>">Contact</a>
-                        <?php
-                        $slideHref = $slide['href'] ?? '#services';
-                        $slideHrefOut = (str_starts_with($slideHref, '#') || preg_match('#^https?://#i', $slideHref))
-                            ? $slideHref
-                            : url(ltrim($slideHref, '/'));
-                        ?>
                         <a class="btn-read-more" href="<?= htmlspecialchars($slideHrefOut) ?>">Read more</a>
                     </div>
                 </div>
@@ -92,7 +120,14 @@ function sia_icon(string $name): string
         <div class="card-grid cols-4">
             <?php foreach ($services as $svc): ?>
                 <a class="service-card" href="<?= htmlspecialchars(url($svc['slug'] . '/')) ?>">
-                    <div class="service-card-img" style="background-image: url('<?= htmlspecialchars(url(ltrim($svc['thumb_image'], '/'))) ?>')"></div>
+                    <div class="service-card-img">
+                        <img src="<?= htmlspecialchars(url(ltrim($svc['thumb_image'], '/'))) ?>"
+                             alt=""
+                             width="800"
+                             height="600"
+                             loading="lazy"
+                             decoding="async">
+                    </div>
                     <div class="service-card-body">
                         <h3><?= htmlspecialchars($svc['nav_label']) ?></h3>
                         <p><?= htmlspecialchars($svc['card_blurb']) ?></p>
@@ -124,8 +159,16 @@ function sia_icon(string $name): string
         </div>
         <div class="story-photos">
             <?php foreach ($home_story['images'] as $i => $img): ?>
-                <div class="story-photo<?= $i === 0 ? ' wide' : '' ?>" style="background-image: url('<?= htmlspecialchars(url(ltrim($img, '/'))) ?>')"></div>
+                <div class="story-photo<?= $i === 0 ? ' wide' : '' ?>">
+                    <img src="<?= htmlspecialchars(url(ltrim($img, '/'))) ?>"
+                         alt=""
+                         width="1200"
+                         height="<?= $i === 0 ? '750' : '1200' ?>"
+                         loading="lazy"
+                         decoding="async">
+                </div>
             <?php endforeach; ?>
+
         </div>
     </div>
 </section>
@@ -143,10 +186,18 @@ function sia_icon(string $name): string
             <div class="card-grid cols-3">
                 <?php foreach ($latest as $article): ?>
                     <a class="article-card" href="<?= htmlspecialchars(url(ltrim($article['url'], '/'))) ?>">
-                        <div class="article-card-img" style="background-image: url('<?= htmlspecialchars(url(ltrim($article['thumbnail'], '/'))) ?>')"></div>
+                        <div class="article-card-img">
+                            <img src="<?= htmlspecialchars(url(ltrim($article['thumbnail'], '/'))) ?>"
+                                 alt=""
+                                 width="800"
+                                 height="500"
+                                 loading="lazy"
+                                 decoding="async">
+                        </div>
                         <h3><?= htmlspecialchars($article['title']) ?></h3>
                         <p><?= htmlspecialchars($article['blurb']) ?></p>
                     </a>
+
                 <?php endforeach; ?>
             </div>
         <?php else: ?>

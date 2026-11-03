@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // Bulk-optimize photos for Superior Ice Adventures (Soldotna-style pipeline).
 // Drop raw photos in _raw/images/<folder>/ (jpg/JPG/heic/HEIC/png/webp/etc.) and run `npm run media:images`.
-// Outputs go to assets/img/... as lowercase .webp files at quality 82, max width 2400px.
+// Outputs go to assets/img/... as lowercase .webp (max width 1600, quality 75).
+// Re-run `npm run media:optimize` afterward to re-encode existing WebPs for LCP.
 
 import { mkdir, readFile, readdir, stat } from "node:fs/promises";
 import path from "node:path";
@@ -20,8 +21,8 @@ function loadHeicConvert() {
 
 const IN_ROOT = path.resolve(process.cwd(), "_raw/images");
 const OUT_ROOT = path.resolve(process.cwd(), "assets/img");
-const MAX_WIDTH = 2400;
-const QUALITY = 82;
+const MAX_WIDTH = 1600;
+const QUALITY = 75;
 
 /** Match walk filter (case-insensitive). */
 const INPUT_EXT_REGEX = /\.(jpe?g|png|tiff?|webp|hei[cf])$/i;

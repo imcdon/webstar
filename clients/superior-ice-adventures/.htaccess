@@ -20,3 +20,39 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # Clean article URLs: /articles/slug/ -> article.php?slug=slug
 RewriteRule ^articles/([a-z0-9-]+)/?$ articles/article.php?slug=$1 [L,QSA]
+
+# Sitemap XML alias
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
+# Branded 404 (relative rewrite works in subdirectory + production docroot)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !404\.php$
+RewriteRule . 404.php [L]
+
+ErrorDocument 404 /404.php
+
+# Compression for text assets
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json image/svg+xml font/woff2
+</IfModule>
+
+# Long-lived cache for static assets
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 30 days"
+    ExpiresByType application/javascript "access plus 30 days"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/font-woff2 "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(css|js|webp|png|jpg|jpeg|svg|ico|woff2)$">
+        Header set Cache-Control "public, max-age=2592000, immutable"
+    </FilesMatch>
+</IfModule>

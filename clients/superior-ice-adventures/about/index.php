@@ -6,6 +6,11 @@ require __DIR__ . '/../includes/config.php';
 
 $page_title = 'About | ' . $site_name;
 $page_description = $about['hero_intro'];
+$schema_type = 'local';
+$schema_breadcrumbs = [
+    ['name' => 'Home', 'url' => absolute_url('')],
+    ['name' => 'About', 'url' => absolute_url('about/')],
+];
 require __DIR__ . '/../includes/header.php';
 ?>
 

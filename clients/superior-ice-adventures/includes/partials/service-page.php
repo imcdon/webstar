@@ -5,7 +5,14 @@
  */
 ?>
 <section class="service-hero">
-    <div class="service-hero-bg" style="background-image: url('<?= htmlspecialchars(url(ltrim($service['hero_image'], '/'))) ?>');<?= !empty($service['hero_position']) ? ' background-position: ' . htmlspecialchars($service['hero_position']) . ';' : '' ?>"></div>
+    <img class="service-hero-bg"
+         src="<?= htmlspecialchars(url(ltrim($service['hero_image'], '/'))) ?>"
+         alt=""
+         width="1600"
+         height="900"
+         fetchpriority="high"
+         decoding="async"
+         <?= !empty($service['hero_position']) ? 'style="object-position: ' . htmlspecialchars($service['hero_position']) . '"' : '' ?>>
     <div class="service-hero-overlay"></div>
     <div class="container-wide service-hero-content">
         <div class="eyebrow text-on-dark"><?= htmlspecialchars($service['meta_line']) ?></div>
