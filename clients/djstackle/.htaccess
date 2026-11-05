@@ -1,0 +1,44 @@
+RewriteEngine On
+
+RewriteCond %{HTTP:Authorization} .
+RewriteRule ^ - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+# Production HTTPS + apex
+RewriteCond %{HTTP_HOST} ^(www\.)?djstackle\.com$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://djstackle.com%{REQUEST_URI} [L,R=301]
+
+RewriteCond %{HTTP_HOST} ^www\.djstackle\.com$ [NC]
+RewriteRule ^ https://djstackle.com%{REQUEST_URI} [L,R=301]
+
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
+# Apple Pay domain verification (no extension)
+RewriteRule ^\.well-known/apple-developer-merchantid-domain-association$ .well-known/apple-developer-merchantid-domain-association [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !404\.php$
+RewriteRule . 404.php [L]
+
+<IfModule mod_headers.c>
+    <Files "apple-developer-merchantid-domain-association">
+        Header set Content-Type "text/plain"
+    </Files>
+</IfModule>
+
+ErrorDocument 404 /404.php
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 30 days"
+    ExpiresByType application/javascript "access plus 30 days"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+</IfModule>

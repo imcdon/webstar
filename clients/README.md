@@ -29,3 +29,13 @@ cPanel (summary):
 Live client domain `superioriceadventures.com` should use **`$HOME/superioriceadventures.com`**, never a shared `public_html` used by Webstar.
 
 See [DEPLOY.md](../DEPLOY.md) and [portal/README.md](../portal/README.md).
+
+## DJ's Tackle — Path A (Square shop)
+
+Reusable shop module: [`shared/shop/`](shared/shop/). Client site: [`djstackle/`](djstackle/). See [`djstackle/DEPLOY.md`](djstackle/DEPLOY.md).
+
+- **Local:** `http://localhost/webstar-business-solutions/clients/djstackle/`
+- **Staging:** `https://webstarbusinessservices.com/clients/djstackle/`
+- **Live:** `https://djstackle.com`
+- **Auth:** Staging HTTP Basic via Client Portal; gate off on `djstackle.com`
+- **Bootstrap:** copy `djstackle/includes/shop-config.example.php` → `shop-config.php`, then `php bin/seed-local.php` (or Square sandbox seed + sync)

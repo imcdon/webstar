@@ -1,0 +1,16 @@
+{
+    "name": "webstar/shop",
+    "description": "Reusable Square-backed ecommerce module for Webstar client sites",
+    "type": "library",
+    "require": {
+        "php": "^8.1",
+        "square/square": "^47.0",
+        "phpmailer/phpmailer": "^6.9",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Webstar\\Shop\\": "src/"
+        }
+    }
+}

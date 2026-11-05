@@ -10,10 +10,18 @@ _raw/*
 !_raw/README.md
 .env
 .env.*
+lead-gen/.env
+lead-gen/data/
+lead-gen/exports/
 *.local.php
 debug-*.log
 **/__pycache__/
 *.pyc
+composer.phar
+clients/*/data/*.sqlite
+clients/*/data/*.sqlite-*
+clients/*/data/mail.log
+clients/*/includes/shop-config.php
 
 # OS / IDE
 .DS_Store

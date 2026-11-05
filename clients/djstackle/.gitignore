@@ -1,0 +1,27 @@
+# Database / app secrets (never commit)
+includes/db.config.php
+includes/shop-config.php
+**/mail-config.php
+.env
+.env.*
+*.local.php
+
+# Local shop data
+data/
+seed/homepage.html
+seed/image-urls.txt
+
+# Local / debug
+node_modules/
+_raw/
+debug-*.log
+*.log
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*~
