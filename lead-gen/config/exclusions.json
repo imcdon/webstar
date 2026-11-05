@@ -1,0 +1,130 @@
+{
+  "_comment": "Who we do NOT want in the outreach list. `sweepExcludedTypes` are sent to Nearby Search (Table A only) so result slots are not wasted; everything else is applied offline by classify.mjs and can be re-run for free. `exclude_override` on a row ('keep' / 'exclude') always wins.",
+
+  "sweepExcludedTypes": [
+    "park", "school", "primary_school", "secondary_school", "university",
+    "church", "hindu_temple", "mosque", "synagogue",
+    "city_hall", "courthouse", "fire_station", "police", "post_office", "local_government_office", "library",
+    "parking", "transit_station", "bus_station", "bus_stop", "train_station",
+    "apartment_complex", "apartment_building", "housing_complex",
+    "atm", "bank", "hospital", "doctor", "dentist", "pharmacy",
+    "gas_station", "car_dealer", "lawyer", "accounting", "insurance_agency"
+  ],
+
+  "nonBusinessTypes": [
+    "park", "national_park", "state_park", "playground", "hiking_area", "campground", "cemetery", "dog_park",
+    "school", "primary_school", "secondary_school", "preschool", "university", "school_district",
+    "church", "hindu_temple", "mosque", "synagogue", "place_of_worship",
+    "city_hall", "courthouse", "fire_station", "police", "post_office", "local_government_office", "government_office",
+    "embassy", "library", "community_center", "neighborhood_police_station",
+    "parking", "transit_station", "bus_station", "bus_stop", "train_station", "subway_station", "light_rail_station", "transit_depot", "rest_stop",
+    "apartment_complex", "apartment_building", "housing_complex", "condominium_complex", "premise", "subpremise",
+    "atm", "locality", "route", "street_address", "natural_feature", "lake", "river",
+    "intersection", "political", "sublocality", "postal_code", "administrative_area_level_1", "administrative_area_level_2", "administrative_area_level_3",
+    "public_bathroom", "public_bath", "historical_landmark", "monument", "sculpture", "marina", "boat_launch",
+    "association_or_organization", "cultural_center"
+  ],
+
+  "_policyNote": "policyExcludedPrimaryTypes is matched against primary_type only (Google attaches broad secondary types like 'health' or 'consultant' to salons and gyms). policyExcludedAnyTypes are strong markers checked against every type on the place.",
+  "policyExcludedPrimaryTypes": [
+    "hospital", "doctor", "dentist", "dental_clinic", "medical_clinic", "medical_lab", "pharmacy", "drugstore", "physiotherapist", "chiropractor",
+    "veterinary_care", "health", "skin_care_clinic", "wellness_center", "mental_health_clinic",
+    "lawyer", "accounting", "insurance_agency", "bank", "finance", "mortgage_broker", "credit_union", "tax_consultant",
+    "real_estate_agency", "real_estate_agent", "corporate_office", "consultant", "telecommunications_service_provider",
+    "manufacturer", "supplier", "wholesaler", "warehouse", "distribution_center", "storage", "self_storage", "moving_company",
+    "industrial_park", "factory", "logistics", "trucking_company", "freight_forwarding_service",
+    "car_dealer", "gas_station", "electric_vehicle_charging_station", "truck_stop",
+    "lodging", "hotel", "motel", "extended_stay_hotel",
+    "funeral_home", "cemetery"
+  ],
+  "policyExcludedAnyTypes": [
+    "hospital", "doctor", "dentist", "dental_clinic", "medical_clinic", "medical_lab", "pharmacy", "drugstore",
+    "lawyer", "accounting", "insurance_agency", "bank", "credit_union",
+    "real_estate_agency", "real_estate_agent", "corporate_office",
+    "manufacturer", "wholesaler", "warehouse", "distribution_center",
+    "car_dealer", "gas_station", "lodging", "hotel", "motel", "funeral_home"
+  ],
+
+  "_sharedPlatformNote": "Hosts many small businesses share (social, DIY builders, booking pages). Never treated as a chain domain, and never counted for multi_location_domain. scoring.json weakUrlHosts + builderSubdomainSuffixes are added automatically.",
+  "sharedPlatformDomains": [
+    "facebook.com", "m.facebook.com", "instagram.com", "linktr.ee", "tiktok.com", "yelp.com", "sites.google.com", "google.com", "business.site",
+    "wixsite.com", "wix.com", "squarespace.com", "godaddysites.com", "wordpress.com", "weebly.com", "myshopify.com", "square.site", "company.site",
+    "glossgenius.com", "as.me", "acuityscheduling.com", "booksy.com", "vagaro.com", "schedulicity.com", "styleseat.com", "fresha.com", "setmore.com",
+    "calendly.com", "hungerrush.com", "toasttab.com", "clover.com", "doordash.com", "order.online", "grubhub.com", "ubereats.com", "menufy.com", "slicelife.com",
+    "kw.com", "remax.com", "century21.com", "coldwellbanker.com", "realtor.com", "zillow.com", "homesnap.com",
+    "wikipedia.org", "linkedin.com", "youtube.com", "etsy.com", "ebay.com", "amazon.com", "carrd.co", "bio.site", "beacons.ai", "taplink.cc",
+    "angi.com", "homeadvisor.com", "thumbtack.com", "nextdoor.com", "alignable.com", "mapquest.com", "yellowpages.com", "bbb.org", "manta.com"
+  ],
+
+  "chainDomains": [
+    "homedepot.com", "lowes.com", "menards.com", "walmart.com", "target.com", "meijer.com", "kroger.com", "aldi.us", "costco.com", "samsclub.com",
+    "cvs.com", "walgreens.com", "riteaid.com", "dollargeneral.com", "dollartree.com", "familydollar.com", "fivebelow.com", "biglots.com",
+    "autozone.com", "oreillyauto.com", "advanceautoparts.com", "napaonline.com", "pepboys.com", "firestonecompleteautocare.com", "belletire.com",
+    "discounttire.com", "midas.com", "meineke.com", "jiffylube.com", "valvoline.com", "monro.com", "tuffy.com", "maaco.com", "safelite.com", "carquest.com",
+    "mcdonalds.com", "burgerking.com", "wendys.com", "tacobell.com", "kfc.com", "subway.com", "dominos.com", "pizzahut.com", "papajohns.com", "littlecaesars.com",
+    "jetspizza.com", "hungryhowies.com", "starbucks.com", "dunkindonuts.com", "dunkin.com", "timhortons.com", "biggby.com", "chick-fil-a.com", "arbys.com",
+    "culvers.com", "sonicdrivein.com", "jimmyjohns.com", "pandaexpress.com", "chipotle.com", "qdoba.com", "buffalowildwings.com", "applebees.com",
+    "olivegarden.com", "redlobster.com", "leoconeyisland.com", "nationalconeyisland.com", "coldstonecreamery.com", "dairyqueen.com", "tropicalsmoothiecafe.com",
+    "greatclips.com", "supercuts.com", "sportclips.com", "fantasticsams.com", "regiscorp.com", "ulta.com", "sallybeauty.com", "massageenvy.com",
+    "europeanwax.com", "waxcenter.com", "handandstone.com", "planetfitness.com", "anytimefitness.com", "snapfitness.com", "lafitness.com", "orangetheory.com",
+    "petsmart.com", "petco.com", "petsuppliesplus.com", "tractorsupply.com", "harborfreight.com", "sherwin-williams.com", "benjaminmoore.com",
+    "verizon.com", "att.com", "t-mobile.com", "xfinity.com", "metrobyt-mobile.com", "cricketwireless.com", "boostmobile.com", "ubreakifix.com",
+    "hrblock.com", "jacksonhewitt.com", "libertytax.com", "edwardjones.com", "statefarm.com", "allstate.com", "farmersinsurance.com", "progressive.com",
+    "ups.com", "theupsstore.com", "fedex.com", "usps.com", "publicstorage.com", "extraspace.com", "uhaul.com", "penske.com", "budgettruck.com",
+    "roofmaxx.com", "mrrooter.com", "mrhandyman.com", "rotorooter.com", "servpro.com", "servicemaster.com", "stanleysteemer.com", "chemdry.com",
+    "mollymaid.com", "merrymaids.com", "thecleaningauthority.com", "lawndoctor.com", "trugreen.com", "terminix.com",
+    "orkin.com", "aptive.com", "certapro.com", "fivestarpainting.com", "wow1day.com", "renewalbyandersen.com",
+    "windownation.com", "championwindow.com", "hansons.com", "wallsidewindows.com", "leaffilter.com", "leafguard.com", "aireserv.com",
+    "onehourheatandair.com", "benjaminfranklinplumbing.com", "mistersparky.com", "mrelectric.com", "horizonservices.com",
+    "arsrescuerooter.com", "ars.com", "sears.com", "searshomeservices.com", "bathfitter.com", "re-bath.com", "rebath.com", "kitchentuneup.com",
+    "budgetblinds.com", "closetsbydesign.com", "goodwill.org", "salvationarmyusa.org", "savers.com", "platoscloset.com", "onceuponachild.com",
+    "gamestop.com", "bestbuy.com", "staples.com", "officedepot.com", "michaels.com", "joann.com", "hobbylobby.com", "dickssportinggoods.com",
+    "dunhamssports.com", "kohls.com", "tjmaxx.tjx.com", "marshalls.tjx.com", "burlington.com", "rossstores.com", "oldnavy.gap.com", "shoecarnival.com",
+    "famousfootwear.com", "payless.com", "dsw.com", "skechers.com", "7-eleven.com", "speedway.com", "circlek.com", "marathonpetroleum.com", "shell.us",
+    "bp.com", "mobil.com", "exxon.com", "sunoco.com", "citgo.com", "kum-go.com", "wawa.com", "sheetz.com", "chase.com", "bankofamerica.com", "pnc.com",
+    "huntington.com", "comerica.com", "fifththird.com", "53.com", "flagstar.com", "tcfbank.com", "citizensbank.com", "genisyscu.org", "lmcu.org",
+    "dfcufinancial.com", "mlcu.org", "mycreditunion.org", "bluecrossblueshield.com", "bcbsm.com", "beaumont.org", "corewellhealth.org", "mclaren.org",
+    "henryford.com", "ascension.org", "trinity-health.org", "dmc.org", "aspendental.com", "greatexpressions.com", "visionworks.com", "pearlevision.com",
+    "lenscrafters.com", "americasbest.com", "henryschein.com", "kumon.com", "mathnasium.com", "sylvanlearning.com", "huntingtonhelps.com",
+    "kindercare.com", "learningcaregroup.com", "goddardschool.com", "primroseschools.com", "thelittlegym.com", "mylittlegym.com", "schoolofrock.com",
+    "enterprise.com", "hertz.com", "avis.com", "budget.com", "carmax.com", "carvana.com", "drivetime.com", "autonation.com", "lithia.com",
+    "suburbancollection.com", "feldmanautomotive.com", "serrachevrolet.com", "lafontaine.com", "szottauto.com", "genesisautogroup.com"
+  ],
+
+  "chainNamePatterns": [
+    "\\b(walmart|meijer|kroger|aldi|costco|sam's club)\\b",
+    "\\b(home depot|lowe'?s|menards|harbor freight|tractor supply)\\b",
+    "\\b(cvs|walgreens|rite aid|dollar general|dollar tree|family dollar|five below|big lots)\\b",
+    "\\b(mcdonald'?s|burger king|wendy'?s|taco bell|kfc|subway|domino'?s|pizza hut|papa john'?s|little caesars|jet'?s pizza|hungry howie'?s)\\b",
+    "\\b(starbucks|dunkin'?|tim hortons|biggby|chick-fil-a|arby'?s|culver'?s|sonic drive-in|jimmy john'?s|panda express|chipotle|qdoba)\\b",
+    "\\b(buffalo wild wings|applebee'?s|olive garden|red lobster|leo'?s coney island|national coney island|dairy queen|cold stone|tropical smoothie)\\b",
+    "\\b(great clips|supercuts|sport clips|fantastic sams|ulta|sally beauty|massage envy|european wax|hand (and|&) stone|planet fitness|anytime fitness|snap fitness|la fitness|orangetheory)\\b",
+    "\\b(autozone|o'?reilly auto|advance auto|napa auto|pep boys|firestone|belle tire|discount tire|midas(?! touch)|meineke|jiffy lube|valvoline|monro|tuffy|maaco|safelite)\\b",
+    "\\b(petsmart|petco|pet supplies plus)\\b",
+    "\\b(verizon|at&t|t-mobile|xfinity|metro by t-mobile|cricket wireless|boost mobile|ubreakifix)\\b",
+    "\\b(h&r block|jackson hewitt|liberty tax|edward jones|state farm|allstate|farmers insurance|progressive insurance)\\b",
+    "\\b(the ups store|ups store|fedex|usps|us post office|united states postal|public storage|extra space|u-haul|uhaul|penske)\\b",
+    "\\b(roof ?maxx|mr\\.? rooter|mr\\.? handyman|roto-?rooter|servpro|servicemaster|stanley steemer|chem-dry|molly maid|merry maids|the cleaning authority|lawn doctor|trugreen|terminix|orkin|aptive|certapro|five star painting|wow 1 day)\\b",
+    "\\b(renewal by andersen|window nation|champion window|hansons|wallside|leaf ?filter|leaf ?guard|aire serv|one hour heating|benjamin franklin plumbing|mister sparky|mr\\.? electric|horizon services|ars rescue rooter|sears home|bath fitter|re-bath|kitchen tune-up|budget blinds|closets by design)\\b",
+    "\\b(goodwill|salvation army|savers|plato'?s closet|once upon a child)\\b",
+    "\\b(gamestop|best buy|staples|office depot|michaels|jo-?ann|hobby lobby|dick'?s sporting|dunham'?s|kohl'?s|t\\.?j\\.? ?maxx|marshalls|burlington|ross dress|old navy|shoe carnival|famous footwear|dsw|skechers)\\b",
+    "\\b(7-eleven|speedway|circle k|kum ?& ?go|wawa|sheetz)\\b",
+    "\\b(chase bank|bank of america|pnc bank|huntington bank|comerica|fifth third|flagstar|citizens bank|genisys|lake michigan credit union|dfcu|michigan legacy|credit union)\\b",
+    "\\b(blue cross|corewell|beaumont|mclaren|henry ford|ascension|trinity health|aspen dental|great expressions|visionworks|pearle vision|lenscrafters|america'?s best (contacts|eyeglasses))\\b",
+    "\\b(kumon|mathnasium|sylvan learning|huntington learning|kindercare|goddard school|primrose school|little gym|school of rock)\\b",
+    "\\b(enterprise rent|hertz|avis|budget rent|carmax|carvana|drivetime|autonation|lithia|suburban (chevrolet|ford|toyota|honda|nissan|collection)|(feldman|serra|lafontaine|szott) (chevrolet|ford|toyota|honda|nissan|buick|gmc|chrysler|dodge|jeep|ram|kia|hyundai|subaru|automotive|auto))\\b",
+    "\\b(inc\\.? national|corporation|corporate (office|headquarters)|headquarters|distribution center|regional office)\\b"
+  ],
+
+  "locatorUrlPatterns": [
+    "/locations?/", "/l/", "/store(s)?/", "/store-locator", "/find-a-(dealer|store|location|location-near)", "/branch(es)?/", "/dealers?/",
+    "/our-locations", "/local/", "/shops?/[a-z-]+/[a-z-]+/", "/restaurants?/[a-z]{2}/", "/[a-z]{2}/[a-z-]+/[0-9]+", "locations\\.", "local\\.", "stores\\."
+  ],
+
+  "multiLocationDomainMin": 3,
+  "_largeFirmNote": "ratingCountAlone excludes on review volume by itself (very high: a busy diner can have 3,000+ reviews and still be a small business). ratingCountMin applies only together with enterprise_nav (investors / franchising / multi-location nav found by the site audit).",
+  "largeFirm": {
+    "ratingCountMin": 300,
+    "ratingCountAlone": 5000
+  }
+}

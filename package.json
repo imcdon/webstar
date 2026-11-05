@@ -2,9 +2,22 @@
   "name": "webstar-business-services",
   "private": true,
   "scripts": {
-    "media:images": "node scripts/process-images.mjs"
+    "media:images": "node scripts/process-images.mjs",
+    "profile-promos": "node scripts/generate-profile-promos.mjs",
+    "lead-gen:check": "node lead-gen/scripts/check-setup.mjs",
+    "lead-gen:corridors": "node lead-gen/scripts/run-corridors.mjs",
+    "lead-gen:sweep": "node lead-gen/scripts/sweep.mjs",
+    "lead-gen:classify": "node lead-gen/scripts/classify.mjs",
+    "lead-gen:pilot": "node lead-gen/scripts/run-pilot.mjs",
+    "lead-gen:discover": "node lead-gen/scripts/discover.mjs",
+    "lead-gen:enrich": "node lead-gen/scripts/enrich.mjs",
+    "lead-gen:audit": "node lead-gen/scripts/audit-sites.mjs",
+    "lead-gen:score": "node lead-gen/scripts/score-leads.mjs",
+    "lead-gen:export": "node lead-gen/scripts/export.mjs"
   },
   "devDependencies": {
+    "cheerio": "^1.2.0",
+    "dotenv": "^18.0.9",
     "heic-convert": "^2.1.0",
     "sharp": "^0.34.4"
   }

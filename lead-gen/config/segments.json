@@ -1,0 +1,33 @@
+{
+  "segments": {
+    "home-services": {
+      "label": "Home services (trades)",
+      "nearbyTypes": ["plumber", "electrician", "roofing_contractor", "painter", "locksmith"],
+      "textQueries": [
+        "plumber in {city}",
+        "HVAC contractor in {city}",
+        "electrician in {city}",
+        "general contractor in {city}",
+        "roofer in {city}"
+      ],
+      "streetTextQueries": [
+        "plumber near {street}, {city}",
+        "HVAC near {street}, {city}",
+        "electrician near {street}, {city}",
+        "general contractor near {street}, {city}"
+      ]
+    },
+    "salons": {
+      "label": "Hair and nail salons",
+      "nearbyTypes": ["hair_care", "beauty_salon", "nail_salon"],
+      "textQueries": [
+        "hair salon in {city}",
+        "nail salon in {city}"
+      ],
+      "streetTextQueries": [
+        "hair salon near {street}, {city}",
+        "nail salon near {street}, {city}"
+      ]
+    }
+  }
+}

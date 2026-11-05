@@ -1,0 +1,95 @@
+{
+  "psi": {
+    "performanceMin": 50,
+    "seoMin": 70,
+    "accessibilityMin": 80
+  },
+  "staleness": {
+    "copyrightYearsBehind": 2,
+    "lastModifiedMonths": 24
+  },
+  "thinOnePage": {
+    "minInternalLinks": 2,
+    "minWordCount": 120
+  },
+  "qualify": {
+    "minScore": 35,
+    "minSignalCount": 2,
+    "noWebsiteCountsAsQualified": true
+  },
+  "weakUrlHosts": [
+    "facebook.com",
+    "fb.com",
+    "instagram.com",
+    "linktr.ee",
+    "sites.google.com",
+    "yelp.com",
+    "tiktok.com"
+  ],
+  "builderSubdomainSuffixes": [
+    "wixsite.com",
+    "squarespace.com",
+    "godaddysites.com",
+    "wordpress.com",
+    "weebly.com",
+    "myshopify.com",
+    "square.site",
+    "company.site"
+  ],
+  "freeEmailDomains": [
+    "gmail.com",
+    "googlemail.com",
+    "yahoo.com",
+    "hotmail.com",
+    "outlook.com",
+    "live.com",
+    "aol.com",
+    "icloud.com",
+    "me.com"
+  ],
+  "weights": {
+    "no_website": 40,
+    "weak_url": 25,
+    "builder_subdomain": 25,
+    "free_email_on_site": 15,
+    "no_domain_email": 15,
+    "stale_copyright": 12,
+    "stale_last_modified": 12,
+    "powered_by_builder": 10,
+    "wp_default_theme": 10,
+    "psi_perf_low": 15,
+    "psi_seo_low": 10,
+    "mobile_a11y_low": 12,
+    "no_https": 10,
+    "site_error": 10,
+    "placeholder_copy": 8,
+    "generic_title": 8,
+    "thin_one_page": 8,
+    "no_meta_description": 6,
+    "redirects_to_social": 20,
+    "parked_domain": 25
+  },
+  "painLabels": {
+    "no_website": "No website on Google listing",
+    "weak_url": "Social / link-in-bio only",
+    "builder_subdomain": "Free builder subdomain",
+    "free_email_on_site": "Gmail/free email on site",
+    "no_domain_email": "No @domain email",
+    "stale_copyright": "Old copyright year",
+    "stale_last_modified": "Stale Last-Modified",
+    "powered_by_builder": "Powered-by DIY builder",
+    "wp_default_theme": "Default WordPress theme",
+    "psi_perf_low": "Slow mobile performance",
+    "psi_seo_low": "Weak mobile SEO score",
+    "mobile_a11y_low": "Poor mobile accessibility",
+    "no_https": "No HTTPS",
+    "site_error": "Site error / unreachable",
+    "fetch_blocked": "Site blocked our check — verify by hand",
+    "placeholder_copy": "Placeholder / lorem text",
+    "generic_title": "Generic page title",
+    "thin_one_page": "Very thin one-page site",
+    "no_meta_description": "Missing meta description",
+    "redirects_to_social": "Redirects to social",
+    "parked_domain": "Parked / for-sale domain"
+  }
+}

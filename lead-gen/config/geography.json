@@ -1,0 +1,68 @@
+{
+  "regionCode": "US",
+  "cells": [
+    {
+      "id": "waterford-dixie-hwy",
+      "label": "Waterford Township, MI",
+      "enabled": true,
+      "address": "Dixie Hwy, Waterford Twp, MI 48329, USA",
+      "streetHint": "Dixie Highway",
+      "description": "Dixie Hwy (US-24) through Waterford Township: Independence Twp border (NW) to Telegraph Rd (SE). Centerline traced from OpenStreetMap (ODbL).",
+      "legacyCellIds": ["waterford-dixie-hwy-north", "waterford-dixie-hwy-south"],
+      "bufferMeters": 400,
+      "polyline": [
+        [42.72564, -83.43024],
+        [42.72184, -83.4207],
+        [42.72083, -83.41896],
+        [42.71517, -83.41222],
+        [42.70962, -83.40675],
+        [42.70367, -83.40395],
+        [42.70213, -83.40272],
+        [42.67975, -83.37138],
+        [42.67901, -83.36939],
+        [42.67602, -83.35636],
+        [42.67462, -83.34239],
+        [42.67388, -83.3407],
+        [42.66584, -83.32928]
+      ],
+      "center": { "lat": 42.6957, "lng": -83.3820 },
+      "radiusMeters": 6000
+    },
+    {
+      "id": "auburn-hills-walton-blvd",
+      "label": "Auburn Hills, MI",
+      "enabled": false,
+      "address": "Walton Blvd & Opdyke Rd, Auburn Hills, MI 48326, USA",
+      "streetHint": "Walton Boulevard",
+      "center": { "lat": 42.6891, "lng": -83.2434 },
+      "radiusMeters": 4500
+    },
+    {
+      "id": "pontiac-walton-blvd",
+      "label": "Pontiac, MI",
+      "enabled": false,
+      "address": "Walton Blvd & Woodward Ave, Pontiac, MI 48340, USA",
+      "streetHint": "Walton Boulevard",
+      "center": { "lat": 42.6342, "lng": -83.2785 },
+      "radiusMeters": 4500
+    },
+    {
+      "id": "waterford-walton-blvd",
+      "label": "Waterford Township, MI",
+      "enabled": false,
+      "address": "6390 Walton Blvd, Waterford Twp, MI 48329, USA",
+      "streetHint": "Walton Boulevard",
+      "center": { "lat": 42.6584, "lng": -83.3478 },
+      "radiusMeters": 4500
+    },
+    {
+      "id": "waterford-m59",
+      "label": "Waterford Township, MI",
+      "enabled": false,
+      "address": "M-59 & Highland Rd, Waterford Twp, MI 48327, USA",
+      "streetHint": "M-59",
+      "center": { "lat": 42.6934, "lng": -83.4012 },
+      "radiusMeters": 5500
+    }
+  ]
+}
