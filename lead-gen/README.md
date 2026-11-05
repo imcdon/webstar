@@ -57,6 +57,14 @@ flowchart LR
 
 Cells with only `center` / `radiusMeters` still work with the legacy type-based `discover.mjs` / `enrich.mjs` flow (`npm run lead-gen:pilot`).
 
+## Admin map
+
+Logged-in **admin** accounts can open the corridor on the local site:
+
+`http://localhost/webstar-business-solutions/portal/leads-map.php`
+
+or **Lead map** from the Client Portal projects page. Pins are retained businesses coloured by website grade; filters default to high/medium need. Tiles are free OpenStreetMap (Leaflet). Coordinates older than 30 days are omitted until you re-sweep.
+
 ## Data
 
 SQLite database: `lead-gen/data/leads.sqlite` (gitignored). Tables: `leads`, `sweep_tiles`, `meta`.

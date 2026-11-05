@@ -149,6 +149,16 @@ On the server (File Manager or SSH), inside the **document root** (`DEPLOYPATH`)
    (admin `webstar` / client `superior` — see [portal/README.md](portal/README.md)). Change hashes after go-live if you want.
 3. Do **not** commit `mail-config.php`. Deploy rsync excludes it so later deploys do not overwrite it.
 
+### 6b. Lead map (admin portal)
+
+The map page deploys with the PHP code (`portal/leads-map.php`). The SQLite database is **not** in Git (`lead-gen/data/` is gitignored). After the first code deploy:
+
+1. Confirm PHP has **pdo_sqlite** (cPanel → Select PHP Version → Extensions → `pdo_sqlite` + `sqlite`).
+2. Upload local `lead-gen/data/leads.sqlite` (and `leads.sqlite-wal` / `-shm` if present) into **`$HOME/public_html/lead-gen/data/`** via File Manager or SFTP. Do not upload `lead-gen/.env`.
+3. Log in as admin → **Lead map**, or open `https://webstarbusinessservices.com/portal/leads-map.php`.
+
+Later deploys skip `lead-gen/data`, so the uploaded database is left in place. Refresh it by uploading a new copy after a local sweep (coordinates must be re-fetched at least every 30 days).
+
 `vendor/` is already in the repo — no `composer install` required on the server for normal deploys.
 
 ### 7. Superior Ice staging subdomain

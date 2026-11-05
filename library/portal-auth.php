@@ -155,6 +155,17 @@ function portal_require_login(): void
     }
 }
 
+function portal_require_admin(): void
+{
+    portal_require_login();
+    if (!portal_is_admin()) {
+        http_response_code(403);
+        header('Content-Type: text/plain; charset=utf-8');
+        echo 'This page is only available to Webstar admins.';
+        exit;
+    }
+}
+
 function portal_project_preview_url(array $project): string
 {
     if (webstar_is_local_host()) {

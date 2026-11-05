@@ -27,7 +27,12 @@ include dirname(__DIR__) . '/library/layout-start.php';
                     <h1 class="home-section__heading"><?php echo webstar_h($heading); ?></h1>
                     <p class="portal-projects__welcome">Welcome, <?php echo webstar_h($displayName); ?>.</p>
                 </div>
-                <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_url('portal/logout.php')); ?>">Log out</a>
+                <div class="portal-projects__actions">
+                    <?php if ($isAdmin) : ?>
+                        <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('portal/leads-map.php')); ?>">Lead map</a>
+                    <?php endif; ?>
+                    <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_url('portal/logout.php')); ?>">Log out</a>
+                </div>
             </div>
 
             <?php if ($projects === []) : ?>

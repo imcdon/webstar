@@ -75,6 +75,9 @@ $ogImageUrl = webstar_absolute_url($ogImagePath);
     <meta name="twitter:description" content="<?php echo webstar_h($pageDescription); ?>">
     <meta name="twitter:image" content="<?php echo webstar_h($ogImageUrl); ?>">
     <link rel="stylesheet" href="<?php echo webstar_h(webstar_url('library/styles.css')); ?>?v=<?php echo (int) @filemtime(__DIR__ . '/styles.css'); ?>">
+    <?php if (!empty($extraHead)) : ?>
+    <?php echo $extraHead; ?>
+    <?php endif; ?>
     <?php
     $jsonLdOut = webstar_json_ld_script($jsonLd ?? null);
     if ($jsonLdOut !== '') :
