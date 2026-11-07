@@ -41,17 +41,17 @@ return [
             ],
         ],
     ],
-    '123' => [
-        'display_name' => 'Fish with Jarett',
+    'mdhl' => [
+        'display_name' => 'Metro Detroit Holiday Lighting',
         'role' => 'client',
-        'password_hash' => '$2y$10$7UdOawJV4tMogfeq.yHZNOu6oqWzklwo/hX2WM3DmVLgkZkfdE.pK',
+        'password_hash' => '$2y$10$f8T4hMDOEbKBl5WHNKQbFOmVj7NJcGjF7inQ2uVn3djiSXPywDsRS',
         'projects' => [
             [
-                'slug' => 'fishwithjarett',
-                'title' => 'Fish with Jarett website',
+                'slug' => 'metro-detroit-holiday-lighting',
+                'title' => 'Metro Detroit Holiday Lighting website',
                 'status' => 'In progress',
-                'local_path' => 'clients/fishwithjarett/',
-                'staging_url' => 'https://webstarbusinessservices.com/clients/fishwithjarett/',
+                'local_path' => 'clients/metro-detroit-holiday-lighting/',
+                'staging_url' => 'https://webstarbusinessservices.com/clients/metro-detroit-holiday-lighting/',
             ],
         ],
     ],

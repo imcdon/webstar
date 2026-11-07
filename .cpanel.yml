@@ -5,7 +5,7 @@ deployment:
     # Git clone stays separate (e.g. $HOME/repositories/webstar).
     - export DEPLOYPATH=$HOME/public_html
     - /bin/mkdir -p $DEPLOYPATH/clients/superior-ice-adventures
-    - /bin/mkdir -p $DEPLOYPATH/clients/fishwithjarett
+    - /bin/mkdir -p $DEPLOYPATH/clients/metro-detroit-holiday-lighting
     - /bin/mkdir -p $DEPLOYPATH/clients/djstackle
     - /bin/mkdir -p $DEPLOYPATH/clients/djstackle/data
     - /bin/mkdir -p $DEPLOYPATH/clients/djstackle/.well-known
