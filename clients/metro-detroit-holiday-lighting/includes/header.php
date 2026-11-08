@@ -36,7 +36,8 @@ $schema_breadcrumbs = $schema_breadcrumbs ?? null;
     <meta property="og:image" content="<?= htmlspecialchars($og_image) ?>">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="theme-color" content="#0a0a0c">
-    <link rel="icon" href="<?= htmlspecialchars(url('assets/img/favicon.svg')) ?>" type="image/svg+xml">
+    <link rel="icon" href="<?= htmlspecialchars(url('assets/img/favicon.png')) ?>" type="image/png">
+    <link rel="apple-touch-icon" href="<?= htmlspecialchars(url('assets/img/logo-tree.png')) ?>">
     <?php if ($preload_image): ?>
         <link rel="preload" as="image" href="<?= htmlspecialchars($preload_image) ?>" fetchpriority="high">
     <?php endif; ?>
@@ -59,7 +60,7 @@ $schema_breadcrumbs = $schema_breadcrumbs ?? null;
     <header class="site-header" id="site-header">
         <div class="header-inner">
             <a class="logo" href="<?= htmlspecialchars(url()) ?>">
-                <span class="logo-mark" aria-hidden="true">✦</span>
+                <img class="logo-mark" src="<?= htmlspecialchars(url('assets/img/logo-tree.png')) ?>" alt="" width="36" height="36">
                 <span class="logo-text"><?= htmlspecialchars($site_name) ?></span>
             </a>
             <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">

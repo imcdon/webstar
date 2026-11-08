@@ -9,7 +9,7 @@
         <div class="footer-grid">
             <div class="footer-brand">
                 <a class="logo logo-footer" href="<?= htmlspecialchars(url()) ?>">
-                    <span class="logo-mark" aria-hidden="true">✦</span>
+                    <img class="logo-mark" src="<?= htmlspecialchars(url('assets/img/logo-tree.png')) ?>" alt="" width="36" height="36">
                     <span class="logo-text"><?= htmlspecialchars($site_name) ?></span>
                 </a>
                 <p class="footer-trust"><?= htmlspecialchars($trust_line) ?></p>

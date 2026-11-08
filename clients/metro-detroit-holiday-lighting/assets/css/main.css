@@ -97,8 +97,11 @@ a:hover {
 }
 
 .logo-mark {
-  color: var(--gold);
-  font-size: 1.15rem;
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: block;
 }
 
 .logo-text {

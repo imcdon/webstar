@@ -1,9 +1,7 @@
 # Audience panel photos
 
-Drop real project photos here to fill the three home cards:
+- `homeowners.jpg` — residential installs
+- `businesses.jpg` — commercial installs
+- `hoa.jpg` — HOA / community (optional)
 
-- `homeowners.jpg`
-- `businesses.jpg`
-- `hoa.jpg`
-
-Until those files exist, the cards show a black placeholder.
+Until a file exists, that card shows a black placeholder.

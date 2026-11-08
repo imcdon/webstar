@@ -116,10 +116,12 @@ $faq_items = [
  */
 $testimonials = [];
 
-$hero_image = '';
-$hero_image_alt = 'Professional holiday lighting display in Metro Detroit';
 $gallery_images = mdhl_gallery_images();
-if ($gallery_images !== []) {
+
+$hero_image_file = dirname(__DIR__) . '/assets/img/hero-soaring-eagle.jpg';
+$hero_image = is_file($hero_image_file) ? url('assets/img/hero-soaring-eagle.jpg') : '';
+$hero_image_alt = 'Holiday lighting at Soaring Eagle by Metro Detroit Holiday Lighting';
+if ($hero_image === '' && $gallery_images !== []) {
     $hero_image = $gallery_images[0]['url'];
     $hero_image_alt = $gallery_images[0]['alt'];
 }
