@@ -7,7 +7,7 @@ if (!function_exists('mdhl_staging_should_gate') || !mdhl_staging_should_gate())
     return;
 }
 
-$webstar_staging_notes = 'Drop finished project photos into assets/img/gallery/ and push — the Gallery page updates automatically. Add real testimonials in includes/config.php when Steven has quotes ready.';
+$webstar_staging_notes = 'Spots with black squares need new photos — ideally lights being installed and the process, then updated shots with the big camera that are composed a little better and more aesthetic. Gallery photos can also be dropped into assets/img/gallery/ and pushed. Add real testimonials in includes/config.php when Steven has quotes ready.';
 
 $shared = dirname(__DIR__, 3) . '/shared/webstar-staging-banner.php';
 if (is_file($shared)) {

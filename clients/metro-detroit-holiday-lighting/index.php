@@ -86,7 +86,7 @@ require __DIR__ . '/includes/header.php';
 <section class="section section--tight" id="work">
     <div class="container-wide">
         <div class="section__head container" style="margin-left:0;padding-left:0;">
-            <h2>The photos do the talking.</h2>
+            <h2>Examples of Our Work</h2>
             <p class="section__lead">Recent installs across Metro Detroit. More on the gallery page.</p>
         </div>
         <div class="gallery-preview">
