@@ -57,7 +57,7 @@ $footer_links = [
 ];
 
 /** Fishing-show popup: true = show on every page load while designing; false = once per browser (localStorage). */
-$fishing_show_modal_every_visit = true;
+$fishing_show_modal_every_visit = false;
 
 /** Retailers that carry DJ's Tackle — edit name + location; optional url for maps or store site */
 $retail_stores = [

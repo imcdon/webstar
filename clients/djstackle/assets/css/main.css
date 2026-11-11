@@ -604,6 +604,31 @@ body.show-modal-open { overflow: hidden; }
 .home-product-grid .meta {
   display: none;
 }
+@media (min-width: 761px) {
+  .home-products .product-grid.home-product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: clamp(1rem, 4.5vw, 3.25rem);
+    row-gap: clamp(0.7rem, 2.2vw, 1.35rem);
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+  }
+  .home-product-grid .product-card {
+    max-width: none;
+    margin-inline: 0;
+    width: 100%;
+  }
+  .home-product-grid .product-card .body {
+    padding: 0.45rem 0.4rem 0.55rem;
+  }
+  .home-product-grid .product-card .body strong {
+    font-size: clamp(0.78rem, 0.7rem + 0.2vw, 0.88rem);
+    -webkit-line-clamp: 2;
+  }
+  .home-product-grid .product-card .price {
+    font-size: clamp(0.76rem, 0.68rem + 0.15vw, 0.84rem);
+  }
+}
 @media (max-width: 760px) {
   .product-grid:not(.home-product-grid) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
