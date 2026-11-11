@@ -30,14 +30,40 @@ require dirname(__DIR__) . '/includes/header.php';
                     <a class="btn btn-ghost" href="<?= htmlspecialchars(url('contact/')) ?>">Request a quote</a>
                 </p>
             </div>
-        <?php else: ?>
-            <div class="gallery-grid">
-                <?php foreach ($gallery_images as $img): ?>
+        <?php else:
+            $gallery_landscape = array_values(array_filter($gallery_images, static fn ($img) => ($img['orientation'] ?? 'landscape') !== 'portrait'));
+            $gallery_portrait = array_values(array_filter($gallery_images, static fn ($img) => ($img['orientation'] ?? '') === 'portrait'));
+            ?>
+            <?php if ($gallery_landscape !== []): ?>
+            <div class="gallery-grid gallery-grid--landscape">
+                <?php foreach ($gallery_landscape as $img): ?>
                     <a href="<?= htmlspecialchars($img['url']) ?>" target="_blank" rel="noopener noreferrer">
-                        <img src="<?= htmlspecialchars($img['url']) ?>" alt="<?= htmlspecialchars($img['alt']) ?>" loading="lazy" width="900" height="675">
+                        <img
+                            src="<?= htmlspecialchars($img['url']) ?>"
+                            alt="<?= htmlspecialchars($img['alt']) ?>"
+                            loading="lazy"
+                            width="<?= (int) ($img['width'] ?: 900) ?>"
+                            height="<?= (int) ($img['height'] ?: 675) ?>"
+                        >
                     </a>
                 <?php endforeach; ?>
             </div>
+            <?php endif; ?>
+            <?php if ($gallery_portrait !== []): ?>
+            <div class="gallery-grid gallery-grid--portrait<?= $gallery_landscape !== [] ? ' gallery-grid--portrait-below' : '' ?>">
+                <?php foreach ($gallery_portrait as $img): ?>
+                    <a href="<?= htmlspecialchars($img['url']) ?>" target="_blank" rel="noopener noreferrer">
+                        <img
+                            src="<?= htmlspecialchars($img['url']) ?>"
+                            alt="<?= htmlspecialchars($img['alt']) ?>"
+                            loading="lazy"
+                            width="<?= (int) ($img['width'] ?: 600) ?>"
+                            height="<?= (int) ($img['height'] ?: 900) ?>"
+                        >
+                    </a>
+                <?php endforeach; ?>
+            </div>
+            <?php endif; ?>
             <div class="cta-band" style="margin-top:2.5rem;">
                 <h2>Want a display like these?</h2>
                 <p>Text photos of your property to <?= htmlspecialchars($phone) ?> or send them by email.</p>

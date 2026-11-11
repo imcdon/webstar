@@ -6,6 +6,7 @@ require_once __DIR__ . '/paths.php';
 require_once __DIR__ . '/staging-gate.php';
 require_once __DIR__ . '/cities.php';
 require_once __DIR__ . '/gallery.php';
+require_once __DIR__ . '/landing-pages.php';
 
 $site_name = 'Metro Detroit Holiday Lighting';
 $site_domain = 'metrodetroitholidaylighting.com';
@@ -25,8 +26,11 @@ $mail_from = '';
 
 $trust_line = 'Professionally designed. Fully insured. Owner-operated.';
 
+$service_nav = mdhl_service_nav();
+
 $nav_links = [
     'Home' => '',
+    'Services' => 'homeowners/',
     'Gallery' => 'gallery/',
     'Service Areas' => 'service-areas/',
     'Contact' => 'contact/',
@@ -36,20 +40,23 @@ $audiences = [
     [
         'title' => 'Homeowners',
         'body' => 'Custom holiday lighting that fits your home — rooftops, trees, walks, and accents — without you climbing a ladder or fighting tangled cords.',
-        'image' => 'assets/img/audiences/homeowners.jpg',
-        'image_alt' => 'Home with professional holiday lighting along the roofline and trees',
+        'image' => 'assets/img/gallery/residential-08-clark-white-tree.jpg',
+        'image_alt' => 'Residential home with white holiday tree lighting',
+        'url' => 'homeowners/',
     ],
     [
         'title' => 'Businesses',
         'body' => 'Storefronts, offices, and commercial buildings that look polished for the season and stay maintained from install through take-down.',
         'image' => 'assets/img/audiences/businesses.jpg',
         'image_alt' => 'Commercial storefront with professional holiday lighting',
+        'url' => 'businesses/',
     ],
     [
         'title' => 'HOAs & property managers',
         'body' => 'Community entrances, clubhouses, and shared spaces with one clear plan, one crew, and one call for mid-season fixes.',
-        'image' => 'assets/img/audiences/hoa.jpg',
+        'image' => 'assets/img/gallery/commercial-07-how-entrance.jpg',
         'image_alt' => 'Community entrance with professional holiday lighting',
+        'url' => 'hoa-property-managers/',
     ],
 ];
 
@@ -126,7 +133,7 @@ if ($hero_image === '' && $gallery_images !== []) {
     $hero_image_alt = $gallery_images[0]['alt'];
 }
 
-// Drop a photo at assets/img/steven.jpg to show it in the About section.
-$owner_image_file = dirname(__DIR__) . '/assets/img/steven.jpg';
-$owner_image = is_file($owner_image_file) ? 'assets/img/steven.jpg' : '';
-$owner_image_alt = 'Steven installing holiday lighting';
+// About section photo — Steven hanging a wreath.
+$owner_image_file = dirname(__DIR__) . '/assets/img/gallery/hanging-the-wreath.jpg';
+$owner_image = is_file($owner_image_file) ? 'assets/img/gallery/hanging-the-wreath.jpg' : '';
+$owner_image_alt = 'Steven hanging a holiday wreath';

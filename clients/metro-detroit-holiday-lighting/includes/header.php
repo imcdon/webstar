@@ -16,6 +16,7 @@ $preload_image = $preload_image ?? null;
 $schema_home = $schema_home ?? false;
 $schema_faq = $schema_faq ?? false;
 $schema_breadcrumbs = $schema_breadcrumbs ?? null;
+$schema_service = $schema_service ?? null;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,6 +47,13 @@ $schema_breadcrumbs = $schema_breadcrumbs ?? null;
     if ($schema_home) {
         mdhl_print_json_ld(mdhl_schema_local_business());
     }
+    if (is_array($schema_service) && !empty($schema_service['name'])) {
+        mdhl_print_json_ld(mdhl_schema_service(
+            (string) $schema_service['name'],
+            (string) ($schema_service['description'] ?? $page_description),
+            (string) ($schema_service['url'] ?? $canonical_url)
+        ));
+    }
     if ($schema_faq && !empty($faq_items)) {
         mdhl_print_json_ld(mdhl_schema_faq($faq_items));
     }
@@ -69,7 +77,20 @@ $schema_breadcrumbs = $schema_breadcrumbs ?? null;
             <nav id="site-nav" class="site-nav" aria-label="Primary">
                 <ul>
                     <?php foreach ($nav_links as $label => $href): ?>
-                        <li><a href="<?= htmlspecialchars(url($href)) ?>"><?= htmlspecialchars($label) ?></a></li>
+                        <?php if ($label === 'Services' && !empty($service_nav)): ?>
+                            <li class="nav-item--dropdown">
+                                <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-controls="nav-services">
+                                    Services
+                                </button>
+                                <ul id="nav-services" class="nav-dropdown">
+                                    <?php foreach ($service_nav as $svcLabel => $svcHref): ?>
+                                        <li><a href="<?= htmlspecialchars(url($svcHref)) ?>"><?= htmlspecialchars($svcLabel) ?></a></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </li>
+                        <?php else: ?>
+                            <li><a href="<?= htmlspecialchars(url($href)) ?>"><?= htmlspecialchars($label) ?></a></li>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </ul>
                 <div class="nav-ctas">

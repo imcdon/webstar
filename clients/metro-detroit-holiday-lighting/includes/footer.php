@@ -18,10 +18,23 @@
                 <h2 class="footer-heading">Explore</h2>
                 <ul>
                     <?php foreach ($nav_links as $label => $href): ?>
+                        <?php if ($label === 'Services') {
+                            continue;
+                        } ?>
                         <li><a href="<?= htmlspecialchars(url($href)) ?>"><?= htmlspecialchars($label) ?></a></li>
                     <?php endforeach; ?>
                 </ul>
             </div>
+            <?php if (!empty($service_nav)): ?>
+            <div class="footer-col">
+                <h2 class="footer-heading">Services</h2>
+                <ul>
+                    <?php foreach ($service_nav as $label => $href): ?>
+                        <li><a href="<?= htmlspecialchars(url($href)) ?>"><?= htmlspecialchars($label) ?></a></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+            <?php endif; ?>
             <div class="footer-col">
                 <h2 class="footer-heading">Contact</h2>
                 <ul>

@@ -45,7 +45,14 @@ require __DIR__ . '/includes/header.php';
         </div>
         <div class="card-grid audience-grid">
             <?php foreach ($audiences as $audience): ?>
-                <article class="audience-card<?= empty($audience['has_image']) ? ' audience-card--placeholder' : '' ?>">
+                <?php
+                $audienceUrl = !empty($audience['url']) ? url($audience['url']) : '';
+                $cardTag = $audienceUrl !== '' ? 'a' : 'article';
+                $cardAttrs = $audienceUrl !== ''
+                    ? ' href="' . htmlspecialchars($audienceUrl) . '"'
+                    : '';
+                ?>
+                <<?= $cardTag ?> class="audience-card<?= empty($audience['has_image']) ? ' audience-card--placeholder' : '' ?>"<?= $cardAttrs ?>>
                     <div class="audience-card__media" aria-hidden="true">
                         <?php if (!empty($audience['has_image'])): ?>
                             <img src="<?= htmlspecialchars(url($audience['image'])) ?>" alt="" width="800" height="600" loading="lazy" decoding="async">
@@ -56,7 +63,7 @@ require __DIR__ . '/includes/header.php';
                         <h3><?= htmlspecialchars($audience['title']) ?></h3>
                         <p><?= htmlspecialchars($audience['body']) ?></p>
                     </div>
-                </article>
+                </<?= $cardTag ?>>
             <?php endforeach; ?>
         </div>
     </div>
@@ -108,7 +115,7 @@ require __DIR__ . '/includes/header.php';
         <div class="owner__copy">
             <p class="eyebrow">About</p>
             <h2>20 Years Of Design</h2>
-            <p class="section__lead">With <?= (int) $years_experience ?> years of experience, Steven has shaped holiday lighting layouts across Metro Detroit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p class="section__lead">With <?= (int) $years_experience ?> years of experience, Steven has designed and installed holiday lighting for Metro Detroit homes, businesses, and HOAs. Owner-operated and fully insured, he handles the full season — custom design, install, mid-season care, take-down, and storage — so displays look sharp from the first night through New Year.</p>
             <p>
                 <a class="btn btn-primary" href="<?= htmlspecialchars($phone_href) ?>">
                     <svg class="btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.35a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.75.32 1.54.55 2.35.68A2 2 0 0 1 22 16.92z"/></svg>

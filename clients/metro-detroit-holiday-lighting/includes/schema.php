@@ -37,6 +37,9 @@ function mdhl_schema_local_business(): array
             'Christmas light design',
             'Commercial holiday lighting',
             'HOA holiday lighting',
+            'Wreath and garland installation',
+            'Branch wrap tree lights',
+            'High roof christmas light installation',
         ],
     ];
 }
@@ -84,5 +87,34 @@ function mdhl_schema_breadcrumbs(array $crumbs): array
         '@context' => 'https://schema.org',
         '@type' => 'BreadcrumbList',
         'itemListElement' => $items,
+    ];
+}
+
+/**
+ * Service schema linked to the site LocalBusiness.
+ */
+function mdhl_schema_service(string $name, string $description, string $url): array
+{
+    global $site_url, $company_name, $phone;
+
+    $businessId = rtrim((string) $site_url, '/') . '/#business';
+
+    return [
+        '@context' => 'https://schema.org',
+        '@type' => 'Service',
+        'name' => $name,
+        'description' => $description,
+        'url' => $url,
+        'provider' => [
+            '@type' => 'LocalBusiness',
+            '@id' => $businessId,
+            'name' => $company_name,
+            'telephone' => $phone,
+        ],
+        'areaServed' => [
+            ['@type' => 'AdministrativeArea', 'name' => 'Oakland County, Michigan'],
+            ['@type' => 'AdministrativeArea', 'name' => 'Wayne County, Michigan'],
+            ['@type' => 'AdministrativeArea', 'name' => 'Macomb County, Michigan'],
+        ],
     ];
 }
