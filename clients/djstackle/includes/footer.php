@@ -6,11 +6,18 @@ declare(strict_types=1);
 <footer class="site-footer">
     <div class="container footer-grid">
         <div>
+            <img
+                class="footer-brand-mark"
+                src="<?= \Webstar\Shop\Helpers::e(url('assets/img/logo-full.png')) ?>"
+                alt="DJ's Tackle — Gettin' Jiggy With It"
+                width="88"
+                height="90"
+            >
             <strong><?= \Webstar\Shop\Helpers::e($site_name) ?></strong>
             <p><?= \Webstar\Shop\Helpers::e($site_tagline) ?></p>
             <p><a href="<?= \Webstar\Shop\Helpers::e($phone_href) ?>"><?= \Webstar\Shop\Helpers::e($phone) ?></a><br>
             <a href="<?= \Webstar\Shop\Helpers::e($email_href) ?>"><?= \Webstar\Shop\Helpers::e($email) ?></a></p>
-            <p><?= \Webstar\Shop\Helpers::e($address['city'] . ', ' . $address['region'] . ' ' . $address['postal_code']) ?></p>
+            <p><?= \Webstar\Shop\Helpers::e($address['city'] . ', ' . $address['region'] . ' ' . $address['postal_code']) ?> · Online store · Local pickup available</p>
         </div>
         <div>
             <strong>Shop</strong>
@@ -49,11 +56,13 @@ declare(strict_types=1);
         </footer>
     </div>
 </div>
+<?php require __DIR__ . '/partials/fishing-show-modal.php'; ?>
 <script>
   window.DJT = {
     base: <?= json_encode(url()) ?>,
     cartCount: <?= (int) $cart_count ?>,
-    csrf: <?= json_encode(session_id() ?: '') ?>
+    csrf: <?= json_encode(session_id() ?: '') ?>,
+    fishingShowEveryVisit: <?= !empty($fishing_show_modal_every_visit) ? 'true' : 'false' ?>
   };
 </script>
 <script src="<?= \Webstar\Shop\Helpers::e(url('../shared/shop/assets/shop.js')) ?>" defer></script>

@@ -8,8 +8,8 @@ require_once __DIR__ . '/staging-gate.php';
 $site_name = "DJ's Tackle";
 $site_domain = 'djstackle.com';
 $site_url = 'https://djstackle.com';
-$site_tagline = 'Walleye jigs, stinger hooks, bottom bouncers, River Ready boxes — Sterling Heights, MI';
-$site_description = "DJ's Tackle — quality chip-free jig heads, durable plastics, River Ready boxes, stinger hooks, bottom bouncers, and Arctic Spinners. Family-owned in Sterling Heights, MI.";
+$site_tagline = 'Your one stop shop for jigs, Arctic Spinners, stinger hooks, bottom bouncers, crawler harnesses, and plastics';
+$site_description = "DJ's Tackle — chip-free jig heads, durable plastics, River Ready boxes, stinger hooks, bottom bouncers, and Arctic Spinners. Family-owned in Sterling Heights, MI.";
 $company_name = "DJ's Tackle LLC";
 
 $phone = '(810) 627-9974';
@@ -54,6 +54,19 @@ $footer_links = [
     'Wishlist' => '/wishlist/',
     'Privacy' => '/privacy/',
     'Terms' => '/terms/',
+];
+
+/** Fishing-show popup: true = show on every page load while designing; false = once per browser (localStorage). */
+$fishing_show_modal_every_visit = true;
+
+/** Retailers that carry DJ's Tackle — edit name + location; optional url for maps or store site */
+$retail_stores = [
+    ['name' => "Frank's Great Outdoors", 'location' => 'Linwood, MI'],
+    ['name' => 'Shoreline Bait & Tackle', 'location' => 'Detroit, MI'],
+    ['name' => "Toddy's Bait & Tackle", 'location' => 'St. Clair Shores, MI'],
+    ['name' => 'Bottom Dollar Bait', 'location' => 'Monroe, MI'],
+    ['name' => 'Snoozies Bait & Tackle', 'location' => 'Chesterfield, MI'],
+    ['name' => 'Hot Spot Bait & Tackle', 'location' => 'Trenton, MI'],
 ];
 
 $shop_config_file = __DIR__ . '/shop-config.php';

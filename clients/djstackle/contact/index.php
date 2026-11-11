@@ -23,22 +23,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $page_title = "Contact | DJ's Tackle";
+$page_description = "Contact DJ's Tackle in Sterling Heights, MI — phone, email, or send a message about custom colors and pickup.";
 $canonical_path = '/contact/';
 require dirname(__DIR__) . '/includes/header.php';
 ?>
-<section class="page-hero"><div class="container"><h1>Contact</h1><p class="muted">Questions, custom colors, or pickup — we're happy to help.</p></div></section>
-<section class="section" style="padding-top:0"><div class="container shop-layout">
-  <div class="card">
-    <p><strong>Phone</strong><br><a href="<?= Helpers::e($phone_href) ?>"><?= Helpers::e($phone) ?></a></p>
-    <p><strong>Email</strong><br><a href="<?= Helpers::e($email_href) ?>"><?= Helpers::e($email) ?></a></p>
-    <p><strong>Location</strong><br><?= Helpers::e($address['city'] . ', ' . $address['region'] . ' ' . $address['postal_code']) ?><br><span class="muted"><?= Helpers::e($address['note']) ?></span></p>
+<section class="page-hero">
+  <div class="container">
+    <h1>Contact us</h1>
+    <p class="muted">Questions, custom colors, or pickup — we're happy to help.</p>
   </div>
-  <form method="post" class="card contact-form">
-    <?php if ($flash): ?><div class="flash <?= Helpers::e($flash[0]) ?>"><?= Helpers::e($flash[1]) ?></div><?php endif; ?>
-    <label>Name<input name="name" required></label>
-    <label>Email<input type="email" name="email" required></label>
-    <label>Message<textarea name="message" rows="5" required></textarea></label>
-    <button class="btn btn-primary" type="submit">Send message</button>
-  </form>
-</div></section>
+</section>
+<section class="section" style="padding-top:0">
+  <div class="container shop-layout">
+    <div class="card">
+      <p><strong>Address</strong><br>
+        <?= Helpers::e($address['city'] . ', ' . $address['region'] . ', United States, ' . $address['postal_code']) ?>
+      </p>
+      <p><strong>Open hours</strong><br>
+        Online only<br>
+        <span class="muted">Local pickup by appointment — Sterling Heights, MI</span>
+      </p>
+      <p><strong>Phone</strong><br><a href="<?= Helpers::e($phone_href) ?>"><?= Helpers::e($phone) ?></a></p>
+      <p><strong>Email</strong><br><a href="<?= Helpers::e($email_href) ?>"><?= Helpers::e($email) ?></a></p>
+    </div>
+    <form method="post" class="card contact-form">
+      <?php if ($flash): ?><div class="flash <?= Helpers::e($flash[0]) ?>"><?= Helpers::e($flash[1]) ?></div><?php endif; ?>
+      <label>Name<input name="name" required></label>
+      <label>Email<input type="email" name="email" required></label>
+      <label>Message<textarea name="message" rows="5" required></textarea></label>
+      <button class="btn btn-primary" type="submit">Send message</button>
+    </form>
+  </div>
+</section>
 <?php require dirname(__DIR__) . '/includes/footer.php'; ?>

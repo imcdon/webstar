@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Family Owned and Operated">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8c76b"/>
+      <stop offset="50%" stop-color="#c9a227"/>
+      <stop offset="100%" stop-color="#a67c1a"/>
+    </linearGradient>
+  </defs>
+  <circle cx="120" cy="120" r="116" fill="#141414"/>
+  <circle cx="120" cy="120" r="110" fill="none" stroke="url(#gold)" stroke-width="5"/>
+  <circle cx="120" cy="120" r="98" fill="none" stroke="#f2f2f0" stroke-width="1.5" opacity=".55"/>
+  <circle cx="120" cy="120" r="56" fill="none" stroke="url(#gold)" stroke-width="1.25" opacity=".7"/>
+
+  <path id="foTop" d="M 42 120 A 78 78 0 0 1 198 120" fill="none"/>
+  <text fill="#f2f2f0" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="700" letter-spacing="2.5">
+    <textPath href="#foTop" startOffset="50%" text-anchor="middle">FAMILY OWNED</textPath>
+  </text>
+
+  <!--
+    Bottom arc: path runs right→left so glyph tops point outward (down).
+    String is reversed so it reads AND OPERATED left→right on the page.
+  -->
+  <path id="foBot" d="M 198 120 A 78 78 0 0 1 42 120" fill="none"/>
+  <text fill="url(#gold)" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="700" letter-spacing="2.2">
+    <textPath href="#foBot" startOffset="50%" text-anchor="middle">DETAREPO DNA</textPath>
+  </text>
+
+  <g fill="#f2f2f0" transform="translate(120 126)">
+    <circle cx="-34" cy="-22" r="10"/>
+    <path d="M -48 0 C -48 -14 -20 -14 -20 0 L -20 28 L -48 28 Z"/>
+    <circle cx="34" cy="-22" r="10"/>
+    <path d="M 20 0 C 20 -12 48 -12 48 0 L 54 28 L 14 28 Z"/>
+    <circle cx="-8" cy="-8" r="7"/>
+    <path d="M -17 8 C -17 -2 1 -2 1 8 L 1 28 L -17 28 Z"/>
+    <circle cx="10" cy="-6" r="6.5"/>
+    <path d="M 2 10 C 2 0 18 0 18 10 L 18 28 L 2 28 Z"/>
+  </g>
+</svg>

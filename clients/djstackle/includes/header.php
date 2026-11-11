@@ -39,7 +39,9 @@ $show_staging_banner = str_contains($hostNow, 'webstarbusinessservices.com');
     <meta property="og:type" content="<?= Helpers::e($og_type) ?>">
     <meta property="og:image" content="<?= Helpers::e($og_image) ?>">
     <meta name="twitter:card" content="summary_large_image">
-    <link rel="icon" href="<?= Helpers::e(url('assets/img/favicon.svg')) ?>" type="image/svg+xml">
+    <link rel="icon" href="<?= Helpers::e(url('assets/img/favicon.png')) ?>" type="image/png">
+    <link rel="icon" href="<?= Helpers::e(url('assets/img/favicon-32.png')) ?>" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="<?= Helpers::e(url('assets/img/apple-touch-icon.png')) ?>">
     <link rel="stylesheet" href="<?= Helpers::e(url('assets/css/main.css')) ?>">
     <link rel="stylesheet" href="<?= Helpers::e(url('../shared/shop/assets/shop.css')) ?>">
     <?php foreach ((array) $json_ld as $block): ?>
@@ -53,25 +55,52 @@ $show_staging_banner = str_contains($hostNow, 'webstarbusinessservices.com');
 <header class="site-header">
     <div class="container header-inner">
         <a class="brand" href="<?= Helpers::e(url()) ?>">
-            <span class="brand-mark">DJ</span>
-            <span class="brand-text">
-                <strong>DJ's Tackle</strong>
-                <small>Sterling Heights, MI</small>
-            </span>
+            <img
+                class="brand-logo"
+                src="<?= Helpers::e(url('assets/img/logo-nav.png')) ?>"
+                alt="DJ's Tackle — Sterling Heights, MI"
+                width="260"
+                height="79"
+            >
         </a>
-        <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>Menu</button>
-        <nav id="site-nav" class="site-nav" data-nav>
-            <?php foreach ($nav_links as $label => $href): ?>
-                <a href="<?= Helpers::e(url(ltrim($href, '/'))) ?>"<?= str_starts_with($path_now, rtrim($href, '/')) ? ' aria-current="page"' : '' ?>><?= Helpers::e($label) ?></a>
-            <?php endforeach; ?>
-        </nav>
         <div class="header-actions">
-            <a class="icon-link" href="<?= Helpers::e(url('account/')) ?>" title="Account">Account</a>
-            <a class="icon-link" href="<?= Helpers::e(url('wishlist/')) ?>" title="Wishlist">Wishlist</a>
             <a class="cart-link" href="<?= Helpers::e(url('cart/')) ?>">
                 Cart
                 <span class="cart-badge" data-cart-count><?= (int) $cart_count ?></span>
             </a>
+            <button
+                type="button"
+                class="nav-toggle"
+                aria-expanded="false"
+                aria-controls="site-nav"
+                aria-label="Open menu"
+                data-nav-toggle
+            >
+                <span class="nav-toggle-bars" aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
+    <div id="site-nav" class="nav-panel" data-nav hidden>
+        <div class="container nav-panel-inner">
+            <form class="nav-search" method="get" action="<?= Helpers::e(url('shop/')) ?>" role="search">
+                <label class="visually-hidden" for="nav-search-q">Search products</label>
+                <input
+                    id="nav-search-q"
+                    type="search"
+                    name="q"
+                    placeholder="Search jigs, boxes…"
+                    autocomplete="off"
+                    data-nav-search
+                >
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+            <nav class="site-nav" aria-label="Main">
+                <?php foreach ($nav_links as $label => $href): ?>
+                    <a href="<?= Helpers::e(url(ltrim($href, '/'))) ?>"<?= str_starts_with($path_now, rtrim($href, '/')) ? ' aria-current="page"' : '' ?>><?= Helpers::e($label) ?></a>
+                <?php endforeach; ?>
+                <a href="<?= Helpers::e(url('account/')) ?>">Account</a>
+                <a href="<?= Helpers::e(url('wishlist/')) ?>">Wishlist</a>
+            </nav>
         </div>
     </div>
 </header>

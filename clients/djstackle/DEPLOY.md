@@ -4,6 +4,8 @@
 **Staging (Path A):** https://webstarbusinessservices.com/clients/djstackle/  
 **Live:** https://djstackle.com (document root = this folder or a synced copy)
 
+Brand assets live in `assets/img/` (`logo-nav.png`, `logo-full.png`, `favicon.png`). Rebuild transparent PNGs with `php`/`python bin/make-logo-pngs.py` if source JPGs change.
+
 ## One-time setup
 
 1. Copy `includes/shop-config.example.php` → `includes/shop-config.php` (gitignored).
@@ -45,12 +47,20 @@ Checkout is **on-site** (no Square redirect). Card, Apple Pay, Google Pay, Cash 
 
 ## Production cutover
 
-1. Switch `square_environment` to `production` and use production Application ID / token / location / webhook key.
-2. Point `site_url` and webhook URL to `https://djstackle.com`.
-3. Re-register webhooks for production.
-4. Register Apple Pay domain + deploy the `.well-known` association file.
-5. Change admin password hash.
-6. Run [SECURITY-CHECKLIST.md](../SECURITY-CHECKLIST.md).
+Run `php bin/production-ready-check.php` anytime to see what's still blocked.
+
+1. On the **live server** copy of `includes/shop-config.php` (never git):
+   - `square_environment` = `production`
+   - Production Application ID (`sq0idp-…`), access token, location ID
+   - `site_url` = `https://djstackle.com`
+   - Webhook signature key for the production notification URL
+2. Point `djstackle.com` document root at this PHP shop (or reverse-proxy / sync). Staging stays at Path A under webstarbusinessservices.com.
+3. Developer Dashboard → Webhooks (production): `payment.updated`, `inventory.count.updated`, `catalog.version.updated` → `https://djstackle.com/square-webhook.php`.
+4. Apple Pay: add `djstackle.com` → save association file under `.well-known/` (see README there).
+5. `php bin/sync-catalog.php` against production catalog (seed only if empty).
+6. Change `admin_password_hash`; run [SECURITY-CHECKLIST.md](../SECURITY-CHECKLIST.md).
+7. Place one small real card order, confirm Dashboard + email + stock, then refund.
+8. Staging Basic Auth: client user `djstackle` is registered in `library/portal-clients.php` (password in your password manager — hash only in git).
 
 ## Sandbox test values
 
