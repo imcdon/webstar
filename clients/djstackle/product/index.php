@@ -188,7 +188,6 @@ $custom_color_slugs = [
     'crawler-harness-colorado-blade',
 ];
 if (in_array((string) ($product['slug'] ?? ''), $custom_color_slugs, true)) {
-    $custom_color_context = (string) ($product['name'] ?? '');
     require dirname(__DIR__) . '/includes/partials/custom-color-panel.php';
 }
 ?>

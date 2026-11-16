@@ -22,14 +22,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$page_title = "Contact | DJ's Tackle";
+$page_title = "CONTACT US - COLOR FORM | DJ's Tackle";
 $page_description = "Contact DJ's Tackle in Sterling Heights, MI — phone, email, or send a message about custom colors and pickup.";
 $canonical_path = '/contact/';
 require dirname(__DIR__) . '/includes/header.php';
 ?>
-<section class="page-hero">
+<section class="page-hero page-hero--brand">
+  <div class="hero-brand__media" aria-hidden="true">
+    <picture>
+      <source
+        media="(min-width: 768px)"
+        srcset="<?= Helpers::e(url('assets/img/desktop-hero-background.png')) ?>"
+        type="image/png"
+      >
+      <img
+        src="<?= Helpers::e(url('assets/img/mobile-hero-background.png')) ?>"
+        alt=""
+        width="408"
+        height="612"
+        fetchpriority="high"
+        decoding="async"
+      >
+    </picture>
+  </div>
+  <div class="hero-brand__shade" aria-hidden="true"></div>
   <div class="container">
-    <h1>Contact us</h1>
+    <h1>Contact us - color form</h1>
     <p class="muted">Questions, custom colors, or pickup — we're happy to help.</p>
   </div>
 </section>

@@ -1,6 +1,10 @@
 # SEO keyword map & ops
 
+**Agents:** invariants in [docs/agent/CORE.md](docs/agent/CORE.md); router in [docs/AGENT-INDEX.md](docs/AGENT-INDEX.md).
+
 One winning URL per head term. Do not retarget losers to compete for the same primary phrase.
+
+Content rewrites: editorial rules in [docs/CONTENT-SEO.md](docs/CONTENT-SEO.md); Phase 0 inventory in [docs/content-revamp/](docs/content-revamp/).
 
 ## Keyword map
 

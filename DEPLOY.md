@@ -1,5 +1,7 @@
 # Deploy: GitHub → cPanel (Git + `.cpanel.yml`)
 
+**Agents:** start at [AGENTS.md](AGENTS.md) and [docs/AGENT-INDEX.md](docs/AGENT-INDEX.md).
+
 Production domain: **https://webstarbusinessservices.com**  
 GitHub: **https://github.com/imcdon/webstar** (`main`)
 

@@ -4,6 +4,8 @@ Saved to run later. Working playbook for Webstar Business Services: what to deci
 
 Sits next to [SEO.md](../SEO.md) and [client-ops/BRAND.md](client-ops/BRAND.md).
 
+**Automated lead lists (Places API):** see [`lead-gen/README.md`](../lead-gen/README.md) and [`lead-gen/PILOT.md`](../lead-gen/PILOT.md) for geo-scoped discovery and weak-site scoring. Manual research steps below still apply for segment choice and outreach voice.
+
 ## What this research is for
 
 Answer three decisions before changing copy, prices, or which pages you ask Google to index:
@@ -17,7 +19,7 @@ Geography stays **Metro Detroit and surrounding Michigan** (Oakland, Macomb, Way
 ## Best practices
 
 - **Start with a decision, not a tool.** Write the question and the action it would change (drop a landing, change a price, pick an outreach list) before opening Trends or Maps.
-- **One segment per pass.** Example: “Sterling Heights and Warren home-service trades” or “Royal Oak restaurants.” Mixing salons, dentists, and contractors in one notebook produces averages that match nobody.
+- **One segment per pass.** Example: “Waterford Township home-service trades” or “Royal Oak restaurants.” Mixing salons, dentists, and contractors in one notebook produces averages that match nobody.
 - **Hypothesize first.** Before looking, write what you think they search, what they pay now, and why they have not hired anyone. Research confirms or kills that note.
 - **Triangulate.** A keyword with volume, a Maps listing with a bad site, and one owner saying the same pain are stronger than any single source. One source is a clue.
 - **Talk to buyers.** For a local solo offer, 8–12 short conversations beat a large survey of people who will never buy. Ask about the last time they looked for a website, what they pay now, and what would make them switch.

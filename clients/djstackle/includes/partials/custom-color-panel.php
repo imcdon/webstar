@@ -4,25 +4,28 @@ declare(strict_types=1);
 
 use Webstar\Shop\Helpers;
 
-/**
- * Custom color / mix-your-own CTA.
- * Optional: set $custom_color_context before including (e.g. product name).
- */
-$custom_color_context = isset($custom_color_context) ? trim((string) $custom_color_context) : '';
-if ($custom_color_context !== '') {
-    $custom_color_lead = match (true) {
-        str_contains(strtolower($custom_color_context), 'river ready')
-            => 'Want custom jig colors packed in your River Ready Box? Dawn mixes plastics in Sterling Heights — tell us the shades and box size.',
-        str_contains(strtolower($custom_color_context), 'crawler')
-            => 'Want a blade or bead mix that isn’t listed? Dawn builds custom crawler harnesses in Sterling Heights — tell us the colors and quantity.',
-        default
-            => 'Want this jig in a shade that isn’t listed? Dawn mixes plastics in Sterling Heights — tell us the color and quantity.',
-    };
-} else {
-    $custom_color_lead = 'Don’t see the shade you’re fishing? Dawn mixes plastics in Sterling Heights — name the color, size, and how many you need.';
-}
+/** Custom color / mix-your-own CTA. */
+$custom_color_lead = 'Love a color that we don’t have available? We’ll make it for you!';
 ?>
 <section class="section custom-color" aria-labelledby="custom-color-heading">
+  <div class="custom-color__media" aria-hidden="true">
+    <picture>
+      <source
+        media="(min-width: 768px)"
+        srcset="<?= Helpers::e(url('assets/img/desktop-hero-background.png')) ?>"
+        type="image/png"
+      >
+      <img
+        src="<?= Helpers::e(url('assets/img/mobile-hero-background.png')) ?>"
+        alt=""
+        width="408"
+        height="612"
+        loading="lazy"
+        decoding="async"
+      >
+    </picture>
+  </div>
+  <div class="custom-color__shade" aria-hidden="true"></div>
   <div class="container custom-color-inner">
     <div class="custom-color-media">
       <figure class="custom-color-chart">
