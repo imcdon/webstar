@@ -13,7 +13,7 @@
           }
         })();
     const closeControls = showModal.querySelectorAll('[data-show-modal-close]');
-    const panel = showModal.querySelector('.show-modal__panel');
+    const panel = showModal.querySelector('.show-modal__frame') || showModal.querySelector('.show-modal__panel');
     let lastFocus = null;
 
     function closeModal() {

@@ -9,14 +9,14 @@ use Webstar\Shop\Helpers;
     <picture>
       <source
         media="(min-width: 768px)"
-        srcset="<?= Helpers::e(url('assets/img/hero-collage-desktop.jpg')) ?>"
-        type="image/jpeg"
+        srcset="<?= Helpers::e(url('assets/img/desktop-hero-background.png')) ?>"
+        type="image/png"
       >
       <img
-        src="<?= Helpers::e(url('assets/img/hero-collage-mobile.jpg')) ?>"
+        src="<?= Helpers::e(url('assets/img/mobile-hero-background.png')) ?>"
         alt=""
-        width="1080"
-        height="1600"
+        width="408"
+        height="612"
         fetchpriority="high"
         decoding="async"
       >
