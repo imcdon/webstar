@@ -12,13 +12,14 @@ $site_name = 'Metro Detroit Holiday Lighting';
 $site_domain = 'metrodetroitholidaylighting.com';
 $site_url = 'https://metrodetroitholidaylighting.com';
 $site_tagline = 'Holiday magic, simplified.';
-$site_description = 'Professional holiday lighting design, install, and take-down for Metro Detroit homes, businesses, and HOAs. Owner-operated by Steven with 20 years of experience. Call (248) 525-4715.';
+$site_description = 'Owner-operated holiday lighting for Metro Detroit homes, storefronts, and HOA entrances. Steven designs, installs, and takes down displays with 20 years of experience. Call or text (248) 525-4715.';
 $company_name = 'Metro Detroit Holiday Lighting';
 $owner_name = 'Steven';
 $years_experience = 20;
 
 $phone = '(248) 525-4715';
 $phone_href = 'tel:+12485254715';
+$sms_href = 'sms:+12485254715';
 $email = 'metrodetroitholidaylighting@gmail.com';
 $email_href = 'mailto:metrodetroitholidaylighting@gmail.com';
 $contact_form_to = $email;
@@ -99,6 +100,10 @@ $faq_items = [
         'a' => 'Text or email a few clear photos of the house, storefront, or community entrance to (248) 525-4715 or metrodetroitholidaylighting@gmail.com. Include your city and what you want lit. Steven will follow up with a plan.',
     ],
     [
+        'q' => 'How much does holiday lighting cost?',
+        'a' => 'Every property is custom — roofline length, height, trees, and accents change the scope. We do not publish a one-size price. Text photos of the property and Steven will send a clear quote for your home, business, or HOA.',
+    ],
+    [
         'q' => 'Are you insured?',
         'a' => 'Yes. Metro Detroit Holiday Lighting is fully insured for residential and commercial holiday lighting installs.',
     ],
@@ -107,23 +112,77 @@ $faq_items = [
         'a' => 'Steven owns and operates the company and does the work himself. You deal with the same person from design through take-down.',
     ],
     [
-        'q' => 'Do you take the lights down and store them?',
-        'a' => 'Yes. Install, mid-season care, take-down, and off-season storage are part of the full-season service.',
+        'q' => 'Who owns the lights, and do you store them?',
+        'a' => 'Metro Detroit Holiday Lighting supplies the seasonal lighting materials for your display. Install, mid-season care, take-down, and labeled off-season storage are part of the full-season service — you are not left storing bins in the garage.',
+    ],
+    [
+        'q' => 'What if a strand fails mid-season?',
+        'a' => 'Call or text (248) 525-4715. Mid-season care is part of the service — if a strand fails or weather knocks something loose, Steven comes back to get the display looking right again.',
     ],
     [
         'q' => 'When should I book?',
-        'a' => 'Earlier is better. Peak installs fill through fall so displays are ready before Thanksgiving and early December.',
+        'a' => 'Book in October or early November for the widest install date range. Peak installs fill through fall so displays are ready before Thanksgiving and early December.',
     ],
 ];
 
 /**
  * Real testimonials only. Leave empty until Steven supplies quotes — the section hides itself.
+ * Paste approved quotes from docs/CLIENT-INPUTS.md into this array.
  *
  * @var list<array{quote:string,name:string,detail?:string}>
  */
 $testimonials = [];
 
 $gallery_images = mdhl_gallery_images();
+
+/**
+ * Homepage scroll-scrub frames (curated night / install sequence).
+ * Only frames whose files exist are included.
+ *
+ * @var list<array{file:string,caption:string,alt:string}>
+ */
+$scroll_frame_defs = [
+    [
+        'file' => 'residential-07-birchwood-white-tree-snow.jpg',
+        'caption' => 'Warm white trees against Michigan snow',
+        'alt' => 'Residential holiday tree lighting in snow',
+    ],
+    [
+        'file' => 'residential-01-birchwood-all-white-house-tree.jpg',
+        'caption' => 'Clean rooflines and balanced curb appeal',
+        'alt' => 'Home with white holiday lights on house and trees',
+    ],
+    [
+        'file' => 'residential-18-stake-lights-and-wreaths.jpg',
+        'caption' => 'Walks, stakes, and wreaths that finish the front',
+        'alt' => 'Stake lighting and wreaths on a residential entrance',
+    ],
+    [
+        'file' => 'commercial-09-soaring-eagle-entrance.jpg',
+        'caption' => 'Commercial entrances that read from the road',
+        'alt' => 'Commercial property entrance with holiday lighting',
+    ],
+    [
+        'file' => 'residential-06-birchwood-white-heavy-snow.jpg',
+        'caption' => 'Displays built for Michigan weather',
+        'alt' => 'Holiday lighting on a home in heavy snow',
+    ],
+];
+
+$scroll_frames = [];
+foreach ($scroll_frame_defs as $frame) {
+    $path = dirname(__DIR__) . '/assets/img/gallery/' . $frame['file'];
+    if (!is_file($path)) {
+        continue;
+    }
+    $scroll_frames[] = [
+        'file' => $frame['file'],
+        'url' => url('assets/img/gallery/' . rawurlencode($frame['file'])),
+        'caption' => $frame['caption'],
+        'alt' => $frame['alt'],
+    ];
+}
+unset($scroll_frame_defs, $frame, $path);
 
 $hero_image_file = dirname(__DIR__) . '/assets/img/hero-soaring-eagle.jpg';
 $hero_image = is_file($hero_image_file) ? url('assets/img/hero-soaring-eagle.jpg') : '';

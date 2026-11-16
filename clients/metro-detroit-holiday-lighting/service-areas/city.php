@@ -30,6 +30,16 @@ foreach ($city['nearby'] as $nearSlug) {
     }
 }
 
+$cityIntro = trim((string) ($city['intro'] ?? ''));
+if ($cityIntro === '') {
+    $cityIntro = "Custom holiday lighting for {$name} homes, businesses, and HOAs in {$county} County — designed and installed by Steven with {$years_experience} years of Metro Detroit experience. Text a photo for a quote; mid-season care, take-down, and storage are part of the full-season service.";
+}
+
+$cityGallery = [];
+if (!empty($city['gallery_match']) && is_array($city['gallery_match'])) {
+    $cityGallery = mdhl_gallery_for_landing($city['gallery_match'], 4);
+}
+
 require dirname(__DIR__) . '/includes/header.php';
 ?>
 <section class="page-hero">
@@ -40,11 +50,11 @@ require dirname(__DIR__) . '/includes/header.php';
             <?= htmlspecialchars($name) ?>
         </p>
         <h1>Holiday lighting in <?= htmlspecialchars($name) ?></h1>
-        <p>Custom holiday lighting for <?= htmlspecialchars($name) ?> homes, businesses, and HOAs in <?= htmlspecialchars($county) ?> County — designed and installed by Steven with <?= (int) $years_experience ?> years of Metro Detroit experience.</p>
+        <p><?= htmlspecialchars($cityIntro) ?></p>
     </div>
 </section>
 
-<section class="section">
+<section class="section section--snow">
     <div class="container">
         <div class="card-grid" style="margin-bottom:2rem;">
             <article class="card">
@@ -61,30 +71,56 @@ require dirname(__DIR__) . '/includes/header.php';
             </article>
         </div>
 
-        <div class="owner__panel" style="margin-bottom:2rem;">
-            <h2 style="margin-top:0;font-size:1.35rem;">How to get a quote in <?= htmlspecialchars($name) ?></h2>
-            <p>Text or email photos of the property to <a href="<?= htmlspecialchars($phone_href) ?>"><?= htmlspecialchars($phone) ?></a> or <a href="<?= htmlspecialchars($email_href) ?>"><?= htmlspecialchars($email) ?></a>. Mention <?= htmlspecialchars($name) ?> and whether it is a home, business, or HOA. Steven follows up with a plan.</p>
-            <p style="margin-bottom:0;"><a class="btn btn-primary" href="<?= htmlspecialchars(url('contact/')) ?>">Open contact form</a></p>
-        </div>
-
-        <?php if ($nearby !== []): ?>
-            <h2>Nearby cities we also serve</h2>
-            <ul class="city-list" style="margin-top:0.85rem;">
-                <?php foreach ($nearby as $near): ?>
-                    <li>
-                        <a href="<?= htmlspecialchars(url('service-areas/' . $near['slug'] . '/')) ?>">
-                            <?= htmlspecialchars($near['name']) ?>
-                        </a>
-                    </li>
+        <?php if ($cityGallery !== []): ?>
+            <div class="section__head" style="margin-bottom:1rem;">
+                <h2 style="margin:0;font-size:1.35rem;">Recent holiday lighting work</h2>
+                <p class="section__lead" style="margin:0.4rem 0 0;">Examples from Metro Detroit installs — similar scopes for <?= htmlspecialchars($name) ?> properties.</p>
+            </div>
+            <div class="gallery-preview" style="margin-bottom:2rem;">
+                <?php foreach ($cityGallery as $img): ?>
+                    <a href="<?= htmlspecialchars(url('gallery/')) ?>">
+                        <img src="<?= htmlspecialchars($img['url']) ?>" alt="<?= htmlspecialchars($img['alt']) ?>" loading="lazy" width="800" height="600">
+                    </a>
                 <?php endforeach; ?>
-            </ul>
+            </div>
         <?php endif; ?>
 
-        <div class="cta-band" style="margin-top:2.5rem;">
+        <div class="owner__panel" style="margin-bottom:2rem;">
+            <h2 style="margin-top:0;font-size:1.35rem;font-family:var(--display);">How to get a quote in <?= htmlspecialchars($name) ?></h2>
+            <p>Text or email photos of the property to <a href="<?= htmlspecialchars($sms_href) ?>"><?= htmlspecialchars($phone) ?></a> or <a href="<?= htmlspecialchars($email_href) ?>"><?= htmlspecialchars($email) ?></a>. Mention <?= htmlspecialchars($name) ?> and whether it is a home, business, or HOA. Steven follows up with a plan.</p>
+            <p style="margin-bottom:0;">
+                <a class="btn btn-primary" href="<?= htmlspecialchars($sms_href) ?>">Text a photo</a>
+                <a class="btn btn-ghost" href="<?= htmlspecialchars(url('contact/')) ?>">Open contact form</a>
+            </p>
+        </div>
+    </div>
+</section>
+
+<?php if ($nearby !== []): ?>
+<section class="section section--tight">
+    <div class="container">
+        <h2>Nearby cities we also serve</h2>
+        <ul class="city-list" style="margin-top:0.85rem;">
+            <?php foreach ($nearby as $near): ?>
+                <li>
+                    <a href="<?= htmlspecialchars(url('service-areas/' . $near['slug'] . '/')) ?>">
+                        <?= htmlspecialchars($near['name']) ?>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</section>
+<?php endif; ?>
+
+<section class="section">
+    <div class="container">
+        <div class="cta-band">
             <h2>Book <?= htmlspecialchars($name) ?> holiday lighting</h2>
             <p><?= htmlspecialchars($trust_line) ?></p>
             <div class="cta-band__actions">
                 <a class="btn btn-primary" href="<?= htmlspecialchars($phone_href) ?>"><?= htmlspecialchars($phone) ?></a>
+                <a class="btn btn-ghost" href="<?= htmlspecialchars($sms_href) ?>">Text a photo</a>
                 <a class="btn btn-ghost" href="<?= htmlspecialchars(url('gallery/')) ?>">Gallery</a>
             </div>
         </div>

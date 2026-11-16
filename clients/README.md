@@ -12,6 +12,7 @@ Staging previews live under `clients/{slug}/` and are deployed with the Webstar 
 - **Staging:** `https://webstarbusinessservices.com/clients/metro-detroit-holiday-lighting/`
 - **Live:** `https://metrodetroitholidaylighting.com`
 - **Auth:** Client Portal credentials (HTTP Basic on staging). See [SECURITY-CHECKLIST.md](SECURITY-CHECKLIST.md) and [`metro-detroit-holiday-lighting/DEPLOY.md`](metro-detroit-holiday-lighting/DEPLOY.md).
+- **Strategy docs:** [`metro-detroit-holiday-lighting/docs/COMPETITOR-ANALYSIS.md`](metro-detroit-holiday-lighting/docs/COMPETITOR-ANALYSIS.md), [`CLIENT-INPUTS.md`](metro-detroit-holiday-lighting/docs/CLIENT-INPUTS.md), [`GBP-AND-LIVE-PARITY.md`](metro-detroit-holiday-lighting/docs/GBP-AND-LIVE-PARITY.md).
 
 ## Superior Ice Adventures — Path A
 

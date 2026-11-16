@@ -67,6 +67,7 @@ require __DIR__ . '/header.php';
             <p><?= htmlspecialchars($landing['intro']) ?></p>
             <div class="landing-hero__actions">
                 <a class="btn btn-primary" href="<?= htmlspecialchars($phone_href) ?>"><?= htmlspecialchars($phone) ?></a>
+                <a class="btn btn-ghost" href="<?= htmlspecialchars($sms_href) ?>">Text a photo</a>
                 <a class="btn btn-ghost" href="<?= htmlspecialchars(url('contact/')) ?>">Request a quote</a>
             </div>
         </div>
@@ -84,17 +85,48 @@ require __DIR__ . '/header.php';
     </div>
 </section>
 
-<?php foreach ($landing['sections'] as $section): ?>
-<section class="section">
-    <div class="container prose-narrow">
-        <h2><?= htmlspecialchars($section['h2']) ?></h2>
-        <p><?= htmlspecialchars($section['body']) ?></p>
-        <?php if (!empty($section['bullets'])): ?>
-            <ul class="landing-bullets">
-                <?php foreach ($section['bullets'] as $bullet): ?>
-                    <li><?= htmlspecialchars($bullet) ?></li>
-                <?php endforeach; ?>
-            </ul>
+<?php foreach ($landing['sections'] as $si => $section): ?>
+    <?php
+    $sectionImageRel = (string) ($section['image'] ?? '');
+    $sectionImageFile = $sectionImageRel !== '' ? dirname(__DIR__) . '/' . $sectionImageRel : '';
+    $sectionImageUrl = ($sectionImageFile !== '' && is_file($sectionImageFile)) ? url($sectionImageRel) : '';
+    $sectionImageAlt = (string) ($section['image_alt'] ?? $section['h2']);
+    $hasPanelImage = $sectionImageUrl !== '';
+    $imageFitNatural = ($section['image_fit'] ?? '') === 'natural';
+    $imgWidth = 900;
+    $imgHeight = 700;
+    if ($hasPanelImage && $imageFitNatural) {
+        $size = @getimagesize($sectionImageFile);
+        if (is_array($size) && $size[0] > 0 && $size[1] > 0) {
+            $imgWidth = (int) $size[0];
+            $imgHeight = (int) $size[1];
+        }
+    }
+    ?>
+<section class="section<?= $si % 2 === 0 ? ' section--snow' : '' ?><?= $hasPanelImage ? ' section--panel' : '' ?>">
+    <div class="container<?= $hasPanelImage ? ' landing-panel' . ($si % 2 === 1 ? ' landing-panel--flip' : '') . ($imageFitNatural ? ' landing-panel--natural' : '') : ' prose-narrow' ?>">
+        <div class="landing-panel__copy">
+            <h2><?= htmlspecialchars($section['h2']) ?></h2>
+            <p><?= htmlspecialchars($section['body']) ?></p>
+            <?php if (!empty($section['bullets'])): ?>
+                <ul class="landing-bullets">
+                    <?php foreach ($section['bullets'] as $bullet): ?>
+                        <li><?= htmlspecialchars($bullet) ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
+        </div>
+        <?php if ($hasPanelImage): ?>
+            <div class="landing-panel__media<?= $imageFitNatural ? ' landing-panel__media--natural' : '' ?>">
+                <img
+                    src="<?= htmlspecialchars($sectionImageUrl) ?>"
+                    alt="<?= htmlspecialchars($sectionImageAlt) ?>"
+                    width="<?= $imgWidth ?>"
+                    height="<?= $imgHeight ?>"
+                    loading="lazy"
+                    decoding="async"
+                >
+            </div>
         <?php endif; ?>
     </div>
 </section>
@@ -122,7 +154,7 @@ require __DIR__ . '/header.php';
 <?php endif; ?>
 
 <?php if ($faq_items !== []): ?>
-<section class="section" id="faq">
+<section class="section section--snow" id="faq">
     <div class="container">
         <div class="section__head">
             <h2>FAQ</h2>
@@ -140,7 +172,7 @@ require __DIR__ . '/header.php';
 <?php endif; ?>
 
 <?php if ($related_pages !== []): ?>
-<section class="section section--tight">
+<section class="section section--tight section--pine">
     <div class="container">
         <div class="section__head">
             <h2>Related services</h2>
@@ -150,7 +182,7 @@ require __DIR__ . '/header.php';
                 <article class="card">
                     <h3><a href="<?= htmlspecialchars(url($relSlug . '/')) ?>"><?= htmlspecialchars($rel['nav_label']) ?></a></h3>
                     <p><?= htmlspecialchars($rel['description']) ?></p>
-                    <p><a href="<?= htmlspecialchars(url($relSlug . '/')) ?>">Learn more →</a></p>
+                    <p><a href="<?= htmlspecialchars(url($relSlug . '/')) ?>">Learn more</a></p>
                 </article>
             <?php endforeach; ?>
         </div>
@@ -162,9 +194,10 @@ require __DIR__ . '/header.php';
     <div class="container">
         <div class="cta-band">
             <h2>Ready for a quote?</h2>
-            <p>Text or email a few photos of the property. Include your city and what you want lit. Steven will follow up.</p>
+            <p>Text a photo of the property. Include your city and what you want lit. Steven will follow up.</p>
             <div class="cta-band__actions">
-                <a class="btn btn-primary" href="<?= htmlspecialchars($phone_href) ?>"><?= htmlspecialchars($phone) ?></a>
+                <a class="btn btn-primary" href="<?= htmlspecialchars($sms_href) ?>">Text a photo</a>
+                <a class="btn btn-ghost" href="<?= htmlspecialchars($phone_href) ?>"><?= htmlspecialchars($phone) ?></a>
                 <a class="btn btn-ghost" href="<?= htmlspecialchars($email_href) ?>"><?= htmlspecialchars($email) ?></a>
                 <a class="btn btn-ghost" href="<?= htmlspecialchars(url('contact/')) ?>">Contact form</a>
             </div>

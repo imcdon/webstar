@@ -9,8 +9,8 @@
         <div class="footer-grid">
             <div class="footer-brand">
                 <a class="logo logo-footer" href="<?= htmlspecialchars(url()) ?>">
-                    <img class="logo-mark" src="<?= htmlspecialchars(url('assets/img/logo-tree.png')) ?>" alt="" width="36" height="36">
-                    <span class="logo-text"><?= htmlspecialchars($site_name) ?></span>
+                    <img class="logo-mark" src="<?= htmlspecialchars(url('assets/img/logo-new.png')) ?>" alt="" width="60" height="60">
+                    <span class="logo-text"><span class="logo-text__line">Metro Detroit</span><span class="logo-text__line">Holiday Lighting</span></span>
                 </a>
                 <p class="footer-trust"><?= htmlspecialchars($trust_line) ?></p>
             </div>
@@ -55,7 +55,7 @@
 
     <aside class="mobile-cta" aria-label="Quick contact">
         <a class="mobile-cta__call" href="<?= htmlspecialchars($phone_href) ?>">Call</a>
-        <a class="mobile-cta__quote" href="<?= htmlspecialchars(url('contact/')) ?>">Quote</a>
+        <a class="mobile-cta__quote" href="<?= htmlspecialchars($sms_href) ?>">Text a photo</a>
     </aside>
 
     <script src="<?= htmlspecialchars(url('assets/js/main.js')) ?>?v=<?= (int) @filemtime(dirname(__DIR__) . '/assets/js/main.js') ?>" defer></script>

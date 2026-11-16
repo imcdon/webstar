@@ -25,7 +25,11 @@ require dirname(__DIR__) . '/includes/header.php';
     <div class="container">
         <p class="breadcrumbs"><a href="<?= htmlspecialchars(url()) ?>">Home</a> / Contact</p>
         <h1>Get a quote</h1>
-        <p>Text or email a few clear photos of the house, storefront, or community entrance. Include your city and what you want lit.</p>
+        <p>Text a photo of the house, storefront, or community entrance. Include your city and what you want lit — Steven follows up with a plan.</p>
+        <p style="margin-top:1rem;">
+            <a class="btn btn-primary" href="<?= htmlspecialchars($sms_href) ?>">Text a photo</a>
+            <a class="btn btn-ghost" href="<?= htmlspecialchars($phone_href) ?>">Call <?= htmlspecialchars($phone) ?></a>
+        </p>
     </div>
 </section>
 
@@ -34,7 +38,8 @@ require dirname(__DIR__) . '/includes/header.php';
         <aside class="contact-card">
             <h2>Fastest path</h2>
             <ul>
-                <li><strong>Call / text:</strong> <a href="<?= htmlspecialchars($phone_href) ?>"><?= htmlspecialchars($phone) ?></a></li>
+                <li><strong>Text a photo:</strong> <a href="<?= htmlspecialchars($sms_href) ?>"><?= htmlspecialchars($phone) ?></a></li>
+                <li><strong>Call:</strong> <a href="<?= htmlspecialchars($phone_href) ?>"><?= htmlspecialchars($phone) ?></a></li>
                 <li><strong>Email photos:</strong> <a href="<?= htmlspecialchars($email_href) ?>"><?= htmlspecialchars($email) ?></a></li>
                 <li>Tell us residential, commercial, or HOA.</li>
                 <li>Steven answers and quotes from the photos.</li>

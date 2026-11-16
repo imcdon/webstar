@@ -36,9 +36,12 @@ $schema_service = $schema_service ?? null;
     <meta property="og:type" content="<?= htmlspecialchars($og_type) ?>">
     <meta property="og:image" content="<?= htmlspecialchars($og_image) ?>">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="theme-color" content="#0a0a0c">
+    <meta name="theme-color" content="#0B1420">
     <link rel="icon" href="<?= htmlspecialchars(url('assets/img/favicon.png')) ?>" type="image/png">
-    <link rel="apple-touch-icon" href="<?= htmlspecialchars(url('assets/img/logo-tree.png')) ?>">
+    <link rel="apple-touch-icon" href="<?= htmlspecialchars(url('assets/img/logo-new.png')) ?>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
     <?php if ($preload_image): ?>
         <link rel="preload" as="image" href="<?= htmlspecialchars($preload_image) ?>" fetchpriority="high">
     <?php endif; ?>
@@ -63,13 +66,12 @@ $schema_service = $schema_service ?? null;
     ?>
 </head>
 <body<?= $body_class !== '' ? ' class="' . htmlspecialchars($body_class) . '"' : '' ?>>
-    <div class="home-glow" aria-hidden="true"></div>
     <?php require __DIR__ . '/partials/webstar-staging-banner.php'; ?>
     <header class="site-header" id="site-header">
         <div class="header-inner">
             <a class="logo" href="<?= htmlspecialchars(url()) ?>">
-                <img class="logo-mark" src="<?= htmlspecialchars(url('assets/img/logo-tree.png')) ?>" alt="" width="36" height="36">
-                <span class="logo-text"><?= htmlspecialchars($site_name) ?></span>
+                <img class="logo-mark" src="<?= htmlspecialchars(url('assets/img/logo-new.png')) ?>" alt="" width="60" height="60">
+                <span class="logo-text"><span class="logo-text__line">Metro Detroit</span><span class="logo-text__line">Holiday Lighting</span></span>
             </a>
             <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
                 <span></span><span></span><span></span>
