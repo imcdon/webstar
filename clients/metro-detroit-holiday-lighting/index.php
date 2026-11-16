@@ -36,6 +36,38 @@ require __DIR__ . '/includes/header.php';
     </div>
 </section>
 
+<section class="section section--snow" id="who-we-serve">
+    <div class="container">
+        <div class="section__head">
+            <h2>Who we light</h2>
+            <p class="section__lead">Residential, commercial, and community entrances — same owner on the job.</p>
+        </div>
+        <div class="audience-stages">
+            <?php foreach ($audiences as $audience): ?>
+                <?php
+                $audienceUrl = !empty($audience['url']) ? url($audience['url']) : '';
+                $cardTag = $audienceUrl !== '' ? 'a' : 'article';
+                $cardAttrs = $audienceUrl !== ''
+                    ? ' href="' . htmlspecialchars($audienceUrl) . '"'
+                    : '';
+                ?>
+                <<?= $cardTag ?> class="audience-stage<?= empty($audience['has_image']) ? ' audience-stage--placeholder' : '' ?>"<?= $cardAttrs ?>>
+                    <div class="audience-stage__media" aria-hidden="true">
+                        <?php if (!empty($audience['has_image'])): ?>
+                            <img src="<?= htmlspecialchars(url($audience['image'])) ?>" alt="" width="1200" height="700" loading="lazy" decoding="async">
+                        <?php endif; ?>
+                    </div>
+                    <div class="audience-stage__shade" aria-hidden="true"></div>
+                    <div class="audience-stage__content">
+                        <h3><?= htmlspecialchars($audience['title']) ?></h3>
+                        <p><?= htmlspecialchars($audience['body']) ?></p>
+                    </div>
+                </<?= $cardTag ?>>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+
 <?php if ($scroll_frames !== []): ?>
 <section
     class="scroll-stage"
@@ -78,38 +110,6 @@ require __DIR__ . '/includes/header.php';
     </div>
 </section>
 <?php endif; ?>
-
-<section class="section section--snow" id="who-we-serve">
-    <div class="container">
-        <div class="section__head">
-            <h2>Who we light</h2>
-            <p class="section__lead">Residential, commercial, and community entrances — same owner on the job.</p>
-        </div>
-        <div class="audience-stages">
-            <?php foreach ($audiences as $audience): ?>
-                <?php
-                $audienceUrl = !empty($audience['url']) ? url($audience['url']) : '';
-                $cardTag = $audienceUrl !== '' ? 'a' : 'article';
-                $cardAttrs = $audienceUrl !== ''
-                    ? ' href="' . htmlspecialchars($audienceUrl) . '"'
-                    : '';
-                ?>
-                <<?= $cardTag ?> class="audience-stage<?= empty($audience['has_image']) ? ' audience-stage--placeholder' : '' ?>"<?= $cardAttrs ?>>
-                    <div class="audience-stage__media" aria-hidden="true">
-                        <?php if (!empty($audience['has_image'])): ?>
-                            <img src="<?= htmlspecialchars(url($audience['image'])) ?>" alt="" width="1200" height="700" loading="lazy" decoding="async">
-                        <?php endif; ?>
-                    </div>
-                    <div class="audience-stage__shade" aria-hidden="true"></div>
-                    <div class="audience-stage__content">
-                        <h3><?= htmlspecialchars($audience['title']) ?></h3>
-                        <p><?= htmlspecialchars($audience['body']) ?></p>
-                    </div>
-                </<?= $cardTag ?>>
-            <?php endforeach; ?>
-        </div>
-    </div>
-</section>
 
 <section class="section section--pine" id="process">
     <div class="container">

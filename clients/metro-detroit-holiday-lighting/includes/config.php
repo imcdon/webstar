@@ -152,21 +152,6 @@ $scroll_frame_defs = [
         'caption' => 'Clean rooflines and balanced curb appeal',
         'alt' => 'Home with white holiday lights on house and trees',
     ],
-    [
-        'file' => 'residential-18-stake-lights-and-wreaths.jpg',
-        'caption' => 'Walks, stakes, and wreaths that finish the front',
-        'alt' => 'Stake lighting and wreaths on a residential entrance',
-    ],
-    [
-        'file' => 'commercial-09-soaring-eagle-entrance.jpg',
-        'caption' => 'Commercial entrances that read from the road',
-        'alt' => 'Commercial property entrance with holiday lighting',
-    ],
-    [
-        'file' => 'residential-06-birchwood-white-heavy-snow.jpg',
-        'caption' => 'Displays built for Michigan weather',
-        'alt' => 'Holiday lighting on a home in heavy snow',
-    ],
 ];
 
 $scroll_frames = [];
