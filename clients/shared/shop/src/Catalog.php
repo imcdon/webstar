@@ -83,11 +83,13 @@ final class Catalog
             );
             $sort = 0;
             $catMap = [];
+            $catNameMap = [];
             foreach ($categories as $squareId => $name) {
                 $id = Db::newId('cat_');
                 $slug = Helpers::slugify($name);
                 $catStmt->execute([$id, $squareId, $name, $slug, $sort++]);
                 $catMap[$squareId] = $id;
+                $catNameMap[$name] = $id;
             }
 
             $prodStmt = $this->db->prepare(
@@ -135,12 +137,33 @@ final class Catalog
                 $catIds = $item->getCategories() ?? [];
                 if ($catIds) {
                     $first = $catIds[0];
-                    $squareCatId = is_object($first) && method_exists($first, 'getId') ? $first->getId() : (string) $first;
-                    $catId = $catMap[$squareCatId] ?? null;
+                    $squareCatId = null;
+                    if (is_object($first)) {
+                        if (method_exists($first, 'getId')) {
+                            $squareCatId = $first->getId();
+                        } elseif (method_exists($first, 'getCategoryId')) {
+                            $squareCatId = $first->getCategoryId();
+                        }
+                    } else {
+                        $squareCatId = (string) $first;
+                    }
+                    if ($squareCatId) {
+                        $catId = $catMap[$squareCatId] ?? null;
+                    }
                 }
                 // Square also uses categoryId on older shapes
                 if ($catId === null && method_exists($item, 'getCategoryId') && $item->getCategoryId()) {
                     $catId = $catMap[$item->getCategoryId()] ?? null;
+                }
+                // Fallback: match seed listing category by product name (Square often omits category on read)
+                if ($catId === null && !empty($seedMatch['category'])) {
+                    $seedCatName = (string) $seedMatch['category'];
+                    $catId = $catNameMap[$seedCatName] ?? null;
+                    if ($catId === null) {
+                        $catId = Db::newId('cat_');
+                        $catStmt->execute([$catId, null, $seedCatName, Helpers::slugify($seedCatName), $sort++]);
+                        $catNameMap[$seedCatName] = $catId;
+                    }
                 }
 
                 $imageUrl = null;
@@ -578,9 +601,9 @@ final class Catalog
     }
 
     /**
-     * Seed listings keyed by lowercase name, for image fallbacks when Square has none.
+     * Seed listings keyed by lowercase name, for image/category fallbacks when Square omits them.
      *
-     * @return array<string, array{local_image: ?string, images: list<string>}>
+     * @return array<string, array{local_image: ?string, images: list<string>, category: ?string}>
      */
     private function localSeedIndex(): array
     {
@@ -595,6 +618,7 @@ final class Catalog
             $index[strtolower((string) $l['name'])] = [
                 'local_image' => $l['local_image'] ?? null,
                 'images' => $l['images'] ?? [],
+                'category' => $l['category'] ?? null,
             ];
         }
         return $index;

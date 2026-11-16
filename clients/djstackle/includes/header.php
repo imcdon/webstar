@@ -42,8 +42,11 @@ $show_staging_banner = str_contains($hostNow, 'webstarbusinessservices.com');
     <link rel="icon" href="<?= Helpers::e(url('assets/img/favicon.png')) ?>" type="image/png">
     <link rel="icon" href="<?= Helpers::e(url('assets/img/favicon-32.png')) ?>" type="image/png" sizes="32x32">
     <link rel="apple-touch-icon" href="<?= Helpers::e(url('assets/img/apple-touch-icon.png')) ?>">
-    <link rel="stylesheet" href="<?= Helpers::e(url('assets/css/main.css')) ?>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?= Helpers::e(url('../shared/shop/assets/shop.css')) ?>">
+    <link rel="stylesheet" href="<?= Helpers::e(url('assets/css/main.css')) ?>">
     <?php foreach ((array) $json_ld as $block): ?>
         <?= Helpers::jsonLd($block) ?>
     <?php endforeach; ?>

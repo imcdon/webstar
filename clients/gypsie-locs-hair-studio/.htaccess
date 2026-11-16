@@ -1,0 +1,32 @@
+# Gypsie Locs Hair Studio — URL rewrites + live domain
+RewriteEngine On
+
+# cPanel CGI/FastCGI: pass Authorization through for staging Basic Auth
+RewriteCond %{HTTP:Authorization} .
+RewriteRule ^ - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+# Production only: HTTPS + apex (enable when live domain is pointed here)
+RewriteCond %{HTTP_HOST} ^(www\.)?gypsielocshairstudio\.com$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://gypsielocshairstudio.com%{REQUEST_URI} [L,R=301]
+
+RewriteCond %{HTTP_HOST} ^www\.gypsielocshairstudio\.com$ [NC]
+RewriteRule ^ https://gypsielocshairstudio.com%{REQUEST_URI} [L,R=301]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !404\.php$
+RewriteRule . 404.php [L]
+
+ErrorDocument 404 /404.php
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 30 days"
+    ExpiresByType application/javascript "access plus 30 days"
+    ExpiresByType image/svg+xml "access plus 1 year"
+</IfModule>

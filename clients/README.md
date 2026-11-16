@@ -31,6 +31,13 @@ Live client domain `superioriceadventures.com` should use **`$HOME/superioricead
 
 See [DEPLOY.md](../DEPLOY.md) and [portal/README.md](../portal/README.md).
 
+## Gypsie Locs Hair Studio — Path A
+
+- **Local:** `http://localhost/webstar-business-solutions/clients/gypsie-locs-hair-studio/`
+- **Staging:** `https://webstarbusinessservices.com/clients/gypsie-locs-hair-studio/`
+- **Live:** TBD (owned domain; booking remains GlossGenius until migrated)
+- **Auth:** Staging HTTP Basic via Client Portal username `gypsie` (password in password manager — hash only in `library/portal-clients.php`). See [`gypsie-locs-hair-studio/DEPLOY.md`](gypsie-locs-hair-studio/DEPLOY.md).
+
 ## DJ's Tackle — Path A (Square shop)
 
 Reusable shop module: [`shared/shop/`](shared/shop/). Client site: [`djstackle/`](djstackle/). See [`djstackle/DEPLOY.md`](djstackle/DEPLOY.md).

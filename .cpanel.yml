@@ -9,6 +9,7 @@ deployment:
     - /bin/mkdir -p $DEPLOYPATH/clients/djstackle
     - /bin/mkdir -p $DEPLOYPATH/clients/djstackle/data
     - /bin/mkdir -p $DEPLOYPATH/clients/djstackle/.well-known
+    - /bin/mkdir -p $DEPLOYPATH/clients/gypsie-locs-hair-studio
     - /bin/mkdir -p $DEPLOYPATH/clients/shared/shop
     - /bin/mkdir -p $DEPLOYPATH/lead-gen/data
     - /usr/bin/rsync -a --exclude='.git' --exclude='.cpanel.yml' --exclude='library/mail-config.php' --exclude='library/calendar-config.php' --exclude='library/.calendar-access.json' --exclude='clients/*/includes/shop-config.php' --exclude='clients/*/data' --exclude='lead-gen/.env' --exclude='lead-gen/data' ./ $DEPLOYPATH/

@@ -210,13 +210,20 @@ foreach ($listings as $l) {
         $l['options'],
     );
 
-        $objects[] = CatalogObject::item(new CatalogObjectItem([
+    $categoryRef = new CatalogObjectCategory([
+        'id' => $catIds[$l['category']],
+        'ordinal' => 0,
+    ]);
+
+    $objects[] = CatalogObject::item(new CatalogObjectItem([
         'id' => $itemId,
         'presentAtAllLocations' => true,
         'itemData' => new CatalogItem([
             'name' => $l['name'],
             'description' => $l['description'],
             'categoryId' => $catIds[$l['category']],
+            'categories' => [$categoryRef],
+            'reportingCategory' => $categoryRef,
             'taxIds' => [$taxId],
             'variations' => $variations,
             'itemOptions' => $itemOptions ?: null,

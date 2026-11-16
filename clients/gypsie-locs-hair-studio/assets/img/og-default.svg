@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#1B3A4B"/>
+  <path d="M-20 140 C 280 40, 420 280, 720 160 S 1040 60, 1220 200" stroke="#B8956C" stroke-width="36" stroke-linecap="round"/>
+  <path d="M-20 320 C 300 400, 480 160, 760 300 S 1040 460, 1220 310" stroke="#2F5A6E" stroke-width="22" stroke-linecap="round"/>
+  <path d="M-20 500 C 260 440, 500 580, 780 480 S 1040 420, 1220 520" stroke="#DCC9C4" stroke-width="14" stroke-linecap="round" opacity="0.8"/>
+  <text x="72" y="520" fill="#D4C4A8" font-family="Georgia, serif" font-size="72">Gypsie Locs</text>
+  <text x="76" y="568" fill="#F4F5F7" font-family="Arial, sans-serif" font-size="28">Hair Studio · Waterford, MI</text>
+</svg>

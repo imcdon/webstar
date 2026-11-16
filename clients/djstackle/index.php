@@ -8,7 +8,6 @@ use Webstar\Shop\Helpers;
 use Webstar\Shop\Reviews;
 use Webstar\Shop\Seo;
 
-$hero_catalog = $shopCatalog->search(['per_page' => 48, 'sort' => 'name']);
 $featured = $shopCatalog->search(['per_page' => 6, 'sort' => 'featured']);
 $reviews = Reviews::make($shopConfig)->latestApproved(4);
 $seo = Seo::make($shopConfig);
@@ -22,7 +21,7 @@ $json_ld = [$seo->organizationJsonLd()];
 
 require __DIR__ . '/includes/header.php';
 ?>
-<?php require __DIR__ . '/includes/partials/hero-carousel.php'; ?>
+<?php require __DIR__ . '/includes/partials/hero-brand.php'; ?>
 
 <section class="section about-hero">
   <div class="container about-block-grid about-hero-grid">
@@ -132,6 +131,8 @@ require __DIR__ . '/includes/header.php';
 </section>
 <?php endif; ?>
 
+<?php require __DIR__ . '/includes/partials/custom-color-panel.php'; ?>
+
 <section class="section contact-band">
   <div class="container contact-band-inner">
     <div>
@@ -143,18 +144,6 @@ require __DIR__ . '/includes/header.php';
     <div style="display:flex;gap:.75rem;flex-wrap:wrap">
       <a class="btn btn-primary" href="<?= Helpers::e(url('contact/')) ?>">Send a message</a>
       <a class="btn btn-secondary" href="<?= Helpers::e(url('shipping-returns/')) ?>">Shipping &amp; returns</a>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <div class="band">
-      <div>
-        <strong>Need a custom color?</strong>
-        <p style="margin:.35rem 0 0;opacity:.95">If you don’t see what you’re looking for, reach out — we can do custom colors.</p>
-      </div>
-      <a class="btn btn-primary" href="<?= Helpers::e(url('contact/')) ?>">Contact us</a>
     </div>
   </div>
 </section>

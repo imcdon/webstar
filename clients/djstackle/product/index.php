@@ -181,6 +181,18 @@ require dirname(__DIR__) . '/includes/header.php';
   </div>
 </section>
 
+<?php
+$custom_color_slugs = [
+    'walleye-jigs-2-pack',
+    'river-ready-box',
+    'crawler-harness-colorado-blade',
+];
+if (in_array((string) ($product['slug'] ?? ''), $custom_color_slugs, true)) {
+    $custom_color_context = (string) ($product['name'] ?? '');
+    require dirname(__DIR__) . '/includes/partials/custom-color-panel.php';
+}
+?>
+
 <?php if ($related): ?>
 <section class="section">
   <div class="container">

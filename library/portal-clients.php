@@ -69,4 +69,18 @@ return [
             ],
         ],
     ],
+    'gypsie' => [
+        'display_name' => 'Gypsie Locs Hair Studio',
+        'role' => 'client',
+        'password_hash' => '$2y$10$Mnhc6BZMUNq5GJIxNFL1jeXLkmn9zlm4WeWY9.bSc1JbUev85dkz.',
+        'projects' => [
+            [
+                'slug' => 'gypsie-locs-hair-studio',
+                'title' => 'Gypsie Locs Hair Studio website',
+                'status' => 'Design draft',
+                'local_path' => 'clients/gypsie-locs-hair-studio/',
+                'staging_url' => 'https://webstarbusinessservices.com/clients/gypsie-locs-hair-studio/',
+            ],
+        ],
+    ],
 ];
