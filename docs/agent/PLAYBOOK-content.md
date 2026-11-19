@@ -4,7 +4,7 @@ Use for `/resources/` guides, `articles-data.php`, SEO landings, internal links,
 
 ## Pre-edit (mandatory gate)
 
-Read [CONTENT-SEO.md](../CONTENT-SEO.md) — people-first, Who/How/Why, staggered honest dates, FAQ visible = schema.
+Read [CONTENT-SEO.md](../CONTENT-SEO.md) — people-first, Who/How/Why, staggered honest dates, FAQ visible = schema. Optional upstream SEO/GEO skill guardrails: [SEO-GEO-SKILLS-EVAL.md](SEO-GEO-SKILLS-EVAL.md).
 
 Check [resource-topics.csv](../content-revamp/resource-topics.csv) for slug/title approval.
 

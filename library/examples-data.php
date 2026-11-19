@@ -16,6 +16,14 @@ return [
         'package_slug' => 'business-website',
     ],
     [
+        'title' => 'Metro Detroit Holiday Lighting',
+        'url' => 'https://metrodetroitholidaylighting.com',
+        'status' => 'live',
+        'thumbnail' => 'assets/images/examples/metro-detroit-holiday-lighting-home.webp',
+        'package_slug' => 'business-growth-website',
+        'description' => 'Full-season residential, commercial, and HOA holiday lighting for Metro Detroit — service-area pages, offer pages, and contact intake on its own domain.',
+    ],
+    [
         'title' => 'Earth Odyssey',
         'url' => 'https://earth-odyssey.com',
         'status' => 'testing',

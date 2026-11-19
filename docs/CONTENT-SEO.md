@@ -28,6 +28,20 @@ Operational rules for Resources guides and SEO landing pages. Primary references
 7. **Dates** — Guides use **staggered publish**: each rewrite’s `published` = the deploy day that guide goes live; `updated` matches on first ship, then bumps on later edits. Article JSON-LD and sitemap aligned. No backdating.
 8. **Facts** — Pricing bands, process, Google steps match packages and agreements; no invented clients or results.
 
+## CORE-EEAT veto crosswalk (optional agent layer)
+
+Upstream [CORE-EEAT](https://github.com/aaron-he-zhu/core-eeat-content-benchmark) is an 80-item advisory rubric. Webstar keeps the **8 gates above as mandatory**. When an installed `content-quality-auditor` skill is available, map only these **veto** checks — do not replace CONTENT-SEO or invent client-facing GEO/SEO scores. Full fit notes: [agent/SEO-GEO-SKILLS-EVAL.md](agent/SEO-GEO-SKILLS-EVAL.md).
+
+| Webstar gate | CORE-EEAT veto / idea | Pass when |
+|--------------|----------------------|-----------|
+| 1 People-first + 2 One job per URL | **C01** Intent alignment | Title/H1 promise matches what the page delivers |
+| 5 FAQs + 8 Facts | **R10** Referenceability / consistency | No material contradiction between body, FAQ, meta, packages, or schema |
+| 8 Facts (affiliates rare) | **T04** Trust / disclosure | If a material affiliate or paid relationship exists, disclose it; otherwise N/A |
+| 3 Originality | EEAT Experience (non-veto) | At least one first-hand Experience paragraph (Ian / real process) |
+| 6 Meta | On-page checks (non-veto) | Title ~60 chars with `\| Webstar`; description 140–155 |
+
+Do **not** force citation-density quotas or new long-tail URLs that compete with [SEO.md](../SEO.md). Path A `/clients/` staging is not a public SEO target.
+
 ## Landings: keep vs rewrite vs merge
 
 See [content-revamp/phase0-summary.md](content-revamp/phase0-summary.md). **Merge only with owner approval** — 301 + SEO.md update.

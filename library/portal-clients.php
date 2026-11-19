@@ -41,20 +41,6 @@ return [
             ],
         ],
     ],
-    'mdhl' => [
-        'display_name' => 'Metro Detroit Holiday Lighting',
-        'role' => 'client',
-        'password_hash' => '$2y$10$f8T4hMDOEbKBl5WHNKQbFOmVj7NJcGjF7inQ2uVn3djiSXPywDsRS',
-        'projects' => [
-            [
-                'slug' => 'metro-detroit-holiday-lighting',
-                'title' => 'Metro Detroit Holiday Lighting website',
-                'status' => 'In progress',
-                'local_path' => 'clients/metro-detroit-holiday-lighting/',
-                'staging_url' => 'https://webstarbusinessservices.com/clients/metro-detroit-holiday-lighting/',
-            ],
-        ],
-    ],
     'djstackle' => [
         'display_name' => "DJ's Tackle",
         'role' => 'client',

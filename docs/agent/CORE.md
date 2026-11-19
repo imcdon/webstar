@@ -60,7 +60,6 @@ Canonical list — metadata in `library/articles-data.php`, body in `library/art
 
 | Slug | Notes |
 |------|--------|
-| `metro-detroit-holiday-lighting` | Staging; live domain separate |
 | `superior-ice-adventures` | Staging subdomain |
 | `djstackle` | Square shop via `clients/shared/shop/`; `shop-config.php` gitignored |
 | `gypsie-locs-hair-studio` | Design draft; GlossGenius booking; live domain TBD |
@@ -68,6 +67,8 @@ Canonical list — metadata in `library/articles-data.php`, body in `library/art
 Staging under `/clients/` — **disallowed in robots.txt** (not for public SEO). See [clients/README.md](../../clients/README.md).
 
 **Local base:** `http://localhost/webstar-business-solutions/clients/{slug}/`
+
+**Independent (not in monorepo):** Metro Detroit Holiday Lighting — live https://metrodetroitholidaylighting.com ; repo https://github.com/imcdon/metro-detroit-holiday-lighting ; listed on Examples only.
 
 ## Never commit
 

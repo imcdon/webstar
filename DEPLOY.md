@@ -28,10 +28,13 @@ Superior Ice and other client staging sites use **separate** GitHub repos (see [
 | Path | Notes |
 |------|--------|
 | `library/mail-config.php` | SMTP secrets — create on server from the example |
+| `clients/metro-detroit-holiday-lighting/` | Independent client — live at metrodetroitholidaylighting.com; source https://github.com/imcdon/metro-detroit-holiday-lighting (gitignored if a local copy remains) |
 
 Portal users live in committed [`library/portal-clients.php`](library/portal-clients.php) (hashed passwords). Change hashes after go-live if needed.
 
 Superior Ice staging lives in [`clients/superior-ice-adventures/`](clients/superior-ice-adventures/) and deploys with this repo via Path A — see [`clients/PATH-A.md`](clients/PATH-A.md).
+
+**MDHL staging cleanup:** after deploying a Webstar revision that no longer ships that folder, manually delete `$HOME/public_html/clients/metro-detroit-holiday-lighting/` on the Webstar host (rsync does not `--delete`). Confirm `https://webstarbusinessservices.com/clients/metro-detroit-holiday-lighting/` is gone.
 
 
 ---

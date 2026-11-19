@@ -9,6 +9,10 @@ $payload = lead_map_load_businesses();
 $corridors = lead_map_enabled_corridors();
 $staleCount = count($payload['stale']);
 $leadCount = count($payload['leads']);
+$leadDbPath = lead_map_root() . '/data/leads.sqlite';
+$leadDbOnDisk = is_file($leadDbPath);
+$leadDbBytes = $leadDbOnDisk ? (int) filesize($leadDbPath) : 0;
+$pdoSqliteLoaded = extension_loaded('pdo_sqlite');
 $jsonFlags = JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS;
 $mapData = [
     'corridors' => $corridors,
@@ -59,6 +63,22 @@ include dirname(__DIR__) . '/library/layout-start.php';
 
         <?php if ($payload['error']) : ?>
             <p class="home-section__textbox" role="alert"><?php echo webstar_h($payload['error']); ?></p>
+        <?php endif; ?>
+
+        <?php if ($leadCount === 0 && $staleCount === 0) : ?>
+            <p class="home-section__textbox lead-map-zero-hint">
+                Map data: <?php echo $leadDbOnDisk ? 'database file present (' . number_format($leadDbBytes) . ' bytes)' : 'no leads.sqlite on server'; ?>
+                · PHP pdo_sqlite: <?php echo $pdoSqliteLoaded ? 'yes' : 'no'; ?>
+                <?php if (!$payload['error'] && $leadDbOnDisk) : ?>
+                    · Query returned no retained businesses for enabled corridors (re-run sweep or check geo_cell IDs).
+                <?php elseif (!$leadDbOnDisk) : ?>
+                    · Upload <code>lead-gen/data/leads.sqlite</code> to the server (see DEPLOY.md §6b). The database is not deployed with Git.
+                <?php endif; ?>
+            </p>
+        <?php elseif ($leadCount === 0 && $staleCount > 0) : ?>
+            <p class="home-section__textbox" role="alert">
+                All <?php echo (int) $staleCount; ?> corridor businesses have coordinates older than 30 days (Google cache limit). Re-run <code>npm run lead-gen:sweep</code> and upload a fresh <code>leads.sqlite</code>.
+            </p>
         <?php endif; ?>
 
         <div class="lead-map-shell">

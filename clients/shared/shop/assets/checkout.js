@@ -172,11 +172,16 @@
       return;
     }
     if (!cfg.appId || cfg.appId === 'REPLACE_ME') {
-      showError('Set square_application_id in shop-config.php (Sandbox Application ID).');
+      showError('Set square_application_id in shop-config.php.');
       return;
     }
-    if (cfg.appId.indexOf('sandbox-') !== 0 && (cfg.appId.indexOf('sq0idp-') === 0)) {
-      showError('Wrong Application ID: use the Sandbox ID (starts with sandbox-sq0idb-), not the Production sq0idp- ID.');
+    const env = String(cfg.environment || 'sandbox').toLowerCase();
+    if (env === 'sandbox' && cfg.appId.indexOf('sandbox-') !== 0) {
+      showError('Wrong Application ID: sandbox mode needs sandbox-sq0idb-… (Developer Console → Sandbox → Credentials).');
+      return;
+    }
+    if (env === 'production' && cfg.appId.indexOf('sq0idp-') !== 0) {
+      showError('Wrong Application ID: production mode needs sq0idp-… (Developer Console → Production → Credentials).');
       return;
     }
     payments = window.Square.payments(cfg.appId, cfg.locationId);

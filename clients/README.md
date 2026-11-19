@@ -6,13 +6,15 @@ Staging previews live under `clients/{slug}/` and are deployed with the Webstar 
 
 **Preview header:** all Path A sites use the shared bar in [`shared/webstar-staging-banner.php`](shared/webstar-staging-banner.php) (Notes dropdown). Each client’s `includes/partials/webstar-staging-banner.php` sets `$webstar_staging_notes` then requires that shared file.
 
-## Metro Detroit Holiday Lighting — Path A
+## Independent client repos
 
-- **Local:** `http://localhost/webstar-business-solutions/clients/metro-detroit-holiday-lighting/`
-- **Staging:** `https://webstarbusinessservices.com/clients/metro-detroit-holiday-lighting/`
-- **Live:** `https://metrodetroitholidaylighting.com`
-- **Auth:** Client Portal credentials (HTTP Basic on staging). See [SECURITY-CHECKLIST.md](SECURITY-CHECKLIST.md) and [`metro-detroit-holiday-lighting/DEPLOY.md`](metro-detroit-holiday-lighting/DEPLOY.md).
-- **Strategy docs:** [`metro-detroit-holiday-lighting/docs/COMPETITOR-ANALYSIS.md`](metro-detroit-holiday-lighting/docs/COMPETITOR-ANALYSIS.md), [`CLIENT-INPUTS.md`](metro-detroit-holiday-lighting/docs/CLIENT-INPUTS.md), [`GBP-AND-LIVE-PARITY.md`](metro-detroit-holiday-lighting/docs/GBP-AND-LIVE-PARITY.md).
+Some launched clients live in their own GitHub repo and cPanel deploy (not Path A staging in this monorepo). Portfolio link only: [Examples](../examples.php).
+
+| Client | Live | Repo |
+|--------|------|------|
+| Metro Detroit Holiday Lighting | https://metrodetroitholidaylighting.com | https://github.com/imcdon/metro-detroit-holiday-lighting |
+
+A local copy under `clients/metro-detroit-holiday-lighting/` may exist for reference; it is gitignored. Do not deploy it from the Webstar monorepo.
 
 ## Superior Ice Adventures — Path A
 

@@ -23,6 +23,9 @@ clients/*/data/*.sqlite-*
 clients/*/data/mail.log
 clients/*/includes/shop-config.php
 
+# Independent client (source of truth: imcdon/metro-detroit-holiday-lighting)
+clients/metro-detroit-holiday-lighting/
+
 # OS / IDE
 .DS_Store
 Thumbs.db

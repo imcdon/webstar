@@ -1,6 +1,6 @@
 # Playbook — Path A clients
 
-Use for `clients/metro-detroit-holiday-lighting/`, `clients/superior-ice-adventures/`, `clients/djstackle/`, `clients/gypsie-locs-hair-studio/`, and `clients/shared/shop/`.
+Use for `clients/superior-ice-adventures/`, `clients/djstackle/`, `clients/gypsie-locs-hair-studio/`, and `clients/shared/shop/`. Independent clients (e.g. MDHL) are documented in [clients/README.md](../../clients/README.md) — edit their own repos, not this monorepo.
 
 ## Pre-edit
 
@@ -22,10 +22,15 @@ Use for `clients/metro-detroit-holiday-lighting/`, `clients/superior-ice-adventu
 4. Seed: `php bin/seed-local.php` from client dir when docs say so
 5. Reference: [docs/SQUARE-PHP-REFERENCE.md](../SQUARE-PHP-REFERENCE.md) — not full vendor tree
 
-## Superior Ice / MDHL
+## Superior Ice
 
 - [PATH-A.md](../../clients/PATH-A.md) checklist
 - Per-client DEPLOY for subdomain vs folder
+
+## Independent clients (MDHL and similar)
+
+- Code and deploy: client GitHub + own cPanel — see [clients/README.md](../../clients/README.md)
+- Marketing proof: [library/examples-data.php](../../library/examples-data.php) only
 
 ## Post-edit
 

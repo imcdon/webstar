@@ -12,6 +12,7 @@ Use after [AGENTS.md](../AGENTS.md) startup: CORE + ARCHITECTURE, then pick a ro
 | [agent/PLAYBOOK-clients.md](agent/PLAYBOOK-clients.md) | Path A staging, shop, per-client DEPLOY |
 | [agent/PLAYBOOK-content.md](agent/PLAYBOOK-content.md) | Resources articles, SEO landings, editorial gate |
 | [CONTENT-SEO.md](CONTENT-SEO.md) | Pre-publish checklist (people-first, dates, FAQs) |
+| [agent/SEO-GEO-SKILLS-EVAL.md](agent/SEO-GEO-SKILLS-EVAL.md) | Upstream SEO/GEO Cursor skills — partial adopt, cherry-pick, guardrails |
 | [content-revamp/resource-topics.csv](content-revamp/resource-topics.csv) | Article backlog (live vs proposed) |
 | [content-revamp/phase0-summary.md](content-revamp/phase0-summary.md) | 32 landings keep/rewrite disposition |
 | [SEO-AUDIT.md](SEO-AUDIT.md) | Meta length, technical SEO notes |
@@ -31,7 +32,8 @@ Use after [AGENTS.md](../AGENTS.md) startup: CORE + ARCHITECTURE, then pick a ro
 | New/edit Resource guide | PLAYBOOK-content | `CONTENT-SEO.md`, `articles-data.php`, `library/articles/{slug}.php` | All `library/articles/` |
 | SEO landing rewrite | PLAYBOOK-content | `SEO.md` row, one slug in `seo-pages-data.php` or `seo-pages-batch.php`, phase0 CSV row | Entire batch file |
 | DJ's Tackle / shop | PLAYBOOK-clients | `clients/djstackle/DEPLOY.md`, `shared/shop/README.md`, `shop-config.example.php` | `vendor/` trees |
-| MDHL / Superior Ice | PLAYBOOK-clients | `clients/{slug}/DEPLOY.md`, `PATH-A.md`, `SECURITY-CHECKLIST.md` | Unrelated clients |
+| Superior Ice / Path A clients | PLAYBOOK-clients | `clients/{slug}/DEPLOY.md`, `PATH-A.md`, `SECURITY-CHECKLIST.md` | Unrelated clients |
+| MDHL (independent) | PLAYBOOK-clients | `clients/README.md` (independent section), `library/examples-data.php`; edit https://github.com/imcdon/metro-detroit-holiday-lighting | Webstar `clients/metro-detroit-holiday-lighting/` |
 | Pricing or tier copy truth | PLAYBOOK-main-site | `packages-data.php`, `plans-data.php` | Marketing research docs |
 
 ## Token discipline

@@ -171,6 +171,7 @@ require dirname(__DIR__) . '/includes/header.php';
     payUrl: <?= json_encode(url('checkout/pay.php')) ?>,
     appId: <?= json_encode($shopConfig->squareApplicationId) ?>,
     locationId: <?= json_encode($shopConfig->squareLocationId) ?>,
+    environment: <?= json_encode($shopConfig->squareEnvironment) ?>,
     demo: <?= $shopConfig->demoMode ? 'true' : 'false' ?>,
     currency: <?= json_encode($shopConfig->currency) ?>,
     country: 'US'
