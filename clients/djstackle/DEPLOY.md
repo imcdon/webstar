@@ -26,7 +26,7 @@ Brand assets live in `assets/img/` (`logo-nav.png`, `logo-full.png`, `favicon.pn
    Square’s Payments API does **not** email receipts (Payment Links did). Without SMTP, messages are written to `data/mail.log` only.
 6. cPanel cron (hourly):  
    `php $HOME/.../clients/djstackle/bin/abandoned-carts.php`
-7. Gift cards: enable Square Gift Cards in the Dashboard (selling + accepting). Purchase URL (optional) → `gift_card_purchase_url`.
+7. Gift cards: enable Square Gift Cards in the Dashboard (selling + accepting). Purchase URL → `gift_card_purchase_url` (production eGift: `https://app.squareup.com/gift/MLPZ0ZPTA8FYA/order`). Redemption is on-site checkout (Web Payments SDK gift card field).
 8. **Apple Pay (production / HTTPS only):**  
    Developer Console → app → Apple Pay → add `djstackle.com` → download the association file → save as  
    `clients/djstackle/.well-known/apple-developer-merchantid-domain-association` (no extension).  

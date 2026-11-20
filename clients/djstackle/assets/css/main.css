@@ -776,15 +776,22 @@ body.show-modal-open { overflow: hidden; }
 .site-footer {
   margin-top: 0;
   padding: 2.25rem 0 1.35rem;
-  background: var(--white);
-  color: var(--ink);
-  border-top: 1px solid var(--border);
+  background: #000;
+  color: var(--fog);
+  border-top: none;
 }
-.site-footer a { color: var(--slate); font-weight: 600; }
+.site-footer strong { color: var(--white); }
+.site-footer p { color: var(--fog); }
+.site-footer a {
+  color: var(--white);
+  font-weight: 600;
+}
+.site-footer a:hover { color: var(--chartreuse); }
 .footer-brand-mark {
   width: 88px;
   height: auto;
   margin-bottom: .75rem;
+  filter: invert(1);
 }
 .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 1.5rem; }
 @media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr; } }
@@ -793,13 +800,13 @@ body.show-modal-open { overflow: hidden; }
 .footer-bottom {
   margin-top: 1.5rem;
   padding-top: 1rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
   display: flex;
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
   font-size: .9rem;
-  color: var(--muted);
+  color: var(--steel);
 }
 
 /* —— Inner pages —— */
@@ -1283,4 +1290,104 @@ a.retail-store-card:hover {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.85rem;
   }
+}
+
+/* —— Gift cards —— */
+.gift-card-hero {
+  padding: clamp(2rem, 4.5vw, 3.25rem) 0;
+  background: var(--slate);
+  color: var(--fog);
+  border-bottom: 1px solid rgba(232, 238, 241, 0.1);
+}
+.gift-card-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(1.75rem, 4vw, 3rem);
+  align-items: center;
+}
+@media (max-width: 820px) {
+  .gift-card-hero__grid {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+}
+.gift-card-hero__art {
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid rgba(232, 238, 241, 0.18);
+  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.38);
+  background: #000;
+}
+.gift-card-hero__art img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2100 / 1500;
+  vertical-align: top;
+}
+.gift-card-hero__body {
+  max-width: 30rem;
+}
+@media (max-width: 820px) {
+  .gift-card-hero__body {
+    max-width: none;
+  }
+}
+.gift-card-hero h1 {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5.5vw, 3.35rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.gift-card-hero__lead {
+  margin: 0 0 1rem;
+  font-size: clamp(1.02rem, 1.6vw, 1.12rem);
+  line-height: 1.6;
+  color: rgba(232, 238, 241, 0.92);
+}
+.gift-card-hero__detail {
+  margin: 0 0 1.35rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(232, 238, 241, 0.72);
+}
+.gift-card-hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+.gift-card-hero .btn-primary {
+  background: var(--chartreuse);
+  color: var(--ink);
+  border-color: var(--chartreuse);
+}
+.gift-card-hero .btn-secondary {
+  color: var(--white);
+  border-color: rgba(232, 238, 241, 0.45);
+}
+.gift-card-hero .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--fog);
+}
+.gift-card-redeem {
+  padding: clamp(1.35rem, 3vw, 2rem) 0 clamp(2.5rem, 5vw, 3.25rem);
+  background: var(--fog);
+}
+.gift-card-redeem__inner {
+  max-width: 40rem;
+}
+.gift-card-redeem p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.gift-card-redeem a {
+  font-weight: 600;
+  color: var(--slate);
 }
