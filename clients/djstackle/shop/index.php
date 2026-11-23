@@ -27,7 +27,18 @@ $page_description = 'Browse walleye jigs, River Ready boxes, stinger hooks, bott
 $canonical_path = '/shop/';
 require dirname(__DIR__) . '/includes/header.php';
 ?>
-<section class="page-hero">
+<section class="page-hero page-hero--brand page-hero--shop">
+  <div class="hero-brand__media" aria-hidden="true">
+    <img
+      src="<?= Helpers::e(url('assets/img/shop-hero.jpg')) ?>"
+      alt=""
+      width="682"
+      height="1024"
+      fetchpriority="high"
+      decoding="async"
+    >
+  </div>
+  <div class="hero-brand__shade" aria-hidden="true"></div>
   <div class="container">
     <div class="eyebrow">Catalog</div>
     <h1>Shop</h1>
@@ -36,50 +47,66 @@ require dirname(__DIR__) . '/includes/header.php';
 </section>
 <section class="section" style="padding-top:0">
   <div class="container shop-layout">
+    <?php
+      $filtersActive = $filters['q'] !== ''
+        || $filters['category'] !== ''
+        || $filters['weight'] !== ''
+        || $filters['min_price'] !== ''
+        || $filters['max_price'] !== ''
+        || ($filters['sort'] !== '' && $filters['sort'] !== 'featured');
+    ?>
     <aside class="filters">
-      <form method="get" action="">
-        <label for="q">Search</label>
-        <input id="q" type="search" name="q" value="<?= Helpers::e($filters['q']) ?>" placeholder="Jigs, boxes…">
+      <details class="filters-dropdown" data-filters-dropdown<?= $filtersActive ? ' open' : '' ?>>
+        <summary class="filters-summary">
+          <span>Filters</span>
+          <?php if ($filtersActive): ?>
+            <span class="filters-summary-badge">Active</span>
+          <?php endif; ?>
+        </summary>
+        <form method="get" action="">
+          <label for="q">Search</label>
+          <input id="q" type="search" name="q" value="<?= Helpers::e($filters['q']) ?>" placeholder="Jigs, boxes…">
 
-        <label for="category">Category</label>
-        <select id="category" name="category">
-          <option value="">All</option>
-          <?php foreach ($categories as $cat): ?>
-            <option value="<?= Helpers::e($cat['slug']) ?>"<?= $filters['category'] === $cat['slug'] ? ' selected' : '' ?>><?= Helpers::e($cat['name']) ?></option>
-          <?php endforeach; ?>
-        </select>
+          <label for="category">Category</label>
+          <select id="category" name="category">
+            <option value="">All</option>
+            <?php foreach ($categories as $cat): ?>
+              <option value="<?= Helpers::e($cat['slug']) ?>"<?= $filters['category'] === $cat['slug'] ? ' selected' : '' ?>><?= Helpers::e($cat['name']) ?></option>
+            <?php endforeach; ?>
+          </select>
 
-        <?php if ($weights): ?>
-        <label for="weight">Weight</label>
-        <select id="weight" name="weight">
-          <option value="">Any</option>
-          <?php foreach ($weights as $w): ?>
-            <option value="<?= Helpers::e($w) ?>"<?= $filters['weight'] === $w ? ' selected' : '' ?>><?= Helpers::e($w) ?></option>
-          <?php endforeach; ?>
-        </select>
-        <?php endif; ?>
+          <?php if ($weights): ?>
+          <label for="weight">Weight</label>
+          <select id="weight" name="weight">
+            <option value="">Any</option>
+            <?php foreach ($weights as $w): ?>
+              <option value="<?= Helpers::e($w) ?>"<?= $filters['weight'] === $w ? ' selected' : '' ?>><?= Helpers::e($w) ?></option>
+            <?php endforeach; ?>
+          </select>
+          <?php endif; ?>
 
-        <label for="min_price">Min price ($)</label>
-        <input id="min_price" type="number" step="0.01" min="0" name="min_price" value="<?= Helpers::e(isset($_GET['min_price']) ? (string) $_GET['min_price'] : '') ?>">
+          <label for="min_price">Min price ($)</label>
+          <input id="min_price" type="number" step="0.01" min="0" name="min_price" value="<?= Helpers::e(isset($_GET['min_price']) ? (string) $_GET['min_price'] : '') ?>">
 
-        <label for="max_price">Max price ($)</label>
-        <input id="max_price" type="number" step="0.01" min="0" name="max_price" value="<?= Helpers::e(isset($_GET['max_price']) ? (string) $_GET['max_price'] : '') ?>">
+          <label for="max_price">Max price ($)</label>
+          <input id="max_price" type="number" step="0.01" min="0" name="max_price" value="<?= Helpers::e(isset($_GET['max_price']) ? (string) $_GET['max_price'] : '') ?>">
 
-        <label for="sort">Sort</label>
-        <select id="sort" name="sort">
-          <?php
-          $sorts = ['featured' => 'Featured', 'price_asc' => 'Price: low to high', 'price_desc' => 'Price: high to low', 'name' => 'Name', 'newest' => 'Newest'];
-          foreach ($sorts as $k => $label):
-          ?>
-            <option value="<?= Helpers::e($k) ?>"<?= $filters['sort'] === $k ? ' selected' : '' ?>><?= Helpers::e($label) ?></option>
-          <?php endforeach; ?>
-        </select>
+          <label for="sort">Sort</label>
+          <select id="sort" name="sort">
+            <?php
+            $sorts = ['featured' => 'Featured', 'price_asc' => 'Price: low to high', 'price_desc' => 'Price: high to low', 'name' => 'Name', 'newest' => 'Newest'];
+            foreach ($sorts as $k => $label):
+            ?>
+              <option value="<?= Helpers::e($k) ?>"<?= $filters['sort'] === $k ? ' selected' : '' ?>><?= Helpers::e($label) ?></option>
+            <?php endforeach; ?>
+          </select>
 
-        <p style="margin-top:1rem">
-          <button class="btn btn-primary" type="submit">Apply</button>
-          <a class="btn btn-ghost" href="<?= Helpers::e(url('shop/')) ?>">Reset</a>
-        </p>
-      </form>
+          <p style="margin-top:1rem">
+            <button class="btn btn-primary" type="submit">Apply</button>
+            <a class="btn btn-ghost" href="<?= Helpers::e(url('shop/')) ?>">Reset</a>
+          </p>
+        </form>
+      </details>
     </aside>
 
     <div>

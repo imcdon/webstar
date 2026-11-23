@@ -254,7 +254,7 @@ body.show-modal-open { overflow: hidden; }
 }
 .hero-brand__media img {
   object-fit: cover;
-  object-position: center center;
+  object-position: center 42%;
 }
 .hero-brand__shade {
   position: absolute;
@@ -275,7 +275,7 @@ body.show-modal-open { overflow: hidden; }
     min-height: min(88vh, 720px);
   }
   .hero-brand__media img {
-    object-position: center center;
+    object-position: center 38%;
   }
   .hero-brand__shade {
     background:
@@ -837,6 +837,161 @@ body.show-modal-open { overflow: hidden; }
 .page-hero--brand h1 {
   color: var(--white);
 }
+.page-hero--brand .eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--chartreuse);
+}
+.page-hero--shop {
+  padding: clamp(1.2rem, 4vh, 1.75rem) 0 clamp(0.85rem, 3vh, 1.25rem);
+}
+.page-hero--shop .hero-brand__shade {
+  background:
+    linear-gradient(180deg, rgba(18, 24, 28, 0.1) 0%, rgba(18, 24, 28, 0.22) 48%, rgba(18, 24, 28, 0.48) 100%);
+}
+.page-hero--shop .eyebrow,
+.page-hero--shop h1,
+.page-hero--shop .muted {
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.55), 0 0 1px rgba(0, 0, 0, 0.35);
+}
+.page-hero--shop .hero-brand__media img {
+  object-position: 56% 52%;
+}
+@media (min-width: 768px) {
+  .page-hero--shop .hero-brand__shade {
+    background:
+      linear-gradient(105deg, rgba(18, 24, 28, 0.38) 0%, rgba(18, 24, 28, 0.18) 44%, rgba(18, 24, 28, 0.08) 68%, rgba(18, 24, 28, 0.28) 100%),
+      linear-gradient(180deg, rgba(18, 24, 28, 0.06) 0%, rgba(18, 24, 28, 0.38) 100%);
+  }
+}
+@media (max-width: 767px) {
+  .page-hero--shop .hero-brand__media img {
+    object-position: center 48%;
+  }
+}
+.page-hero--about .hero-brand__shade {
+  background:
+    linear-gradient(180deg, rgba(18, 24, 28, 0.12) 0%, rgba(18, 24, 28, 0.28) 55%, rgba(18, 24, 28, 0.52) 100%);
+}
+.page-hero--about h1 {
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.55), 0 0 1px rgba(0, 0, 0, 0.35);
+}
+.page-hero--about .hero-brand__media img {
+  object-fit: cover;
+  object-position: center center;
+}
+@media (min-width: 768px) {
+  .page-hero--about .hero-brand__shade {
+    background:
+      linear-gradient(105deg, rgba(18, 24, 28, 0.35) 0%, rgba(18, 24, 28, 0.15) 50%, rgba(18, 24, 28, 0.1) 100%),
+      linear-gradient(180deg, rgba(18, 24, 28, 0.08) 0%, rgba(18, 24, 28, 0.4) 100%);
+  }
+}
+.page-hero--dealerships {
+  min-height: min(70vh, 560px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(4.5rem, 18vh, 7.5rem) 0 clamp(2.5rem, 10vh, 4rem);
+}
+.page-hero--dealerships .hero-brand__shade {
+  background:
+    linear-gradient(180deg, rgba(18, 24, 28, 0.18) 0%, rgba(18, 24, 28, 0.32) 52%, rgba(18, 24, 28, 0.55) 100%);
+}
+.page-hero--dealerships .eyebrow,
+.page-hero--dealerships h1,
+.page-hero--dealerships .muted {
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.55), 0 0 1px rgba(0, 0, 0, 0.35);
+}
+.page-hero--dealerships .muted {
+  max-width: 36rem;
+}
+.page-hero--dealerships .hero-brand__media img {
+  object-fit: cover;
+  object-position: 18% 22%;
+}
+.dealerships-hero-cta {
+  margin: 1.1rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+.dealerships-hero-cta .btn-secondary {
+  background: rgba(232, 238, 241, 0.12);
+  border-color: rgba(232, 238, 241, 0.45);
+  color: var(--white);
+}
+.dealerships-hero-cta .btn-secondary:hover {
+  background: rgba(232, 238, 241, 0.22);
+  border-color: rgba(232, 238, 241, 0.7);
+  color: var(--white);
+}
+.dealerships-help .btn {
+  margin: 0.15rem 0 0.35rem;
+}
+@media (min-width: 768px) {
+  .page-hero--dealerships {
+    min-height: min(78vh, 680px);
+    padding: clamp(5.5rem, 20vh, 9rem) 0 clamp(3rem, 11vh, 4.75rem);
+  }
+  .page-hero--dealerships .hero-brand__shade {
+    background:
+      linear-gradient(100deg, rgba(18, 24, 28, 0.58) 0%, rgba(18, 24, 28, 0.28) 38%, rgba(18, 24, 28, 0.08) 68%, rgba(18, 24, 28, 0.22) 100%),
+      linear-gradient(180deg, rgba(18, 24, 28, 0.08) 0%, rgba(18, 24, 28, 0.42) 100%);
+  }
+  .page-hero--dealerships .hero-brand__media img {
+    object-position: 12% 18%;
+  }
+}
+@media (max-width: 767px) {
+  .page-hero--dealerships .hero-brand__media img {
+    object-position: 28% 24%;
+  }
+}
+.dealerships-layout {
+  grid-template-columns: 1.35fr 0.75fr;
+}
+@media (max-width: 860px) {
+  .dealerships-layout {
+    grid-template-columns: 1fr;
+  }
+}
+.dealerships-copy h2 {
+  margin-top: 0;
+}
+.dealerships-steps {
+  margin: 1rem 0 0;
+  padding-left: 1.15rem;
+  color: var(--muted);
+}
+.dealerships-steps li {
+  margin: 0.55rem 0;
+}
+.dealerships-steps strong {
+  color: var(--ink);
+}
+.dealerships-help h3 {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.dealerships-partners .retail-stores {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+.dealerships-form-wrap {
+  max-width: 42rem;
+}
+.dealer-order-form label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+}
 .prose { max-width: 42rem; color: var(--muted); }
 .prose h2 { margin-top: 1.8rem; font-family: var(--font-display); color: var(--ink); text-transform: uppercase; letter-spacing: 0.02em; }
 
@@ -1272,6 +1427,82 @@ a.retail-store-card:hover {
   background: var(--white) !important;
   color: var(--ink) !important;
   border-color: var(--border) !important;
+}
+.filters-dropdown {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+.filters-summary {
+  display: none;
+  list-style: none;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--ink);
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.15rem 0;
+}
+.filters-summary::-webkit-details-marker,
+.filters-summary::marker {
+  display: none;
+  content: '';
+}
+.filters-summary::after {
+  content: '';
+  width: 0.55rem;
+  height: 0.55rem;
+  border-right: 2px solid var(--slate);
+  border-bottom: 2px solid var(--slate);
+  transform: rotate(45deg);
+  transition: transform 0.15s ease;
+  flex-shrink: 0;
+}
+.filters-dropdown[open] > .filters-summary::after {
+  transform: rotate(225deg);
+  margin-top: 0.25rem;
+}
+.filters-summary-badge {
+  margin-left: auto;
+  margin-right: 0.35rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--slate);
+  background: var(--fog);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.2rem 0.45rem;
+}
+@media (max-width: 860px) {
+  .filters {
+    position: static !important;
+    top: auto !important;
+  }
+  .filters-summary {
+    display: flex;
+    margin-bottom: 0.35rem;
+  }
+  .filters-dropdown:not([open]) form {
+    display: none;
+  }
+  .filters-dropdown[open] form {
+    margin-top: 0.65rem;
+    padding-top: 0.65rem;
+    border-top: 1px solid var(--border);
+  }
+}
+@media (min-width: 861px) {
+  .filters-summary {
+    display: none !important;
+  }
 }
 .badge {
   border-radius: 4px !important;

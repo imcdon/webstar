@@ -44,6 +44,7 @@ $nav_links = [
     'Shop' => '/shop/',
     'Gift Cards' => '/gift-cards/',
     'About' => '/about/',
+    'Dealerships' => '/dealerships/',
     'FAQ' => '/faq/',
     'Contact' => '/contact/',
 ];

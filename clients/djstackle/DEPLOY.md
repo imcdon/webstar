@@ -19,6 +19,10 @@ Brand assets live in `assets/img/` (`logo-nav.png`, `logo-full.png`, `favicon.pn
    - **With Square:** `php ../shared/shop/bin/seed-sandbox.php --replace` then `php bin/sync-catalog.php`  
      Creates items, Size/Color options, Michigan 6% sales tax, and stock.  
      Once the owner manages items in the Square Dashboard, stop running the seed — just `sync-catalog.php`.
+   - **Product photos (from live Ecwid CDN URLs in `seed/catalog.php`):**  
+     `php bin/import-product-images.php` (downloads primary images into `seed/images/`; add `--force` to refresh)  
+     then `php bin/upload-product-images-to-square.php` (one primary image per Square ITEM; matches Ecwid-style item names to seed families)  
+     then `php bin/sync-catalog.php` so SQLite picks up Square image URLs. Variation photos are not required.
 4. Webhooks (sandbox or production): subscribe to  
    `payment.updated`, `inventory.count.updated`, `catalog.version.updated`  
    Notification URL must match `square_webhook_notification_url` exactly. Paste signature key into config.

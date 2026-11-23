@@ -16,7 +16,7 @@ $page_title = "DJ's Tackle | Walleye Jigs & River Ready Boxes";
 $page_description = $site_description;
 $body_class = 'home';
 $canonical_path = '/';
-$og_image = absolute_url('assets/img/logo-full.png');
+$og_image = absolute_url('assets/img/hero-home.jpg');
 $json_ld = [$seo->organizationJsonLd()];
 
 require __DIR__ . '/includes/header.php';

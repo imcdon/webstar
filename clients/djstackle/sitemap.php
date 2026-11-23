@@ -10,6 +10,7 @@ $urls = [
     ['loc' => absolute_url(), 'priority' => '1.0'],
     ['loc' => absolute_url('shop/'), 'priority' => '0.9'],
     ['loc' => absolute_url('about/'), 'priority' => '0.6'],
+    ['loc' => absolute_url('dealerships/'), 'priority' => '0.6'],
     ['loc' => absolute_url('contact/'), 'priority' => '0.6'],
     ['loc' => absolute_url('faq/'), 'priority' => '0.5'],
     ['loc' => absolute_url('gift-cards/'), 'priority' => '0.5'],

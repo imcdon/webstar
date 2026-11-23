@@ -6,21 +6,14 @@ use Webstar\Shop\Helpers;
 ?>
 <section class="hero-brand" aria-label="DJ's Tackle">
   <div class="hero-brand__media" aria-hidden="true">
-    <picture>
-      <source
-        media="(min-width: 768px)"
-        srcset="<?= Helpers::e(url('assets/img/desktop-hero-background.png')) ?>"
-        type="image/png"
-      >
-      <img
-        src="<?= Helpers::e(url('assets/img/mobile-hero-background.png')) ?>"
-        alt=""
-        width="408"
-        height="612"
-        fetchpriority="high"
-        decoding="async"
-      >
-    </picture>
+    <img
+      src="<?= Helpers::e(url('assets/img/hero-home.jpg')) ?>"
+      alt=""
+      width="1024"
+      height="682"
+      fetchpriority="high"
+      decoding="async"
+    >
   </div>
   <div class="hero-brand__shade" aria-hidden="true"></div>
   <div class="container hero-brand__inner">

@@ -132,6 +132,22 @@
     }
   }
 
+  const filtersDropdown = document.querySelector('[data-filters-dropdown]');
+  if (filtersDropdown) {
+    const desktopFilters = window.matchMedia('(min-width: 861px)');
+    const syncFiltersOpen = () => {
+      if (desktopFilters.matches) {
+        filtersDropdown.open = true;
+      }
+    };
+    syncFiltersOpen();
+    if (typeof desktopFilters.addEventListener === 'function') {
+      desktopFilters.addEventListener('change', syncFiltersOpen);
+    } else if (typeof desktopFilters.addListener === 'function') {
+      desktopFilters.addListener(syncFiltersOpen);
+    }
+  }
+
   const toggle = document.querySelector('[data-nav-toggle]');
   const panel = document.querySelector('[data-nav]');
   const search = document.querySelector('[data-nav-search]');

@@ -11,7 +11,18 @@ $page_description = "DJ's Tackle was created by fishermen for fishermen — a fa
 $canonical_path = '/about/';
 require dirname(__DIR__) . '/includes/header.php';
 ?>
-<section class="page-hero">
+<section class="page-hero page-hero--brand page-hero--about">
+  <div class="hero-brand__media" aria-hidden="true">
+    <img
+      src="<?= Helpers::e(url('assets/img/about-hero.png')) ?>"
+      alt=""
+      width="1024"
+      height="575"
+      fetchpriority="high"
+      decoding="async"
+    >
+  </div>
+  <div class="hero-brand__shade" aria-hidden="true"></div>
   <div class="container">
     <h1>About DJ's Tackle</h1>
   </div>
