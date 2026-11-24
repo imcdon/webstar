@@ -3,11 +3,10 @@
 Fill Square's blank Item Library .xlsx template from our import CSV.
 
 Usage:
-  python bin/fill-square-template.py template.xlsx source.csv output.xlsx
+  python bin/fill-square-template.py template.xlsx source.csv output.xlsx [--qty 9999]
 
 Preserves rows 1-6 (instructions + headers). Data starts row 7.
 """
-
 from __future__ import annotations
 
 import csv
@@ -39,17 +38,35 @@ def set_cell(ws, row: int, cols: dict[str, int], header: str, value) -> None:
     ws.cell(row, cols[header], value)
 
 
-def main() -> int:
-    if len(sys.argv) < 4:
+def parse_args(argv: list[str]) -> tuple[Path, Path, Path, str | None]:
+    positional: list[str] = []
+    qty_override: str | None = None
+    i = 0
+    while i < len(argv):
+        arg = argv[i]
+        if arg == "--qty" and i + 1 < len(argv):
+            qty_override = argv[i + 1]
+            i += 2
+            continue
+        if arg.startswith("--qty="):
+            qty_override = arg.split("=", 1)[1]
+            i += 1
+            continue
+        positional.append(arg)
+        i += 1
+
+    if len(positional) < 3:
         print(
-            "Usage: fill-square-template.py <square-template.xlsx> <import.csv> <output.xlsx>",
+            "Usage: fill-square-template.py <square-template.xlsx> <import.csv> <output.xlsx> [--qty 9999]",
             file=sys.stderr,
         )
-        return 1
+        raise SystemExit(1)
 
-    template_path = Path(sys.argv[1])
-    csv_path = Path(sys.argv[2])
-    out_path = Path(sys.argv[3])
+    return Path(positional[0]), Path(positional[1]), Path(positional[2]), qty_override
+
+
+def main() -> int:
+    template_path, csv_path, out_path, qty_override = parse_args(sys.argv[1:])
 
     wb = openpyxl.load_workbook(template_path)
     ws = wb["Items"] if "Items" in wb.sheetnames else wb.active
@@ -80,7 +97,7 @@ def main() -> int:
     with csv_path.open(newline="", encoding="utf-8-sig") as fh:
         reader = csv.DictReader(fh)
         for src in reader:
-            qty = src.get(new_qty_col) or src.get("New Quantity") or "25"
+            qty = qty_override or src.get(new_qty_col) or src.get("New Quantity") or "25"
             set_cell(ws, row_num, cols, "Token", src.get("Token", ""))
             set_cell(ws, row_num, cols, "Item Name", src.get("Item Name", ""))
             set_cell(ws, row_num, cols, "Customer-facing Name", src.get("Item Name", ""))
@@ -88,6 +105,7 @@ def main() -> int:
             set_cell(ws, row_num, cols, "SKU", src.get("SKU", ""))
             set_cell(ws, row_num, cols, "Description", src.get("Description", ""))
             set_cell(ws, row_num, cols, "Categories", src.get("Category", ""))
+            set_cell(ws, row_num, cols, "Reporting Category", src.get("Category", ""))
             set_cell(ws, row_num, cols, "Item Type", src.get("Item Type", "") or "Physical")
             price = src.get("Price", "")
             set_cell(ws, row_num, cols, "Price", price)
@@ -95,6 +113,8 @@ def main() -> int:
             set_cell(ws, row_num, cols, "Stockable", src.get("Stockable", "Y"))
             set_cell(ws, row_num, cols, "Option Name 1", src.get("Option Name 1", ""))
             set_cell(ws, row_num, cols, "Option Value 1", src.get("Option Value 1", ""))
+            set_cell(ws, row_num, cols, "Option Name 2", src.get("Option Name 2", ""))
+            set_cell(ws, row_num, cols, "Option Value 2", src.get("Option Value 2", ""))
             if current_qty_col:
                 set_cell(ws, row_num, cols, current_qty_col, "")
             set_cell(ws, row_num, cols, new_qty_col, qty)
@@ -104,9 +124,10 @@ def main() -> int:
                 set_cell(ws, row_num, cols, alert_count, "5")
             row_num += 1
 
+    out_path.parent.mkdir(parents=True, exist_ok=True)
     wb.save(out_path)
     print(f"Wrote {row_num - DATA_START} rows to {out_path}")
-    print(f"  Quantity column: {new_qty_col}")
+    print(f"  Quantity column: {new_qty_col} = {qty_override or 'from CSV'}")
     return 0
 
 

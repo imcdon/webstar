@@ -22,7 +22,8 @@ Brand assets live in `assets/img/` (`logo-nav.png`, `logo-full.png`, `favicon.pn
    - **Product photos (from live Ecwid CDN URLs in `seed/catalog.php`):**  
      `php bin/import-product-images.php` (downloads primary images into `seed/images/`; add `--force` to refresh)  
      then `php bin/upload-product-images-to-square.php` (one primary image per Square ITEM; matches Ecwid-style item names to seed families)  
-     then `php bin/sync-catalog.php` so SQLite picks up Square image URLs. Variation photos are not required.
+     then `php bin/sync-catalog.php` so SQLite picks up Square image URLs.  
+   - **Jig color photos on the website:** files live in `assets/img/products/jigs/` and are mapped in `seed/catalog.php` (`color_images`). After catalog sync run `php bin/sync-product-images.php` (also runs automatically at the end of `sync-catalog.php`) so each Color variation gets its local photo.
 4. Webhooks (sandbox or production): subscribe to  
    `payment.updated`, `inventory.count.updated`, `catalog.version.updated`  
    Notification URL must match `square_webhook_notification_url` exactly. Paste signature key into config.

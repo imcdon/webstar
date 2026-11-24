@@ -98,6 +98,10 @@
     }
     const alertInput = qs('form input[name="variation_id"]');
     if (alertInput && v) alertInput.value = v.id;
+    const img = qs('[data-product-image]');
+    if (img && v && v.image) {
+      img.src = v.image;
+    }
   }
 
   // Legacy flat variation picker
@@ -161,6 +165,46 @@
       current[btn.getAttribute('data-option-name')] = btn.getAttribute('data-option-value');
       refresh();
     });
+
+    function previewColorImage(colorValue) {
+      const img = qs('[data-product-image]');
+      if (!img) return;
+      const probe = Object.assign({}, current, { Color: colorValue });
+      const hit = variations.find((x) => matches(x, probe) && x.image);
+      if (hit && hit.image) {
+        img.src = hit.image;
+      }
+    }
+
+    function restoreSelectedImage() {
+      const complete = groups.every((name) => current[name]);
+      const v = complete ? variations.find((x) => matches(x, current)) : null;
+      const img = qs('[data-product-image]');
+      if (img && v && v.image) {
+        img.src = v.image;
+      }
+    }
+
+    const colorGroup = qs('[data-option-group="Color"]', picker);
+    if (colorGroup) {
+      colorGroup.addEventListener('mouseover', (e) => {
+        const btn = e.target.closest('[data-option-name="Color"]');
+        if (!btn || !colorGroup.contains(btn)) return;
+        previewColorImage(btn.getAttribute('data-option-value'));
+      });
+      colorGroup.addEventListener('mouseleave', () => {
+        restoreSelectedImage();
+      });
+      colorGroup.addEventListener('focusin', (e) => {
+        const btn = e.target.closest('[data-option-name="Color"]');
+        if (!btn || !colorGroup.contains(btn)) return;
+        previewColorImage(btn.getAttribute('data-option-value'));
+      });
+      colorGroup.addEventListener('focusout', (e) => {
+        if (e.relatedTarget && colorGroup.contains(e.relatedTarget)) return;
+        restoreSelectedImage();
+      });
+    }
 
     refresh();
   })();

@@ -73,6 +73,11 @@ final class SeedCatalog
             ];
         }
 
+        $colorImages = [];
+        foreach (($listing['color_images'] ?? []) as $colorName => $path) {
+            $colorImages[(string) $colorName] = (string) $path;
+        }
+
         return [
             'key' => (string) ($listing['key'] ?? Helpers::slugify((string) $listing['name'])),
             'name' => (string) $listing['name'],
@@ -80,6 +85,7 @@ final class SeedCatalog
             'description' => (string) ($listing['description'] ?? ''),
             'local_image' => $listing['local_image'] ?? null,
             'images' => array_values($listing['images'] ?? []),
+            'color_images' => $colorImages,
             'options' => $options,
             'variations' => $variations,
         ];
@@ -105,6 +111,7 @@ final class SeedCatalog
             'description' => (string) ($p['description'] ?? ''),
             'local_image' => $p['local_image'] ?? null,
             'images' => array_values(array_filter($p['images'] ?? [], fn ($u) => is_string($u) && str_ends_with(strtolower($u), '.jpg'))),
+            'color_images' => [],
             'options' => [],
             'variations' => $vars,
         ];

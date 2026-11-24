@@ -178,3 +178,63 @@
     }
   });
 })();
+
+(function () {
+  const back = document.querySelector('[data-product-back]');
+  if (!back) return;
+  back.addEventListener('click', (event) => {
+    if (window.history.length > 1) {
+      event.preventDefault();
+      window.history.back();
+    }
+  });
+})();
+
+(function () {
+  const picker = document.querySelector('[data-option-picker]');
+  if (!picker) return;
+  const mq = window.matchMedia('(min-width: 861px)');
+  const panels = () => Array.from(picker.querySelectorAll('details.option-dropdown'));
+
+  function isDesktop() {
+    return mq.matches;
+  }
+
+  function syncBreakpointPanels() {
+    panels().forEach((panel) => {
+      panel.open = isDesktop();
+    });
+  }
+
+  syncBreakpointPanels();
+  if (typeof mq.addEventListener === 'function') {
+    mq.addEventListener('change', syncBreakpointPanels);
+  } else if (typeof mq.addListener === 'function') {
+    mq.addListener(syncBreakpointPanels);
+  }
+
+  picker.addEventListener('toggle', (event) => {
+    const open = event.target;
+    if (!(open instanceof HTMLDetailsElement)) return;
+    if (isDesktop()) {
+      if (!open.open) open.open = true;
+      return;
+    }
+    if (!open.open) return;
+    panels().forEach((panel) => {
+      if (panel !== open) panel.open = false;
+    });
+  }, true);
+
+  picker.addEventListener('click', (event) => {
+    if (isDesktop()) return;
+    const btn = event.target.closest('[data-option-name]');
+    if (!btn) return;
+    const panel = btn.closest('details.option-dropdown');
+    if (panel) {
+      window.requestAnimationFrame(() => {
+        panel.open = false;
+      });
+    }
+  });
+})();

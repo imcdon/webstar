@@ -280,13 +280,84 @@ final class Catalog
         }
 
         $counts = $this->syncInventory($variationIds);
+        $imagesApplied = $this->applySeedImages();
 
         $this->setMeta('last_catalog_sync', date('c'));
         return [
             'products' => (int) $this->db->query('SELECT COUNT(*) FROM products')->fetchColumn(),
             'variations' => (int) $this->db->query('SELECT COUNT(*) FROM variations')->fetchColumn(),
             'inventory_updated' => $counts,
+            'images_applied' => $imagesApplied,
         ];
+    }
+
+    /**
+     * Apply seed/catalog.php local_image + color_images onto products/variations.
+     * Safe to re-run after sync so the PHP shop shows jig color photos.
+     */
+    public function applySeedImages(): int
+    {
+        $clientRoot = dirname($this->config->sqlitePath, 2);
+        try {
+            $listings = SeedCatalog::load($clientRoot);
+        } catch (\Throwable) {
+            return 0;
+        }
+
+        $findProduct = $this->db->prepare('SELECT id FROM products WHERE lower(name) = lower(?) LIMIT 1');
+        $updateProduct = $this->db->prepare('UPDATE products SET local_image = ? WHERE id = ?');
+        $listVars = $this->db->prepare('SELECT id, option_values_json FROM variations WHERE product_id = ?');
+        $updateVarLocal = $this->db->prepare('UPDATE variations SET local_image = ? WHERE id = ?');
+
+        $updated = 0;
+        foreach ($listings as $listing) {
+            $name = trim((string) ($listing['name'] ?? ''));
+            if ($name === '') {
+                continue;
+            }
+            $findProduct->execute([$name]);
+            $productId = $findProduct->fetchColumn();
+            if (!$productId) {
+                continue;
+            }
+
+            /** @var array<string,string> $colorImages keyed by lowercase color name */
+            $colorImages = [];
+            foreach (($listing['color_images'] ?? []) as $colorName => $path) {
+                $colorImages[strtolower(trim((string) $colorName))] = (string) $path;
+            }
+
+            $productLocal = trim((string) ($listing['local_image'] ?? ''));
+            if ($colorImages !== []) {
+                $productLocal = $colorImages['antifreeze'] ?? (string) reset($colorImages);
+            }
+            if ($productLocal !== '') {
+                $updateProduct->execute([$productLocal, $productId]);
+                $updated++;
+            }
+
+            $listVars->execute([$productId]);
+            foreach ($listVars->fetchAll() as $var) {
+                $opts = json_decode((string) ($var['option_values_json'] ?? '{}'), true);
+                if (!is_array($opts)) {
+                    $opts = [];
+                }
+                $color = strtolower(trim((string) ($opts['Color'] ?? $opts['color'] ?? '')));
+                $path = '';
+                if ($color !== '' && isset($colorImages[$color])) {
+                    $path = $colorImages[$color];
+                } elseif ($productLocal !== '') {
+                    $path = $productLocal;
+                }
+                if ($path === '') {
+                    continue;
+                }
+                $updateVarLocal->execute([$path, $var['id']]);
+                $updated++;
+            }
+        }
+
+        return $updated;
     }
 
     /**
@@ -429,6 +500,7 @@ final class Catalog
             throw $e;
         }
 
+        $this->applySeedImages();
         $this->setMeta('last_catalog_sync', date('c'));
         $this->setMeta('seed_source', 'local');
         return $pSort;
@@ -603,7 +675,7 @@ final class Catalog
     /**
      * Seed listings keyed by lowercase name, for image/category fallbacks when Square omits them.
      *
-     * @return array<string, array{local_image: ?string, images: list<string>, category: ?string}>
+     * @return array<string, array{local_image: ?string, images: list<string>, color_images: array<string,string>, category: ?string}>
      */
     private function localSeedIndex(): array
     {
@@ -615,9 +687,18 @@ final class Catalog
         }
         $index = [];
         foreach ($listings as $l) {
+            $colorImages = [];
+            foreach (($l['color_images'] ?? []) as $colorName => $path) {
+                $colorImages[strtolower(trim((string) $colorName))] = (string) $path;
+            }
+            $local = $l['local_image'] ?? null;
+            if ($colorImages !== []) {
+                $local = $colorImages['antifreeze'] ?? reset($colorImages);
+            }
             $index[strtolower((string) $l['name'])] = [
-                'local_image' => $l['local_image'] ?? null,
+                'local_image' => $local,
                 'images' => $l['images'] ?? [],
+                'color_images' => $colorImages,
                 'category' => $l['category'] ?? null,
             ];
         }

@@ -97,13 +97,30 @@ $shopAccount = $shopAccounts->current();
 $cart_count = $shopCart->count();
 
 if (!function_exists('product_image_url')) {
-    function product_image_url(array $product): string
+    /**
+     * @param array<string,mixed> $product
+     * @param array<string,mixed>|null $variation
+     */
+    function product_image_url(array $product, ?array $variation = null): string
     {
-        if (!empty($product['local_image']) && is_file(dirname(__DIR__) . '/' . $product['local_image'])) {
-            return url($product['local_image']);
-        }
-        if (!empty($product['image_url'])) {
-            return (string) $product['image_url'];
+        $root = dirname(__DIR__);
+        $candidates = [
+            $variation['local_image'] ?? null,
+            $variation['image_url'] ?? null,
+            $product['local_image'] ?? null,
+            $product['image_url'] ?? null,
+        ];
+        foreach ($candidates as $candidate) {
+            $path = is_string($candidate) ? trim($candidate) : '';
+            if ($path === '') {
+                continue;
+            }
+            if (str_starts_with($path, 'http://') || str_starts_with($path, 'https://')) {
+                return $path;
+            }
+            if (is_file($root . '/' . ltrim(str_replace('\\', '/', $path), '/'))) {
+                return url($path);
+            }
         }
         return url('assets/img/placeholder.svg');
     }

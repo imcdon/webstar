@@ -36,16 +36,28 @@ function writeCsv(string $path, array $headers, array $rows): void
     fclose($fh);
 }
 
+$siteUrl = 'https://djstackle.com';
 $exportRows = [];
 $squareRows = [];
 
 foreach ($listings as $l) {
-    $image = $l['images'][0] ?? '';
+    $fallbackImage = $l['images'][0] ?? '';
+    $colorImages = is_array($l['color_images'] ?? null) ? $l['color_images'] : [];
     $optNames = array_column($l['options'], 'name');
 
     foreach ($l['variations'] as $v) {
         $price = number_format(((int) $v['price_cents']) / 100, 2, '.', '');
         $ov = $v['option_values'];
+        $color = (string) ($ov['Color'] ?? '');
+        $localColorPath = $color !== '' && isset($colorImages[$color])
+            ? (string) $colorImages[$color]
+            : '';
+        $imageUrl = $fallbackImage;
+        $localImage = $l['local_image'] ?? '';
+        if ($localColorPath !== '') {
+            $localImage = $localColorPath;
+            $imageUrl = $siteUrl . '/' . ltrim(str_replace('\\', '/', $localColorPath), '/');
+        }
 
         $exportRows[] = [
             $l['key'],
@@ -58,8 +70,8 @@ foreach ($listings as $l) {
             $v['quantity'],
             $optNames[0] ?? '', $ov[$optNames[0] ?? ''] ?? '',
             $optNames[1] ?? '', $ov[$optNames[1] ?? ''] ?? '',
-            $image,
-            $l['local_image'] ?? '',
+            $imageUrl,
+            $localImage,
         ];
 
         $squareRows[] = [
@@ -76,7 +88,7 @@ foreach ($listings as $l) {
             'Y',                      // Sellable
             'Y',                      // Stockable
             (string) $v['quantity'],  // New Quantity
-            $image,
+            $imageUrl,
         ];
     }
 }

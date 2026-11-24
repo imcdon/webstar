@@ -76,97 +76,127 @@ $json_ld = [
 ];
 
 require dirname(__DIR__) . '/includes/header.php';
+
+$options = $product['options'] ?? [];
+$variationMap = [];
+foreach ($variations as $v) {
+    $vb = Helpers::stockBadge((int) $v['quantity'], $shopConfig->lowStockThreshold, (bool) $v['track_inventory']);
+    $variationMap[] = [
+        'id' => $v['id'],
+        'name' => $v['name'],
+        'sku' => $v['sku'],
+        'price' => Helpers::money((int) $v['price_cents']),
+        'stock' => $vb['label'],
+        'stock_class' => $vb['class'],
+        'sold_out' => ($vb['state'] ?? '') === 'sold_out',
+        'options' => $v['option_values'] ?? [],
+        'image' => product_image_url($product, $v),
+    ];
+}
 ?>
-<section class="section">
-  <div class="container">
-    <?php if ($flash): ?>
+<section class="section product-detail">
+  <?php if ($flash): ?>
+    <div class="container">
       <div class="flash <?= Helpers::e($flash[0]) ?>"><?= Helpers::e($flash[1]) ?></div>
-    <?php endif; ?>
+    </div>
+  <?php endif; ?>
+
+  <div class="product-shell">
+    <a class="product-back" href="<?= Helpers::e(url('shop/')) ?>" data-product-back aria-label="Back to shop">
+      <span aria-hidden="true">←</span>
+      <span class="product-back-label">Shop</span>
+    </a>
+
     <div class="product-hero">
       <div class="product-gallery">
-        <img src="<?= Helpers::e(product_image_url($product)) ?>" alt="<?= Helpers::e($product['name']) ?>" width="800" height="800">
+        <img
+          src="<?= Helpers::e(product_image_url($product, $selected)) ?>"
+          alt="<?= Helpers::e($product['name']) ?>"
+          width="800"
+          height="800"
+          data-product-image
+        >
       </div>
-      <div>
-        <div class="eyebrow"><?= Helpers::e($product['category_name'] ?? 'Tackle') ?></div>
-        <h1><?= Helpers::e($product['name']) ?></h1>
-        <p class="price" data-product-price style="font-size:1.4rem;font-weight:800;color:var(--accent)">
-          <?= Helpers::e($selected ? Helpers::money((int) $selected['price_cents']) : '') ?>
-        </p>
-        <span class="badge <?= Helpers::e($badge['class']) ?>" data-stock-badge><?= Helpers::e($badge['label']) ?></span>
-        <?php if (!empty($product['avg_rating'])): ?>
-          <p class="stars"><?= str_repeat('★', (int) round((float) $product['avg_rating'])) ?> <span class="muted">(<?= (int) $product['review_count'] ?>)</span></p>
-        <?php endif; ?>
+
+      <div class="product-info">
+        <h1 class="product-title"><?= Helpers::e($product['name']) ?></h1>
+
+        <div class="product-meta">
+          <div class="product-price-stack">
+            <p class="product-price" data-product-price>
+              <?= Helpers::e($selected ? Helpers::money((int) $selected['price_cents']) : '') ?>
+            </p>
+            <span class="badge <?= Helpers::e($badge['class']) ?>" data-stock-badge><?= Helpers::e($badge['label']) ?></span>
+            <?php if (!empty($product['avg_rating'])): ?>
+              <span class="stars product-stars" aria-label="<?= Helpers::e((string) $product['avg_rating']) ?> stars">
+                <?= str_repeat('★', (int) round((float) $product['avg_rating'])) ?>
+                <span class="muted">(<?= (int) $product['review_count'] ?>)</span>
+              </span>
+            <?php endif; ?>
+          </div>
+
+          <div class="product-actions">
+            <div class="qty-row product-qty">
+              <label class="visually-hidden" for="qty">Qty</label>
+              <input id="qty" name="qty" type="number" min="1" value="1" aria-label="Quantity">
+            </div>
+            <button class="btn btn-primary" type="button" data-add-to-cart data-variation-id="<?= Helpers::e($selected['id'] ?? '') ?>"<?= ($badge['state'] ?? '') === 'sold_out' ? ' disabled' : '' ?>>Add to cart</button>
+            <button class="btn btn-secondary" type="button" data-wishlist-toggle data-product-id="<?= Helpers::e($product['id']) ?>" aria-pressed="<?= $shopWishlist->has($product['id']) ? 'true' : 'false' ?>">
+              <?= $shopWishlist->has($product['id']) ? 'Saved' : 'Save' ?>
+            </button>
+          </div>
+        </div>
+
+        <div class="product-options">
+          <?php if ($options && count($variations) > 1): ?>
+            <div class="option-groups" data-option-picker>
+              <?php foreach ($options as $opt): ?>
+                <details class="option-group option-dropdown" data-option-group="<?= Helpers::e($opt['name']) ?>">
+                  <summary class="option-dropdown-summary">
+                    <span class="option-dropdown-label"><strong><?= Helpers::e($opt['name']) ?></strong></span>
+                    <span class="muted option-dropdown-value" data-option-current><?= Helpers::e($selected['option_values'][$opt['name']] ?? '') ?></span>
+                  </summary>
+                  <div class="variation-list option-dropdown-panel" role="radiogroup" aria-label="<?= Helpers::e($opt['name']) ?>">
+                    <?php foreach ($opt['values'] as $val): ?>
+                      <button type="button" role="radio"
+                        data-option-name="<?= Helpers::e($opt['name']) ?>"
+                        data-option-value="<?= Helpers::e($val) ?>"
+                        aria-checked="<?= ($selected['option_values'][$opt['name']] ?? null) === $val ? 'true' : 'false' ?>">
+                        <?= Helpers::e($val) ?>
+                      </button>
+                    <?php endforeach; ?>
+                  </div>
+                </details>
+              <?php endforeach; ?>
+            </div>
+          <?php elseif (count($variations) > 1): ?>
+            <label><strong>Options</strong></label>
+            <div class="variation-list" role="list">
+              <?php foreach ($variationMap as $vm): ?>
+                <button type="button"
+                  data-variation="<?= Helpers::e($vm['id']) ?>"
+                  data-price="<?= Helpers::e($vm['price']) ?>"
+                  data-stock="<?= Helpers::e($vm['stock']) ?>"
+                  data-stock-class="<?= Helpers::e($vm['stock_class']) ?>"
+                  aria-pressed="<?= $selected && $selected['id'] === $vm['id'] ? 'true' : 'false' ?>">
+                  <?= Helpers::e($vm['name']) ?>
+                </button>
+              <?php endforeach; ?>
+            </div>
+          <?php endif; ?>
+
+          <script type="application/json" data-variations-json><?= json_encode($variationMap, JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP) ?></script>
+          <input type="hidden" name="variation_id" value="<?= Helpers::e($selected['id'] ?? '') ?>">
+        </div>
+
         <?php if ($product['description']): ?>
-          <p><?= nl2br(Helpers::e($product['description'])) ?></p>
-        <?php endif; ?>
-
-        <?php
-        $options = $product['options'] ?? [];
-        $variationMap = [];
-        foreach ($variations as $v) {
-            $vb = Helpers::stockBadge((int) $v['quantity'], $shopConfig->lowStockThreshold, (bool) $v['track_inventory']);
-            $variationMap[] = [
-                'id' => $v['id'],
-                'name' => $v['name'],
-                'sku' => $v['sku'],
-                'price' => Helpers::money((int) $v['price_cents']),
-                'stock' => $vb['label'],
-                'stock_class' => $vb['class'],
-                'sold_out' => ($vb['state'] ?? '') === 'sold_out',
-                'options' => $v['option_values'] ?? [],
-            ];
-        }
-        ?>
-        <?php if ($options && count($variations) > 1): ?>
-          <div class="option-groups" data-option-picker>
-            <?php foreach ($options as $opt): ?>
-              <div class="option-group" data-option-group="<?= Helpers::e($opt['name']) ?>">
-                <label><strong><?= Helpers::e($opt['name']) ?>:</strong> <span class="muted" data-option-current><?= Helpers::e($selected['option_values'][$opt['name']] ?? '') ?></span></label>
-                <div class="variation-list" role="radiogroup" aria-label="<?= Helpers::e($opt['name']) ?>">
-                  <?php foreach ($opt['values'] as $val): ?>
-                    <button type="button" role="radio"
-                      data-option-name="<?= Helpers::e($opt['name']) ?>"
-                      data-option-value="<?= Helpers::e($val) ?>"
-                      aria-checked="<?= ($selected['option_values'][$opt['name']] ?? null) === $val ? 'true' : 'false' ?>">
-                      <?= Helpers::e($val) ?>
-                    </button>
-                  <?php endforeach; ?>
-                </div>
-              </div>
-            <?php endforeach; ?>
-          </div>
-          <p class="muted" data-selected-sku>SKU: <?= Helpers::e($selected['sku'] ?? '') ?></p>
-        <?php elseif (count($variations) > 1): ?>
-          <label><strong>Options</strong></label>
-          <div class="variation-list" role="list">
-            <?php foreach ($variationMap as $vm): ?>
-              <button type="button"
-                data-variation="<?= Helpers::e($vm['id']) ?>"
-                data-price="<?= Helpers::e($vm['price']) ?>"
-                data-stock="<?= Helpers::e($vm['stock']) ?>"
-                data-stock-class="<?= Helpers::e($vm['stock_class']) ?>"
-                aria-pressed="<?= $selected && $selected['id'] === $vm['id'] ? 'true' : 'false' ?>">
-                <?= Helpers::e($vm['name']) ?>
-              </button>
-            <?php endforeach; ?>
+          <div class="product-description">
+            <p><?= nl2br(Helpers::e($product['description'])) ?></p>
           </div>
         <?php endif; ?>
-
-        <script type="application/json" data-variations-json><?= json_encode($variationMap, JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP) ?></script>
-        <input type="hidden" name="variation_id" value="<?= Helpers::e($selected['id'] ?? '') ?>">
-        <div class="qty-row">
-          <label for="qty">Qty</label>
-          <input id="qty" name="qty" type="number" min="1" value="1">
-        </div>
-        <div style="display:flex;gap:.6rem;flex-wrap:wrap">
-          <button class="btn btn-primary" type="button" data-add-to-cart data-variation-id="<?= Helpers::e($selected['id'] ?? '') ?>"<?= ($badge['state'] ?? '') === 'sold_out' ? ' disabled' : '' ?>>Add to cart</button>
-          <button class="btn btn-secondary" type="button" data-wishlist-toggle data-product-id="<?= Helpers::e($product['id']) ?>" aria-pressed="<?= $shopWishlist->has($product['id']) ? 'true' : 'false' ?>">
-            <?= $shopWishlist->has($product['id']) ? 'Saved' : 'Save' ?>
-          </button>
-        </div>
 
         <?php if (($badge['state'] ?? '') === 'sold_out' && $selected): ?>
-          <form method="post" class="card" style="margin-top:1rem">
+          <form method="post" class="card product-stock-alert">
             <input type="hidden" name="action" value="stock_alert">
             <input type="hidden" name="variation_id" value="<?= Helpers::e($selected['id']) ?>">
             <strong>Back in stock alert</strong>
