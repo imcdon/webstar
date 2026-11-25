@@ -23,7 +23,7 @@
 <p>Regular hours plus holiday special hours before busy weekends. Attributes (women-owned, wheelchair access, etc.) only when true.</p>
 
 <h2>8. Verification and reviews</h2>
-<p>Finish postcard, phone, or email verification promptly. After delivery, ask happy customers — see <a href="<?php echo webstar_h(webstar_url('resources/first-10-google-reviews-small-business/')); ?>">first ten reviews</a>. Never buy or script reviews.</p>
+<p>Finish postcard, phone, or email verification promptly. After delivery, ask happy customers when the job is clearly done — use Google’s review link from the profile. Never buy or script reviews.</p>
 
 <h2>9. Connect Google tools</h2>
 <p>Analytics and Search Console under your login — included on Webstar packages. Confirm the profile website field after launch using the <a href="<?php echo webstar_h(webstar_url('resources/website-launch-checklist-domain-hosting/')); ?>">launch checklist</a>.</p>

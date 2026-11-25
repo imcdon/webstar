@@ -43,12 +43,12 @@ Canonical list — metadata in `library/articles-data.php`, body in `library/art
 4. `what-to-put-on-3-page-website`
 5. `wix-squarespace-vs-custom-website`
 6. `website-launch-checklist-domain-hosting`
-7. `first-10-google-reviews-small-business`
+7. `case-study-metro-detroit-holiday-lighting`
 8. `businesses-in-chatgpt-local-ai-search`
 9. `low-and-slow-seo-geo-2026`
 10. `choosing-website-features`
 
-**Not live yet (proposed):** Square ecommerce guide, low-cost custom 2026, MDHL / Gypsie Locs / DJ's Tackle case studies — see [resource-topics.csv](../content-revamp/resource-topics.csv).
+**Not live yet (proposed):** Square ecommerce guide, low-cost custom 2026, Gypsie Locs / DJ's Tackle case studies — see [resource-topics.csv](../content-revamp/resource-topics.csv).
 
 ## Content and SEO revamp status
 

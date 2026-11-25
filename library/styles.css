@@ -2737,6 +2737,37 @@ main {
     margin-bottom: 2rem;
 }
 
+.article-body figure.article-figure {
+    margin: 1.75rem 0;
+}
+
+.article-body figure.article-figure img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-md, 0.5rem);
+    display: block;
+}
+
+.article-body figure.article-figure figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.88rem;
+    color: var(--ink-muted);
+    line-height: 1.45;
+}
+
+.article-body figure.article-figure--pair {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+}
+
+@media (min-width: 640px) {
+    .article-body figure.article-figure--wide img {
+        max-height: 420px;
+        object-fit: cover;
+    }
+}
+
 .article-author {
     margin: 2.5rem 0;
     padding: 1.25rem 1.35rem;

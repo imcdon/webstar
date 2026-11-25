@@ -40,7 +40,7 @@
 <p>A claimed, verified GBP with real categories, services, and photos beats a perfect homepage with an empty listing. Same for profiles you actually use — do not claim ChatGPT business beta or Yelp if nobody will update them. Step-by-step: <a href="<?php echo webstar_h(webstar_url('resources/google-business-profile-checklist-metro-detroit/')); ?>">GBP checklist</a>.</p>
 
 <h3>Reviews with context</h3>
-<p>Steady, specific reviews beat bursts of generic five-stars. “Fixed our heat pump in Shelby Township same day” helps matching more than “Great job!” Ask after wins; respond to every new one. Ethical basics: <a href="<?php echo webstar_h(webstar_url('resources/first-10-google-reviews-small-business/')); ?>">first ten reviews</a>.</p>
+<p>Steady, specific reviews beat bursts of generic five-stars. “Fixed our heat pump in Shelby Township same day” helps matching more than “Great job!” Ask after wins; respond to every new one. Never buy bundles or scripted praise.</p>
 
 <h3>Human content, lightly seasoned</h3>
 <p>One edited case study, service expansion, or seasonal update per month is enough for most local shops. AI-drafted walls of “SEO articles” without your voice are empty calories — they crowd out work that compounds. Google’s people-first guidance applies whether the tab says SEO or GEO.</p>

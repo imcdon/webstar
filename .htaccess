@@ -65,6 +65,9 @@ DirectoryIndex index.php
     RewriteCond %{THE_REQUEST} \s/+((?:[^?\s]*?/)?)small-business-marketing-package-michigan/?[\s?] [NC]
     RewriteRule ^ /%1packages/business-website/ [R=301,L]
 
+    RewriteCond %{THE_REQUEST} \s/+((?:[^?\s]*?/)?)resources/first-10-google-reviews-small-business/?[\s?] [NC]
+    RewriteRule ^ /%1resources/case-study-metro-detroit-holiday-lighting/ [R=301,L]
+
     # /…/landing.php?slug=x → /…/x/
     RewriteCond %{THE_REQUEST} \s/+((?:[^?\s]*?/)?)landing\.php\?[^\s]*slug=([^\s&]+) [NC]
     RewriteRule ^ /%1%2/? [R=301,L]
