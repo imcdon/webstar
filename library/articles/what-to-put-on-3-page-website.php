@@ -31,4 +31,4 @@
 <p>Stay on three pages while phone quotes drive revenue. Move to Business Website when you need separate commercial pages, real booking integrations, or print matched to web. See <a href="<?php echo webstar_h(webstar_url('resources/website-cost-small-business-michigan-2026/')); ?>">pricing</a> when scope grows.</p>
 
 <h2>Launch week</h2>
-<p>Test the form from a friend’s phone. Update GBP website field. Use the site as canonical for hours — not only Facebook. <a href="<?php echo webstar_h(webstar_url('contact/')); ?>">Book a consult</a> with this outline and we confirm tier before pixels hit the screen.</p>
+<p>Test the form from a friend’s phone. Update GBP website field. Use the site as canonical for hours — not only Facebook. <a href="<?php echo webstar_h(webstar_url('book/')); ?>">Book a consult</a> with this outline and we confirm tier before pixels hit the screen.</p>

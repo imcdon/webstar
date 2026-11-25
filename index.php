@@ -77,7 +77,7 @@ include __DIR__ . '/library/layout-start.php';
     <h1 class="hero__title">Websites that get Metro Detroit businesses found on Google</h1>
     <p class="hero__lead">Custom-built sites with Google Business Profile, Analytics, and Search Console included in every tier. Pay once and own it outright, or go month-to-month with Website as a Service for $150/mo. Either way, your domain and files are yours.</p>
     <div class="hero__actions">
-        <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('contact.php#book')); ?>">Book a free 1-on-1</a>
+        <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('book.php')); ?>">Book a free 1-on-1</a>
         <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_url('packages.php')); ?>">View packages &amp; pricing</a>
     </div>
 </section>
@@ -118,9 +118,9 @@ include __DIR__ . '/library/social-proof-band.php';
     <div class="home-section__inner">
         <h2 class="home-section__heading">How it works</h2>
         <ol class="home-section__textbox">
-            <li>Book a free 1-on-1 consultation. Company details, what you want to talk about, and a logo are optional on the booking form.</li>
+            <li>Book a free 1-on-1 consultation. A brief note about what you want to discuss is optional on the booking form.</li>
             <li>On the call, Ian confirms scope, timeline, and the exact fee in writing.</li>
-            <li>Sign the agreement, pay the deposit (or first monthly payment), and track progress in the Client Portal.</li>
+            <li>Complete project intake, sign the agreement, pay the deposit (or first monthly payment), and track progress in the Client Portal.</li>
             <li>Review the build on a private staging link. We launch after your approval and the balance clears.</li>
             <li>We set up Google Business Profile, Analytics, and Search Console in your name, then hand off to hosting you own — or keep it maintained under a Care Plan.</li>
         </ol>
@@ -158,7 +158,7 @@ include __DIR__ . '/library/social-proof-band.php';
 <div class="cta-band">
     <p>Ready to talk? Book a free 1-on-1 and we’ll confirm scope and price on the call.</p>
     <div class="hero__actions">
-        <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('contact.php#book')); ?>">Book a free 1-on-1</a>
+        <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('book.php')); ?>">Book a free 1-on-1</a>
         <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_url('contact.php#inquiry')); ?>">General questions</a>
     </div>
 </div>

@@ -53,4 +53,4 @@
 </ul>
 
 <h2>Next step</h2>
-<p>If your foundation is missing — no verified GBP, thin site, or mismatched listings — fix that before buying another SEO add-on. See the <a href="<?php echo webstar_h(webstar_url('resources/google-business-profile-checklist-metro-detroit/')); ?>">GBP checklist</a> and <a href="<?php echo webstar_h(webstar_url('resources/first-10-google-reviews-small-business/')); ?>">first reviews guide</a>, or <a href="<?php echo webstar_h(webstar_url('contact/')); ?>">book a consult</a> for a written scope.</p>
+<p>If your foundation is missing — no verified GBP, thin site, or mismatched listings — fix that before buying another SEO add-on. See the <a href="<?php echo webstar_h(webstar_url('resources/google-business-profile-checklist-metro-detroit/')); ?>">GBP checklist</a> and <a href="<?php echo webstar_h(webstar_url('resources/first-10-google-reviews-small-business/')); ?>">first reviews guide</a>, or <a href="<?php echo webstar_h(webstar_url('book/')); ?>">book a consult</a> for a written scope.</p>

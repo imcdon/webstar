@@ -16,7 +16,7 @@ $navItems = [
     ['id' => 'about', 'label' => 'About', 'href' => webstar_url('about.php')],
     ['id' => 'contact', 'label' => 'Contact', 'href' => webstar_url('contact.php')],
     ['id' => 'portal', 'label' => 'Client Portal', 'href' => webstar_url('portal/')],
-    ['id' => 'book', 'label' => 'Book a 1-on-1', 'href' => webstar_url('contact.php#book'), 'cta' => true],
+    ['id' => 'book', 'label' => 'Book a 1-on-1', 'href' => webstar_url('book.php'), 'cta' => true],
 ];
 $headerClass = 'site-header';
 if ($headerVariant === 'landing') {

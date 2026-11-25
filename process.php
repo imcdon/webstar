@@ -11,9 +11,9 @@ $steps = [
     [
         'title' => 'Free consultation',
         'when' => 'Day 0',
-        'body' => 'Book a free 1-on-1 consultation. On that 20–30 minute call we confirm goals, pages, booking needs, and the exact fee in writing.',
+        'body' => 'Book a free 1-on-1 consultation. On that 20–30 minute call we confirm goals, pages, booking needs, and the exact fee in writing. After scope is agreed, you complete project intake with logo, copy, and details.',
         'you' => ['Logo files and brand colors', 'Business name, phone, hours, service area', 'Photos and any existing copy', 'Booking or scheduling tool you already use'],
-        'we' => ['Written scope and fixed price', 'Agreement for eSignature', 'Stripe invoice for the deposit or first month', 'Client Portal login'],
+        'we' => ['Written scope and fixed price', 'Agreement for eSignature', 'Stripe invoice for the deposit or first month', 'Client Portal login', 'Link to project intake'],
     ],
     [
         'title' => 'Design',
@@ -135,8 +135,8 @@ include __DIR__ . '/library/layout-start.php';
 <div class="cta-band">
     <p>Ready to start step one?</p>
     <div class="hero__actions">
-        <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('packages.php')); ?>">Choose a package</a>
-        <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_url('plans.php')); ?>">Website as a Service</a>
+        <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('book.php')); ?>">Book a free 1-on-1</a>
+        <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_url('intake.php')); ?>">Project intake</a>
     </div>
 </div>
 <?php include __DIR__ . '/library/layout-end.php'; ?>

@@ -4,7 +4,7 @@
 
 | Area | Path | Role |
 |------|------|------|
-| Marketing pages | `*.php` (root) | `index.php`, `packages.php`, `contact.php`, etc. |
+| Marketing pages | `*.php` (root) | `index.php`, `packages.php`, `contact.php`, `book.php`, `intake.php`, etc. |
 | Shared library | `library/` | Config, helpers, data arrays, article bodies |
 | Assets | `assets/` | CSS, JS, images |
 | Scripts | `scripts/scripts.js` | GA `dataLayer` events |

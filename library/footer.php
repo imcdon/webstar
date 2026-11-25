@@ -29,7 +29,9 @@ $seoFooter = webstar_seo_footer_links(6);
                     <li><a href="<?php echo webstar_h(webstar_url('reviews.php')); ?>" class="site-footer__link">Reviews</a></li>
                     <li><a href="<?php echo webstar_h(webstar_url('about.php')); ?>" class="site-footer__link">About</a></li>
                     <li><a href="<?php echo webstar_h(webstar_url('contact.php')); ?>" class="site-footer__link">Contact</a></li>
+                    <li><a href="<?php echo webstar_h(webstar_url('book.php')); ?>" class="site-footer__link">Book a 1-on-1</a></li>
                     <li><a href="<?php echo webstar_h(webstar_url('portal/')); ?>" class="site-footer__link">Client Portal</a></li>
+                    <li><a href="<?php echo webstar_h(webstar_url('intake.php')); ?>" class="site-footer__link">Project intake</a></li>
                     <li><a href="<?php echo webstar_h(webstar_url('privacy.php')); ?>" class="site-footer__link">Privacy</a></li>
                     <li><a href="<?php echo webstar_h(webstar_url('terms.php')); ?>" class="site-footer__link">Terms</a></li>
                     <li><a href="<?php echo webstar_h(webstar_url('accessibility.php')); ?>" class="site-footer__link">Accessibility</a></li>

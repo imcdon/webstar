@@ -61,4 +61,4 @@
 <p>You can add pages later on the same design system — common for contractors who add a commercial line after landing their first big referral partner.</p>
 
 <h2>Next step</h2>
-<p>Open the package that matches your scope, skim the deliverable list, and <a href="<?php echo webstar_h(webstar_url('contact/')); ?>">book a free consultation</a> when you want a written band for your business. I reply with scope, price range, and timeline — still no hourly mystery. For statewide commercial landing copy, see also <a href="<?php echo webstar_h(webstar_url('website-cost-michigan/')); ?>">website cost in Michigan</a>.</p>
+<p>Open the package that matches your scope, skim the deliverable list, and <a href="<?php echo webstar_h(webstar_url('book/')); ?>">book a free consultation</a> when you want a written band for your business. I reply with scope, price range, and timeline — still no hourly mystery. For statewide commercial landing copy, see also <a href="<?php echo webstar_h(webstar_url('website-cost-michigan/')); ?>">website cost in Michigan</a>.</p>

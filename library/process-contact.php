@@ -25,7 +25,7 @@ function contact_redirect(string $status, ?string $reason = null, ?string $field
     exit;
 }
 
-if (!empty(trim((string) ($_POST['website'] ?? '')))) {
+if (!empty(trim((string) ($_POST['company_url'] ?? '')))) {
     contact_redirect('error', 'generic');
 }
 

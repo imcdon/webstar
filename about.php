@@ -28,7 +28,7 @@ include __DIR__ . '/library/layout-start.php';
                 <p>The goal of Webstar Business Services LLC is to provide simple, well-built solutions to growing businesses at a fair price. Whether it’s a three-page site with Google Business Profile or a broad website with dozens of pages and third-party integrations, I pride myself on clear scope, fast turnaround, and the least headache — with Google setup, a 30-day fix window, and full ownership included on every project.</p>
             </div>
             <div class="about-panel__actions package-page__actions">
-                <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('contact.php#book')); ?>">Book a 1-on-1</a>
+                <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('book.php')); ?>">Book a 1-on-1</a>
                 <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_url('packages.php')); ?>">View packages</a>
             </div>
         </div>

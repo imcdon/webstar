@@ -87,7 +87,7 @@ include __DIR__ . '/library/layout-start.php';
 </section>
 
 <div class="cta-band">
-    <p>Not sure which tier fits? <a href="<?php echo webstar_h(webstar_url('contact.php#book')); ?>">Book a free consultation</a> or start with the package closest to your budget—you can clarify scope on the call.</p>
+    <p>Not sure which tier fits? <a href="<?php echo webstar_h(webstar_url('book.php')); ?>">Book a free consultation</a> or start with the package closest to your budget—you can clarify scope on the call.</p>
     <div class="hero__actions">
         <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_package_url('simple-website')); ?>">Most popular: Simple Website</a>
         <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_url('plans.php')); ?>">Monthly: Website as a Service</a>

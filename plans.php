@@ -79,7 +79,7 @@ include __DIR__ . '/library/layout-start.php';
                     <?php endforeach; ?>
                 </ul>
                 <p class="package-card__meta"><strong>Ideal for:</strong> <?php echo webstar_h((string) $waas['ideal_for']); ?></p>
-                <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('contact.php')); ?>?plan=<?php echo webstar_h((string) ($waas['slug'] ?? 'website-as-a-service')); ?>#book">Book a 1-on-1</a>
+                <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('book.php')); ?>?plan=<?php echo webstar_h((string) ($waas['slug'] ?? 'website-as-a-service')); ?>">Book a 1-on-1</a>
             </article>
             <div class="plan-hero__aside">
                 <h2 class="plan-hero__aside-title">Or own it outright</h2>
@@ -111,7 +111,7 @@ include __DIR__ . '/library/layout-start.php';
                             <li><?php echo webstar_h((string) $item); ?></li>
                         <?php endforeach; ?>
                     </ul>
-                    <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('contact.php')); ?>?plan=<?php echo webstar_h((string) $plan['slug']); ?>#book">Book a 1-on-1</a>
+                    <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('book.php')); ?>?plan=<?php echo webstar_h((string) $plan['slug']); ?>">Book a 1-on-1</a>
                 </article>
             <?php endforeach; ?>
         </div>

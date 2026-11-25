@@ -26,4 +26,4 @@
 <p>No magic import — we reuse copy and images you own, rebuild IA, 301 when URLs change. Expect a short fluctuation week; stable NAP and quality content usually recover.</p>
 
 <h2>Next step</h2>
-<p><a href="<?php echo webstar_h(webstar_url('wix-squarespace-alternative/')); ?>">Wix/Squarespace alternative</a> (services page) or <a href="<?php echo webstar_h(webstar_url('contact/')); ?>">book a consult</a> with your current URL for a straight rebuild quote.</p>
+<p><a href="<?php echo webstar_h(webstar_url('wix-squarespace-alternative/')); ?>">Wix/Squarespace alternative</a> (services page) or <a href="<?php echo webstar_h(webstar_url('book/')); ?>">book a consult</a> with your current URL for a straight rebuild quote.</p>

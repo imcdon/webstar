@@ -51,4 +51,4 @@
 <p>My answers are on <a href="<?php echo webstar_h(webstar_url('packages/')); ?>">packages</a>, <a href="<?php echo webstar_h(webstar_url('plans/')); ?>">plans</a>, and <a href="<?php echo webstar_h(webstar_url('process/')); ?>">process</a>. If monthly cash flow wins, read the WaaS FAQ on the plans page. If you refuse subscriptions on principle, book a consult and we quote outright.</p>
 
 <h2>Next step</h2>
-<p>Run your own numbers with the cost guide, then <a href="<?php echo webstar_h(webstar_url('contact/')); ?>">book a free consultation</a> if you want a written recommendation for your season and scope. Indecision has a cost too — months sending traffic to a Facebook page alone does not show up on an invoice.</p>
+<p>Run your own numbers with the cost guide, then <a href="<?php echo webstar_h(webstar_url('book/')); ?>">book a free consultation</a> if you want a written recommendation for your season and scope. Indecision has a cost too — months sending traffic to a Facebook page alone does not show up on an invoice.</p>

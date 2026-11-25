@@ -31,6 +31,7 @@ include dirname(__DIR__) . '/library/layout-start.php';
                     <?php if ($isAdmin) : ?>
                         <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('portal/leads-map.php')); ?>">Lead map</a>
                     <?php endif; ?>
+                    <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_url('intake.php')); ?>">Project intake</a>
                     <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_url('portal/logout.php')); ?>">Log out</a>
                 </div>
             </div>

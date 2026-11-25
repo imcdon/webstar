@@ -87,10 +87,10 @@ include __DIR__ . '/library/layout-start.php';
             </ul>
 
             <div class="package-page__actions">
-                <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('contact.php#book')); ?>">Book a 1-on-1</a>
+                <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('book.php')); ?>">Book a 1-on-1</a>
                 <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_url('contact.php#inquiry')); ?>">Ask a question</a>
             </div>
-            <p class="package-page__compare"><a href="<?php echo webstar_h(webstar_url('packages.php')); ?>">Back to all packages</a></p>
+            <p class="package-page__compare"><a href="<?php echo webstar_h(webstar_url('packages.php')); ?>">Back to all packages</a> · <a href="<?php echo webstar_h(webstar_url('intake.php') . '?package=' . rawurlencode($slug)); ?>">Start intake</a></p>
         </div>
 
         <?php if (!empty($package['process']) && is_array($package['process'])) :

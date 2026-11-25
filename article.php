@@ -146,7 +146,7 @@ include __DIR__ . '/library/layout-start.php';
 
         <div class="landing-cta-band">
             <?php if ($recommended !== null) : ?>
-                <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('contact.php#book')); ?>">Book a 1-on-1</a>
+                <a class="home-section__btn home-section__btn--primary" href="<?php echo webstar_h(webstar_url('book.php')); ?>">Book a 1-on-1</a>
             <?php endif; ?>
             <a class="home-section__btn home-section__btn--secondary" href="<?php echo webstar_h(webstar_url('contact.php')); ?>">Ask a question</a>
         </div>

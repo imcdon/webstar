@@ -123,6 +123,8 @@ function webstar_clean_path(string $path): string
         'examples.php' => 'examples/',
         'about.php' => 'about/',
         'contact.php' => 'contact/',
+        'book.php' => 'book/',
+        'intake.php' => 'intake/',
         'privacy.php' => 'privacy/',
         'terms.php' => 'terms/',
         'plans.php' => 'plans/',

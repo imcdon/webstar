@@ -29,4 +29,4 @@
 <h2>After ten</h2>
 <p>Build the ask into job closeout like locking the toolbox. Fresh profile photos monthly. Track calls and forms in Analytics — reviews lift conversion, not vanity alone.</p>
 
-<p>Need profile + site aligned first? <a href="<?php echo webstar_h(webstar_url('contact/')); ?>">Book a consult</a> or see <a href="<?php echo webstar_h(webstar_url('google-business-profile-setup/')); ?>">GBP setup</a>.</p>
+<p>Need profile + site aligned first? <a href="<?php echo webstar_h(webstar_url('book/')); ?>">Book a consult</a> or see <a href="<?php echo webstar_h(webstar_url('google-business-profile-setup/')); ?>">GBP setup</a>.</p>

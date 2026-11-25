@@ -31,6 +31,8 @@ function webstar_sitemap_entries(): array
     $add('examples/', $mtime($root . '/examples.php'), '0.7');
     $add('about/', $mtime($root . '/about.php'), '0.7');
     $add('contact/', $mtime($root . '/contact.php'), '0.8');
+    $add('book/', $mtime($root . '/book.php'), '0.8');
+    // intake/ is noindex — omit from sitemap
     $add('service-areas/', $mtime($root . '/service-areas.php'), '0.8');
     $add('industries/', $mtime($root . '/industries.php'), '0.8');
     $add('resources/', $mtime($root . '/resources.php'), '0.8');

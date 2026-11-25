@@ -43,7 +43,7 @@
 <tr><td>Typical one-time price</td><td>$350–$500</td><td>$900–$1,800</td><td>$2,500+</td></tr>
 </tbody>
 </table>
-<p>Compare all three tiers on the <a href="<?php echo webstar_h(webstar_url('packages/')); ?>">packages page</a>, then <a href="<?php echo webstar_h(webstar_url('contact/')); ?>">book a consult</a> with your feature list — we will confirm tier before design starts.</p>
+<p>Compare all three tiers on the <a href="<?php echo webstar_h(webstar_url('packages/')); ?>">packages page</a>, then <a href="<?php echo webstar_h(webstar_url('book/')); ?>">book a consult</a> with your feature list — we will confirm tier before design starts.</p>
 
 <h2>Next step</h2>
 <p>Bring one sentence per section: how customers should reach you, which pages matter, whether booking or checkout is required at launch, and what can wait six months. We map that list to Simple, Business, or Growth in the first call.</p>

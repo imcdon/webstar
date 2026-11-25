@@ -15,7 +15,8 @@ Use for packages, plans, process, contact, homepage, footer, schema, sitemap, `.
 | New package bullet | `packages-data.php`, verify `package.php` displays field |
 | Plan pricing | `plans-data.php` |
 | Contact form / mail | `contact.php`, `library/mail-config.example.php` (not live secrets) |
-| Intake flow | `contact.php`, calendar config examples |
+| Book 1-on-1 | `book.php`, `library/process-consultation.php`, calendar config examples |
+| Intake flow | `intake.php`, `library/package-intake-form.php`, `library/process-package-intake.php` |
 | Redirect | `.htaccess` + SEO.md retired table |
 | OG / default image | `assets/images/og-default.jpg`, header partials |
 | GA events | `scripts/scripts.js` (`phone_click`, `contact_submit`, etc.) |

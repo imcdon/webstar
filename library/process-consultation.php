@@ -10,7 +10,7 @@ require __DIR__ . '/calendar.php';
 require __DIR__ . '/presence-audit.php';
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
-    header('Location: ' . webstar_url('contact.php') . '#book', true, 303);
+    header('Location: ' . webstar_url('book.php'), true, 303);
     exit;
 }
 
@@ -23,7 +23,7 @@ function book_redirect(string $status, ?string $reason = null, ?string $fields =
     if ($fields) {
         $params['book_fields'] = $fields;
     }
-    header('Location: ' . webstar_url('contact.php') . '?' . http_build_query($params) . '#book', true, 303);
+    header('Location: ' . webstar_url('book.php') . '?' . http_build_query($params), true, 303);
     exit;
 }
 

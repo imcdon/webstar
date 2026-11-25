@@ -83,12 +83,12 @@ DirectoryIndex index.php
     RewriteRule ^packages/([a-z0-9-]+)/?$ package.php?slug=$1 [L,QSA]
     RewriteRule ^packages/?$ packages.php [L,QSA]
 
-    RewriteRule ^(examples|about|contact|privacy|terms|plans|process|accessibility|service-areas|industries|resources|reviews)/?$ $1.php [L,QSA]
+    RewriteRule ^(examples|about|contact|book|intake|privacy|terms|plans|process|accessibility|service-areas|industries|resources|reviews)/?$ $1.php [L,QSA]
 
     RewriteRule ^resources/feed/?$ resources-feed.php [L,QSA]
     RewriteRule ^resources/([a-z0-9-]+)/?$ article.php?slug=$1 [L,QSA]
 
     # SEO landings: /{slug}/ → landing.php (skip reserved first segments)
-    RewriteCond %{REQUEST_URI} !/(packages|examples|about|contact|privacy|terms|plans|process|accessibility|service-areas|industries|resources|reviews|portal|clients|library|assets|scripts|vendor|weddings)(/|$) [NC]
+    RewriteCond %{REQUEST_URI} !/(packages|examples|about|contact|book|intake|privacy|terms|plans|process|accessibility|service-areas|industries|resources|reviews|portal|clients|library|assets|scripts|vendor|weddings)(/|$) [NC]
     RewriteRule ^([a-z0-9-]+)/?$ landing.php?slug=$1 [L,QSA]
 </IfModule>

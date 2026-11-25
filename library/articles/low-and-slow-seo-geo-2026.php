@@ -65,4 +65,4 @@
 <p>We do not run your review program or ghost-write a monthly magazine. Low and slow success is a partnership — we keep the site credible and crawlable; you keep the business story true in public.</p>
 
 <h2>Next step</h2>
-<p>If launch ingredients are missing (thin site, unverified GBP, conflicting phone numbers), fix those before buying acronym SEO. <a href="<?php echo webstar_h(webstar_url('contact/')); ?>">Book a consult</a> with your current URLs and listings pulled up; we will say which tier matches the build and what to tend slow after go-live.</p>
+<p>If launch ingredients are missing (thin site, unverified GBP, conflicting phone numbers), fix those before buying acronym SEO. <a href="<?php echo webstar_h(webstar_url('book/')); ?>">Book a consult</a> with your current URLs and listings pulled up; we will say which tier matches the build and what to tend slow after go-live.</p>

@@ -29,4 +29,4 @@
 <p>Analytics and Search Console under your login — included on Webstar packages. Confirm the profile website field after launch using the <a href="<?php echo webstar_h(webstar_url('resources/website-launch-checklist-domain-hosting/')); ?>">launch checklist</a>.</p>
 
 <h2>Need setup help?</h2>
-<p>Setup service: <a href="<?php echo webstar_h(webstar_url('google-business-profile-setup/')); ?>">Google Business Profile setup in Michigan</a> or any package with Google handoff. <a href="<?php echo webstar_h(webstar_url('contact/')); ?>">Book a consult</a> if the listing is a mess before we build.</p>
+<p>Setup service: <a href="<?php echo webstar_h(webstar_url('google-business-profile-setup/')); ?>">Google Business Profile setup in Michigan</a> or any package with Google handoff. <a href="<?php echo webstar_h(webstar_url('book/')); ?>">Book a consult</a> if the listing is a mess before we build.</p>
