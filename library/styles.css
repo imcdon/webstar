@@ -1758,10 +1758,18 @@ main {
 }
 
 .intake-form__services-legend {
+    display: block;
+    float: left;
+    width: 100%;
+    max-width: 100%;
+    grid-column: 1 / -1;
     padding: 0;
     margin: 0 0 0.5rem;
     font-weight: 700;
     color: var(--teal-950);
+    writing-mode: horizontal-tb;
+    overflow-wrap: normal;
+    word-break: normal;
 }
 
 .intake-form__check {
@@ -1805,10 +1813,17 @@ main {
 }
 
 .intake-form__choice legend {
+    display: block;
+    float: left;
+    width: 100%;
+    max-width: 100%;
     padding: 0;
     margin: 0 0 0.5rem;
     font-weight: 600;
     color: var(--teal-950);
+    writing-mode: horizontal-tb;
+    overflow-wrap: normal;
+    word-break: normal;
 }
 
 .contact-way__title {
