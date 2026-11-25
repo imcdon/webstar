@@ -1105,17 +1105,28 @@ main {
 .schedule-form {
     display: grid;
     gap: 1rem;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
 }
 
 .intake-form__grid {
     display: grid;
     gap: 1rem;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+}
+
+.intake-form__field {
+    min-width: 0;
+    max-width: 100%;
 }
 
 @media (min-width: 640px) {
     .intake-form__grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     }
 
     .intake-form__field--full {
@@ -1135,12 +1146,14 @@ main {
     margin-bottom: 0.35rem;
     font-size: 0.92rem;
     color: var(--ink);
+    overflow-wrap: anywhere;
 }
 
 .intake-form__field input,
 .intake-form__field textarea,
 .schedule-form__input {
     width: 100%;
+    max-width: 100%;
     padding: 0.6rem 0.75rem;
     font: inherit;
     border: 1px solid var(--line);
@@ -1610,6 +1623,8 @@ main {
     max-width: none !important;
     margin: 0;
     box-sizing: border-box;
+    min-width: 0;
+    overflow-wrap: anywhere;
 }
 
 .contact-panel .home-section__heading {
@@ -1636,10 +1651,12 @@ main {
 }
 
 .contact-way {
+    min-width: 0;
     padding: 1.15rem 1.2rem 1.25rem;
     background: var(--panel-soft);
     border: 1px solid var(--line);
     border-radius: var(--radius);
+    overflow-wrap: anywhere;
 }
 
 .contact-way--muted {
@@ -1693,6 +1710,15 @@ main {
     width: 100%;
     max-width: 44rem;
     margin: 0.75rem 0 0;
+    min-width: 0;
+}
+
+.contact-panel > .intake-block .intake-block__inner {
+    padding: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 .intake-form__ein-note {
@@ -1718,6 +1744,7 @@ main {
     font-size: 0.95rem;
     color: var(--ink-muted);
     max-width: 42rem;
+    overflow-wrap: anywhere;
 }
 
 .intake-form__services {
@@ -1726,6 +1753,8 @@ main {
     border: 0;
     display: grid;
     gap: 0.55rem;
+    min-width: 0;
+    max-width: 100%;
 }
 
 .intake-form__services-legend {
@@ -1742,6 +1771,13 @@ main {
     font-size: 0.98rem;
     color: var(--ink);
     cursor: pointer;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.intake-form__check span {
+    min-width: 0;
+    overflow-wrap: anywhere;
 }
 
 .intake-form__check input {
@@ -1753,6 +1789,8 @@ main {
     display: grid;
     gap: 0.45rem;
     margin: 0.15rem 0 0.35rem 1.55rem;
+    min-width: 0;
+    max-width: 100%;
 }
 
 .intake-form__choice {
@@ -1762,6 +1800,8 @@ main {
     border: 0;
     padding: 0;
     margin: 0;
+    min-width: 0;
+    max-width: 100%;
 }
 
 .intake-form__choice legend {
@@ -1785,11 +1825,13 @@ main {
 
 .contact-way__action {
     margin: 0;
+    overflow-wrap: anywhere;
 }
 
 .contact-way__action a:not(.home-section__btn) {
     font-weight: 600;
     color: var(--teal-800);
+    overflow-wrap: anywhere;
 }
 
 .contact-form-block {
@@ -1823,6 +1865,12 @@ main {
 .contact-form-block__lead {
     margin: 0 0 1.15rem;
     color: var(--ink-muted);
+}
+
+.contact-form-block,
+.contact-form {
+    min-width: 0;
+    max-width: 100%;
 }
 
 .contact-form {
@@ -2027,7 +2075,25 @@ main {
     .contact-panel__ways,
     .contact-panel__ways--secondary,
     .intake-layout {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .contact-panel.landing-content {
+        padding: 1.15rem 1rem 1.35rem;
+    }
+
+    .intake-form__nested {
+        margin-left: 0.85rem;
+    }
+
+    .intake-form__actions .home-section__btn,
+    .schedule-form__actions .home-section__btn,
+    .contact-form .home-section__btn--primary {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
     }
 }
 

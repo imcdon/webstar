@@ -140,7 +140,7 @@ $prefillWebsite = $prefillPackage !== '' && isset($websiteTiers[$prefillPackage]
 
             <hr class="intake-form__divider" />
 
-            <p class="intake-form__services-lead">Pricing and information needed differs for each item provided. Check every box that applies. For quick turnaround times, supply all required info with this form. If you’re unsure, call <a href="<?php echo webstar_h($phoneHref); ?>"><?php echo webstar_h($phoneDisplay); ?></a> or schedule a Google Meet with Ian at <a href="<?php echo webstar_h($bookUrl); ?>">webstarbusinessservices.com/book/</a>.</p>
+            <p class="intake-form__services-lead">Pricing and information needed differs for each item provided. Check every box that applies. For quick turnaround times, supply all required info with this form. If you’re unsure, call <a href="<?php echo webstar_h($phoneHref); ?>"><?php echo webstar_h($phoneDisplay); ?></a> or <a href="<?php echo webstar_h($bookUrl); ?>">book a call</a>.</p>
 
             <fieldset class="intake-form__services">
                 <legend class="intake-form__services-legend">Services needed <span class="schedule-form__required">*</span></legend>
